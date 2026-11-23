@@ -286,6 +286,29 @@ export type Mode4 = "live";
 export type Lifecycle = "opened" | "resolved";
 export type ClosedAt = string | null;
 export type ResolutionReason = "matched" | null;
+export type PositionData = PositionDisplayFields & {
+  type: Type30;
+  sequence_id: number;
+  public_id: string;
+  timestamp: string;
+  session_id: string;
+  topic?: Topic31;
+  instrument: string;
+  instrument_public_id?: string;
+  exchange: Exchange9;
+  mode?: Mode5;
+  quantity: number;
+  average_price?: AveragePrice1;
+  unrealized_pnl?: UnrealizedPnl;
+  realized_pnl: number;
+  mark_price?: MarkPrice;
+  marked_at?: MarkedAt;
+  source_venue_event_id?: SourceVenueEventId;
+  position_cycle_public_id?: PositionCyclePublicId1;
+  wallet_public_id?: string;
+};
+export type QuantityDecimals = number | null;
+export type PriceDecimals = number | null;
 export type Type30 = "position";
 export type Topic31 = string | null;
 export type Exchange9 = "paper" | "kraken" | "kraken_futures" | "walutomat";
@@ -1081,26 +1104,10 @@ export interface PortfolioDriftEpisodeEventData {
   mismatch_count: number;
   resolution_reason?: ResolutionReason;
 }
-export interface PositionData {
-  type: Type30;
-  sequence_id: number;
-  public_id: string;
-  timestamp: string;
-  session_id: string;
-  topic?: Topic31;
-  instrument: string;
-  instrument_public_id?: string;
-  exchange: Exchange9;
-  mode?: Mode5;
-  quantity: number;
-  average_price?: AveragePrice1;
-  unrealized_pnl?: UnrealizedPnl;
-  realized_pnl: number;
-  mark_price?: MarkPrice;
-  marked_at?: MarkedAt;
-  source_venue_event_id?: SourceVenueEventId;
-  position_cycle_public_id?: PositionCyclePublicId1;
-  wallet_public_id?: string;
+export interface PositionDisplayFields {
+  is_dust?: boolean;
+  quantity_decimals?: QuantityDecimals;
+  price_decimals?: PriceDecimals;
 }
 export interface ProcessCommandAckData {
   type: Type31;

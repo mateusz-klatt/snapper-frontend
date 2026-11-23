@@ -2687,7 +2687,7 @@ export type Components = {
             error: string | null;
             open_drift_episode: Components["schemas"]["PortfolioReconciliationDriftEpisode"] | null;
         };
-        PositionCycleData: {
+        PositionCycleData: Components["schemas"]["PositionDisplayFields"] & {
             type: "position_cycle";
             sequence_id: number;
             public_id: string;
@@ -2716,7 +2716,7 @@ export type Components = {
             payload: Components["schemas"]["PositionCycleData"][];
             count: number;
         };
-        PositionData: {
+        PositionData: Components["schemas"]["PositionDisplayFields"] & {
             type: "position";
             sequence_id: number;
             public_id: string;
@@ -2736,6 +2736,11 @@ export type Components = {
             source_venue_event_id?: number | null | undefined;
             position_cycle_public_id?: string | null | undefined;
             wallet_public_id: string;
+        };
+        PositionDisplayFields: {
+            is_dust?: boolean;
+            quantity_decimals?: number | null | undefined;
+            price_decimals?: number | null | undefined;
         };
         PositionListResponse: {
             type: "position_list";

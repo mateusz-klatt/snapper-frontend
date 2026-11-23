@@ -16,7 +16,128 @@
 
 import { z } from 'zod'
 
+import * as sharedSchemas from './shared.generated.zod'
+
 import type { Components } from '../../types/api.generated'
+
+export const JsonPrimitiveSchema = sharedSchemas.JsonPrimitiveSchema as unknown as z.ZodType<
+  Components['schemas']['JsonPrimitive']
+>
+
+export const CandleDataSchema = sharedSchemas.CandleDataSchema as unknown as z.ZodType<
+  Components['schemas']['CandleData']
+>
+
+export const ContinuousCandleDataSchema =
+  sharedSchemas.ContinuousCandleDataSchema as unknown as z.ZodType<
+    Components['schemas']['ContinuousCandleData']
+  >
+
+export const ContractDataSchema = sharedSchemas.ContractDataSchema as unknown as z.ZodType<
+  Components['schemas']['ContractData']
+>
+
+export const EgressActiveReservationSnapshotSchema =
+  sharedSchemas.EgressActiveReservationSnapshotSchema as unknown as z.ZodType<
+    Components['schemas']['EgressActiveReservationSnapshot']
+  >
+
+export const EgressConnectionSnapshotSchema =
+  sharedSchemas.EgressConnectionSnapshotSchema as unknown as z.ZodType<
+    Components['schemas']['EgressConnectionSnapshot']
+  >
+
+export const EgressTransferSnapshotSchema =
+  sharedSchemas.EgressTransferSnapshotSchema as unknown as z.ZodType<
+    Components['schemas']['EgressTransferSnapshot']
+  >
+
+export const ExecutionDataSchema = sharedSchemas.ExecutionDataSchema as unknown as z.ZodType<
+  Components['schemas']['ExecutionData']
+>
+
+export const ExecutionPlanDataSchema =
+  sharedSchemas.ExecutionPlanDataSchema as unknown as z.ZodType<
+    Components['schemas']['ExecutionPlanData']
+  >
+
+export const FrontMonthDataSchema = sharedSchemas.FrontMonthDataSchema as unknown as z.ZodType<
+  Components['schemas']['FrontMonthData']
+>
+
+export const InstrumentCapabilityDataSchema =
+  sharedSchemas.InstrumentCapabilityDataSchema as unknown as z.ZodType<
+    Components['schemas']['InstrumentCapabilityData']
+  >
+
+export const InstrumentDetailDataSchema =
+  sharedSchemas.InstrumentDetailDataSchema as unknown as z.ZodType<
+    Components['schemas']['InstrumentDetailData']
+  >
+
+export const OrderDataSchema = sharedSchemas.OrderDataSchema as unknown as z.ZodType<
+  Components['schemas']['OrderData']
+>
+
+export const PositionDisplayFieldsSchema =
+  sharedSchemas.PositionDisplayFieldsSchema as unknown as z.ZodType<
+    Components['schemas']['PositionDisplayFields']
+  >
+
+export const ProcessSummaryItemSchema =
+  sharedSchemas.ProcessSummaryItemSchema as unknown as z.ZodType<
+    Components['schemas']['ProcessSummaryItem']
+  >
+
+export const RelatedInstrumentDataSchema =
+  sharedSchemas.RelatedInstrumentDataSchema as unknown as z.ZodType<
+    Components['schemas']['RelatedInstrumentData']
+  >
+
+export const SignalDataSchema = sharedSchemas.SignalDataSchema as unknown as z.ZodType<
+  Components['schemas']['SignalData']
+>
+
+export const UnderlyingAssetDataSchema =
+  sharedSchemas.UnderlyingAssetDataSchema as unknown as z.ZodType<
+    Components['schemas']['UnderlyingAssetData']
+  >
+
+export const UnderlyingInstrumentDataSchema =
+  sharedSchemas.UnderlyingInstrumentDataSchema as unknown as z.ZodType<
+    Components['schemas']['UnderlyingInstrumentData']
+  >
+
+export const VenueFeeScheduleDataSchema =
+  sharedSchemas.VenueFeeScheduleDataSchema as unknown as z.ZodType<
+    Components['schemas']['VenueFeeScheduleData']
+  >
+
+export const UserRoleSchema = sharedSchemas.UserRoleSchema as unknown as z.ZodType<
+  Components['schemas']['UserRole']
+>
+
+export const JsonValueSchema = sharedSchemas.JsonValueSchema as unknown as z.ZodType<
+  Components['schemas']['JsonValue']
+>
+
+export const EgressRouteStatusSnapshotSchema =
+  sharedSchemas.EgressRouteStatusSnapshotSchema as unknown as z.ZodType<
+    Components['schemas']['EgressRouteStatusSnapshot']
+  >
+
+export const PositionDataSchema = sharedSchemas.PositionDataSchema as unknown as z.ZodType<
+  Components['schemas']['PositionData']
+>
+
+export const JsonObjectSchema = sharedSchemas.JsonObjectSchema as unknown as z.ZodType<
+  Components['schemas']['JsonObject']
+>
+
+export const ExecutionPlanDecisionDataSchema =
+  sharedSchemas.ExecutionPlanDecisionDataSchema as unknown as z.ZodType<
+    Components['schemas']['ExecutionPlanDecisionData']
+  >
 
 const _AccountBalanceEntryRawSchema = z
   .object({
@@ -435,36 +556,6 @@ export const CachedStatsPayloadSchema = _CachedStatsPayloadRawSchema as unknown 
   Components['schemas']['CachedStatsPayload']
 >
 
-const _CandleDataRawSchema = z
-  .object({
-    type: z.literal('candle'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument: z.string(),
-    exchange: z.enum(['kraken', 'kraken_futures', 'kraken_equities', 'walutomat', 'polygon']),
-    timeframe: z.string(),
-    open_at: z.iso.datetime(),
-    open: z.number(),
-    high: z.number(),
-    low: z.number(),
-    close: z.number(),
-    volume: z.number(),
-    vwap: z.number().nullable().optional(),
-    trades: z.number().int().nullable().optional(),
-    complete: z.boolean(),
-    origin: z.enum(['live', 'replay']),
-    replay_window_start: z.iso.datetime().nullable().optional(),
-    replay_window_end: z.iso.datetime().nullable().optional(),
-  })
-  .strict()
-
-export const CandleDataSchema = _CandleDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['CandleData']
->
-
 const _ConnectionStatsRawSchema = z
   .object({
     active_connections: z.number().int(),
@@ -498,55 +589,6 @@ const _ConsentRedirectRawSchema = z
 
 export const ConsentRedirectSchema = _ConsentRedirectRawSchema as unknown as z.ZodType<
   Components['schemas']['ConsentRedirect']
->
-
-const _ContinuousCandleDataRawSchema = z
-  .object({
-    type: z.literal('continuous_candle'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    open_at: z.iso.datetime(),
-    timeframe: z.string(),
-    open: z.number(),
-    high: z.number(),
-    low: z.number(),
-    close: z.number(),
-    volume: z.number(),
-    vwap: z.number().nullable(),
-    trades: z.number().int().nullable(),
-    source_contract: z.string(),
-    adjustment_factor: z.number().nullable(),
-  })
-  .strict()
-
-export const ContinuousCandleDataSchema = _ContinuousCandleDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['ContinuousCandleData']
->
-
-const _ContractDataRawSchema = z
-  .object({
-    type: z.literal('contract'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument_public_id: z.string(),
-    native_symbol: z.string(),
-    exchange: z.string(),
-    expiry_at: z.iso.datetime().nullable(),
-    instrument_kind: z.string().nullable(),
-    relationship_type: z.string(),
-    contract_family: z.string().nullable(),
-    is_front_month: z.boolean(),
-  })
-  .strict()
-
-export const ContractDataSchema = _ContractDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['ContractData']
 >
 
 const _CpuMetricsRawSchema = z
@@ -636,36 +678,6 @@ export const DiskMetricsSchema = _DiskMetricsRawSchema as unknown as z.ZodType<
   Components['schemas']['DiskMetrics']
 >
 
-const _EgressActiveReservationSnapshotRawSchema = z
-  .object({
-    exchange: z.string(),
-    traffic_class: z.enum(['public', 'private']),
-    container: z.string(),
-  })
-  .strict()
-
-export const EgressActiveReservationSnapshotSchema =
-  _EgressActiveReservationSnapshotRawSchema as unknown as z.ZodType<
-    Components['schemas']['EgressActiveReservationSnapshot']
-  >
-
-const _EgressConnectionSnapshotRawSchema = z
-  .object({
-    host: z.string(),
-    kind: z.enum(['ws', 'rest']),
-    exchange: z.string(),
-    traffic_class: z.enum(['public', 'private']),
-    container: z.string(),
-    count: z.number().int(),
-    last_seen_at: z.iso.datetime().nullable().optional(),
-  })
-  .strict()
-
-export const EgressConnectionSnapshotSchema =
-  _EgressConnectionSnapshotRawSchema as unknown as z.ZodType<
-    Components['schemas']['EgressConnectionSnapshot']
-  >
-
 const _EgressContainerSummaryRawSchema = z
   .object({
     container: z.string(),
@@ -678,27 +690,6 @@ const _EgressContainerSummaryRawSchema = z
 export const EgressContainerSummarySchema =
   _EgressContainerSummaryRawSchema as unknown as z.ZodType<
     Components['schemas']['EgressContainerSummary']
-  >
-
-const _EgressTransferSnapshotRawSchema = z
-  .object({
-    interface: z.string(),
-    socks5_listen_port: z.number().int(),
-    rx_bytes: z.number().int(),
-    tx_bytes: z.number().int(),
-    rx_rate_bytes_per_second: z.number().nullable().optional(),
-    tx_rate_bytes_per_second: z.number().nullable().optional(),
-    latest_handshake_at: z.iso.datetime().nullable().optional(),
-    counter_reset: z.boolean(),
-    sampled_at: z.iso.datetime(),
-    sample_age_seconds: z.number(),
-    stale: z.boolean(),
-  })
-  .strict()
-
-export const EgressTransferSnapshotSchema =
-  _EgressTransferSnapshotRawSchema as unknown as z.ZodType<
-    Components['schemas']['EgressTransferSnapshot']
   >
 
 const _EquityOverlayPointRawSchema = z
@@ -730,75 +721,6 @@ export const ExchangeListResponseSchema = _ExchangeListResponseRawSchema as unkn
   Components['schemas']['ExchangeListResponse']
 >
 
-const _ExecutionDataRawSchema = z
-  .object({
-    type: z.literal('execution'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    trade_id: z.string().nullable().optional(),
-    exchange_order_id: z.string().nullable().optional(),
-    client_order_id: z.string(),
-    instrument: z.string(),
-    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
-    side: z.enum(['buy', 'sell']),
-    size: z.number(),
-    price: z.number(),
-    last_size: z.number(),
-    last_price: z.number(),
-    fee: z.number(),
-    fee_asset: z.string(),
-    status: z.enum(['filled', 'partial']),
-    executed_at: z.iso.datetime(),
-    wallet_public_id: z.string(),
-    operator_public_id: z.string().nullable().optional(),
-    user_public_id: z.string().nullable().optional(),
-    liquidity_role: z.string(),
-    paired_group_id: z.string().nullable().optional(),
-    paired_group_size: z.number().int().nullable().optional(),
-    paired_group_index: z.number().int().nullable().optional(),
-    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
-  })
-  .strict()
-
-export const ExecutionDataSchema = _ExecutionDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['ExecutionData']
->
-
-const _ExecutionPlanDataRawSchema = z
-  .object({
-    type: z.literal('execution_plan'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    plan_type: z.string(),
-    status: z.string(),
-    instrument_public_id: z.string(),
-    exchange: z.string(),
-    mode: z.string(),
-    side: z.string(),
-    total_quantity: z.number(),
-    filled_quantity: z.number(),
-    created_at: z.iso.datetime(),
-    created_via: z.string(),
-    wallet_public_id: z.string(),
-    operator_public_id: z.string().nullable(),
-    params: z.record(z.string(), z.unknown()),
-    position_cycle_public_id: z.string().nullable(),
-    parent_plan_public_id: z.string().nullable(),
-    last_error: z.string().nullable(),
-    idempotency_key: z.string().nullable(),
-  })
-  .strict()
-
-export const ExecutionPlanDataSchema = _ExecutionPlanDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['ExecutionPlanData']
->
-
 const _FeatureFlagsPayloadRawSchema = z
   .object({
     ai_integration_enabled: z.boolean(),
@@ -821,27 +743,6 @@ export const FreshnessFailureReasonSchema =
   _FreshnessFailureReasonRawSchema as unknown as z.ZodType<
     Components['schemas']['FreshnessFailureReason']
   >
-
-const _FrontMonthDataRawSchema = z
-  .object({
-    type: z.literal('front_month'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument_public_id: z.string(),
-    native_symbol: z.string(),
-    exchange: z.string(),
-    expiry_at: z.iso.datetime(),
-    relationship_type: z.string(),
-    contract_family: z.string().nullable(),
-  })
-  .strict()
-
-export const FrontMonthDataSchema = _FrontMonthDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['FrontMonthData']
->
 
 const _FxExclusionReasonRawSchema = z.literal('fx_venue_not_selected')
 
@@ -903,63 +804,6 @@ export const HealthTopicsSchema = _HealthTopicsRawSchema as unknown as z.ZodType
   Components['schemas']['HealthTopics']
 >
 
-const _InstrumentCapabilityDataRawSchema = z
-  .object({
-    type: z.literal('instrument_capability'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument_public_id: z.string(),
-    exchange: z.string(),
-    supported_order_types: z.array(z.string()),
-    supports_post_only: z.boolean(),
-    supports_reduce_only: z.boolean(),
-    supports_amend_in_place: z.boolean(),
-    supports_native_stop_loss: z.boolean(),
-    supports_native_take_profit: z.boolean(),
-    supports_trailing_stop_client_side: z.boolean(),
-    supports_market_making: z.boolean(),
-    supports_short_selling: z.boolean(),
-    supports_leverage: z.boolean(),
-    max_leverage_long: z.number(),
-    max_leverage_short: z.number(),
-    min_notional: z.number().nullable(),
-    max_order_size: z.number().nullable(),
-    top_of_book_quality: z.string(),
-  })
-  .strict()
-
-export const InstrumentCapabilityDataSchema =
-  _InstrumentCapabilityDataRawSchema as unknown as z.ZodType<
-    Components['schemas']['InstrumentCapabilityData']
-  >
-
-const _InstrumentDetailDataRawSchema = z
-  .object({
-    type: z.literal('instrument_detail'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument_public_id: z.string(),
-    symbol_public_id: z.string(),
-    symbol: z.string(),
-    exchange: z.string(),
-    can_trade: z.boolean(),
-    can_market_data: z.boolean(),
-    instrument_resolved: z.boolean(),
-    instrument_kind: z.string().nullable(),
-    expiry_at: z.iso.datetime().nullable(),
-  })
-  .strict()
-
-export const InstrumentDetailDataSchema = _InstrumentDetailDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['InstrumentDetailData']
->
-
 const _InstrumentFeedHealthRowSchemaRawSchema = z
   .object({
     coordinator: z.string(),
@@ -998,12 +842,6 @@ export const InstrumentListResponseSchema =
   _InstrumentListResponseRawSchema as unknown as z.ZodType<
     Components['schemas']['InstrumentListResponse']
   >
-
-const _JsonPrimitiveRawSchema = z.unknown()
-
-export const JsonPrimitiveSchema = _JsonPrimitiveRawSchema as unknown as z.ZodType<
-  Components['schemas']['JsonPrimitive']
->
 
 const _LimitsMetricsRawSchema = z
   .object({
@@ -1141,48 +979,6 @@ const _OperatorInfoRawSchema = z
 
 export const OperatorInfoSchema = _OperatorInfoRawSchema as unknown as z.ZodType<
   Components['schemas']['OperatorInfo']
->
-
-const _OrderDataRawSchema = z
-  .object({
-    type: z.literal('order'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    exchange_order_id: z.string().nullable().optional(),
-    client_order_id: z.string(),
-    instrument: z.string(),
-    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
-    mode: z.enum(['live', 'paper']),
-    side: z.enum(['buy', 'sell']),
-    status: z.string(),
-    order_type: z.enum(['market', 'limit', 'stop', 'stop_limit']),
-    size: z.number(),
-    filled_size: z.number(),
-    price: z.number().nullable().optional(),
-    average_price: z.number().nullable().optional(),
-    reason: z.string().nullable().optional(),
-    time_in_force: z.string().nullable().optional(),
-    error: z.string().nullable().optional(),
-    created_at: z.iso.datetime(),
-    updated_at: z.iso.datetime().nullable().optional(),
-    leverage: z.number().int().nullable().optional(),
-    reduce_only: z.boolean(),
-    wallet_public_id: z.string(),
-    operator_public_id: z.string().nullable().optional(),
-    user_public_id: z.string().nullable().optional(),
-    plan_public_id: z.string().nullable().optional(),
-    paired_group_id: z.string().nullable().optional(),
-    paired_group_size: z.number().int().nullable().optional(),
-    paired_group_index: z.number().int().nullable().optional(),
-    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
-  })
-  .strict()
-
-export const OrderDataSchema = _OrderDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['OrderData']
 >
 
 const _OrphanSweepResultDataRawSchema = z
@@ -1548,38 +1344,11 @@ const _PositionCycleDataRawSchema = z
     opened_at: z.string(),
     age_hours: z.number(),
   })
+  .extend(sharedSchemas.PositionDisplayFieldsSchema.shape)
   .strict()
 
 export const PositionCycleDataSchema = _PositionCycleDataRawSchema as unknown as z.ZodType<
   Components['schemas']['PositionCycleData']
->
-
-const _PositionDataRawSchema = z
-  .object({
-    type: z.literal('position'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument: z.string(),
-    instrument_public_id: z.string(),
-    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
-    mode: z.enum(['live', 'paper']),
-    quantity: z.number(),
-    average_price: z.number().nullable().optional(),
-    unrealized_pnl: z.number().nullable().optional(),
-    realized_pnl: z.number(),
-    mark_price: z.number().nullable().optional(),
-    marked_at: z.iso.datetime().nullable().optional(),
-    source_venue_event_id: z.number().int().nullable().optional(),
-    position_cycle_public_id: z.string().nullable().optional(),
-    wallet_public_id: z.string(),
-  })
-  .strict()
-
-export const PositionDataSchema = _PositionDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['PositionData']
 >
 
 const _ProcessCategoryCountRawSchema = z
@@ -1693,24 +1462,6 @@ export const ProcessStopDataSchema = _ProcessStopDataRawSchema as unknown as z.Z
   Components['schemas']['ProcessStopData']
 >
 
-const _ProcessSummaryItemRawSchema = z
-  .object({
-    name: z.string(),
-    running: z.boolean(),
-    enabled: z.boolean(),
-    role: z.string(),
-    lifecycle: z.string(),
-    active_public_id: z.string().nullable().optional(),
-    rss_bytes: z.number().int().nullable().optional(),
-    cpu_percent: z.number().nullable().optional(),
-    owned: z.boolean(),
-  })
-  .strict()
-
-export const ProcessSummaryItemSchema = _ProcessSummaryItemRawSchema as unknown as z.ZodType<
-  Components['schemas']['ProcessSummaryItem']
->
-
 const _ProtectedResourceMetadataRawSchema = z
   .object({
     resource: z.string(),
@@ -1752,28 +1503,6 @@ export const RealPortfolioReconciliationMethodSchema =
   _RealPortfolioReconciliationMethodRawSchema as unknown as z.ZodType<
     Components['schemas']['RealPortfolioReconciliationMethod']
   >
-
-const _RelatedInstrumentDataRawSchema = z
-  .object({
-    type: z.literal('related_instrument'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument_public_id: z.string(),
-    native_symbol: z.string(),
-    exchange: z.string(),
-    asset_type: z.string(),
-    relationship_type: z.string(),
-    contract_family: z.string().nullable(),
-    is_selected: z.boolean(),
-  })
-  .strict()
-
-export const RelatedInstrumentDataSchema = _RelatedInstrumentDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['RelatedInstrumentData']
->
 
 const _RelatedInstrumentsSelectedRawSchema = z
   .object({
@@ -1947,42 +1676,6 @@ export const SettingReadSchema = _SettingReadRawSchema as unknown as z.ZodType<
   Components['schemas']['SettingRead']
 >
 
-const _SignalDataRawSchema = z
-  .object({
-    type: z.literal('signal'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument: z.string(),
-    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
-    side: z.enum(['buy', 'sell']),
-    strength: z.number(),
-    reason: z.string(),
-    price: z.number().nullable().optional(),
-    strategy_name: z.string().nullable().optional(),
-    fired_at: z.iso.datetime(),
-    wallet_public_id: z.string(),
-    operator_public_id: z.string().nullable().optional(),
-    user_public_id: z.string().nullable().optional(),
-    ai_review_public_id: z.string().nullable().optional(),
-    ai_review_dispatch_version: z.number().int().nullable().optional(),
-    paired_group_id: z.string().nullable().optional(),
-    paired_group_size: z.number().int().nullable().optional(),
-    paired_group_index: z.number().int().nullable().optional(),
-    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
-    paired_group_key: z.string().nullable().optional(),
-    origin: z.enum(['live', 'replay']),
-    replay_window_start: z.iso.datetime().nullable().optional(),
-    replay_window_end: z.iso.datetime().nullable().optional(),
-  })
-  .strict()
-
-export const SignalDataSchema = _SignalDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['SignalData']
->
-
 const _SignalDiffEntryRawSchema = z
   .object({
     instrument: z.string(),
@@ -2133,49 +1826,6 @@ export const TrailingStopStateDataSchema = _TrailingStopStateDataRawSchema as un
   Components['schemas']['TrailingStopStateData']
 >
 
-const _UnderlyingAssetDataRawSchema = z
-  .object({
-    type: z.literal('underlying_asset'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    ticker: z.string(),
-    name: z.string(),
-    asset_class: z.string(),
-    sector: z.string().nullable(),
-    description: z.string().nullable(),
-    instrument_count: z.number().int(),
-  })
-  .strict()
-
-export const UnderlyingAssetDataSchema = _UnderlyingAssetDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['UnderlyingAssetData']
->
-
-const _UnderlyingInstrumentDataRawSchema = z
-  .object({
-    type: z.literal('underlying_instrument'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument_public_id: z.string(),
-    native_symbol: z.string(),
-    exchange: z.string(),
-    asset_type: z.string(),
-    relationship_type: z.string(),
-    contract_family: z.string().nullable(),
-  })
-  .strict()
-
-export const UnderlyingInstrumentDataSchema =
-  _UnderlyingInstrumentDataRawSchema as unknown as z.ZodType<
-    Components['schemas']['UnderlyingInstrumentData']
-  >
-
 const _UserAlertDefaultInfoRawSchema = z
   .object({
     type: z.literal('user_alert_default_info'),
@@ -2195,20 +1845,6 @@ export const UserAlertDefaultInfoSchema = _UserAlertDefaultInfoRawSchema as unkn
   Components['schemas']['UserAlertDefaultInfo']
 >
 
-const _UserRoleRawSchema = z.enum([
-  'ai_researcher',
-  'ai_reviewer',
-  'ai_delegate',
-  'viewer',
-  'auditor',
-  'operator',
-  'admin',
-])
-
-export const UserRoleSchema = _UserRoleRawSchema as unknown as z.ZodType<
-  Components['schemas']['UserRole']
->
-
 const _ValidationErrorRawSchema = z
   .object({
     loc: z.array(z.union([z.string(), z.number().int()])),
@@ -2221,28 +1857,6 @@ const _ValidationErrorRawSchema = z
 
 export const ValidationErrorSchema = _ValidationErrorRawSchema as unknown as z.ZodType<
   Components['schemas']['ValidationError']
->
-
-const _VenueFeeScheduleDataRawSchema = z
-  .object({
-    type: z.literal('venue_fee_schedule'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    exchange: z.string(),
-    instrument_public_id: z.string().nullable(),
-    fee_tier: z.string(),
-    maker_bps: z.number(),
-    taker_bps: z.number(),
-    min_volume_30d: z.number().nullable(),
-    currency: z.string(),
-  })
-  .strict()
-
-export const VenueFeeScheduleDataSchema = _VenueFeeScheduleDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['VenueFeeScheduleData']
 >
 
 const _WalletInfoRawSchema = z
@@ -3163,31 +2777,6 @@ export const RevokeDevicePrefResponseSchema =
     Components['schemas']['RevokeDevicePrefResponse']
   >
 
-const _EgressRouteStatusSnapshotRawSchema = z
-  .object({
-    id: z.string(),
-    kind: z.enum(['direct', 'socks5']),
-    proxy_url: z.string().nullable().optional(),
-    region: z.string().nullable().optional(),
-    exit_ip: z.string().nullable().optional(),
-    provider: z.string().nullable().optional(),
-    priority: z.number().int(),
-    allowed_exchanges: z.array(z.string()).optional(),
-    enabled: z.boolean(),
-    quarantined: z.boolean(),
-    quarantine_seconds_remaining: z.number().nullable(),
-    in_use_count: z.number().int(),
-    active_reservations: z.array(EgressActiveReservationSnapshotSchema).optional(),
-    connections: z.array(EgressConnectionSnapshotSchema).optional(),
-    transfer: EgressTransferSnapshotSchema.nullable().optional(),
-  })
-  .strict()
-
-export const EgressRouteStatusSnapshotSchema =
-  _EgressRouteStatusSnapshotRawSchema as unknown as z.ZodType<
-    Components['schemas']['EgressRouteStatusSnapshot']
-  >
-
 const _ExecutionListResponseRawSchema = z
   .object({
     type: z.literal('execution_list'),
@@ -3348,12 +2937,6 @@ export const MarketFeedHealthPayloadSchema =
   _MarketFeedHealthPayloadRawSchema as unknown as z.ZodType<
     Components['schemas']['MarketFeedHealthPayload']
   >
-
-const _JsonValueRawSchema = z.unknown()
-
-export const JsonValueSchema = _JsonValueRawSchema as unknown as z.ZodType<
-  Components['schemas']['JsonValue']
->
 
 const _MarketDataCoveragePayloadRawSchema = z
   .object({
@@ -5065,12 +4648,6 @@ export const MarketFeedHealthResponseSchema =
     Components['schemas']['MarketFeedHealthResponse']
   >
 
-const _JsonObjectRawSchema = z.record(z.string(), z.any())
-
-export const JsonObjectSchema = _JsonObjectRawSchema as unknown as z.ZodType<
-  Components['schemas']['JsonObject']
->
-
 const _MarketDataCoverageResponseRawSchema = z
   .object({
     type: z.literal('market_data_coverage'),
@@ -5852,32 +5429,6 @@ const _DelegateCapsBodyRawSchema = z
 export const DelegateCapsBodySchema = _DelegateCapsBodyRawSchema as unknown as z.ZodType<
   Components['schemas']['DelegateCapsBody']
 >
-
-const _ExecutionPlanDecisionDataRawSchema = z
-  .object({
-    type: z.literal('execution_plan_decision'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    plan_public_id: z.string(),
-    decision_type: z.string(),
-    decided_at: z.iso.datetime(),
-    trigger_type: z.string(),
-    evidence: z.record(z.string(), z.any()),
-    emitted_command_public_id: z.string().nullable().optional(),
-    new_status: z.string().nullable().optional(),
-    reason: z.string(),
-    decision_importance: z.string(),
-    source_surface: z.string(),
-  })
-  .strict()
-
-export const ExecutionPlanDecisionDataSchema =
-  _ExecutionPlanDecisionDataRawSchema as unknown as z.ZodType<
-    Components['schemas']['ExecutionPlanDecisionData']
-  >
 
 const _PendingReviewSummaryItemRawSchema = z
   .object({
@@ -6897,6 +6448,7 @@ export type PortfolioReconciliationEvaluationStatus =
 export type PortfolioReconciliationMethod = Components['schemas']['PortfolioReconciliationMethod']
 export type PositionCycleData = Components['schemas']['PositionCycleData']
 export type PositionData = Components['schemas']['PositionData']
+export type PositionDisplayFields = Components['schemas']['PositionDisplayFields']
 export type ProcessCategoryCount = Components['schemas']['ProcessCategoryCount']
 export type ProcessCreatedInfo = Components['schemas']['ProcessCreatedInfo']
 export type ProcessDesiredStateData = Components['schemas']['ProcessDesiredStateData']
