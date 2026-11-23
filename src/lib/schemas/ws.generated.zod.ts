@@ -5,6 +5,8 @@
 
 import { z } from 'zod/v4'
 
+import { PositionDisplayFieldsSchema } from './shared.generated.zod'
+
 export const WsMessageBaseSchema = z
   .object({
     type: z.string(),
@@ -602,33 +604,6 @@ export const PortfolioDriftEpisodeEventDataSchema = z
     closed_at: z.iso.datetime().nullable().optional(),
     mismatch_count: z.number().int(),
     resolution_reason: z.literal('matched').nullable().optional(),
-  })
-  .strict()
-
-export const PositionDataSchema = z
-  .object({
-    type: z.literal('position'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument: z.string(),
-    instrument_public_id: z.string(),
-    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
-    mode: z.enum(['live', 'paper']),
-    quantity: z.number(),
-    average_price: z.number().nullable().optional(),
-    unrealized_pnl: z.number().nullable().optional(),
-    realized_pnl: z.number(),
-    mark_price: z.number().nullable().optional(),
-    marked_at: z.iso.datetime().nullable().optional(),
-    source_venue_event_id: z.number().int().nullable().optional(),
-    position_cycle_public_id: z.string().nullable().optional(),
-    wallet_public_id: z.string(),
-    is_dust: z.boolean().optional(),
-    quantity_decimals: z.number().int().nullable().optional(),
-    price_decimals: z.number().int().nullable().optional(),
   })
   .strict()
 
@@ -1233,6 +1208,31 @@ export const EgressTransferEventDataSchema = z
     topic: z.string().nullable().optional(),
     interfaces: z.array(EgressTransferInterfaceSnapshotSchema).optional(),
   })
+  .strict()
+
+export const PositionDataSchema = z
+  .object({
+    type: z.literal('position'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    instrument: z.string(),
+    instrument_public_id: z.string(),
+    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
+    mode: z.enum(['live', 'paper']),
+    quantity: z.number(),
+    average_price: z.number().nullable().optional(),
+    unrealized_pnl: z.number().nullable().optional(),
+    realized_pnl: z.number(),
+    mark_price: z.number().nullable().optional(),
+    marked_at: z.iso.datetime().nullable().optional(),
+    source_venue_event_id: z.number().int().nullable().optional(),
+    position_cycle_public_id: z.string().nullable().optional(),
+    wallet_public_id: z.string(),
+  })
+  .extend(PositionDisplayFieldsSchema.shape)
   .strict()
 
 export const ProcessSummaryEventDataSchema = z

@@ -16,6 +16,8 @@
 
 import { z } from 'zod'
 
+import { PositionDisplayFieldsSchema } from './shared.generated.zod'
+
 import type { Components } from '../../types/api.generated'
 
 const _AccountBalanceEntryRawSchema = z
@@ -1527,66 +1529,6 @@ export const PortfolioReconciliationMethodSchema =
   _PortfolioReconciliationMethodRawSchema as unknown as z.ZodType<
     Components['schemas']['PortfolioReconciliationMethod']
   >
-
-const _PositionCycleDataRawSchema = z
-  .object({
-    type: z.literal('position_cycle'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    cycle_public_id: z.string(),
-    shard_key: z.string(),
-    instrument_public_id: z.string(),
-    exchange: z.string(),
-    mode: z.string(),
-    wallet_public_id: z.string(),
-    operator_public_id: z.string().nullable(),
-    direction: z.string(),
-    max_qty: z.number(),
-    opened_at: z.string(),
-    age_hours: z.number(),
-    is_dust: z.boolean().optional(),
-    quantity_decimals: z.number().int().nullable().optional(),
-    price_decimals: z.number().int().nullable().optional(),
-  })
-  .strict()
-
-export const PositionCycleDataSchema = _PositionCycleDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['PositionCycleData']
->
-
-const _PositionDataRawSchema = z
-  .object({
-    type: z.literal('position'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    instrument: z.string(),
-    instrument_public_id: z.string(),
-    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
-    mode: z.enum(['live', 'paper']),
-    quantity: z.number(),
-    average_price: z.number().nullable().optional(),
-    unrealized_pnl: z.number().nullable().optional(),
-    realized_pnl: z.number(),
-    mark_price: z.number().nullable().optional(),
-    marked_at: z.iso.datetime().nullable().optional(),
-    source_venue_event_id: z.number().int().nullable().optional(),
-    position_cycle_public_id: z.string().nullable().optional(),
-    wallet_public_id: z.string(),
-    is_dust: z.boolean().optional(),
-    quantity_decimals: z.number().int().nullable().optional(),
-    price_decimals: z.number().int().nullable().optional(),
-  })
-  .strict()
-
-export const PositionDataSchema = _PositionDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['PositionData']
->
 
 const _ProcessCategoryCountRawSchema = z
   .object({
@@ -3643,39 +3585,60 @@ export const CreateCredentialBodySchema = _CreateCredentialBodyRawSchema as unkn
   Components['schemas']['CreateCredentialBody']
 >
 
-const _PositionCycleListResponseRawSchema = z
+const _PositionCycleDataRawSchema = z
   .object({
-    type: z.literal('position_cycles'),
+    type: z.literal('position_cycle'),
     sequence_id: z.number().int(),
     public_id: z.string(),
     timestamp: z.iso.datetime(),
     session_id: z.string(),
     topic: z.string().nullable().optional(),
-    payload: z.array(PositionCycleDataSchema),
-    count: z.number().int(),
+    cycle_public_id: z.string(),
+    shard_key: z.string(),
+    instrument_public_id: z.string(),
+    exchange: z.string(),
+    mode: z.string(),
+    wallet_public_id: z.string(),
+    operator_public_id: z.string().nullable(),
+    direction: z.string(),
+    max_qty: z.number(),
+    opened_at: z.string(),
+    age_hours: z.number(),
   })
+  .extend(PositionDisplayFieldsSchema.shape)
   .strict()
 
-export const PositionCycleListResponseSchema =
-  _PositionCycleListResponseRawSchema as unknown as z.ZodType<
-    Components['schemas']['PositionCycleListResponse']
-  >
+export const PositionCycleDataSchema = _PositionCycleDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PositionCycleData']
+>
 
-const _PositionListResponseRawSchema = z
+const _PositionDataRawSchema = z
   .object({
-    type: z.literal('position_list'),
+    type: z.literal('position'),
     sequence_id: z.number().int(),
     public_id: z.string(),
     timestamp: z.iso.datetime(),
     session_id: z.string(),
     topic: z.string().nullable().optional(),
-    payload: z.array(PositionDataSchema),
-    count: z.number().int(),
+    instrument: z.string(),
+    instrument_public_id: z.string(),
+    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
+    mode: z.enum(['live', 'paper']),
+    quantity: z.number(),
+    average_price: z.number().nullable().optional(),
+    unrealized_pnl: z.number().nullable().optional(),
+    realized_pnl: z.number(),
+    mark_price: z.number().nullable().optional(),
+    marked_at: z.iso.datetime().nullable().optional(),
+    source_venue_event_id: z.number().int().nullable().optional(),
+    position_cycle_public_id: z.string().nullable().optional(),
+    wallet_public_id: z.string(),
   })
+  .extend(PositionDisplayFieldsSchema.shape)
   .strict()
 
-export const PositionListResponseSchema = _PositionListResponseRawSchema as unknown as z.ZodType<
-  Components['schemas']['PositionListResponse']
+export const PositionDataSchema = _PositionDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PositionData']
 >
 
 const _ProcessCreateDataRawSchema = z
@@ -5234,6 +5197,41 @@ export const CreateCredentialCommandSchema =
   _CreateCredentialCommandRawSchema as unknown as z.ZodType<
     Components['schemas']['CreateCredentialCommand']
   >
+
+const _PositionCycleListResponseRawSchema = z
+  .object({
+    type: z.literal('position_cycles'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(PositionCycleDataSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const PositionCycleListResponseSchema =
+  _PositionCycleListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['PositionCycleListResponse']
+  >
+
+const _PositionListResponseRawSchema = z
+  .object({
+    type: z.literal('position_list'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(PositionDataSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const PositionListResponseSchema = _PositionListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['PositionListResponse']
+>
 
 const _ProcessCreateResponseRawSchema = z
   .object({
@@ -6901,8 +6899,7 @@ export type PortfolioReconciliationEffectiveStatus =
 export type PortfolioReconciliationEvaluationStatus =
   Components['schemas']['PortfolioReconciliationEvaluationStatus']
 export type PortfolioReconciliationMethod = Components['schemas']['PortfolioReconciliationMethod']
-export type PositionCycleData = Components['schemas']['PositionCycleData']
-export type PositionData = Components['schemas']['PositionData']
+export type PositionDisplayFields = Components['schemas']['PositionDisplayFields']
 export type ProcessCategoryCount = Components['schemas']['ProcessCategoryCount']
 export type ProcessCreatedInfo = Components['schemas']['ProcessCreatedInfo']
 export type ProcessDesiredStateData = Components['schemas']['ProcessDesiredStateData']
@@ -7042,8 +7039,8 @@ export type PnlExecutionCorrectionData = Components['schemas']['PnlExecutionCorr
 export type PnlAiDecisionMarkerData = Components['schemas']['PnlAiDecisionMarkerData']
 export type PnlIncompletenessReasonData = Components['schemas']['PnlIncompletenessReasonData']
 export type CreateCredentialBody = Components['schemas']['CreateCredentialBody']
-export type PositionCycleListResponse = Components['schemas']['PositionCycleListResponse']
-export type PositionListResponse = Components['schemas']['PositionListResponse']
+export type PositionCycleData = Components['schemas']['PositionCycleData']
+export type PositionData = Components['schemas']['PositionData']
 export type ProcessCreateData = Components['schemas']['ProcessCreateData']
 export type ProcessDesiredStateResponse = Components['schemas']['ProcessDesiredStateResponse']
 export type ProcessStartResponse = Components['schemas']['ProcessStartResponse']
@@ -7139,6 +7136,8 @@ export type PnlExecutionHistoryData = Components['schemas']['PnlExecutionHistory
 export type PnlTimelineMarkerData = Components['schemas']['PnlTimelineMarkerData']
 export type PnlTimelinePointData = Components['schemas']['PnlTimelinePointData']
 export type CreateCredentialCommand = Components['schemas']['CreateCredentialCommand']
+export type PositionCycleListResponse = Components['schemas']['PositionCycleListResponse']
+export type PositionListResponse = Components['schemas']['PositionListResponse']
 export type ProcessCreateResponse = Components['schemas']['ProcessCreateResponse']
 export type ProcessSummaryResponse = Components['schemas']['ProcessSummaryResponse']
 export type CredentialReconciliationMethodResponse =
