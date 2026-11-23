@@ -296,6 +296,8 @@ export type MarkPrice = number | null;
 export type MarkedAt = string | null;
 export type SourceVenueEventId = number | null;
 export type PositionCyclePublicId1 = string | null;
+export type QuantityDecimals = number | null;
+export type PriceDecimals = number | null;
 export type Type31 = "process_command_ack";
 export type Topic32 = string | null;
 export type Detail = string | null;
@@ -1101,6 +1103,9 @@ export interface PositionData {
   source_venue_event_id?: SourceVenueEventId;
   position_cycle_public_id?: PositionCyclePublicId1;
   wallet_public_id?: string;
+  is_dust?: boolean;
+  quantity_decimals?: QuantityDecimals;
+  price_decimals?: PriceDecimals;
 }
 export interface ProcessCommandAckData {
   type: Type31;

@@ -626,6 +626,9 @@ export const PositionDataSchema = z
     source_venue_event_id: z.number().int().nullable().optional(),
     position_cycle_public_id: z.string().nullable().optional(),
     wallet_public_id: z.string(),
+    is_dust: z.boolean().optional(),
+    quantity_decimals: z.number().int().nullable().optional(),
+    price_decimals: z.number().int().nullable().optional(),
   })
   .strict()
 

@@ -2705,6 +2705,9 @@ export type Components = {
             max_qty: number;
             opened_at: string;
             age_hours: number;
+            is_dust?: boolean;
+            quantity_decimals?: number | null | undefined;
+            price_decimals?: number | null | undefined;
         };
         PositionCycleListResponse: {
             type: "position_cycles";
@@ -2736,6 +2739,9 @@ export type Components = {
             source_venue_event_id?: number | null | undefined;
             position_cycle_public_id?: string | null | undefined;
             wallet_public_id: string;
+            is_dust?: boolean;
+            quantity_decimals?: number | null | undefined;
+            price_decimals?: number | null | undefined;
         };
         PositionListResponse: {
             type: "position_list";

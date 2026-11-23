@@ -712,6 +712,9 @@ export interface Position {
   sourceVenueEventId?: number | null
   positionCyclePublicId?: string | null
   walletPublicId?: string
+  isDust?: boolean
+  quantityDecimals?: number | null
+  priceDecimals?: number | null
 }
 
 /**
