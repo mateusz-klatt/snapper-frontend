@@ -18,7 +18,7 @@ const NEAR_ZERO_PREFIX = '≈ '
 const CURRENCY_DIGITS = new Map<string, number>()
 const ISO_BY_CODE = new Map<string, boolean>()
 
-export const FALLBACK_ISO_CURRENCIES = new Set<string>([
+export const FALLBACK_ISO_CURRENCIES: ReadonlySet<string> = new Set<string>([
   'USD',
   'EUR',
   'PLN',
