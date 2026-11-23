@@ -166,7 +166,7 @@
       "endDateLabel": "Date de fin",
       "initialCashLabel": "Capital initial",
       "slippageBpsLabel": "Glissement (bps)",
-      "commissionBpsLabel": "Commission (bps)",
+      "commissionBpsLabel": "Commission (points de base)",
       "executionModeLabel": "Mode d'exécution",
       "executionModeDirectDb": "DB directe",
       "executionModeZmqReplay": "Relecture ZMQ",

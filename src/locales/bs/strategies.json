@@ -90,7 +90,7 @@
       "warning": "UPOZORENJE",
       "error": "GREŠKA"
     },
-    "backtest": "Backtest",
+    "backtest": "Test na historijskim podacima",
     "backtestAriaLabel": "Backtestiraj strategiju {{name}}",
     "managedRemotely": "Upravlja {{coordinator}}",
     "remoteCoordinatorUnknown": "drugi kontejner",

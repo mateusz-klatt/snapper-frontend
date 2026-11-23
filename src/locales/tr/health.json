@@ -3,7 +3,7 @@
     "title": "Sistem Sağlığı",
     "healthMetricsHeading": "Sağlık Metrikleri",
     "processStatusHeading": "Süreç Durumu",
-    "activeBacktestsHeading": "Aktif backtestler",
+    "activeBacktestsHeading": "Aktif geriye dönük testler",
     "quickActionsHeading": "Hızlı Eylemler",
     "featureNotImplemented": "Özellik henüz uygulanmadı",
     "restartServices": "Servisleri yeniden başlat",
@@ -23,8 +23,8 @@
   "metrics": {
     "tradingEngine": "Trading Motoru",
     "tradingEngineDescription": "Strateji yürütme motoru",
-    "activeBacktests": "Aktif backtestler",
-    "activeBacktestsDescription": "Çalışan backtest süreçleri",
+    "activeBacktests": "Aktif geriye dönük testler",
+    "activeBacktestsDescription": "Çalışan geriye dönük test süreçleri",
     "active": "Aktif",
     "inactive": "Pasif"
   },
@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}dk",
     "uptimeHours": "{{hours}}s {{minutes}}dk",
     "uptimeDays": "{{days}}g {{hours}}s",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Geriye dönük test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Yok",
     "uptimeLabel": "Çalışma süresi",
     "exitCode": "Çıkış kodu: {{code}}",
     "service": "servis",
-    "backtest": "backtest"
+    "backtest": "geriye dönük test"
   },
   "dbStats": {
     "title": "Veritabanı İstatistikleri",
@@ -93,7 +93,7 @@
       "status": "Durum"
     },
     "retainDays": "{{days}}g",
-    "ok": "OK",
+    "ok": "Normal",
     "error": "hata"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Bekleyen: {{count}}",
     "dbPool": "DB Havuzu",
     "liveConns": "Canlı bağlantılar: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC nesilleri 0/1/2",
     "gcObjects": "Nesneler: {{value}}",
     "threadsPercent": "Thread %",
     "networkConns": "Ağ bağlantıları",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "El sıkışması {{age}}"
     },
     "kind": {
       "direct": "doğrudan",

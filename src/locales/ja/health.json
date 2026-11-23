@@ -29,13 +29,13 @@
     "inactive": "非アクティブ"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeNotAvailable": "不明",
+    "uptimeMinutes": "{{minutes}}分",
+    "uptimeHours": "{{hours}}時間 {{minutes}}分",
+    "uptimeDays": "{{days}}日 {{hours}}時間",
     "backtestName": "バックテスト {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "不明",
     "uptimeLabel": "稼働時間",
     "exitCode": "終了コード: {{code}}",
     "service": "サービス",
@@ -92,8 +92,8 @@
       "files": "ファイル",
       "status": "ステータス"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}}日",
+    "ok": "正常",
     "error": "エラー"
   },
   "systemMetrics": {
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "ハンドシェイク {{age}}"
     },
     "kind": {
       "direct": "直接",
@@ -208,10 +208,10 @@
     "days": "{{days}}d前"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}}秒",
+    "minutes": "{{minutes}}分",
+    "hours": "{{hours}}時間",
+    "days": "{{days}}日"
   },
   "memory": {
     "mb": "{{value}} MB",

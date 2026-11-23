@@ -42,7 +42,7 @@
   "detail": {
     "navTitle": "Dettagli avviso",
     "sourceTopic": "Argomento di origine",
-    "thread": "Thread",
+    "thread": "Gruppo di avvisi",
     "timestamp": "Data e ora"
   },
   "empty": {

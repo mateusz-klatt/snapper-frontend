@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "May nangyaring mali",
     "titleWithComponent": "Error sa {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Bakas ng pagtawag",
     "tryAgain": "Subukan ulit"
   },
   "nav": {

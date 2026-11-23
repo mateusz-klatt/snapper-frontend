@@ -70,7 +70,7 @@
       "signals": "Segnali"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatico",
       "manual": "manuale"
     },
     "errors": {
@@ -131,7 +131,7 @@
     "waiting": "In attesa di progresso…",
     "candles": "{{done}} / {{total}} candele",
     "candlesNoTotal": "{{done}} candele",
-    "equity": "equity {{value}}",
+    "equity": "patrimonio {{value}}",
     "signalsTrades": "{{signals}} sgn / {{trades}} operazioni",
     "milestoneLine": "tappa {{label}}",
     "milestone": {
@@ -165,7 +165,7 @@
       "startDateLabel": "Data di inizio",
       "endDateLabel": "Data di fine",
       "initialCashLabel": "Capitale iniziale",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Scostamento di prezzo (punti base)",
       "commissionBpsLabel": "Commissione (bps)",
       "executionModeLabel": "Modalità di esecuzione",
       "executionModeDirectDb": "DB diretto",

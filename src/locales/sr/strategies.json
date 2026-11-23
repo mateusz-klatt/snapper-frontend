@@ -56,7 +56,7 @@
       "status": "Status",
       "dataLag": "Kašnjenje podataka",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Signal aktivnosti",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,7 +90,7 @@
       "warning": "UPOZORENJE",
       "error": "GREŠKA"
     },
-    "backtest": "Backtest",
+    "backtest": "Test na istorijskim podacima",
     "backtestAriaLabel": "Backtestuj strategiju {{name}}",
     "managedRemotely": "Upravlja {{coordinator}}",
     "remoteCoordinatorUnknown": "drugi kontejner",

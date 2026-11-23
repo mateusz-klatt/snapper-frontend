@@ -29,17 +29,17 @@
     "inactive": "Nonaktif"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
+    "uptimeNotAvailable": "Tidak tersedia",
     "uptimeMinutes": "{{minutes}} mnt",
     "uptimeHours": "{{hours}} jam {{minutes}} mnt",
     "uptimeDays": "{{days}} hari {{hours}} jam",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Uji historis {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Tidak tersedia",
     "uptimeLabel": "Waktu aktif",
     "exitCode": "Kode keluar: {{code}}",
     "service": "layanan",
-    "backtest": "backtest"
+    "backtest": "uji historis"
   },
   "dbStats": {
     "title": "Statistik Database",
@@ -93,7 +93,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}} hari",
-    "ok": "OK",
+    "ok": "Baik",
     "error": "kesalahan"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Tertunda: {{count}}",
     "dbPool": "Pool DB",
     "liveConns": "Koneksi live: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Generasi GC 0/1/2",
     "gcObjects": "Objek: {{value}}",
     "threadsPercent": "Thread %",
     "networkConns": "Koneksi jaringan",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Kumpulan koneksi",
       "policy": "Kebijakan karantina",
       "fallbackRoute": "Jalur cadangan privat",
       "routes": "Rute"
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Negosiasi koneksi {{age}}"
     },
     "kind": {
       "direct": "langsung",

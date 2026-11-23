@@ -81,15 +81,15 @@
     "chipAriaLabel": "סטטיסטיקת זוג עם {{symbol}} ב-{{exchange}}: פירסון {{pearson}}, ערך p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "זמן:",
+    "live": "בזמן אמת",
     "sliderAriaLabel": "ניווט לאורך היסטוריית השוק",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "בזמן אמת",
+      "h1": "-1 שע׳",
+      "d1": "-1 י׳",
+      "w1": "-1 שב׳",
+      "mo1": "-1 חו׳"
     }
   }
 }

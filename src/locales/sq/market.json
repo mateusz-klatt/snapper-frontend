@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kriptomonedhë",
     "commodity": "Mall",
-    "forex": "Forex",
+    "forex": "Këmbim valutor",
     "index": "Indeks",
     "yield": "Rendiment",
     "unknown": "Tjetër"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Statistikat e çiftit me {{symbol}} në {{exchange}}: Pearson {{pearson}}, vlera p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Koha:",
+    "live": "Drejtpërdrejt",
     "sliderAriaLabel": "Lëvizni nëpër historikun e tregut",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Drejtpërdrejt",
+      "h1": "-1 orë",
+      "d1": "-1 ditë",
+      "w1": "-1 javë",
+      "mo1": "-1 muaj"
     }
   }
 }

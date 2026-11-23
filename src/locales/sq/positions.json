@@ -14,10 +14,10 @@
       "granularity": "Granulariteti",
       "granularityAriaLabel": "Zgjidh granularitetin e kronologjisë",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 orë",
+        "oneDay": "1 ditë"
       },
       "valuationCurrency": "Monedha e vlerësimit",
       "valuationCurrencyAriaLabel": "Zgjidh monedhën e vlerësimit",
@@ -91,11 +91,11 @@
       "hideDetails": "Fshih korrigjimet",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Korrigjuar në {{time}}",
-      "targetExecutionId": "Anulohet ekzekutimi i tregtisë",
+      "targetExecutionId": "Ekzekutim i anuluar",
       "correctionId": "Regjistrimi i korrigjimit",
       "reasons": {
-        "unwitnessed_phantom": "Nuk ka asnjë mbushje tregtare në shkëmbim që shërben si dëshmi për këtë rezervim.",
-        "unwitnessed_legacy_lineage": "Të dhënat e përftuara nga trashëgimia për të cilat asnjë këmbim tregtar nuk shërben si dëshmi."
+        "unwitnessed_phantom": "Asnjë ekzekutim urdhri në bursë nuk e vërteton këtë regjistrim.",
+        "unwitnessed_legacy_lineage": "Regjistrim i prejardhur nga të dhëna të vjetra, pa ekzekutim urdhri që e vërteton."
       }
     },
     "timeTravelNotice": "Pamje historike: shfaqet P&L siç njihej në {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Pluhur ({{count}})",
-    "show": "Shfaq pozicionet e pluhurit",
-    "hide": "Fshih pozicionet e pluhurit"
+    "title": "Mbetje të vogla ({{count}})",
+    "show": "Shfaq pozicionet me mbetje të vogla",
+    "hide": "Fshih pozicionet me mbetje të vogla"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: në pritje",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Ndalim ndjekës: {{stop}}",
+    "trailingStopPending": "Ndalim ndjekës: në pritje",
+    "slTpButton": "Ndalimi i humbjes / Realizimi i fitimit",
     "trailButton": "Ndjekje",
     "quantity": "Sasi",
     "averageEntry": "Hyrja mes.",
@@ -228,7 +228,7 @@
     "realizedPnl": "P&L i realizuar",
     "updated": "Përditësuar {{timestamp}}",
     "mark": "Çmim reference",
-    "noValue": "N/A"
+    "noValue": "Nuk ka të dhëna"
   },
   "empty": {
     "title": "Nuk ka pozicione të hapura",
@@ -239,8 +239,8 @@
     "confirmTitle": "Konfirmo Bracket",
     "position": "Pozicion",
     "entryPrice": "Çmimi i hyrjes",
-    "stopLossLabel": "Çmimi Stop-Loss",
-    "takeProfitLabel": "Çmimi Take-Profit",
+    "stopLossLabel": "Çmimi i ndalimit të humbjes",
+    "takeProfitLabel": "Çmimi i realizimit të fitimit",
     "stopLoss": "Ndalimi i humbjes",
     "takeProfit": "Realizimi i fitimit",
     "placeholders": {

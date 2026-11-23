@@ -29,13 +29,13 @@
     "inactive": "비활성"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
+    "uptimeNotAvailable": "알 수 없음",
     "uptimeMinutes": "{{minutes}}분",
     "uptimeHours": "{{hours}}시간 {{minutes}}분",
     "uptimeDays": "{{days}}일 {{hours}}시간",
     "backtestName": "백테스트 {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "알 수 없음",
     "uptimeLabel": "가동 시간",
     "exitCode": "종료 코드: {{code}}",
     "service": "서비스",
@@ -93,7 +93,7 @@
       "status": "상태"
     },
     "retainDays": "{{days}}일",
-    "ok": "OK",
+    "ok": "정상",
     "error": "오류"
   },
   "systemMetrics": {
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "핸드셰이크 {{age}}"
     },
     "kind": {
       "direct": "직접",

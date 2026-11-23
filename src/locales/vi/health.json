@@ -29,17 +29,17 @@
     "inactive": "Không hoạt động"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
+    "uptimeNotAvailable": "Không có dữ liệu",
     "uptimeMinutes": "{{minutes}}p",
     "uptimeHours": "{{hours}}g {{minutes}}p",
     "uptimeDays": "{{days}}n {{hours}}g",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Kiểm thử trên dữ liệu quá khứ {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Không có dữ liệu",
     "uptimeLabel": "Thời gian chạy",
     "exitCode": "Mã thoát: {{code}}",
     "service": "dịch vụ",
-    "backtest": "backtest"
+    "backtest": "kiểm thử trên dữ liệu quá khứ"
   },
   "dbStats": {
     "title": "Thống kê cơ sở dữ liệu",
@@ -93,7 +93,7 @@
       "status": "Trạng thái"
     },
     "retainDays": "{{days}}n",
-    "ok": "OK",
+    "ok": "Bình thường",
     "error": "lỗi"
   },
   "systemMetrics": {
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Bắt tay {{age}}"
     },
     "kind": {
       "direct": "trực tiếp",

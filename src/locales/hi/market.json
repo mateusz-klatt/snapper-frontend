@@ -81,15 +81,15 @@
     "chipAriaLabel": "{{exchange}} पर {{symbol}} के साथ जोड़ी के आँकड़े: पियर्सन {{pearson}}, p-मान {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "समय:",
+    "live": "रीयल-टाइम",
     "sliderAriaLabel": "बाज़ार के इतिहास में समय बदलें",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "रीयल-टाइम",
+      "h1": "-1 घंटा",
+      "d1": "-1 दिन",
+      "w1": "-1 सप्ताह",
+      "mo1": "-1 माह"
     }
   }
 }

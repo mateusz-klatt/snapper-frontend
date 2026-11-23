@@ -81,15 +81,15 @@
     "chipAriaLabel": "Paarstatistik mit {{symbol}} auf {{exchange}}: Pearson {{pearson}}, p-Wert {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Zeit:",
+    "live": "Echtzeit",
     "sliderAriaLabel": "Mit dem Zeitregler durch den Marktverlauf navigieren",
     "presets": {
-      "live": "Live",
+      "live": "Echtzeit",
       "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "d1": "-1 T",
+      "w1": "-1 W",
+      "mo1": "-1 Mon."
     }
   }
 }

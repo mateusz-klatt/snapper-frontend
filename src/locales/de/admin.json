@@ -50,7 +50,7 @@
     "subtitle": "Fügen Sie einem Desk aktive Betrachter hinzu oder entfernen Sie deren aktuellen Desk-Zugriff.",
     "memberCount": "Mitglieder: {{count}}",
     "desk": {
-      "label": "Desk",
+      "label": "Handelsteam",
       "placeholder": "Desk auswählen..."
     },
     "add": {
@@ -103,7 +103,7 @@
     "selectAWallet": "Ein Wallet auswählen",
     "chooseWalletPlaceholder": "Wallet wählen...",
     "selectWalletPlaceholder": "Wallet auswählen...",
-    "walletLabel": "Wallet",
+    "walletLabel": "Geldbörse",
     "paperAnnotation": " (Paper)",
     "unknownError": "Unbekannter Fehler",
     "dash": "-",
@@ -208,7 +208,7 @@
       "selectWalletPrompt": "Wählen Sie oben ein Wallet aus, um dessen Scope-Grants anzuzeigen.",
       "columns": {
         "operator": "Operator",
-        "scope": "Scope",
+        "scope": "Geltungsbereich",
         "target": "Ziel",
         "grantedAt": "Erteilt am",
         "actions": "Aktionen"
@@ -226,7 +226,7 @@
       "fields": {
         "operator": "Operator",
         "operatorPlaceholder": "Operator auswählen...",
-        "wallet": "Wallet",
+        "wallet": "Geldbörse",
         "scopeKind": "Scope-Art",
         "underlyingPublicId": "Public ID des Basiswerts",
         "instrumentPublicId": "Public ID des Instruments",
@@ -261,8 +261,8 @@
       "title": "Scope-Grant übergeben",
       "fields": {
         "currentHolder": "Aktueller Inhaber",
-        "scope": "Scope",
-        "wallet": "Wallet",
+        "scope": "Geltungsbereich",
+        "wallet": "Geldbörse",
         "scopeValue": "{{kind}}: {{target}}",
         "transferTo": "An Operator übertragen",
         "transferToPlaceholder": "Ziel-Operator auswählen...",
@@ -331,7 +331,7 @@
     "form": {
       "title": "Anmeldedaten hinzufügen",
       "fields": {
-        "wallet": "Wallet",
+        "wallet": "Geldbörse",
         "exchange": "Börse",
         "exchangePlaceholder": "z. B. kraken",
         "credentialType": "Anmeldedaten-Typ",
@@ -352,7 +352,7 @@
         "api_key_secret": "API-Schlüssel + Secret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Simulation"
       },
       "validation": {
         "walletRequired": "Wallet ist erforderlich",

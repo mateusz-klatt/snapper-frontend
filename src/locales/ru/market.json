@@ -81,15 +81,15 @@
     "chipAriaLabel": "Статистика пары с {{symbol}} на {{exchange}}: Pearson {{pearson}}, p-значение {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Время:",
+    "live": "В реальном времени",
     "sliderAriaLabel": "Прокрутка времени по истории рынка",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "В реальном времени",
+      "h1": "-1 ч",
+      "d1": "-1 д",
+      "w1": "-1 нед.",
+      "mo1": "-1 мес."
     }
   }
 }

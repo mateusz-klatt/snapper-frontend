@@ -14,10 +14,10 @@
       "granularity": "Intervalas",
       "granularityAriaLabel": "Pasirinkti laiko skalės intervalą",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 val.",
+        "oneDay": "1 d."
       },
       "valuationCurrency": "Vertinimo valiuta",
       "valuationCurrencyAriaLabel": "Pasirinkti vertinimo valiutą",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Anuliuotas sandorio vykdymas",
       "correctionId": "Pataisos įrašas",
       "reasons": {
-        "unwitnessed_phantom": "Nėra biržos prekybos užpildymo, kuris būtų šio užsakymo įrodymas.",
-        "unwitnessed_legacy_lineage": "Pasenęs įrašas, kurio įrodymas nėra biržos prekybos užpildymas."
+        "unwitnessed_phantom": "Nėra pavedimo įvykdymo biržoje, kuris patvirtintų šį įrašą.",
+        "unwitnessed_legacy_lineage": "Iš ankstesnių duomenų kilęs įrašas, kurio nepatvirtina joks pavedimo įvykdymas."
       }
     },
     "timeTravelNotice": "Istorinis rodinys: rodomas P&L pagal {{asOf}} žinotus duomenis.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Dulkės ({{count}})",
-    "show": "Rodyti dulkių pozicijas",
-    "hide": "Slėpti dulkių pozicijas"
+    "title": "Smulkūs likučiai ({{count}})",
+    "show": "Rodyti pozicijas su smulkiais likučiais",
+    "hide": "Slėpti pozicijas su smulkiais likučiais"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: laukiama",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Slenkantis stabdymas: {{stop}}",
+    "trailingStopPending": "Slenkantis stabdymas: laukiama",
+    "slTpButton": "Nuostolio ribojimas / Pelno fiksavimas",
     "trailButton": "Slenkamasis stabdymas",
     "quantity": "Kiekis",
     "averageEntry": "Vid. įėjimas",
@@ -228,7 +228,7 @@
     "realizedPnl": "Realizuotas P&L",
     "updated": "Atnaujinta {{timestamp}}",
     "mark": "Orientacinė kaina",
-    "noValue": "N/A"
+    "noValue": "Nėra duomenų"
   },
   "empty": {
     "title": "Atvirų pozicijų nėra",
@@ -239,10 +239,10 @@
     "confirmTitle": "Patvirtinti Bracket",
     "position": "Pozicija",
     "entryPrice": "Įėjimo kaina",
-    "stopLossLabel": "Stop-Loss kaina",
-    "takeProfitLabel": "Take-Profit kaina",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Nuostolio ribojimo kaina",
+    "takeProfitLabel": "Pelno fiksavimo kaina",
+    "stopLoss": "Nuostolio ribojimas",
+    "takeProfit": "Pelno fiksavimas",
     "placeholders": {
       "slLong": "Žemiau {{price}}",
       "slShort": "Aukščiau {{price}}",

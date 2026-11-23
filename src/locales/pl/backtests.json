@@ -61,7 +61,7 @@
     "title": "Porównaj",
     "headingFull": "Porównanie backtestów",
     "loading": "Ładowanie porównania…",
-    "vs": "vs",
+    "vs": "w porównaniu z",
     "runLabel": "Przebieg {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metryki",

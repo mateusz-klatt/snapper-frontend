@@ -36,7 +36,7 @@
     "lagUnknown": "Ukendt",
     "walletPicker": {
       "ariaLabel": "Aktiv wallet",
-      "placeholder": "Wallet",
+      "placeholder": "Tegnebog",
       "allWallets": "Alle wallets",
       "optionPaper": "{{label}} (demo)"
     },

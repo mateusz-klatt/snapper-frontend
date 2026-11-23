@@ -56,7 +56,7 @@
       "status": "Status",
       "dataLag": "Opóźnienie danych",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Sygnał aktywności",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,7 +90,7 @@
       "warning": "OSTRZEŻENIE",
       "error": "BŁĄD"
     },
-    "backtest": "Backtest",
+    "backtest": "Test historyczny",
     "backtestAriaLabel": "Backtest strategii {{name}}",
     "managedRemotely": "Zarządzane przez {{coordinator}}",
     "remoteCoordinatorUnknown": "inny kontener",

@@ -14,10 +14,10 @@
       "granularity": "Kiwango cha muda",
       "granularityAriaLabel": "Chagua kiwango cha muda cha mfululizo",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "dak 1",
+        "fiveMinutes": "dak 5",
+        "oneHour": "saa 1",
+        "oneDay": "siku 1"
       },
       "valuationCurrency": "Sarafu ya uthamini",
       "valuationCurrencyAriaLabel": "Chagua sarafu ya uthamini",
@@ -53,7 +53,7 @@
       "affectedPoints": "Nukta zilizoathiriwa: {{count}}",
       "triggerInstrument": "Instrumenti iliyochochea: {{instrument}}",
       "scope": {
-        "global": "Jalada lote",
+        "global": "Portofolio nzima",
         "instrument": "Instrumenti"
       },
       "tier": {
@@ -85,7 +85,7 @@
     },
     "executionHistory": {
       "title": "Historia ya hesabu",
-      "summary": "Masahihisho ya utekelezaji yaliyorekodiwa yanaweza kutangulia kipindi kilichochaguliwa. Historia hii ni tofauti na maonyo ya pointi za P&L zinazoonyeshwa.",
+      "summary": "Masahihisho ya utekelezaji yaliyorekodiwa yanaweza kutangulia kipindi kilichochaguliwa. Historia hii ni tofauti na maonyo ya nukta za P&L zinazoonyeshwa.",
       "correctionCount": "Masahihisho yaliyorekodiwa: {{count}}",
       "showDetails": "Onyesha masahihisho",
       "hideDetails": "Ficha masahihisho",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Utekelezaji wa biashara uliobatilishwa",
       "correctionId": "Rekodi ya kusahihisha",
       "reasons": {
-        "unwitnessed_phantom": "Hakuna ujazo wa biashara ya kubadilishana ambao hutumika kama ushahidi wa uhifadhi huu.",
-        "unwitnessed_legacy_lineage": "Rekodi inayotokana na urithi ambayo hakuna ujazo wa biashara ya kubadilishana hutumika kama ushahidi."
+        "unwitnessed_phantom": "Hakuna utekelezaji wa oda kwenye soko la ubadilishaji unaothibitisha rekodi hii.",
+        "unwitnessed_legacy_lineage": "Rekodi inayotokana na data za zamani bila utekelezaji wa oda unaoithibitisha."
       }
     },
     "timeTravelNotice": "Mwonekano wa kihistoria: P&L inaonyeshwa kama ilivyojulikana wakati wa {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Vumbi ({{count}})",
-    "show": "Onyesha nafasi za vumbi",
-    "hide": "Ficha nafasi za vumbi"
+    "title": "Salio dogo sana ({{count}})",
+    "show": "Onyesha nafasi zenye salio dogo sana",
+    "hide": "Ficha nafasi zenye salio dogo sana"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: inasubiri",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Kikomo kinachofuata bei: {{stop}}",
+    "trailingStopPending": "Kikomo kinachofuata bei: inasubiri",
+    "slTpButton": "Kusitisha Hasara / Kuchukua Faida",
     "trailButton": "Fuatilia",
     "quantity": "Kiasi",
     "averageEntry": "Entry Wastani",
@@ -228,7 +228,7 @@
     "realizedPnl": "P&L Iliyotekelezwa",
     "updated": "Imesasishwa {{timestamp}}",
     "mark": "Bei ya marejeleo",
-    "noValue": "N/A"
+    "noValue": "Haipatikani"
   },
   "empty": {
     "title": "Hakuna nafasi zilizo wazi",
@@ -239,8 +239,8 @@
     "confirmTitle": "Thibitisha Bracket",
     "position": "Nafasi",
     "entryPrice": "Bei ya Entry",
-    "stopLossLabel": "Bei ya Stop-Loss",
-    "takeProfitLabel": "Bei ya Take-Profit",
+    "stopLossLabel": "Bei ya kusitisha hasara",
+    "takeProfitLabel": "Bei ya kuchukua faida",
     "stopLoss": "Kusitisha Hasara",
     "takeProfit": "Kuchukua Faida",
     "placeholders": {

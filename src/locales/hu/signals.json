@@ -19,7 +19,7 @@
     "price": "Ár",
     "exchange": "Tőzsde",
     "reason": "Indok:",
-    "noPrice": "N/A"
+    "noPrice": "Nem érhető el"
   },
   "strength": {
     "strong": "Erős",

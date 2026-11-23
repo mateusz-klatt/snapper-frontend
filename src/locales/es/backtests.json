@@ -131,7 +131,7 @@
     "waiting": "Esperando progreso…",
     "candles": "{{done}} / {{total}} velas",
     "candlesNoTotal": "{{done}} velas",
-    "equity": "equity {{value}}",
+    "equity": "patrimonio {{value}}",
     "signalsTrades": "{{signals}} señ. / {{trades}} operaciones",
     "milestoneLine": "hito {{label}}",
     "milestone": {

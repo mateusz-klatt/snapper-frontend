@@ -143,7 +143,7 @@
   "create": {
     "title": "Ny backtest",
     "cancel": "Annuller",
-    "submit": "Start backtest",
+    "submit": "Start historisk test",
     "submitting": "Starter…",
     "errors": {
       "unknown": "Ukendt fejl"

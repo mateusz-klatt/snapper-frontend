@@ -5,7 +5,7 @@
   "controls": {
     "exchange": "Borsa:",
     "instrument": "Strumento:",
-    "timeframe": "Timeframe:",
+    "timeframe": "Intervallo:",
     "selectExchange": "Seleziona exchange",
     "searchInstrument": "Cerca strumento..."
   },
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Criptovaluta",
     "commodity": "Materia prima",
-    "forex": "Forex",
+    "forex": "Valute",
     "index": "Indice",
     "yield": "Rendimento",
     "unknown": "Altro"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Statistiche della coppia con {{symbol}} su {{exchange}}: Pearson {{pearson}}, valore p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Ora:",
+    "live": "In tempo reale",
     "sliderAriaLabel": "Scorri la cronologia del mercato",
     "presets": {
-      "live": "Live",
+      "live": "In tempo reale",
       "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "d1": "-1 g",
+      "w1": "-1 sett.",
+      "mo1": "-1 mese"
     }
   }
 }

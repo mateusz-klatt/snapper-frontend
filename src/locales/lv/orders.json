@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Nav datu",
     "priceMarket": "Tirgus",
     "quantity": "Daudzums",
     "price": "Cena",
     "created": "Izveidots",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Nav datu",
     "orderId": "Rīkojuma ID",
     "leverage": "Sviras efekts",
     "leverageValue": "{{leverage}}x",
@@ -100,7 +100,7 @@
     "orderTypeOptions": {
       "market": "Tirgus",
       "limit": "Limita",
-      "stop": "Stop",
+      "stop": "Stop rīkojums",
       "stopLimit": "Stop limita",
       "stop_limit": "Stop limita"
     },

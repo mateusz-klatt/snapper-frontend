@@ -93,7 +93,7 @@
       "status": "الحالة"
     },
     "retainDays": "{{days}}ي",
-    "ok": "OK",
+    "ok": "سليم",
     "error": "خطأ"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "قيد الانتظار: {{count}}",
     "dbPool": "تجمع DB",
     "liveConns": "اتصالات مباشرة: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC · الأجيال 0/1/2",
     "gcObjects": "الكائنات: {{value}}",
     "threadsPercent": "خيوط التنفيذ %",
     "networkConns": "اتصالات الشبكة",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "المصافحة {{age}}"
     },
     "kind": {
       "direct": "مباشر",

@@ -14,10 +14,10 @@
       "granularity": "Granularità",
       "granularityAriaLabel": "Seleziona la granularità della cronologia",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
         "oneHour": "1h",
-        "oneDay": "1d"
+        "oneDay": "1 g"
       },
       "valuationCurrency": "Valuta di riferimento",
       "valuationCurrencyAriaLabel": "Seleziona la valuta di riferimento",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Esecuzione dell'operazione annullata",
       "correctionId": "Registro di correzione",
       "reasons": {
-        "unwitnessed_phantom": "Non esiste alcun riempimento commerciale di scambio che serva come prova per questa prenotazione.",
-        "unwitnessed_legacy_lineage": "Record derivato da legacy per il quale nessun riempimento commerciale di scambio funge da prova."
+        "unwitnessed_phantom": "Nessuna esecuzione sulla piattaforma di scambio conferma questa registrazione.",
+        "unwitnessed_legacy_lineage": "Registrazione derivata da dati preesistenti senza un’esecuzione che la confermi."
       }
     },
     "timeTravelNotice": "Vista storica: P&L mostrato secondo i dati noti al {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Polvere ({{count}})",
-    "show": "Mostra posizioni polvere",
-    "hide": "Nascondi posizioni polvere"
+    "title": "Posizioni residue ({{count}})",
+    "show": "Mostra posizioni residue",
+    "hide": "Nascondi posizioni residue"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: in attesa",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Stop mobile: {{stop}}",
+    "trailingStopPending": "Stop mobile: in attesa",
+    "slTpButton": "Perdita/profitto",
     "trailButton": "Trailing",
     "quantity": "Quantità",
     "averageEntry": "Prezzo medio di ingresso",
@@ -239,10 +239,10 @@
     "confirmTitle": "Conferma bracket",
     "position": "Posizione",
     "entryPrice": "Prezzo di ingresso",
-    "stopLossLabel": "Prezzo di Stop-Loss",
-    "takeProfitLabel": "Prezzo di Take-Profit",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Prezzo limite di perdita",
+    "takeProfitLabel": "Prezzo di presa di profitto",
+    "stopLoss": "Limite di perdita",
+    "takeProfit": "Presa di profitto",
     "placeholders": {
       "slLong": "Sotto {{price}}",
       "slShort": "Sopra {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "È richiesto almeno un prezzo di SL o TP",
-    "invalidSlPrice": "Prezzo di stop-loss non valido",
-    "slPricePositive": "Il prezzo di stop-loss deve essere positivo",
-    "invalidTpPrice": "Prezzo di take-profit non valido",
-    "tpPricePositive": "Il prezzo di take-profit deve essere positivo",
+    "invalidSlPrice": "Prezzo limite di perdita non valido",
+    "slPricePositive": "Il prezzo limite di perdita deve essere positivo",
+    "invalidTpPrice": "Prezzo di presa di profitto non valido",
+    "tpPricePositive": "Il prezzo di presa di profitto deve essere positivo",
     "slLongBelowEntry": "Il prezzo SL deve essere sotto il prezzo di ingresso ({{price}})",
     "tpLongAboveEntry": "Il prezzo TP deve essere sopra il prezzo di ingresso ({{price}})",
     "slShortAboveEntry": "Il prezzo SL deve essere sopra il prezzo di ingresso ({{price}})",

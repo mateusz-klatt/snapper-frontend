@@ -56,7 +56,7 @@
       "status": "Status",
       "dataLag": "Vonesa e të dhënave",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Sinjal funksionimi",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

@@ -29,17 +29,17 @@
     "inactive": "Neaktívne"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeNotAvailable": "Nie je k dispozícii",
+    "uptimeMinutes": "{{minutes}}min",
+    "uptimeHours": "{{hours}}h {{minutes}}min",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Test na historických dátach {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Nie je k dispozícii",
     "uptimeLabel": "Doba behu",
     "exitCode": "Kód ukončenia: {{code}}",
     "service": "služba",
-    "backtest": "backtest"
+    "backtest": "test na historických dátach"
   },
   "dbStats": {
     "title": "Štatistiky databázy",
@@ -93,7 +93,7 @@
       "status": "Stav"
     },
     "retainDays": "{{days}}d",
-    "ok": "OK",
+    "ok": "V poriadku",
     "error": "chyba"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Čakajúce: {{count}}",
     "dbPool": "DB pool",
     "liveConns": "Aktívne spojenia: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Generácie GC 0/1/2",
     "gcObjects": "Objekty: {{value}}",
     "threadsPercent": "Vlákna %",
     "networkConns": "Sieťové spojenia",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Nadviazanie spojenia {{age}}"
     },
     "kind": {
       "direct": "priame",

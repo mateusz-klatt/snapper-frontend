@@ -56,7 +56,7 @@
       "status": "Tila",
       "dataLag": "Dataviive",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Elossaolosignaali",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,7 +90,7 @@
       "warning": "VAROITUS",
       "error": "VIRHE"
     },
-    "backtest": "Backtest",
+    "backtest": "Historiatesti",
     "backtestAriaLabel": "Backtestaa strategia {{name}}",
     "managedRemotely": "Hallinnoija: {{coordinator}}",
     "remoteCoordinatorUnknown": "toinen kontti",

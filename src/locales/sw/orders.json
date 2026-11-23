@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Haipatikani",
     "priceMarket": "Bei ya soko",
     "quantity": "Kiasi",
     "price": "Bei",
     "created": "Iliundwa",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Haipatikani",
     "orderId": "ID ya Oda",
     "leverage": "Kiwango cha mkopo",
     "leverageValue": "{{leverage}}x",

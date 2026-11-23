@@ -56,7 +56,7 @@
       "status": "Status",
       "dataLag": "Dataforsinkelse",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Livstegn",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,7 +90,7 @@
       "warning": "ADVARSEL",
       "error": "FEJL"
     },
-    "backtest": "Backtest",
+    "backtest": "Historisk test",
     "backtestAriaLabel": "Backtest strategien {{name}}",
     "managedRemotely": "Administreres af {{coordinator}}",
     "remoteCoordinatorUnknown": "en anden container",
@@ -130,7 +130,7 @@
     "scopeSectionLabel": "Omfang",
     "operatorLabel": "Operatør",
     "operatorPlaceholder": "Vælg en operatør",
-    "walletLabel": "Wallet",
+    "walletLabel": "Tegnebog",
     "walletPlaceholder": "Vælg en wallet",
     "paperAnnotation": " (papir)",
     "refUserLabel": "Strategiejer (bruger)",

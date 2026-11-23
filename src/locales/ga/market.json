@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Criptea-airgeadra",
     "commodity": "Tráchtearra",
-    "forex": "Forex",
+    "forex": "Malairt eachtrach",
     "index": "Innéacs",
     "yield": "Toradh",
     "unknown": "Eile"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Staitisticí péire le {{symbol}} ar {{exchange}}: Pearson {{pearson}}, p-luach {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Am:",
+    "live": "Beo",
     "sliderAriaLabel": "Bog trí stair an mhargaidh",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Beo",
+      "h1": "-1 u",
+      "d1": "-1 l",
+      "w1": "-1 seacht.",
+      "mo1": "-1 mhí"
     }
   }
 }

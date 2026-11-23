@@ -32,22 +32,22 @@
     "shortExposure": "Short áhætta",
     "netDelta": "Nettó delta",
     "unrealizedPnl": "Óinnleyst P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Hagnaður/tap %",
     "positions": "Stöður",
     "instrumentsCount": "Gerningar: {{count}}",
     "empty": "Engin stöðugögn tiltæk",
-    "incompleteValuation": "Sumar opnar stöður hafa vantar eða ógild verðmatsgögn.",
+    "incompleteValuation": "Verðmatsgögn fyrir sumar opnar stöður vantar eða eru ógild.",
     "aggregationUnavailable": "Heildartölur eignasafns krefjast staðfests gjaldmiðils og verðmatsgrundvallar samninga. Opnaðu Stöður og veldu {{tab}}."
   },
   "signals": {
     "title": "Nýleg merki",
     "empty": "Engin nýleg merki",
-    "noTime": "N/A"
+    "noTime": "Ekki tiltækt"
   },
   "executions": {
     "title": "Nýlegar framkvæmdir",
     "empty": "Engar nýlegar framkvæmdir",
-    "noTime": "N/A"
+    "noTime": "Ekki tiltækt"
   },
   "processResources": {
     "title": "Tilföng ferla",
@@ -55,7 +55,7 @@
     "colName": "Nafn",
     "colStatus": "Staða",
     "colRole": "Hlutverk",
-    "colMemory": "MEM",
+    "colMemory": "Minni",
     "colCpu": "CPU",
     "statusRunning": "Í gangi",
     "statusStopped": "Stöðvað",

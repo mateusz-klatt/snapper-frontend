@@ -19,7 +19,7 @@
     "price": "Cijena",
     "exchange": "Berza",
     "reason": "Razlog:",
-    "noPrice": "N/A"
+    "noPrice": "Nije dostupno"
   },
   "strength": {
     "strong": "Jak",

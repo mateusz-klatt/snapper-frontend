@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Н/Д",
-    "uptimeMinutes": "{{minutes}} хв",
-    "uptimeHours": "{{hours}} год {{minutes}} хв",
-    "uptimeDays": "{{days}} д {{hours}} год",
+    "uptimeMinutes": "{{minutes}}хв",
+    "uptimeHours": "{{hours}}год {{minutes}}хв",
+    "uptimeDays": "{{days}}д {{hours}}год",
     "backtestName": "Бектест {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Н/Д",
@@ -92,8 +92,8 @@
       "files": "Файли",
       "status": "Статус"
     },
-    "retainDays": "{{days}} д",
-    "ok": "OK",
+    "retainDays": "{{days}}д",
+    "ok": "У нормі",
     "error": "помилка"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Очікують: {{count}}",
     "dbPool": "Пул БД",
     "liveConns": "Активні з'єднання: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Покоління GC 0/1/2",
     "gcObjects": "Об'єкти: {{value}}",
     "threadsPercent": "Потоки %",
     "networkConns": "Мережеві з'єднання",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Узгодження з’єднання {{age}}"
     },
     "kind": {
       "direct": "прямий",

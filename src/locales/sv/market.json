@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kryptovaluta",
     "commodity": "Råvara",
-    "forex": "Forex",
+    "forex": "Valuta",
     "index": "Index",
     "yield": "Avkastning",
     "unknown": "Annat"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Parstatistik med {{symbol}} på {{exchange}}: Pearson {{pearson}}, p-värde {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Tid:",
+    "live": "Realtid",
     "sliderAriaLabel": "Flytta tidsreglaget genom marknadshistoriken",
     "presets": {
-      "live": "Live",
+      "live": "Realtid",
       "h1": "-1h",
       "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "w1": "-1 v",
+      "mo1": "-1 mån."
     }
   }
 }

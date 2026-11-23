@@ -30,16 +30,16 @@
   },
   "process": {
     "uptimeNotAvailable": "N.v.t.",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}u {{minutes}}m",
+    "uptimeMinutes": "{{minutes}}min",
+    "uptimeHours": "{{hours}}u {{minutes}}min",
     "uptimeDays": "{{days}}d {{hours}}u",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Historische test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N.v.t.",
-    "uptimeLabel": "Uptime",
+    "uptimeLabel": "Bedrijfstijd",
     "exitCode": "Exitcode: {{code}}",
-    "service": "service",
-    "backtest": "backtest"
+    "service": "dienst",
+    "backtest": "historische test"
   },
   "dbStats": {
     "title": "Databasestatistieken",
@@ -93,7 +93,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}d",
-    "ok": "OK",
+    "ok": "In orde",
     "error": "fout"
   },
   "systemMetrics": {
@@ -106,8 +106,8 @@
     "rawJson": "Ruwe JSON",
     "pid": "PID",
     "statusValue": "Status: {{status}}",
-    "uptime": "Uptime",
-    "threads": "Threads",
+    "uptime": "Bedrijfstijd",
+    "threads": "Uitvoeringsthreads",
     "openFds": "Open FD's",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
@@ -119,9 +119,9 @@
     "asyncioPending": "In afwachting: {{count}}",
     "dbPool": "DB-pool",
     "liveConns": "Live verbindingen: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC-generaties 0/1/2",
     "gcObjects": "Objecten: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "Uitvoeringsthreads %",
     "networkConns": "Netwerkverbindingen",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "Actief",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Verbindingsgroep",
       "policy": "Quarantainebeleid",
       "fallbackRoute": "Fallback voor privéverkeer",
       "routes": "Routes"
@@ -169,7 +169,7 @@
       "kind": "Soort",
       "region": "Regio",
       "exitIp": "Uitgaand IP-adres",
-      "provider": "Provider",
+      "provider": "Aanbieder",
       "priority": "Prioriteit",
       "allowedExchanges": "Toegestane beurzen",
       "status": "Status",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "verbindingsonderhandeling {{age}}"
     },
     "kind": {
       "direct": "direct",

@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kriptovaluta",
     "commodity": "Árupiaci termék",
-    "forex": "Forex",
+    "forex": "Devizapiac",
     "index": "Index",
     "yield": "Hozam",
     "unknown": "Egyéb"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Párstatisztika a(z) {{symbol}} instrumentummal a(z) {{exchange}} tőzsdén: Pearson {{pearson}}, p-érték {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Idő:",
+    "live": "Élő",
     "sliderAriaLabel": "Navigálás a piaci előzményekben",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Élő",
+      "h1": "-1 ó",
+      "d1": "-1 nap",
+      "w1": "-1 hét",
+      "mo1": "-1 hó"
     }
   }
 }

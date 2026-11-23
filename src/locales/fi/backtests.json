@@ -61,7 +61,7 @@
     "title": "Vertaa",
     "headingFull": "Backtest-vertailu",
     "loading": "Ladataan vertailua…",
-    "vs": "vs",
+    "vs": "vastaan",
     "runLabel": "Ajo {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metriikat",

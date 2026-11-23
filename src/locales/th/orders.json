@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "ไม่มีข้อมูล",
     "priceMarket": "ราคาตลาด",
     "quantity": "ปริมาณ",
     "price": "ราคา",
     "created": "สร้างเมื่อ",
-    "createdUnknown": "N/A",
+    "createdUnknown": "ไม่มีข้อมูล",
     "orderId": "ID คำสั่ง",
     "leverage": "เลเวอเรจ",
     "leverageValue": "{{leverage}}x",

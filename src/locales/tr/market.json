@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kripto para",
     "commodity": "Emtia",
-    "forex": "Forex",
+    "forex": "Döviz",
     "index": "Endeks",
     "yield": "Getiri",
     "unknown": "Diğer"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "{{exchange}} üzerindeki {{symbol}} ile çift istatistikleri: Pearson {{pearson}}, p değeri {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Zaman:",
+    "live": "Canlı",
     "sliderAriaLabel": "Zaman kaydırıcısını piyasa geçmişinde hareket ettirin",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Canlı",
+      "h1": "-1 sa",
+      "d1": "-1 g",
+      "w1": "-1 hf",
+      "mo1": "-1 ay"
     }
   }
 }

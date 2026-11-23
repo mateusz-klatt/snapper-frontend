@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Criptomonedă",
     "commodity": "Marfă",
-    "forex": "Forex",
+    "forex": "Piața valutară",
     "index": "Indice",
     "yield": "Randament",
     "unknown": "Altul"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Statistici de pereche cu {{symbol}} pe {{exchange}}: Pearson {{pearson}}, valoare p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Timp:",
+    "live": "În timp real",
     "sliderAriaLabel": "Parcurgeți istoricul pieței",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "În timp real",
+      "h1": "-1 h",
+      "d1": "-1 z",
+      "w1": "-1 săpt.",
+      "mo1": "-1 lună"
     }
   }
 }

@@ -14,10 +14,10 @@
       "granularity": "ความละเอียด",
       "granularityAriaLabel": "เลือกความละเอียดของไทม์ไลน์",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 นาที",
+        "fiveMinutes": "5 นาที",
+        "oneHour": "1 ชั่วโมง",
+        "oneDay": "1 วัน"
       },
       "valuationCurrency": "สกุลเงินประเมินมูลค่า",
       "valuationCurrencyAriaLabel": "เลือกสกุลเงินประเมินมูลค่า",
@@ -85,17 +85,17 @@
     },
     "executionHistory": {
       "title": "ประวัติการคำนวณ",
-      "summary": "การแก้ไขการดำเนินการที่บันทึกไว้อาจเกิดขึ้นก่อนช่วงเวลาที่เลือก ประวัตินี้แยกจากคำเตือนสำหรับจุด P&L ที่แสดง",
+      "summary": "การแก้ไขรายการจับคู่คำสั่งซื้อขายที่บันทึกไว้อาจเกิดขึ้นก่อนช่วงเวลาที่เลือก ประวัตินี้แยกจากคำเตือนสำหรับจุด P&L ที่แสดง",
       "correctionCount": "การแก้ไขที่บันทึกไว้: {{count}}",
       "showDetails": "แสดงการแก้ไข",
       "hideDetails": "ซ่อนการแก้ไข",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "แก้ไขเมื่อ {{time}}",
-      "targetExecutionId": "การดำเนินการซื้อขายเป็นโมฆะ",
+      "targetExecutionId": "รายการจับคู่คำสั่งที่ถูกยกเลิก",
       "correctionId": "บันทึกการแก้ไข",
       "reasons": {
-        "unwitnessed_phantom": "ไม่มีการกรอกข้อมูลการค้าแลกเปลี่ยนที่ทำหน้าที่เป็นหลักฐานสำหรับการจองนี้",
-        "unwitnessed_legacy_lineage": "บันทึกที่ได้รับมาแบบดั้งเดิมซึ่งไม่มีการกรอกข้อมูลการค้าแลกเปลี่ยนทำหน้าที่เป็นหลักฐาน"
+        "unwitnessed_phantom": "ไม่มีรายการจับคู่คำสั่งซื้อขายจากตลาดซื้อขายที่ใช้ยืนยันการบันทึกธุรกรรมนี้",
+        "unwitnessed_legacy_lineage": "บันทึกที่มาจากระบบเดิมซึ่งไม่มีรายการจับคู่คำสั่งซื้อขายจากตลาดซื้อขายเป็นหลักฐาน"
       }
     },
     "timeTravelNotice": "มุมมองย้อนหลัง: แสดง P&L ตามข้อมูลที่ทราบ ณ {{asOf}}",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "ฝุ่น ({{count}})",
-    "show": "แสดงสถานะฝุ่น",
-    "hide": "ซ่อนสถานะฝุ่น"
+    "title": "สถานะคงเหลือมูลค่าน้อย ({{count}})",
+    "show": "แสดงสถานะคงเหลือมูลค่าน้อย",
+    "hide": "ซ่อนสถานะคงเหลือมูลค่าน้อย"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: รอดำเนินการ",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "จุดตัดขาดทุนตามราคา: {{stop}}",
+    "trailingStopPending": "จุดตัดขาดทุนตามราคา: รอดำเนินการ",
+    "slTpButton": "ตัดขาดทุน/ทำกำไร",
     "trailButton": "เลื่อนตามราคา",
     "quantity": "ปริมาณ",
     "averageEntry": "ราคาเข้าเฉลี่ย",
@@ -228,7 +228,7 @@
     "realizedPnl": "P&L ที่รับรู้แล้ว",
     "updated": "อัปเดตเมื่อ {{timestamp}}",
     "mark": "ราคาอ้างอิง",
-    "noValue": "N/A"
+    "noValue": "ไม่มีข้อมูล"
   },
   "empty": {
     "title": "ไม่มีสถานะเปิด",
@@ -239,8 +239,8 @@
     "confirmTitle": "ยืนยัน Bracket",
     "position": "สถานะ",
     "entryPrice": "ราคาเข้า",
-    "stopLossLabel": "ราคา Stop-Loss",
-    "takeProfitLabel": "ราคา Take-Profit",
+    "stopLossLabel": "ราคาตัดขาดทุน",
+    "takeProfitLabel": "ราคาทำกำไร",
     "stopLoss": "ตัดขาดทุน",
     "takeProfit": "ทำกำไร",
     "placeholders": {

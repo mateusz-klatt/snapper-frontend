@@ -14,10 +14,10 @@
       "granularity": "Gráinneacht",
       "granularityAriaLabel": "Roghnaigh gráinneacht na hamlíne",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 nóim",
+        "fiveMinutes": "5 nóim",
+        "oneHour": "1 u",
+        "oneDay": "1 l"
       },
       "valuationCurrency": "Airgeadra luachála",
       "valuationCurrencyAriaLabel": "Roghnaigh airgeadra luachála",
@@ -91,11 +91,11 @@
       "hideDetails": "Folaigh ceartúcháin",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Ceartaithe ag {{time}}",
-      "targetExecutionId": "Cur i gcrích trádála ar neamhní",
+      "targetExecutionId": "Forghníomhú curtha ar neamhní",
       "correctionId": "Taifead ceartúcháin",
       "reasons": {
-        "unwitnessed_phantom": "Níl aon líonadh trádála malairte ann a fheidhmíonn mar fhianaise don áirithint seo.",
-        "unwitnessed_legacy_lineage": "Taifead oidhreacht-díorthaithe nach bhfuil aon líonadh trádála malairte mar fhianaise ina leith."
+        "unwitnessed_phantom": "Níl aon fhorghníomhú ordaithe ar an malartán mar fhianaise ar an iontráil seo.",
+        "unwitnessed_legacy_lineage": "Taifead ó shonraí oidhreachta gan fhorghníomhú ordaithe mar fhianaise air."
       }
     },
     "timeTravelNotice": "Amharc stairiúil: P&L á thaispeáint de réir an eolais a bhí ar fáil ag {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Deannach ({{count}})",
-    "show": "Taispeáin poist deannaigh",
-    "hide": "Folaigh poist deannaigh"
+    "title": "Iarmhéideanna beaga ({{count}})",
+    "show": "Taispeáin suímh le hiarmhéideanna beaga",
+    "hide": "Folaigh suímh le hiarmhéideanna beaga"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: ar feitheamh",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Stad rianaithe: {{stop}}",
+    "trailingStopPending": "Stad rianaithe: ar feitheamh",
+    "slTpButton": "Stad caillteanais / Glacadh brabúis",
     "trailButton": "Trailing",
     "quantity": "Cainníocht",
     "averageEntry": "Meániontráil",
@@ -228,7 +228,7 @@
     "realizedPnl": "P&L réadaithe",
     "updated": "Nuashonraithe {{timestamp}}",
     "mark": "Praghas marcála",
-    "noValue": "N/A"
+    "noValue": "Níl ar fáil"
   },
   "empty": {
     "title": "Níl aon suíomh oscailte",
@@ -239,10 +239,10 @@
     "confirmTitle": "Deimhnigh Bracket",
     "position": "Suíomh",
     "entryPrice": "Praghas Iontrála",
-    "stopLossLabel": "Praghas Stop-Loss",
-    "takeProfitLabel": "Praghas Take-Profit",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Praghas stad caillteanais",
+    "takeProfitLabel": "Praghas glactha brabúis",
+    "stopLoss": "Stad caillteanais",
+    "takeProfit": "Glacadh brabúis",
     "placeholders": {
       "slLong": "Faoi {{price}}",
       "slShort": "Os cionn {{price}}",

@@ -18,7 +18,7 @@
       "create": "Bagong backtest"
     },
     "fields": {
-      "timeframe": "Timeframe",
+      "timeframe": "Agwat ng oras",
       "period": "Panahon",
       "initialCash": "Panimulang cash",
       "id": "ID"
@@ -43,7 +43,7 @@
   "detail": {
     "title": "Pagpapatakbo ng backtest",
     "fields": {
-      "strategy": "Strategy",
+      "strategy": "Estratehiya",
       "instrument": "Instrumento",
       "status": "Katayuan",
       "period": "Panahon",
@@ -152,7 +152,7 @@
       "endDateAfterStart": "Dapat mas huli ang end date kaysa sa start date"
     },
     "form": {
-      "strategyLabel": "Strategy",
+      "strategyLabel": "Estratehiya",
       "strategyPlaceholder": "— Pumili ng strategy —",
       "strategyLoading": "Nilo-load ang mga strategy…",
       "strategyError": "Hindi na-load ang mga strategy",
@@ -161,7 +161,7 @@
       "instrumentHelp": "Public id ng instrument na iba-backtest",
       "exchangeLabel": "Palitan (pinagmulan ng feed)",
       "exchangePlaceholder": "— Pumili ng exchange —",
-      "timeframeLabel": "Timeframe",
+      "timeframeLabel": "Agwat ng oras",
       "startDateLabel": "Petsa ng simula",
       "endDateLabel": "Petsa ng pagtatapos",
       "initialCashLabel": "Panimulang cash",

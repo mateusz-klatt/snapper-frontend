@@ -32,7 +32,7 @@
     "shortExposure": "ショートエクスポージャー",
     "netDelta": "ネットデルタ",
     "unrealizedPnl": "未実現P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "損益率 %",
     "positions": "ポジション",
     "instrumentsCount": "銘柄数: {{count}}",
     "empty": "ポジションデータはありません",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "最近のシグナル",
     "empty": "最近のシグナルはありません",
-    "noTime": "N/A"
+    "noTime": "不明"
   },
   "executions": {
     "title": "最近の約定",
     "empty": "最近の約定はありません",
-    "noTime": "N/A"
+    "noTime": "不明"
   },
   "processResources": {
     "title": "プロセスリソース",
@@ -55,7 +55,7 @@
     "colName": "名前",
     "colStatus": "ステータス",
     "colRole": "ロール",
-    "colMemory": "MEM",
+    "colMemory": "メモリ",
     "colCpu": "CPU",
     "statusRunning": "実行中",
     "statusStopped": "停止",

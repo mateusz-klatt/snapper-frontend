@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Nije dostupno",
     "priceMarket": "Tržišni",
     "quantity": "Količina",
     "price": "Cijena",
     "created": "Kreirano",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Nije dostupno",
     "orderId": "ID naloga",
     "leverage": "Poluga",
     "leverageValue": "{{leverage}}x",
@@ -99,10 +99,10 @@
     },
     "orderTypeOptions": {
       "market": "Tržišni",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "limit": "Limitirani nalog",
+      "stop": "Stop nalog",
+      "stopLimit": "Stop-limit nalog",
+      "stop_limit": "Stop-limit nalog"
     },
     "modeOptions": {
       "live": "Stvarno",

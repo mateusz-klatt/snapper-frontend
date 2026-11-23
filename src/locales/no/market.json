@@ -81,15 +81,15 @@
     "chipAriaLabel": "Parstatistikk med {{symbol}} på {{exchange}}: Pearson {{pearson}}, p-verdi {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Tid:",
+    "live": "Sanntid",
     "sliderAriaLabel": "Dra gjennom markedshistorikken",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
+      "live": "Sanntid",
+      "h1": "-1 t",
       "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "w1": "-1 u",
+      "mo1": "-1 md."
     }
   }
 }

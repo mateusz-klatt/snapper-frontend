@@ -56,7 +56,7 @@
       "status": "Status",
       "dataLag": "Datavertraging",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Levensteken",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,7 +90,7 @@
       "warning": "WAARSCHUWING",
       "error": "FOUT"
     },
-    "backtest": "Backtest",
+    "backtest": "Historische test",
     "backtestAriaLabel": "Strategie {{name}} backtesten",
     "managedRemotely": "Beheerd door {{coordinator}}",
     "remoteCoordinatorUnknown": "een andere container",
@@ -127,7 +127,7 @@
     "cancel": "Annuleren",
     "submit": "Strategie registreren",
     "submitting": "Registreren…",
-    "scopeSectionLabel": "Scope",
+    "scopeSectionLabel": "Bereik",
     "operatorLabel": "Operator",
     "operatorPlaceholder": "Selecteer een operator",
     "walletLabel": "Portefeuille",

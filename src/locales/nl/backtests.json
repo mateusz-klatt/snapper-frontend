@@ -62,7 +62,7 @@
     "headingFull": "Backtest-vergelijking",
     "loading": "Vergelijking laden…",
     "vs": "vs.",
-    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "runLabel": "Uitvoering {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrieken",
       "equityOverlay": "Equity-overlay",
@@ -113,8 +113,8 @@
       "empty": "Geen vergelijkbare metrieken — beide runs hadden geen geregistreerde waarden.",
       "columns": {
         "name": "Metriek",
-        "runA": "Run A",
-        "runB": "Run B",
+        "runA": "Uitvoering A",
+        "runB": "Uitvoering B",
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
@@ -122,16 +122,16 @@
     },
     "equity": {
       "legend": {
-        "runA": "Run A",
-        "runB": "Run B"
+        "runA": "Uitvoering A",
+        "runB": "Uitvoering B"
       }
     }
   },
   "progress": {
     "waiting": "Wachten op voortgang…",
-    "candles": "{{done}} / {{total}} candles",
-    "candlesNoTotal": "{{done}} candles",
-    "equity": "equity {{value}}",
+    "candles": "{{done}} / {{total}} kaarsen",
+    "candlesNoTotal": "{{done}} kaarsen",
+    "equity": "eigen vermogen {{value}}",
     "signalsTrades": "{{signals}} signalen / {{trades}} transacties",
     "milestoneLine": "mijlpaal {{label}}",
     "milestone": {
@@ -165,7 +165,7 @@
       "startDateLabel": "Startdatum",
       "endDateLabel": "Einddatum",
       "initialCashLabel": "Beginkapitaal",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Koersafwijking (basispunten)",
       "commissionBpsLabel": "Commissie (bps)",
       "executionModeLabel": "Uitvoeringsmodus",
       "executionModeDirectDb": "Directe DB",

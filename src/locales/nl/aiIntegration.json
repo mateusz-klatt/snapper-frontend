@@ -43,7 +43,7 @@
       "labelHelpSuffix": "."
     },
     "scope": {
-      "heading": "Scope",
+      "heading": "Bereik",
       "operatorLabel": "Operator public_id (optioneel)",
       "operatorPlaceholder": "Laat leeg om de primaire operator van de aanroeper over te nemen"
     },

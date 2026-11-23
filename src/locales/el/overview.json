@@ -32,7 +32,7 @@
     "shortExposure": "Short έκθεση",
     "netDelta": "Καθαρό δέλτα",
     "unrealizedPnl": "Μη πραγματοποιημένο P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Κέρδη/ζημίες %",
     "positions": "Θέσεις",
     "instrumentsCount": "Μέσα: {{count}}",
     "empty": "Δεν υπάρχουν διαθέσιμα δεδομένα θέσεων",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Πρόσφατα σήματα",
     "empty": "Δεν υπάρχουν πρόσφατα σήματα",
-    "noTime": "N/A"
+    "noTime": "Μη διαθέσιμο"
   },
   "executions": {
     "title": "Πρόσφατες εκτελέσεις",
     "empty": "Δεν υπάρχουν πρόσφατες εκτελέσεις",
-    "noTime": "N/A"
+    "noTime": "Μη διαθέσιμο"
   },
   "processResources": {
     "title": "Πόροι διεργασιών",
@@ -55,7 +55,7 @@
     "colName": "Όνομα",
     "colStatus": "Κατάσταση",
     "colRole": "Ρόλος",
-    "colMemory": "MEM",
+    "colMemory": "Μνήμη",
     "colCpu": "CPU",
     "statusRunning": "Εκτελείται",
     "statusStopped": "Σταματημένη",

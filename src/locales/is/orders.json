@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Ekki tiltækt",
     "priceMarket": "Markaður",
     "quantity": "Magn",
     "price": "Verð",
     "created": "Búið til",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Ekki tiltækt",
     "orderId": "Pöntunar-ID",
     "leverage": "Vogun",
     "leverageValue": "{{leverage}}x",

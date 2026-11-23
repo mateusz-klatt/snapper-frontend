@@ -14,10 +14,10 @@
       "granularity": "時間間隔",
       "granularityAriaLabel": "P&L推移の時間間隔を選択",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1分",
+        "fiveMinutes": "5分",
+        "oneHour": "1時間",
+        "oneDay": "1日"
       },
       "valuationCurrency": "評価通貨",
       "valuationCurrencyAriaLabel": "評価通貨を選択",
@@ -49,7 +49,7 @@
       "title": "データポイントが不完全な理由",
       "displayedPoints": "表示されている{{total}}件のデータポイントのうち{{incomplete}}件が不完全です。",
       "description": "理由は読み込み済み期間全体を対象とします。1つのデータポイントに複数の原因がある場合、件数は重複することがあります。",
-      "cumulativeNote": "P&L値は有効化時点からの累積であるため、計算はそれ以前の取引履歴に依存する場合があります。",
+      "cumulativeNote": "P&L値は有効化時点からの累積であるため、計算は過去の取引履歴に依存する場合があります。",
       "affectedPoints": "該当データポイント：{{count}}件",
       "triggerInstrument": "トリガー銘柄：{{instrument}}",
       "scope": {
@@ -91,11 +91,11 @@
       "hideDetails": "修正を隠す",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "{{time}} に修正されました",
-      "targetExecutionId": "取り消された取引執行",
+      "targetExecutionId": "無効化された約定",
       "correctionId": "訂正記録",
       "reasons": {
-        "unwitnessed_phantom": "この予約の証拠となる為替取引約定はありません。",
-        "unwitnessed_legacy_lineage": "取引所取引約定が証拠として機能しない、レガシー由来の記録。"
+        "unwitnessed_phantom": "この取引記録の裏付けとなる取引所での約定がありません。",
+        "unwitnessed_legacy_lineage": "旧システム由来の記録で、裏付けとなる取引所での約定がありません。"
       }
     },
     "timeTravelNotice": "履歴表示：{{asOf}}時点で把握されていたP&Lを表示しています。",
@@ -218,9 +218,9 @@
     "hide": "ダストポジションを隠す"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: 保留中",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "トレーリングストップ: {{stop}}",
+    "trailingStopPending": "トレーリングストップ: 保留中",
+    "slTpButton": "ストップロス/テイクプロフィット",
     "trailButton": "トレール",
     "quantity": "数量",
     "averageEntry": "平均建値",

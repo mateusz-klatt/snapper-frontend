@@ -14,10 +14,10 @@
       "granularity": "Granularnost",
       "granularityAriaLabel": "Odaberite granularnost vremenske linije",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Valuta vrednovanja",
       "valuationCurrencyAriaLabel": "Odaberite valutu vrednovanja",
@@ -47,7 +47,7 @@
     "incompleteBadge": "Nepotpune tačke: {{count}}",
     "incompleteness": {
       "title": "Zašto su tačke nepotpune",
-      "displayedPoints": "Nepotpuno prikazanih tačaka: {{incomplete}} od {{total}}.",
+      "displayedPoints": "Od {{total}} prikazanih tačaka, {{incomplete}} je nepotpuno.",
       "description": "Razlozi obuhvataju cijeli učitani raspon. Brojevi se mogu preklapati kada tačka ima više uzroka.",
       "cumulativeNote": "Vrijednosti P&L su kumulativne od aktivacije, pa izračuni mogu zavisiti od ranije aktivnosti.",
       "affectedPoints": "Obuhvaćene tačke: {{count}}",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Poništeno izvršenje trgovine",
       "correctionId": "Zapis o ispravci",
       "reasons": {
-        "unwitnessed_phantom": "Ne postoji ispuna berzanske trgovine koja služi kao dokaz za ovu rezervaciju.",
-        "unwitnessed_legacy_lineage": "Naslijeđeni zapisi za koje nema popunjavanja trgovine na berzi ne služi kao dokaz."
+        "unwitnessed_phantom": "Nijedno izvršenje naloga na berzi ne potvrđuje ovaj evidentirani zapis.",
+        "unwitnessed_legacy_lineage": "Zapis naslijeđen iz starijih podataka bez potvrđujućeg izvršenja naloga."
       }
     },
     "timeTravelNotice": "Historijski prikaz: prikazuje se P&L prema podacima poznatim u {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Prašina ({{count}})",
-    "show": "Prikaži pozicije prašine",
-    "hide": "Sakrij pozicije prašine"
+    "title": "Sitni ostaci ({{count}})",
+    "show": "Prikaži pozicije zanemarive vrijednosti",
+    "hide": "Sakrij pozicije zanemarive vrijednosti"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: na čekanju",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Prateći stop: {{stop}}",
+    "trailingStopPending": "Prateći stop: na čekanju",
+    "slTpButton": "Ograničenje gubitka / Realizacija dobiti",
     "trailButton": "Prateći stop",
     "quantity": "Količina",
     "averageEntry": "Prosj. ulaz",
@@ -228,7 +228,7 @@
     "realizedPnl": "Realizovani P&L",
     "updated": "Ažurirano {{timestamp}}",
     "mark": "Referentna cijena",
-    "noValue": "N/A"
+    "noValue": "Nije dostupno"
   },
   "empty": {
     "title": "Nema otvorenih pozicija",
@@ -239,10 +239,10 @@
     "confirmTitle": "Potvrdi Bracket",
     "position": "Pozicija",
     "entryPrice": "Ulazna cijena",
-    "stopLossLabel": "Stop-Loss cijena",
-    "takeProfitLabel": "Take-Profit cijena",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Cijena ograničenja gubitka",
+    "takeProfitLabel": "Cijena realizacije dobiti",
+    "stopLoss": "Ograničenje gubitka",
+    "takeProfit": "Realizacija dobiti",
     "placeholders": {
       "slLong": "Ispod {{price}}",
       "slShort": "Iznad {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Potrebna je najmanje jedna SL ili TP cijena",
-    "invalidSlPrice": "Nevažeća Stop-Loss cijena",
-    "slPricePositive": "Stop-Loss cijena mora biti pozitivna",
-    "invalidTpPrice": "Nevažeća Take-Profit cijena",
-    "tpPricePositive": "Take-Profit cijena mora biti pozitivna",
+    "invalidSlPrice": "Nevažeća cijena ograničenja gubitka",
+    "slPricePositive": "Cijena ograničenja gubitka mora biti pozitivna",
+    "invalidTpPrice": "Nevažeća cijena realizacije dobiti",
+    "tpPricePositive": "Cijena realizacije dobiti mora biti pozitivna",
     "slLongBelowEntry": "SL cijena mora biti ispod ulazne cijene ({{price}})",
     "tpLongAboveEntry": "TP cijena mora biti iznad ulazne cijene ({{price}})",
     "slShortAboveEntry": "SL cijena mora biti iznad ulazne cijene ({{price}})",

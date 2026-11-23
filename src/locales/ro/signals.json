@@ -19,7 +19,7 @@
     "price": "Preț",
     "exchange": "Bursă",
     "reason": "Motiv:",
-    "noPrice": "N/A"
+    "noPrice": "Indisponibil"
   },
   "strength": {
     "strong": "Puternic",

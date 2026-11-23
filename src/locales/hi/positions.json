@@ -14,10 +14,10 @@
       "granularity": "अंतराल",
       "granularityAriaLabel": "टाइमलाइन अंतराल चुनें",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 मिनट",
+        "fiveMinutes": "5 मिनट",
+        "oneHour": "1 घंटा",
+        "oneDay": "1 दिन"
       },
       "valuationCurrency": "मूल्यांकन मुद्रा",
       "valuationCurrencyAriaLabel": "मूल्यांकन मुद्रा चुनें",
@@ -91,11 +91,11 @@
       "hideDetails": "सुधार छिपाएँ",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "{{time}} पर ठीक किया गया",
-      "targetExecutionId": "व्यापार निष्पादन रद्द कर दिया गया",
-      "correctionId": "सुधार रिकार्ड",
+      "targetExecutionId": "रद्द किया गया ट्रेड निष्पादन",
+      "correctionId": "सुधार रिकॉर्ड",
       "reasons": {
-        "unwitnessed_phantom": "ऐसा कोई विनिमय व्यापार भरण नहीं है जो इस बुकिंग के लिए साक्ष्य के रूप में कार्य करता हो।",
-        "unwitnessed_legacy_lineage": "विरासत-व्युत्पन्न रिकॉर्ड जिसके लिए कोई विनिमय व्यापार भरण साक्ष्य के रूप में कार्य नहीं करता है।"
+        "unwitnessed_phantom": "इस दर्ज लेनदेन की पुष्टि के लिए एक्सचेंज पर ऑर्डर निष्पादन का कोई प्रमाण नहीं है।",
+        "unwitnessed_legacy_lineage": "पुराने डेटा से बने इस रिकॉर्ड की पुष्टि के लिए एक्सचेंज पर ऑर्डर निष्पादन का कोई प्रमाण नहीं है।"
       }
     },
     "timeTravelNotice": "ऐतिहासिक दृश्य: {{asOf}} तक ज्ञात P&L दिखाया जा रहा है।",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "धूल ({{count}})",
-    "show": "धूल पोजीशन दिखाएँ",
-    "hide": "धूल पोजीशन छिपाएँ"
+    "title": "अल्प-मूल्य शेष पोजीशन ({{count}})",
+    "show": "अल्प-मूल्य शेष पोजीशन दिखाएँ",
+    "hide": "अल्प-मूल्य शेष पोजीशन छिपाएँ"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: लंबित",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "ट्रेलिंग स्टॉप: {{stop}}",
+    "trailingStopPending": "ट्रेलिंग स्टॉप: लंबित",
+    "slTpButton": "स्टॉप-लॉस/टेक-प्रॉफ़िट",
     "trailButton": "ट्रेल",
     "quantity": "मात्रा",
     "averageEntry": "औसत एंट्री",
@@ -228,7 +228,7 @@
     "realizedPnl": "वास्तविक P&L",
     "updated": "अपडेट किया गया {{timestamp}}",
     "mark": "संदर्भ मूल्य",
-    "noValue": "N/A"
+    "noValue": "उपलब्ध नहीं"
   },
   "empty": {
     "title": "कोई खुली पोजीशन नहीं",
@@ -239,8 +239,8 @@
     "confirmTitle": "Bracket की पुष्टि करें",
     "position": "पोजीशन",
     "entryPrice": "एंट्री कीमत",
-    "stopLossLabel": "Stop-Loss कीमत",
-    "takeProfitLabel": "Take-Profit कीमत",
+    "stopLossLabel": "स्टॉप-लॉस कीमत",
+    "takeProfitLabel": "टेक-प्रॉफ़िट कीमत",
     "stopLoss": "स्टॉप-लॉस",
     "takeProfit": "टेक-प्रॉफ़िट",
     "placeholders": {

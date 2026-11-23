@@ -56,7 +56,7 @@
       "status": "Būsena",
       "dataLag": "Duomenų delsa",
       "dataLagValue": "{{ms}} ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Gyvybingumo signalas",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

@@ -14,10 +14,10 @@
       "granularity": "Độ phân giải",
       "granularityAriaLabel": "Chọn độ phân giải dòng thời gian",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 phút",
+        "fiveMinutes": "5 phút",
+        "oneHour": "1 giờ",
+        "oneDay": "1 ngày"
       },
       "valuationCurrency": "Đồng tiền định giá",
       "valuationCurrencyAriaLabel": "Chọn đồng tiền định giá",
@@ -85,17 +85,17 @@
     },
     "executionHistory": {
       "title": "Lịch sử tính toán",
-      "summary": "Các bản sửa khớp lệnh đã ghi nhận có thể có trước khoảng thời gian được chọn. Lịch sử này tách biệt với cảnh báo cho các điểm P&L đang hiển thị.",
+      "summary": "Các chỉnh sửa khớp lệnh đã ghi nhận có thể có trước khoảng thời gian được chọn. Lịch sử này tách biệt với cảnh báo cho các điểm P&L đang hiển thị.",
       "correctionCount": "Bản sửa đã ghi nhận: {{count}}",
       "showDetails": "Hiển thị các chỉnh sửa",
       "hideDetails": "Ẩn phần chỉnh sửa",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Đã sửa vào lúc {{time}}",
-      "targetExecutionId": "Thực hiện giao dịch bị hủy bỏ",
-      "correctionId": "Biên bản sửa chữa",
+      "targetExecutionId": "Lần khớp lệnh đã bị hủy bỏ",
+      "correctionId": "Bản ghi chỉnh sửa",
       "reasons": {
-        "unwitnessed_phantom": "Không có giao dịch trao đổi nào làm bằng chứng cho việc đặt chỗ này.",
-        "unwitnessed_legacy_lineage": "Bản ghi có nguồn gốc kế thừa mà không có giao dịch trao đổi nào được dùng làm bằng chứng."
+        "unwitnessed_phantom": "Không có lần khớp lệnh trên sàn giao dịch làm bằng chứng cho bút toán này.",
+        "unwitnessed_legacy_lineage": "Bản ghi bắt nguồn từ hệ thống cũ, không có lần khớp lệnh trên sàn giao dịch làm bằng chứng."
       }
     },
     "timeTravelNotice": "Chế độ xem lịch sử: hiển thị P&L theo dữ liệu đã biết tại {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Bụi ({{count}})",
-    "show": "Hiện vị thế bụi",
-    "hide": "Ẩn vị thế bụi"
+    "title": "Vị thế dư giá trị nhỏ ({{count}})",
+    "show": "Hiện vị thế dư giá trị nhỏ",
+    "hide": "Ẩn vị thế dư giá trị nhỏ"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: đang chờ",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Dừng lỗ bám giá: {{stop}}",
+    "trailingStopPending": "Dừng lỗ bám giá: đang chờ",
+    "slTpButton": "Cắt lỗ/Chốt lời",
     "trailButton": "Bám giá",
     "quantity": "Số lượng",
     "averageEntry": "Giá vào TB",
@@ -228,7 +228,7 @@
     "realizedPnl": "P&L đã thực hiện",
     "updated": "Cập nhật {{timestamp}}",
     "mark": "Giá tham chiếu",
-    "noValue": "N/A"
+    "noValue": "Không có dữ liệu"
   },
   "empty": {
     "title": "Không có vị thế đang mở",
@@ -239,10 +239,10 @@
     "confirmTitle": "Xác nhận Bracket",
     "position": "Vị thế",
     "entryPrice": "Giá vào",
-    "stopLossLabel": "Giá Stop-Loss",
-    "takeProfitLabel": "Giá Take-Profit",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Giá cắt lỗ",
+    "takeProfitLabel": "Giá chốt lời",
+    "stopLoss": "Cắt lỗ",
+    "takeProfit": "Chốt lời",
     "placeholders": {
       "slLong": "Dưới {{price}}",
       "slShort": "Trên {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Cần ít nhất một giá SL hoặc TP",
-    "invalidSlPrice": "Giá Stop-Loss không hợp lệ",
-    "slPricePositive": "Giá Stop-Loss phải là số dương",
-    "invalidTpPrice": "Giá Take-Profit không hợp lệ",
-    "tpPricePositive": "Giá Take-Profit phải là số dương",
+    "invalidSlPrice": "Giá cắt lỗ không hợp lệ",
+    "slPricePositive": "Giá cắt lỗ phải là số dương",
+    "invalidTpPrice": "Giá chốt lời không hợp lệ",
+    "tpPricePositive": "Giá chốt lời phải là số dương",
     "slLongBelowEntry": "Giá SL phải thấp hơn giá vào ({{price}})",
     "tpLongAboveEntry": "Giá TP phải cao hơn giá vào ({{price}})",
     "slShortAboveEntry": "Giá SL phải cao hơn giá vào ({{price}})",

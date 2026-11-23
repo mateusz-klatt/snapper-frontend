@@ -14,8 +14,8 @@
       "granularity": "Granularidad",
       "granularityAriaLabel": "Seleccionar granularidad de la cronología",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
         "oneHour": "1h",
         "oneDay": "1d"
       },
@@ -94,8 +94,8 @@
       "targetExecutionId": "Ejecución comercial anulada",
       "correctionId": "Registro de corrección",
       "reasons": {
-        "unwitnessed_phantom": "No existe ningún intercambio comercial que sirva como prueba de esta reserva.",
-        "unwitnessed_legacy_lineage": "Registro derivado de legado para el cual ningún intercambio comercial sirve como evidencia."
+        "unwitnessed_phantom": "Ninguna ejecución en la plataforma de intercambio respalda este asiento.",
+        "unwitnessed_legacy_lineage": "Registro procedente de datos antiguos sin una ejecución que lo respalde."
       }
     },
     "timeTravelNotice": "Vista histórica: se muestra el P&L conocido a fecha de {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Polvo ({{count}})",
-    "show": "Mostrar posiciones de polvo",
-    "hide": "Ocultar posiciones de polvo"
+    "title": "Posiciones residuales ({{count}})",
+    "show": "Mostrar posiciones residuales",
+    "hide": "Ocultar posiciones residuales"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: pendiente",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Stop dinámico: {{stop}}",
+    "trailingStopPending": "Stop dinámico: pendiente",
+    "slTpButton": "Pérdida/beneficio",
     "trailButton": "Trailing",
     "quantity": "Cantidad",
     "averageEntry": "Entrada media",
@@ -239,10 +239,10 @@
     "confirmTitle": "Confirmar bracket",
     "position": "Posición",
     "entryPrice": "Precio de entrada",
-    "stopLossLabel": "Precio Stop-Loss",
-    "takeProfitLabel": "Precio Take-Profit",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Precio límite de pérdidas",
+    "takeProfitLabel": "Precio de toma de beneficios",
+    "stopLoss": "Límite de pérdidas",
+    "takeProfit": "Toma de beneficios",
     "placeholders": {
       "slLong": "Por debajo de {{price}}",
       "slShort": "Por encima de {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Se requiere al menos un precio de SL o TP",
-    "invalidSlPrice": "Precio de stop-loss no válido",
-    "slPricePositive": "El precio de stop-loss debe ser positivo",
-    "invalidTpPrice": "Precio de take-profit no válido",
-    "tpPricePositive": "El precio de take-profit debe ser positivo",
+    "invalidSlPrice": "Precio límite de pérdidas no válido",
+    "slPricePositive": "El precio límite de pérdidas debe ser positivo",
+    "invalidTpPrice": "Precio de toma de beneficios no válido",
+    "tpPricePositive": "El precio de toma de beneficios debe ser positivo",
     "slLongBelowEntry": "El precio de SL debe ser inferior al precio de entrada ({{price}})",
     "tpLongAboveEntry": "El precio de TP debe ser superior al precio de entrada ({{price}})",
     "slShortAboveEntry": "El precio de SL debe ser superior al precio de entrada ({{price}})",

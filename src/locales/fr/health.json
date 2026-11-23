@@ -30,16 +30,16 @@
   },
   "process": {
     "uptimeNotAvailable": "N/D",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeMinutes": "{{minutes}}min",
+    "uptimeHours": "{{hours}}h {{minutes}}min",
     "uptimeDays": "{{days}}j {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Test historique {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
     "uptimeLabel": "Temps de fonctionnement",
     "exitCode": "Code de sortie : {{code}}",
     "service": "service",
-    "backtest": "backtest"
+    "backtest": "test historique"
   },
   "dbStats": {
     "title": "Statistiques de la base de données",
@@ -93,7 +93,7 @@
       "status": "Statut"
     },
     "retainDays": "{{days}}j",
-    "ok": "OK",
+    "ok": "Correct",
     "error": "erreur"
   },
   "systemMetrics": {
@@ -107,7 +107,7 @@
     "pid": "PID",
     "statusValue": "Statut : {{status}}",
     "uptime": "Temps de fonctionnement",
-    "threads": "Threads",
+    "threads": "Fils d’exécution",
     "openFds": "FD ouverts",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
@@ -119,9 +119,9 @@
     "asyncioPending": "En attente : {{count}}",
     "dbPool": "Pool DB",
     "liveConns": "Connexions actives : {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Générations du GC 0/1/2",
     "gcObjects": "Objets : {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "Fils d’exécution %",
     "networkConns": "Connexions réseau",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "Actif",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Groupe de connexions",
       "policy": "Politique de quarantaine",
       "fallbackRoute": "Route privée de secours",
       "routes": "Routes"
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "négociation {{age}}"
     },
     "kind": {
       "direct": "direct",

@@ -56,7 +56,7 @@
       "status": "Status",
       "dataLag": "Lag Data",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Detak proses",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,8 +90,8 @@
       "warning": "PERINGATAN",
       "error": "KESALAHAN"
     },
-    "backtest": "Backtest",
-    "backtestAriaLabel": "Backtest strategi {{name}}",
+    "backtest": "Uji historis",
+    "backtestAriaLabel": "Uji historis strategi {{name}}",
     "managedRemotely": "Dikelola oleh {{coordinator}}",
     "remoteCoordinatorUnknown": "kontainer lain",
     "restart": "Mulai ulang",

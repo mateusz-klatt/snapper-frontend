@@ -14,10 +14,10 @@
       "granularity": "Resolusyon ng oras",
       "granularityAriaLabel": "Piliin ang resolusyon ng oras sa timeline",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 Minuto",
+        "fiveMinutes": "5 Minuto",
+        "oneHour": "1 Oras",
+        "oneDay": "1 Araw"
       },
       "valuationCurrency": "Currency ng valuation",
       "valuationCurrencyAriaLabel": "Piliin ang currency ng valuation",
@@ -91,11 +91,11 @@
       "hideDetails": "Itago ang mga pagwawasto",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Itinama sa {{time}}",
-      "targetExecutionId": "Pinawalang-bisa ang pagpapatupad ng kalakalan",
+      "targetExecutionId": "Pinawalang-bisang pagpapatupad ng kalakalan",
       "correctionId": "Talaan ng pagwawasto",
       "reasons": {
-        "unwitnessed_phantom": "Walang exchange trade fill na nagsisilbing ebidensya para sa booking na ito.",
-        "unwitnessed_legacy_lineage": "Legacy-derived record kung saan walang exchange trade fill ang nagsisilbing ebidensya."
+        "unwitnessed_phantom": "Walang naitalang pagtupad sa order sa palitan na nagpapatunay sa transaksyong ito.",
+        "unwitnessed_legacy_lineage": "Tala mula sa lumang sistema na walang naitalang pagtupad sa order sa palitan bilang patunay."
       }
     },
     "timeTravelNotice": "Historikal na view: ipinapakita ang P&L ayon sa nalalaman noong {{asOf}}.",
@@ -175,7 +175,7 @@
         "noValue": "—",
         "types": {
           "fill": "Execution",
-          "signal": "Signal",
+          "signal": "Senyas",
           "ai_decision": "Desisyon ng AI"
         },
         "outcomes": {
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Alikabok ({{count}})",
-    "show": "Ipakita ang mga posisyong alikabok",
-    "hide": "Itago ang mga posisyong alikabok"
+    "title": "Maliliit na natitirang posisyon ({{count}})",
+    "show": "Ipakita ang maliliit na natitirang posisyon",
+    "hide": "Itago ang maliliit na natitirang posisyon"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: naka-pending",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Stop na sumusunod sa presyo: {{stop}}",
+    "trailingStopPending": "Stop na sumusunod sa presyo: naka-pending",
+    "slTpButton": "Limitasyon sa pagkalugi/Pagkuha ng tubo",
     "trailButton": "Trailing stop",
     "quantity": "Dami",
     "averageEntry": "Avg entry",
@@ -228,7 +228,7 @@
     "realizedPnl": "Na-realize na P&L",
     "updated": "Na-update {{timestamp}}",
     "mark": "Presyong batayan",
-    "noValue": "N/A"
+    "noValue": "Hindi available"
   },
   "empty": {
     "title": "Walang open positions",
@@ -239,10 +239,10 @@
     "confirmTitle": "Kumpirmahin ang Bracket",
     "position": "Posisyon",
     "entryPrice": "Presyo ng pagpasok",
-    "stopLossLabel": "Presyo ng stop-loss",
-    "takeProfitLabel": "Presyo ng take-profit",
-    "stopLoss": "Stop-loss",
-    "takeProfit": "Take-profit",
+    "stopLossLabel": "Presyo ng limitasyon sa pagkalugi",
+    "takeProfitLabel": "Presyo ng pagkuha ng tubo",
+    "stopLoss": "Limitasyon sa pagkalugi",
+    "takeProfit": "Pagkuha ng tubo",
     "placeholders": {
       "slLong": "Mas mababa sa {{price}}",
       "slShort": "Mas mataas sa {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Kailangan ng kahit isang SL o TP price",
-    "invalidSlPrice": "Invalid na stop-loss price",
-    "slPricePositive": "Dapat positive ang stop-loss price",
-    "invalidTpPrice": "Invalid na take-profit price",
-    "tpPricePositive": "Dapat positive ang take-profit price",
+    "invalidSlPrice": "Hindi wasto ang presyo ng limitasyon sa pagkalugi",
+    "slPricePositive": "Dapat positibo ang presyo ng limitasyon sa pagkalugi",
+    "invalidTpPrice": "Hindi wasto ang presyo ng pagkuha ng tubo",
+    "tpPricePositive": "Dapat positibo ang presyo ng pagkuha ng tubo",
     "slLongBelowEntry": "Dapat mas mababa ang SL price kaysa entry price ({{price}})",
     "tpLongAboveEntry": "Dapat mas mataas ang TP price kaysa entry price ({{price}})",
     "slShortAboveEntry": "Dapat mas mataas ang SL price kaysa entry price ({{price}})",

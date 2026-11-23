@@ -56,7 +56,7 @@
       "status": "Κατάσταση",
       "dataLag": "Καθυστέρηση δεδομένων",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Σήμα λειτουργίας",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

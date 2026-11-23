@@ -1,11 +1,11 @@
 {
   "page": {
-    "title": "Market Data"
+    "title": "Datos ng merkado"
   },
   "controls": {
     "exchange": "Palitan:",
-    "instrument": "Instrument:",
-    "timeframe": "Timeframe:",
+    "instrument": "Instrumento:",
+    "timeframe": "Agwat ng oras:",
     "selectExchange": "Pumili ng exchange",
     "searchInstrument": "Maghanap ng instrument..."
   },
@@ -49,11 +49,11 @@
     "fallback": "{{name}} · {{assetClass}}"
   },
   "assetClass": {
-    "crypto": "Cryptocurrency",
+    "crypto": "Kriptosalapi",
     "commodity": "Kalakal",
-    "forex": "Forex",
-    "index": "Index",
-    "yield": "Yield",
+    "forex": "Palitan ng salapi",
+    "index": "Indeks",
+    "yield": "Kita",
     "unknown": "Iba pa"
   },
   "sector": {
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Istatistika ng pares kasama ang {{symbol}} sa {{exchange}}: Pearson {{pearson}}, p-value {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Oras:",
+    "live": "Kasalukuyan",
     "sliderAriaLabel": "Mag-navigate sa kasaysayan ng merkado",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Kasalukuyan",
+      "h1": "-1 Oras",
+      "d1": "-1 Araw",
+      "w1": "-1 linggo",
+      "mo1": "-1 buwan"
     }
   }
 }

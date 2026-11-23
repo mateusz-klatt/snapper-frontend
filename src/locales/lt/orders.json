@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Nėra duomenų",
     "priceMarket": "Rinkos",
     "quantity": "Kiekis",
     "price": "Kaina",
     "created": "Sukurta",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Nėra duomenų",
     "orderId": "Pavedimo ID",
     "leverage": "Svertas",
     "leverageValue": "{{leverage}}x",

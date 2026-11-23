@@ -5,7 +5,7 @@
   "controls": {
     "exchange": "Bursa:",
     "instrument": "Instrumen:",
-    "timeframe": "Timeframe:",
+    "timeframe": "Rentang waktu:",
     "selectExchange": "Pilih bursa",
     "searchInstrument": "Cari instrumen..."
   },
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Mata uang kripto",
     "commodity": "Komoditas",
-    "forex": "Forex",
+    "forex": "Valuta asing",
     "index": "Indeks",
     "yield": "Imbal hasil",
     "unknown": "Lainnya"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Statistik pasangan dengan {{symbol}} di {{exchange}}: Pearson {{pearson}}, nilai p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Waktu:",
+    "live": "Langsung",
     "sliderAriaLabel": "Geser waktu pasar",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Langsung",
+      "h1": "-1 Jam",
+      "d1": "-1 Hari",
+      "w1": "-1 minggu",
+      "mo1": "-1 bulan"
     }
   }
 }

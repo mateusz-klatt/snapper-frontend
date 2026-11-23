@@ -30,16 +30,16 @@
   },
   "process": {
     "uptimeNotAvailable": "N/D",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeMinutes": "{{minutes}}min",
+    "uptimeHours": "{{hours}}h {{minutes}}min",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Test na povijesnim podacima {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
     "uptimeLabel": "Vrijeme rada",
     "exitCode": "Izlazni kod: {{code}}",
     "service": "servis",
-    "backtest": "backtest"
+    "backtest": "test na povijesnim podacima"
   },
   "dbStats": {
     "title": "Statistika baze podataka",
@@ -93,7 +93,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}d",
-    "ok": "OK",
+    "ok": "U redu",
     "error": "pogreška"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Na čekanju: {{count}}",
     "dbPool": "DB pool",
     "liveConns": "Live veze: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC generacije 0/1/2",
     "gcObjects": "Objekti: {{value}}",
     "threadsPercent": "Threadovi %",
     "networkConns": "Mrežne veze",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Uspostava veze {{age}}"
     },
     "kind": {
       "direct": "izravno",

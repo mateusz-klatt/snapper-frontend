@@ -30,10 +30,10 @@
   },
   "process": {
     "uptimeNotAvailable": "n. v.",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeMinutes": "{{minutes}}min",
+    "uptimeHours": "{{hours}}h {{minutes}}min",
     "uptimeDays": "{{days}}T {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Historischer Test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "n. v.",
     "uptimeLabel": "Laufzeit",
@@ -93,7 +93,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}T",
-    "ok": "OK",
+    "ok": "In Ordnung",
     "error": "Fehler"
   },
   "systemMetrics": {
@@ -107,7 +107,7 @@
     "pid": "PID",
     "statusValue": "Status: {{status}}",
     "uptime": "Laufzeit",
-    "threads": "Threads",
+    "threads": "Ausführungsthreads",
     "openFds": "Offene FDs",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
@@ -119,9 +119,9 @@
     "asyncioPending": "Ausstehend: {{count}}",
     "dbPool": "DB-Pool",
     "liveConns": "Aktive Verbindungen: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC-Generationen 0/1/2",
     "gcObjects": "Objekte: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "Ausführungsthreads %",
     "networkConns": "Netzwerkverbindungen",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "Aktiv",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Verbindungspool",
       "policy": "Quarantäne-Richtlinie",
       "fallbackRoute": "Privates Fallback",
       "routes": "Routen"
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Verbindungsaufbau {{age}}"
     },
     "kind": {
       "direct": "direkt",

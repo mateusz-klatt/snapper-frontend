@@ -90,7 +90,7 @@
       "warning": "AVERTISMENT",
       "error": "EROARE"
     },
-    "backtest": "Backtest",
+    "backtest": "Test pe date istorice",
     "backtestAriaLabel": "Backtest pentru strategia {{name}}",
     "managedRemotely": "Gestionat de {{coordinator}}",
     "remoteCoordinatorUnknown": "alt container",

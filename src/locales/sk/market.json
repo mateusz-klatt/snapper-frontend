@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kryptomena",
     "commodity": "Komodita",
-    "forex": "Forex",
+    "forex": "Devízový trh",
     "index": "Index",
     "yield": "Výnos",
     "unknown": "Ostatné"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Štatistiky páru s {{symbol}} na burze {{exchange}}: Pearson {{pearson}}, p-hodnota {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Čas:",
+    "live": "Naživo",
     "sliderAriaLabel": "Posúvanie v histórii trhu",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Naživo",
+      "h1": "-1 h",
+      "d1": "-1 d",
+      "w1": "-1 týž.",
+      "mo1": "-1 mes."
     }
   }
 }

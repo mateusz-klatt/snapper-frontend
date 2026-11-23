@@ -50,7 +50,7 @@
     "subtitle": "Aggiungi osservatori attivi a un desk o rimuovi il loro accesso corrente.",
     "memberCount": "Membri: {{count}}",
     "desk": {
-      "label": "Desk",
+      "label": "Unità di negoziazione",
       "placeholder": "Seleziona un desk..."
     },
     "add": {
@@ -209,7 +209,7 @@
       "columns": {
         "operator": "Operatore",
         "scope": "Ambito",
-        "target": "Target",
+        "target": "Destinazione",
         "grantedAt": "Concesso il",
         "actions": "Azioni"
       },
@@ -315,7 +315,7 @@
       "addCredential": "Aggiungi credenziale",
       "selectWalletPrompt": "Scegli un portafoglio sopra per visualizzare le sue credenziali.",
       "columns": {
-        "exchange": "Exchange",
+        "exchange": "Piattaforma di scambio",
         "type": "Tipo",
         "label": "Etichetta",
         "createdAt": "Creato il",
@@ -332,7 +332,7 @@
       "title": "Aggiungi credenziale",
       "fields": {
         "wallet": "Portafoglio",
-        "exchange": "Exchange",
+        "exchange": "Piattaforma di scambio",
         "exchangePlaceholder": "es. kraken",
         "credentialType": "Tipo di credenziale",
         "label": "Etichetta (opzionale)",
@@ -371,7 +371,7 @@
     "rotate": {
       "title": "Ruota credenziale",
       "fields": {
-        "exchange": "Exchange",
+        "exchange": "Piattaforma di scambio",
         "type": "Tipo",
         "label": "Etichetta",
         "newLabel": "Nuova etichetta (opzionale)",

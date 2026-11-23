@@ -14,10 +14,10 @@
       "granularity": "Resolusi",
       "granularityAriaLabel": "Pilih resolusi garis masa",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 Minit",
+        "fiveMinutes": "5 Minit",
+        "oneHour": "1 Jam",
+        "oneDay": "1 Hari"
       },
       "valuationCurrency": "Mata wang penilaian",
       "valuationCurrencyAriaLabel": "Pilih mata wang penilaian",
@@ -91,11 +91,11 @@
       "hideDetails": "Sembunyikan pembetulan",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Dibetulkan pada {{time}}",
-      "targetExecutionId": "Pelaksanaan perdagangan dibatalkan",
+      "targetExecutionId": "Pelaksanaan dagangan yang dibatalkan",
       "correctionId": "Rekod pembetulan",
       "reasons": {
-        "unwitnessed_phantom": "Tiada isian perdagangan pertukaran yang berfungsi sebagai bukti untuk tempahan ini.",
-        "unwitnessed_legacy_lineage": "Rekod terbitan warisan yang tiada isian perdagangan pertukaran berfungsi sebagai bukti."
+        "unwitnessed_phantom": "Tiada pelaksanaan pesanan di bursa yang menjadi bukti bagi catatan transaksi ini.",
+        "unwitnessed_legacy_lineage": "Rekod yang berasal daripada sistem lama tanpa pelaksanaan pesanan di bursa sebagai bukti."
       }
     },
     "timeTravelNotice": "Paparan sejarah: menunjukkan P&L seperti yang diketahui pada {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Habuk ({{count}})",
-    "show": "Tunjukkan posisi habuk",
-    "hide": "Sembunyikan posisi habuk"
+    "title": "Posisi baki bernilai kecil ({{count}})",
+    "show": "Tunjukkan posisi baki bernilai kecil",
+    "hide": "Sembunyikan posisi baki bernilai kecil"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: tertunda",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Henti mengekor: {{stop}}",
+    "trailingStopPending": "Henti mengekor: tertunda",
+    "slTpButton": "Henti rugi/Ambil untung",
     "trailButton": "Jejak",
     "quantity": "Kuantiti",
     "averageEntry": "Purata Entry",
@@ -228,7 +228,7 @@
     "realizedPnl": "P&L Direalisasikan",
     "updated": "Dikemas kini {{timestamp}}",
     "mark": "Harga rujukan",
-    "noValue": "N/A"
+    "noValue": "Tidak tersedia"
   },
   "empty": {
     "title": "Tiada posisi terbuka",
@@ -239,10 +239,10 @@
     "confirmTitle": "Sahkan Bracket",
     "position": "Posisi",
     "entryPrice": "Harga Entry",
-    "stopLossLabel": "Harga Stop-Loss",
-    "takeProfitLabel": "Harga Take-Profit",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Harga henti rugi",
+    "takeProfitLabel": "Harga ambil untung",
+    "stopLoss": "Henti rugi",
+    "takeProfit": "Ambil untung",
     "placeholders": {
       "slLong": "Di bawah {{price}}",
       "slShort": "Di atas {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Sekurang-kurangnya satu harga SL atau TP diperlukan",
-    "invalidSlPrice": "Harga Stop-Loss tidak sah",
-    "slPricePositive": "Harga Stop-Loss mesti positif",
-    "invalidTpPrice": "Harga Take-Profit tidak sah",
-    "tpPricePositive": "Harga Take-Profit mesti positif",
+    "invalidSlPrice": "Harga henti rugi tidak sah",
+    "slPricePositive": "Harga henti rugi mesti positif",
+    "invalidTpPrice": "Harga ambil untung tidak sah",
+    "tpPricePositive": "Harga ambil untung mesti positif",
     "slLongBelowEntry": "Harga SL mesti di bawah harga entry ({{price}})",
     "tpLongAboveEntry": "Harga TP mesti di atas harga entry ({{price}})",
     "slShortAboveEntry": "Harga SL mesti di atas harga entry ({{price}})",

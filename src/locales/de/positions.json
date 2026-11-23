@@ -14,10 +14,10 @@
       "granularity": "Granularität",
       "granularityAriaLabel": "Granularität der Zeitachse auswählen",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
         "oneHour": "1h",
-        "oneDay": "1d"
+        "oneDay": "1 T"
       },
       "valuationCurrency": "Bewertungswährung",
       "valuationCurrencyAriaLabel": "Bewertungswährung auswählen",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Handelsausführung annulliert",
       "correctionId": "Korrekturprotokoll",
       "reasons": {
-        "unwitnessed_phantom": "Es gibt keine Börsenausfüllung, die als Beleg für diese Buchung dient.",
-        "unwitnessed_legacy_lineage": "Aus dem Altbestand abgeleiteter Datensatz, für den keine Börsenhandelsausfüllung als Beweis dient."
+        "unwitnessed_phantom": "Keine Handelsausführung an der Börse belegt diese Buchung.",
+        "unwitnessed_legacy_lineage": "Aus Altdaten abgeleiteter Datensatz ohne belegende Handelsausführung."
       }
     },
     "timeTravelNotice": "Historische Ansicht: P&L gemäß Kenntnisstand vom {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Staub ({{count}})",
-    "show": "Staubpositionen anzeigen",
-    "hide": "Staubpositionen ausblenden"
+    "title": "Kleinstpositionen ({{count}})",
+    "show": "Kleinstpositionen anzeigen",
+    "hide": "Kleinstpositionen ausblenden"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: ausstehend",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Nachziehender Stopp: {{stop}}",
+    "trailingStopPending": "Nachziehender Stopp: ausstehend",
+    "slTpButton": "Verlust/Gewinn",
     "trailButton": "Trailing",
     "quantity": "Menge",
     "averageEntry": "Ø Einstieg",
@@ -239,10 +239,10 @@
     "confirmTitle": "Bracket bestätigen",
     "position": "Position",
     "entryPrice": "Einstiegspreis",
-    "stopLossLabel": "Stop-Loss-Preis",
-    "takeProfitLabel": "Take-Profit-Preis",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Kurs zur Verlustbegrenzung",
+    "takeProfitLabel": "Kurs zur Gewinnmitnahme",
+    "stopLoss": "Verlustbegrenzung",
+    "takeProfit": "Gewinnmitnahme",
     "placeholders": {
       "slLong": "Unter {{price}}",
       "slShort": "Über {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Mindestens ein SL- oder TP-Preis ist erforderlich",
-    "invalidSlPrice": "Ungültiger Stop-Loss-Preis",
-    "slPricePositive": "Stop-Loss-Preis muss positiv sein",
-    "invalidTpPrice": "Ungültiger Take-Profit-Preis",
-    "tpPricePositive": "Take-Profit-Preis muss positiv sein",
+    "invalidSlPrice": "Ungültiger Kurs zur Verlustbegrenzung",
+    "slPricePositive": "Der Kurs zur Verlustbegrenzung muss positiv sein",
+    "invalidTpPrice": "Ungültiger Kurs zur Gewinnmitnahme",
+    "tpPricePositive": "Der Kurs zur Gewinnmitnahme muss positiv sein",
     "slLongBelowEntry": "SL-Preis muss unter dem Einstiegspreis ({{price}}) liegen",
     "tpLongAboveEntry": "TP-Preis muss über dem Einstiegspreis ({{price}}) liegen",
     "slShortAboveEntry": "SL-Preis muss über dem Einstiegspreis ({{price}}) liegen",

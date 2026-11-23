@@ -93,7 +93,7 @@
       "status": "סטטוס"
     },
     "retainDays": "{{days}}י׳",
-    "ok": "OK",
+    "ok": "תקין",
     "error": "שגיאה"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "ממתינות: {{count}}",
     "dbPool": "מאגר DB",
     "liveConns": "חיבורים חיים: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "דורות GC ‏0/1/2",
     "gcObjects": "אובייקטים: {{value}}",
     "threadsPercent": "תהליכונים (%)",
     "networkConns": "חיבורי רשת",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "לחיצת יד {{age}}"
     },
     "kind": {
       "direct": "ישיר",

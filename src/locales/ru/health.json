@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Н/Д",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeMinutes": "{{minutes}}мин",
+    "uptimeHours": "{{hours}}ч {{minutes}}мин",
+    "uptimeDays": "{{days}}д {{hours}}ч",
     "backtestName": "Бэктест {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Н/Д",
@@ -92,8 +92,8 @@
       "files": "Файлы",
       "status": "Статус"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}}д",
+    "ok": "В норме",
     "error": "ошибка"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Ожидающие: {{count}}",
     "dbPool": "Пул БД",
     "liveConns": "Активные подключения: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Поколения GC 0/1/2",
     "gcObjects": "Объекты: {{value}}",
     "threadsPercent": "Потоки %",
     "networkConns": "Сетевые подключения",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Согласование соединения {{age}}"
     },
     "kind": {
       "direct": "прямой",
@@ -208,10 +208,10 @@
     "days": "{{days}}d назад"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}}с",
+    "minutes": "{{minutes}}мин",
+    "hours": "{{hours}}ч",
+    "days": "{{days}}д"
   },
   "memory": {
     "mb": "{{value}} MB",

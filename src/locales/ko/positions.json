@@ -14,10 +14,10 @@
       "granularity": "간격",
       "granularityAriaLabel": "타임라인 간격 선택",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1분",
+        "fiveMinutes": "5분",
+        "oneHour": "1시간",
+        "oneDay": "1일"
       },
       "valuationCurrency": "평가 통화",
       "valuationCurrencyAriaLabel": "평가 통화 선택",
@@ -91,11 +91,11 @@
       "hideDetails": "수정사항 숨기기",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "{{time}}에 수정됨",
-      "targetExecutionId": "무효화된 거래 실행",
+      "targetExecutionId": "무효화된 체결",
       "correctionId": "정정기록",
       "reasons": {
-        "unwitnessed_phantom": "이 예약에 대한 증거로 사용되는 거래소 거래 채우기가 없습니다.",
-        "unwitnessed_legacy_lineage": "거래소 거래 기록이 증거로 제공되지 않는 레거시 파생 기록입니다."
+        "unwitnessed_phantom": "이 거래 기록을 뒷받침하는 거래소 체결 내역이 없습니다.",
+        "unwitnessed_legacy_lineage": "이전 시스템에서 유래한 기록으로, 이를 뒷받침하는 거래소 체결 내역이 없습니다."
       }
     },
     "timeTravelNotice": "과거 시점 보기: {{asOf}} 당시 확인된 P&L을 표시합니다.",
@@ -218,9 +218,9 @@
     "hide": "더스트 포지션 숨기기"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: 대기 중",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "트레일링 스탑: {{stop}}",
+    "trailingStopPending": "트레일링 스탑: 대기 중",
+    "slTpButton": "스탑로스/테이크프로핏",
     "trailButton": "트레일링",
     "quantity": "수량",
     "averageEntry": "평균 진입가",

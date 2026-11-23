@@ -19,7 +19,7 @@
     "price": "가격",
     "exchange": "거래소",
     "reason": "사유:",
-    "noPrice": "N/A"
+    "noPrice": "데이터 없음"
   },
   "strength": {
     "strong": "강함",

@@ -19,7 +19,7 @@
     "price": "Գին",
     "exchange": "Բորսա",
     "reason": "Պատճառ՝",
-    "noPrice": "N/A"
+    "noPrice": "Հասանելի չէ"
   },
   "strength": {
     "strong": "Ուժեղ",

@@ -19,7 +19,7 @@
     "price": "Cena",
     "exchange": "Burza",
     "reason": "Dôvod:",
-    "noPrice": "N/A"
+    "noPrice": "Nie je k dispozícii"
   },
   "strength": {
     "strong": "Silný",

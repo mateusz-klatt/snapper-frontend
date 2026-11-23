@@ -56,7 +56,7 @@
       "status": "Status",
       "dataLag": "Kašnjenje podataka",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Signal aktivnosti",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,7 +90,7 @@
       "warning": "UPOZORENJE",
       "error": "POGREŠKA"
     },
-    "backtest": "Backtest",
+    "backtest": "Test na povijesnim podacima",
     "backtestAriaLabel": "Backtestiraj strategiju {{name}}",
     "managedRemotely": "Upravlja {{coordinator}}",
     "remoteCoordinatorUnknown": "drugi kontejner",
@@ -128,8 +128,8 @@
     "submit": "Registriraj strategiju",
     "submitting": "Registracija…",
     "scopeSectionLabel": "Opseg",
-    "operatorLabel": "Operator",
-    "operatorPlaceholder": "Odaberite operatora",
+    "operatorLabel": "Operater",
+    "operatorPlaceholder": "Odaberite operatera",
     "walletLabel": "Novčanik",
     "walletPlaceholder": "Odaberite novčanik",
     "paperAnnotation": " (papirni)",

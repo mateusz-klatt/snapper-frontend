@@ -50,7 +50,7 @@
     "subtitle": "Dodawaj aktywnych obserwatorów do desku lub odbieraj im bieżący dostęp.",
     "memberCount": "Członkowie: {{count}}",
     "desk": {
-      "label": "Desk",
+      "label": "Zespół tradingowy",
       "placeholder": "Wybierz desk..."
     },
     "add": {
@@ -343,9 +343,9 @@
         "api_key": "Klucz API",
         "api_secret": "Sekret API",
         "private_key_pem": "Klucz prywatny (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "Identyfikator klienta",
+        "client_secret": "Sekret klienta",
+        "refresh_token": "Token odświeżania",
         "initial_balance": "Saldo początkowe"
       },
       "credentialTypes": {

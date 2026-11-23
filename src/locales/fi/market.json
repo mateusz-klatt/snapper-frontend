@@ -81,15 +81,15 @@
     "chipAriaLabel": "Paritilastot instrumentin {{symbol}} kanssa pörssissä {{exchange}}: Pearson {{pearson}}, p-arvo {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Aika:",
+    "live": "Reaaliaikainen",
     "sliderAriaLabel": "Selaa markkinahistoriaa",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Reaaliaikainen",
+      "h1": "-1 t",
+      "d1": "-1 pv",
+      "w1": "-1 vk",
+      "mo1": "-1 kk"
     }
   }
 }

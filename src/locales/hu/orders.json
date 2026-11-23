@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Nem érhető el",
     "priceMarket": "Piaci",
     "quantity": "Mennyiség",
     "price": "Ár",
     "created": "Létrehozva",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Nem érhető el",
     "orderId": "Megbízásazonosító",
     "leverage": "Tőkeáttétel",
     "leverageValue": "{{leverage}}x",

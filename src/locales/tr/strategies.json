@@ -56,7 +56,7 @@
       "status": "Durum",
       "dataLag": "Veri Gecikmesi",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Yaşam sinyali",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,8 +90,8 @@
       "warning": "UYARI",
       "error": "HATA"
     },
-    "backtest": "Backtest",
-    "backtestAriaLabel": "{{name}} stratejisini backtest et",
+    "backtest": "Geriye dönük test",
+    "backtestAriaLabel": "{{name}} stratejisini geçmiş verilerle test et",
     "managedRemotely": "{{coordinator}} tarafından yönetiliyor",
     "remoteCoordinatorUnknown": "başka bir kapsayıcı",
     "restart": "Yeniden başlat",

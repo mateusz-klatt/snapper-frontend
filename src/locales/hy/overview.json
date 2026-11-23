@@ -32,7 +32,7 @@
     "shortExposure": "Short էքսպոզիցիա",
     "netDelta": "Զուտ դելտա",
     "unrealizedPnl": "Չիրացված P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Շահույթ/վնաս %",
     "positions": "Դիրքեր",
     "instrumentsCount": "Գործիքներ՝ {{count}}",
     "empty": "Դիրքերի տվյալներ հասանելի չեն",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Վերջին ազդանշաններ",
     "empty": "Վերջին ազդանշաններ չկան",
-    "noTime": "N/A"
+    "noTime": "Հասանելի չէ"
   },
   "executions": {
     "title": "Վերջին կատարումներ",
     "empty": "Վերջին կատարումներ չկան",
-    "noTime": "N/A"
+    "noTime": "Հասանելի չէ"
   },
   "processResources": {
     "title": "Գործընթացների ռեսուրսներ",
@@ -55,7 +55,7 @@
     "colName": "Անուն",
     "colStatus": "Կարգավիճակ",
     "colRole": "Դեր",
-    "colMemory": "MEM",
+    "colMemory": "Հիշողություն",
     "colCpu": "CPU",
     "statusRunning": "Աշխատում է",
     "statusStopped": "Կանգնեցված",

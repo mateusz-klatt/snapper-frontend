@@ -89,7 +89,7 @@
       "price": "Prix",
       "stopPrice": "Prix stop",
       "mode": "Mode",
-      "wallet": "Wallet",
+      "wallet": "Portefeuille",
       "type": "Type",
       "postOnly": "Maker uniquement"
     },
@@ -100,7 +100,7 @@
     "orderTypeOptions": {
       "market": "Au marché",
       "limit": "Limite",
-      "stop": "Stop",
+      "stop": "Ordre à seuil de déclenchement",
       "stopLimit": "Stop-limit",
       "stop_limit": "Stop-limit"
     },

@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Μη διαθέσιμο",
     "priceMarket": "Αγορά",
     "quantity": "Ποσότητα",
     "price": "Τιμή",
     "created": "Δημιουργήθηκε",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Μη διαθέσιμο",
     "orderId": "ID εντολής",
     "leverage": "Μόχλευση",
     "leverageValue": "{{leverage}}x",
@@ -100,9 +100,9 @@
     "orderTypeOptions": {
       "market": "Αγοράς",
       "limit": "Ορίου",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "stop": "Εντολή stop",
+      "stopLimit": "Εντολή stop limit",
+      "stop_limit": "Εντολή stop limit"
     },
     "modeOptions": {
       "live": "Ζωντανή",

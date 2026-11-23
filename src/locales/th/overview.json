@@ -32,7 +32,7 @@
     "shortExposure": "Exposure ฝั่ง short",
     "netDelta": "เดลตาสุทธิ",
     "unrealizedPnl": "P&L ที่ยังไม่รับรู้",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "กำไร/ขาดทุน %",
     "positions": "สถานะ",
     "instrumentsCount": "ตราสาร: {{count}}",
     "empty": "ไม่มีข้อมูลสถานะ",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "สัญญาณล่าสุด",
     "empty": "ไม่มีสัญญาณล่าสุด",
-    "noTime": "N/A"
+    "noTime": "ไม่มีข้อมูล"
   },
   "executions": {
     "title": "การดำเนินการล่าสุด",
     "empty": "ไม่มีการดำเนินการล่าสุด",
-    "noTime": "N/A"
+    "noTime": "ไม่มีข้อมูล"
   },
   "processResources": {
     "title": "ทรัพยากรของโปรเซส",
@@ -55,7 +55,7 @@
     "colName": "ชื่อ",
     "colStatus": "สถานะ",
     "colRole": "บทบาท",
-    "colMemory": "MEM",
+    "colMemory": "หน่วยความจำ",
     "colCpu": "CPU",
     "statusRunning": "กำลังทำงาน",
     "statusStopped": "หยุดแล้ว",

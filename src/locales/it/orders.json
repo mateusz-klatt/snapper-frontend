@@ -81,7 +81,7 @@
     "titleEdit": "Nuovo ordine manuale",
     "titleConfirm": "Conferma ordine",
     "fields": {
-      "exchange": "Exchange",
+      "exchange": "Piattaforma di scambio",
       "instrument": "Strumento",
       "side": "Lato",
       "orderType": "Tipo di ordine",
@@ -100,7 +100,7 @@
     "orderTypeOptions": {
       "market": "A mercato",
       "limit": "Limite",
-      "stop": "Stop",
+      "stop": "Ordine stop",
       "stopLimit": "Stop limit",
       "stop_limit": "Stop limit"
     },

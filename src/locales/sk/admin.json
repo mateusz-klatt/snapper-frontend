@@ -50,7 +50,7 @@
     "subtitle": "Pridajte aktívnych pozorovateľov do desku alebo im odstráňte aktuálny prístup k desku.",
     "memberCount": "Členovia: {{count}}",
     "desk": {
-      "label": "Desk",
+      "label": "Obchodný desk",
       "placeholder": "Vyberte desk..."
     },
     "add": {

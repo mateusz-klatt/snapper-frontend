@@ -20,7 +20,7 @@
   },
   "processStatus": {
     "title": "Estado de procesos",
-    "feeds": "Feeds",
+    "feeds": "Fuentes de datos",
     "strategies": "Estrategias",
     "executors": "Ejecutores",
     "brokers": "Brókeres"
@@ -32,7 +32,7 @@
     "shortExposure": "Exposición corta",
     "netDelta": "Delta neto",
     "unrealizedPnl": "P&L no realizado",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Beneficios/pérdidas %",
     "positions": "Posiciones",
     "instrumentsCount": "Instrumentos: {{count}}",
     "empty": "No hay datos de posiciones disponibles",
@@ -55,7 +55,7 @@
     "colName": "Nombre",
     "colStatus": "Estado",
     "colRole": "Rol",
-    "colMemory": "MEM",
+    "colMemory": "Memoria",
     "colCpu": "CPU",
     "statusRunning": "En ejecución",
     "statusStopped": "Detenido",

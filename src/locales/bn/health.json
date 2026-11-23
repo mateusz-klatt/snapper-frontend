@@ -29,13 +29,13 @@
     "inactive": "নিষ্ক্রিয়"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeNotAvailable": "উপলভ্য নয়",
+    "uptimeMinutes": "{{minutes}} মিনিট",
+    "uptimeHours": "{{hours}} ঘণ্টা {{minutes}} মিনিট",
+    "uptimeDays": "{{days}} দিন {{hours}} ঘণ্টা",
     "backtestName": "ব্যাকটেস্ট {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "উপলভ্য নয়",
     "uptimeLabel": "আপটাইম",
     "exitCode": "এক্সিট কোড: {{code}}",
     "service": "সার্ভিস",
@@ -92,8 +92,8 @@
       "files": "ফাইল",
       "status": "স্ট্যাটাস"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} দিন",
+    "ok": "ঠিক আছে",
     "error": "ত্রুটি"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "অপেক্ষমাণ: {{count}}",
     "dbPool": "DB পুল",
     "liveConns": "সক্রিয় সংযোগ: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC প্রজন্ম 0/1/2",
     "gcObjects": "অবজেক্ট: {{value}}",
     "threadsPercent": "থ্রেড %",
     "networkConns": "নেটওয়ার্ক সংযোগ",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "সংযোগ স্থাপন {{age}}"
     },
     "kind": {
       "direct": "সরাসরি",
@@ -208,10 +208,10 @@
     "days": "{{days}}d আগে"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} সেকেন্ড",
+    "minutes": "{{minutes}} মিনিট",
+    "hours": "{{hours}} ঘণ্টা",
+    "days": "{{days}} দিন"
   },
   "memory": {
     "mb": "{{value}} MB",

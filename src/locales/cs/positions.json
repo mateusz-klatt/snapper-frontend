@@ -14,10 +14,10 @@
       "granularity": "Rozlišení",
       "granularityAriaLabel": "Vybrat rozlišení časové osy",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Měna ocenění",
       "valuationCurrencyAriaLabel": "Vybrat měnu ocenění",
@@ -85,7 +85,7 @@
     },
     "executionHistory": {
       "title": "Historie výpočtu",
-      "summary": "Zaznamenané opravy realizací mohou předcházet vybranému období. Tato historie je oddělená od upozornění pro zobrazené body P&L.",
+      "summary": "Zaznamenané opravy provedení pokynů mohou předcházet vybranému období. Tato historie je oddělená od upozornění pro zobrazené body P&L.",
       "correctionCount": "Zaznamenané opravy: {{count}}",
       "showDetails": "Zobrazit opravy",
       "hideDetails": "Skrýt opravy",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Anulovaná exekuce obchodu",
       "correctionId": "Opravný záznam",
       "reasons": {
-        "unwitnessed_phantom": "Jako důkaz pro tuto rezervaci neexistuje žádná burzovní výplň.",
-        "unwitnessed_legacy_lineage": "Záznam odvozený ze staršího data, pro který jako důkaz neslouží žádná výměna."
+        "unwitnessed_phantom": "Tento záznam není potvrzen žádným provedením pokynu na burze.",
+        "unwitnessed_legacy_lineage": "Záznam převzatý ze starších dat bez potvrzujícího provedení pokynu."
       }
     },
     "timeTravelNotice": "Historické zobrazení: P&L podle stavu známého k {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Prach ({{count}})",
-    "show": "Zobrazit prachové pozice",
-    "hide": "Skrýt prachové pozice"
+    "title": "Drobné zůstatky ({{count}})",
+    "show": "Zobrazit pozice se zanedbatelnou hodnotou",
+    "hide": "Skrýt pozice se zanedbatelnou hodnotou"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: čeká",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Posuvný stop: {{stop}}",
+    "trailingStopPending": "Posuvný stop: čeká",
+    "slTpButton": "Omezení ztráty / Realizace zisku",
     "trailButton": "Trailing",
     "quantity": "Množství",
     "averageEntry": "Průměrný vstup",
@@ -228,7 +228,7 @@
     "realizedPnl": "Realizovaný P&L",
     "updated": "Aktualizováno {{timestamp}}",
     "mark": "Mark cena",
-    "noValue": "N/A"
+    "noValue": "Není k dispozici"
   },
   "empty": {
     "title": "Žádné otevřené pozice",
@@ -239,10 +239,10 @@
     "confirmTitle": "Potvrdit Bracket",
     "position": "Pozice",
     "entryPrice": "Vstupní cena",
-    "stopLossLabel": "Stop-Loss cena",
-    "takeProfitLabel": "Take-Profit cena",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Cena omezení ztráty",
+    "takeProfitLabel": "Cena realizace zisku",
+    "stopLoss": "Omezení ztráty",
+    "takeProfit": "Realizace zisku",
     "placeholders": {
       "slLong": "Pod {{price}}",
       "slShort": "Nad {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Je vyžadována alespoň jedna cena SL nebo TP",
-    "invalidSlPrice": "Neplatná Stop-Loss cena",
-    "slPricePositive": "Stop-Loss cena musí být kladná",
-    "invalidTpPrice": "Neplatná Take-Profit cena",
-    "tpPricePositive": "Take-Profit cena musí být kladná",
+    "invalidSlPrice": "Neplatná cena omezení ztráty",
+    "slPricePositive": "Cena omezení ztráty musí být kladná",
+    "invalidTpPrice": "Neplatná cena realizace zisku",
+    "tpPricePositive": "Cena realizace zisku musí být kladná",
     "slLongBelowEntry": "Cena SL musí být pod vstupní cenou ({{price}})",
     "tpLongAboveEntry": "Cena TP musí být nad vstupní cenou ({{price}})",
     "slShortAboveEntry": "Cena SL musí být nad vstupní cenou ({{price}})",

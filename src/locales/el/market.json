@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Κρυπτονόμισμα",
     "commodity": "Εμπόρευμα",
-    "forex": "Forex",
+    "forex": "Συνάλλαγμα",
     "index": "Δείκτης",
     "yield": "Απόδοση",
     "unknown": "Άλλο"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Στατιστικά ζεύγους με {{symbol}} στην αγορά {{exchange}}: Pearson {{pearson}}, τιμή p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Χρόνος:",
+    "live": "Ζωντανά",
     "sliderAriaLabel": "Μετακίνηση στη χρονική ιστορία της αγοράς με το ρυθμιστικό",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Ζωντανά",
+      "h1": "-1 ώ.",
+      "d1": "-1 ημ.",
+      "w1": "-1 εβδ.",
+      "mo1": "-1 μήν."
     }
   }
 }

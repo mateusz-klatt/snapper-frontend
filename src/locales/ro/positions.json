@@ -14,10 +14,10 @@
       "granularity": "Granularitate",
       "granularityAriaLabel": "Selectați granularitatea cronologiei",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 z"
       },
       "valuationCurrency": "Monedă de evaluare",
       "valuationCurrencyAriaLabel": "Selectați moneda de evaluare",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Execuția comercială anulată",
       "correctionId": "Dosarul de corectare",
       "reasons": {
-        "unwitnessed_phantom": "Nu există nicio completare a schimburilor comerciale care să servească drept dovadă pentru această rezervare.",
-        "unwitnessed_legacy_lineage": "Înregistrare derivată din moștenire pentru care nicio completare a schimburilor comerciale nu servește drept dovadă."
+        "unwitnessed_phantom": "Nicio execuție de ordin la bursă nu confirmă această înregistrare.",
+        "unwitnessed_legacy_lineage": "Înregistrare provenită din date vechi, fără o execuție de ordin care să o confirme."
       }
     },
     "timeTravelNotice": "Vizualizare istorică: se afișează P&L așa cum era cunoscut la {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Praf ({{count}})",
-    "show": "Afișează pozițiile de praf",
-    "hide": "Ascunde pozițiile de praf"
+    "title": "Solduri reziduale ({{count}})",
+    "show": "Afișează pozițiile cu valoare neglijabilă",
+    "hide": "Ascunde pozițiile cu valoare neglijabilă"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: în așteptare",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Stop dinamic: {{stop}}",
+    "trailingStopPending": "Stop dinamic: în așteptare",
+    "slTpButton": "Limitarea pierderii / Marcarea profitului",
     "trailButton": "Stop dinamic",
     "quantity": "Cantitate",
     "averageEntry": "Intrare medie",
@@ -228,7 +228,7 @@
     "realizedPnl": "P&L realizat",
     "updated": "Actualizat {{timestamp}}",
     "mark": "Preț de referință",
-    "noValue": "N/A"
+    "noValue": "Indisponibil"
   },
   "empty": {
     "title": "Nu există poziții deschise",
@@ -239,10 +239,10 @@
     "confirmTitle": "Confirmare SL/TP",
     "position": "Poziție",
     "entryPrice": "Preț de intrare",
-    "stopLossLabel": "Preț Stop-Loss",
-    "takeProfitLabel": "Preț Take-Profit",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Preț de limitare a pierderii",
+    "takeProfitLabel": "Preț de marcare a profitului",
+    "stopLoss": "Limitarea pierderii",
+    "takeProfit": "Marcarea profitului",
     "placeholders": {
       "slLong": "Sub {{price}}",
       "slShort": "Peste {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Este necesar cel puțin un preț SL sau TP",
-    "invalidSlPrice": "Preț Stop-Loss invalid",
-    "slPricePositive": "Prețul Stop-Loss trebuie să fie pozitiv",
-    "invalidTpPrice": "Preț Take-Profit invalid",
-    "tpPricePositive": "Prețul Take-Profit trebuie să fie pozitiv",
+    "invalidSlPrice": "Preț de limitare a pierderii nevalid",
+    "slPricePositive": "Prețul de limitare a pierderii trebuie să fie pozitiv",
+    "invalidTpPrice": "Preț de marcare a profitului nevalid",
+    "tpPricePositive": "Prețul de marcare a profitului trebuie să fie pozitiv",
     "slLongBelowEntry": "Prețul SL trebuie să fie sub prețul de intrare ({{price}})",
     "tpLongAboveEntry": "Prețul TP trebuie să fie peste prețul de intrare ({{price}})",
     "slShortAboveEntry": "Prețul SL trebuie să fie peste prețul de intrare ({{price}})",

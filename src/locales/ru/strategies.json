@@ -55,7 +55,7 @@
     "metrics": {
       "status": "Статус",
       "dataLag": "Задержка данных",
-      "dataLagValue": "{{ms}}ms",
+      "dataLagValue": "{{ms}}мс",
       "heartbeat": "Сигнал активности",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"

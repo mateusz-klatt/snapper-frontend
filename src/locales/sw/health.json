@@ -29,13 +29,13 @@
     "inactive": "Haitumiki"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeNotAvailable": "Haipatikani",
+    "uptimeMinutes": "dak {{minutes}}",
+    "uptimeHours": "saa {{hours}} dak {{minutes}}",
+    "uptimeDays": "siku {{days}} saa {{hours}}",
     "backtestName": "Jaribio la nyuma {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Haipatikani",
     "uptimeLabel": "Muda wa kuwaka",
     "exitCode": "Msimbo wa kuondoka: {{code}}",
     "service": "huduma",
@@ -92,8 +92,8 @@
       "files": "Faili",
       "status": "Hali"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "siku {{days}}",
+    "ok": "Sawa",
     "error": "hitilafu"
   },
   "systemMetrics": {
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Uthibitishaji wa muunganisho {{age}}"
     },
     "kind": {
       "direct": "moja kwa moja",
@@ -208,10 +208,10 @@
     "days": "{{days}}d zilizopita"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "sek {{seconds}}",
+    "minutes": "dak {{minutes}}",
+    "hours": "saa {{hours}}",
+    "days": "siku {{days}}"
   },
   "memory": {
     "mb": "{{value}} MB",

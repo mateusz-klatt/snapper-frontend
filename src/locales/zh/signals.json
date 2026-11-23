@@ -19,7 +19,7 @@
     "price": "价格",
     "exchange": "交易所",
     "reason": "原因：",
-    "noPrice": "N/A"
+    "noPrice": "暂无数据"
   },
   "strength": {
     "strong": "强",

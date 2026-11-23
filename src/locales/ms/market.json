@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Mata wang kripto",
     "commodity": "Komoditi",
-    "forex": "Forex",
+    "forex": "Pertukaran asing",
     "index": "Indeks",
     "yield": "Hasil",
     "unknown": "Lain-lain"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Statistik pasangan dengan {{symbol}} pada {{exchange}}: Pearson {{pearson}}, nilai p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Masa:",
+    "live": "Langsung",
     "sliderAriaLabel": "Gerakkan peluncur masa melalui sejarah pasaran",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Langsung",
+      "h1": "-1 Jam",
+      "d1": "-1 Hari",
+      "w1": "-1 minggu",
+      "mo1": "-1 bulan"
     }
   }
 }

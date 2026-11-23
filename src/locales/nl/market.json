@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Cryptovaluta",
     "commodity": "Grondstof",
-    "forex": "Forex",
+    "forex": "Valuta",
     "index": "Index",
     "yield": "Rendement",
     "unknown": "Overig"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Pairstatistieken met {{symbol}} op {{exchange}}: Pearson {{pearson}}, p-waarde {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Tijd:",
+    "live": "Actueel",
     "sliderAriaLabel": "Schuif door de marktgeschiedenis",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
+      "live": "Actueel",
+      "h1": "-1 u",
       "d1": "-1d",
       "w1": "-1w",
-      "mo1": "-1mo"
+      "mo1": "-1 mnd."
     }
   }
 }

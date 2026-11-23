@@ -14,10 +14,10 @@
       "granularity": "Ayrıntı düzeyi",
       "granularityAriaLabel": "Zaman çizelgesinin ayrıntı düzeyini seçin",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 dk",
+        "fiveMinutes": "5 dk",
+        "oneHour": "1 sa",
+        "oneDay": "1 g"
       },
       "valuationCurrency": "Değerleme para birimi",
       "valuationCurrencyAriaLabel": "Değerleme para birimini seçin",
@@ -91,17 +91,17 @@
       "hideDetails": "Düzeltmeleri gizle",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "{{time}} tarihinde düzeltildi",
-      "targetExecutionId": "İptal edilen ticaret uygulaması",
+      "targetExecutionId": "Geçersiz sayılan gerçekleşme",
       "correctionId": "Düzeltme kaydı",
       "reasons": {
-        "unwitnessed_phantom": "Bu rezervasyona kanıt teşkil edecek herhangi bir döviz ticareti dolgusu bulunmamaktadır.",
-        "unwitnessed_legacy_lineage": "Hiçbir borsa ticareti dolgusunun kanıt olarak hizmet etmediği eski türetilmiş kayıt."
+        "unwitnessed_phantom": "Bu kaydı doğrulayan herhangi bir borsa emir gerçekleşmesi yok.",
+        "unwitnessed_legacy_lineage": "Doğrulayıcı emir gerçekleşmesi bulunmayan eski verilerden türetilmiş kayıt."
       }
     },
     "timeTravelNotice": "Geçmiş görünüm: {{asOf}} itibarıyla bilinen P&L gösteriliyor.",
     "chart": {
       "title": "Zaman içinde P&L",
-      "net": "Net P&L",
+      "net": "Net kâr/zarar",
       "realized": "Gerçekleşmiş P&L",
       "unrealized": "Gerçekleşmemiş P&L",
       "valuationCurrency": "Değerleme para birimi: {{currency}}"
@@ -192,7 +192,7 @@
       "fees": "Ücretler",
       "accrual": "Fonlama tahakkuku",
       "unrealized": "Gerçekleşmemiş P&L",
-      "net": "Net P&L",
+      "net": "Net kâr/zarar",
       "noValue": "—",
       "empty": "Enstrüman katkısı yok."
     },
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Toz ({{count}})",
-    "show": "Toz pozisyonlarını göster",
-    "hide": "Toz pozisyonlarını gizle"
+    "title": "Küçük bakiyeler ({{count}})",
+    "show": "Küçük bakiyeli pozisyonları göster",
+    "hide": "Küçük bakiyeli pozisyonları gizle"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: bekliyor",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "İz süren durdurma: {{stop}}",
+    "trailingStopPending": "İz süren durdurma: bekliyor",
+    "slTpButton": "Zarar durdur / Kâr al",
     "trailButton": "İz Süren Stop",
     "quantity": "Miktar",
     "averageEntry": "Ort. Giriş",
@@ -239,10 +239,10 @@
     "confirmTitle": "Bracket Onayla",
     "position": "Pozisyon",
     "entryPrice": "Giriş Fiyatı",
-    "stopLossLabel": "Stop-Loss Fiyatı",
-    "takeProfitLabel": "Take-Profit Fiyatı",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Zarar durdur fiyatı",
+    "takeProfitLabel": "Kâr al fiyatı",
+    "stopLoss": "Zarar durdur",
+    "takeProfit": "Kâr al",
     "placeholders": {
       "slLong": "{{price}} altında",
       "slShort": "{{price}} üstünde",

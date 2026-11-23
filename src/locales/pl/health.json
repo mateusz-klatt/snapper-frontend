@@ -30,16 +30,16 @@
   },
   "process": {
     "uptimeNotAvailable": "brak",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "uptimeMinutes": "{{minutes}}min",
+    "uptimeHours": "{{hours}}godz. {{minutes}}min",
+    "uptimeDays": "{{days}}d {{hours}}godz.",
+    "backtestName": "Test historyczny {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "brak",
     "uptimeLabel": "Czas działania",
     "exitCode": "Kod wyjścia: {{code}}",
     "service": "usługa",
-    "backtest": "backtest"
+    "backtest": "test historyczny"
   },
   "dbStats": {
     "title": "Statystyki bazy danych",
@@ -93,7 +93,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}d",
-    "ok": "OK",
+    "ok": "W porządku",
     "error": "błąd"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Oczekujące: {{count}}",
     "dbPool": "Pula DB",
     "liveConns": "Aktywne połączenia: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Generacje GC 0/1/2",
     "gcObjects": "Obiekty: {{value}}",
     "threadsPercent": "Wątki %",
     "networkConns": "Połączenia sieciowe",
@@ -210,7 +210,7 @@
   "duration": {
     "seconds": "{{seconds}}s",
     "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
+    "hours": "{{hours}}godz.",
     "days": "{{days}}d"
   },
   "memory": {

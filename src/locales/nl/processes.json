@@ -32,7 +32,7 @@
     },
     "detail": {
       "wallet": "Portefeuille",
-      "template": "Template",
+      "template": "Sjabloon",
       "last_run": "Laatste run",
       "unknownWallet": "onbekend"
     },
@@ -44,7 +44,7 @@
     }
   },
   "template": {
-    "badge": "template",
+    "badge": "sjabloon",
     "mode": "Modus:",
     "parameters": "Parameters:",
     "paramCount": "{{count}}",

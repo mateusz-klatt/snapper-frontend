@@ -29,17 +29,17 @@
     "inactive": "Hindi aktibo"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "uptimeNotAvailable": "Hindi available",
+    "uptimeMinutes": "{{minutes}} minuto",
+    "uptimeHours": "{{hours}} oras {{minutes}} minuto",
+    "uptimeDays": "{{days}} araw {{hours}} oras",
+    "backtestName": "Pagsubok sa nakaraang datos {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Hindi available",
     "uptimeLabel": "Tagal ng pagtakbo",
     "exitCode": "Code ng pag-exit: {{code}}",
     "service": "serbisyo",
-    "backtest": "backtest"
+    "backtest": "pagsubok sa nakaraang datos"
   },
   "dbStats": {
     "title": "Database Stats",
@@ -92,8 +92,8 @@
       "files": "Mga file",
       "status": "Katayuan"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} araw",
+    "ok": "Maayos",
     "error": "may error"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Nakabinbin: {{count}}",
     "dbPool": "Pool ng DB",
     "liveConns": "Mga aktibong koneksyon: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Mga henerasyon ng GC 0/1/2",
     "gcObjects": "Mga object: {{value}}",
     "threadsPercent": "Mga thread %",
     "networkConns": "Mga koneksyon sa network",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Grupo ng mga koneksyon",
       "policy": "Patakaran sa quarantine",
       "fallbackRoute": "Pribadong fallback",
       "routes": "Mga ruta"
@@ -183,10 +183,10 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Negosasyon ng koneksyon {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "direkta",
       "socks5": "socks5"
     },
     "status": {
@@ -208,10 +208,10 @@
     "days": "{{days}}d ang nakalipas"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} segundo",
+    "minutes": "{{minutes}} minuto",
+    "hours": "{{hours}} oras",
+    "days": "{{days}} araw"
   },
   "memory": {
     "mb": "{{value}} MB",

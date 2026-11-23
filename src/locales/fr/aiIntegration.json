@@ -43,7 +43,7 @@
       "labelHelpSuffix": "."
     },
     "scope": {
-      "heading": "Scope",
+      "heading": "Périmètre",
       "operatorLabel": "public_id de l'opérateur (optionnel)",
       "operatorPlaceholder": "Laissez vide pour hériter de l'opérateur principal de l'appelant"
     },

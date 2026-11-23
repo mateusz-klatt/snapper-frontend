@@ -19,7 +19,7 @@
     "price": "Kaina",
     "exchange": "Birža",
     "reason": "Priežastis:",
-    "noPrice": "N/A"
+    "noPrice": "Nėra duomenų"
   },
   "strength": {
     "strong": "Stiprus",

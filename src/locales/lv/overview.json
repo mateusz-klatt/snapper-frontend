@@ -32,7 +32,7 @@
     "shortExposure": "Īsā ekspozīcija",
     "netDelta": "Neto delta",
     "unrealizedPnl": "Nerealizētais P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Peļņa/zaudējumi %",
     "positions": "Pozīcijas",
     "instrumentsCount": "Instrumentu skaits: {{count}}",
     "empty": "Pozīciju dati nav pieejami",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Nesenie signāli",
     "empty": "Nesenu signālu nav",
-    "noTime": "N/A"
+    "noTime": "Nav datu"
   },
   "executions": {
     "title": "Nesenās izpildes",
     "empty": "Nesenu izpilžu nav",
-    "noTime": "N/A"
+    "noTime": "Nav datu"
   },
   "processResources": {
     "title": "Procesu resursi",
@@ -55,7 +55,7 @@
     "colName": "Nosaukums",
     "colStatus": "Statuss",
     "colRole": "Loma",
-    "colMemory": "MEM",
+    "colMemory": "Atmiņa",
     "colCpu": "CPU",
     "statusRunning": "Darbojas",
     "statusStopped": "Apturēts",

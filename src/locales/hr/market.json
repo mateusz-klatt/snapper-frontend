@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kriptovaluta",
     "commodity": "Roba",
-    "forex": "Forex",
+    "forex": "Devizno tržište",
     "index": "Indeks",
     "yield": "Prinos",
     "unknown": "Ostalo"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Statistika para s {{symbol}} na {{exchange}}: Pearson {{pearson}}, p-vrijednost {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Vrijeme:",
+    "live": "Uživo",
     "sliderAriaLabel": "Pomičite se kroz povijest tržišta",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Uživo",
+      "h1": "-1 h",
+      "d1": "-1 d",
+      "w1": "-1 tj.",
+      "mo1": "-1 mj."
     }
   }
 }

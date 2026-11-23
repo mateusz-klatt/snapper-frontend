@@ -3,7 +3,7 @@
     "title": "Sláinte an Chórais",
     "healthMetricsHeading": "Méadrachtaí Sláinte",
     "processStatusHeading": "Stádas Próiseas",
-    "activeBacktestsHeading": "Backtestanna Gníomhacha",
+    "activeBacktestsHeading": "Tástálacha stairiúla gníomhacha",
     "quickActionsHeading": "Gníomhartha Tapa",
     "featureNotImplemented": "Níl an ghné curtha i bhfeidhm fós",
     "restartServices": "Atosaigh Seirbhísí",
@@ -23,8 +23,8 @@
   "metrics": {
     "tradingEngine": "Inneall Trádála",
     "tradingEngineDescription": "Inneall rite straitéisí",
-    "activeBacktests": "Backtestanna Gníomhacha",
-    "activeBacktestsDescription": "Próisis backtest atá ag rith",
+    "activeBacktests": "Tástálacha stairiúla gníomhacha",
+    "activeBacktestsDescription": "Próisis tástála stairiúla atá ag rith",
     "active": "Gníomhach",
     "inactive": "Neamhghníomhach"
   },
@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}n",
     "uptimeHours": "{{hours}}u {{minutes}}n",
     "uptimeDays": "{{days}}l {{hours}}u",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Tástáil stairiúil {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/B",
     "uptimeLabel": "Am rite",
     "exitCode": "Cód scoir: {{code}}",
     "service": "seirbhís",
-    "backtest": "backtest"
+    "backtest": "tástáil stairiúil"
   },
   "dbStats": {
     "title": "Staitisticí Bunachair Sonraí",
@@ -93,7 +93,7 @@
       "status": "Stádas"
     },
     "retainDays": "{{days}}l",
-    "ok": "OK",
+    "ok": "Ceart go leor",
     "error": "earráid"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Ar feitheamh: {{count}}",
     "dbPool": "Linn DB",
     "liveConns": "Naisc bheo: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Glúnta GC 0/1/2",
     "gcObjects": "Oibiachtaí: {{value}}",
     "threadsPercent": "Snáitheanna %",
     "networkConns": "Naisc líonra",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Croitheadh láimhe {{age}}"
     },
     "kind": {
       "direct": "díreach",

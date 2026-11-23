@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Cryptomonnaie",
     "commodity": "Matière première",
-    "forex": "Forex",
+    "forex": "Devises",
     "index": "Indice",
     "yield": "Rendement",
     "unknown": "Autre"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Statistiques de paire avec {{symbol}} sur {{exchange}} : Pearson {{pearson}}, valeur p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Heure :",
+    "live": "En temps réel",
     "sliderAriaLabel": "Parcourir l’historique du marché",
     "presets": {
-      "live": "Live",
+      "live": "En temps réel",
       "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "d1": "-1 j",
+      "w1": "-1 sem.",
+      "mo1": "-1 mois"
     }
   }
 }

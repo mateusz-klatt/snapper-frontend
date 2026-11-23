@@ -56,7 +56,7 @@
       "status": "Status",
       "dataLag": "Dataforsinkelse",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Livstegn",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,7 +90,7 @@
       "warning": "ADVARSEL",
       "error": "FEIL"
     },
-    "backtest": "Backtest",
+    "backtest": "Historisk test",
     "backtestAriaLabel": "Backtest {{name}}-strategi",
     "managedRemotely": "Administrert av {{coordinator}}",
     "remoteCoordinatorUnknown": "en annen container",

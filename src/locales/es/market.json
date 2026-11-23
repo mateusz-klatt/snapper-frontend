@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Criptomoneda",
     "commodity": "Materia prima",
-    "forex": "Forex",
+    "forex": "Divisas",
     "index": "Índice",
     "yield": "Rendimiento",
     "unknown": "Otro"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Estadísticas del par con {{symbol}} en {{exchange}}: Pearson {{pearson}}, valor p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Hora:",
+    "live": "En tiempo real",
     "sliderAriaLabel": "Desplazarse por el historial temporal del mercado con el control deslizante",
     "presets": {
-      "live": "Live",
+      "live": "En tiempo real",
       "h1": "-1h",
       "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "w1": "-1 sem.",
+      "mo1": "-1 mes"
     }
   }
 }

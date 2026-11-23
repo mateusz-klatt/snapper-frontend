@@ -81,15 +81,15 @@
     "chipAriaLabel": "Paratölfræði með {{symbol}} á {{exchange}}: Pearson {{pearson}}, p-gildi {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Tími:",
+    "live": "Í rauntíma",
     "sliderAriaLabel": "Færa tímastikuna um markaðssöguna",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Í rauntíma",
+      "h1": "-1 klst.",
+      "d1": "-1 d",
+      "w1": "-1 vika",
+      "mo1": "-1 mán."
     }
   }
 }

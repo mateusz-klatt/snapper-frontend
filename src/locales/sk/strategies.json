@@ -56,7 +56,7 @@
       "status": "Stav",
       "dataLag": "Oneskorenie dát",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Signál aktivity",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,7 +90,7 @@
       "warning": "VAROVANIE",
       "error": "CHYBA"
     },
-    "backtest": "Backtest",
+    "backtest": "Test na historických dátach",
     "backtestAriaLabel": "Backtest stratégie {{name}}",
     "managedRemotely": "Spravované uzlom {{coordinator}}",
     "remoteCoordinatorUnknown": "iný kontajner",

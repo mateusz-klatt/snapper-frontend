@@ -99,10 +99,10 @@
     },
     "orderTypeOptions": {
       "market": "Rynkowe",
-      "limit": "Limit",
+      "limit": "Z limitem",
       "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "stopLimit": "Stop z limitem",
+      "stop_limit": "Stop z limitem"
     },
     "modeOptions": {
       "live": "Rzeczywisty",

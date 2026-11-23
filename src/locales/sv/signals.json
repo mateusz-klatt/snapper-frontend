@@ -19,7 +19,7 @@
     "price": "Pris",
     "exchange": "Börs",
     "reason": "Orsak:",
-    "noPrice": "N/A"
+    "noPrice": "Ej tillgängligt"
   },
   "strength": {
     "strong": "Stark",

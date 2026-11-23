@@ -30,16 +30,16 @@
   },
   "process": {
     "uptimeNotAvailable": "N/D",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeMinutes": "{{minutes}}min",
+    "uptimeHours": "{{hours}}h {{minutes}}min",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Prueba retrospectiva {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
     "uptimeLabel": "Tiempo activo",
     "exitCode": "Código de salida: {{code}}",
     "service": "servicio",
-    "backtest": "backtest"
+    "backtest": "prueba retrospectiva"
   },
   "dbStats": {
     "title": "Estadísticas de base de datos",
@@ -93,7 +93,7 @@
       "status": "Estado"
     },
     "retainDays": "{{days}}d",
-    "ok": "OK",
+    "ok": "Correcto",
     "error": "error"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Pendientes: {{count}}",
     "dbPool": "Pool de BD",
     "liveConns": "Conex. activas: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Generaciones del GC 0/1/2",
     "gcObjects": "Objetos: {{value}}",
     "threadsPercent": "Hilos %",
     "networkConns": "Conex. de red",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Grupo de conexiones",
       "policy": "Política de cuarentena",
       "fallbackRoute": "Ruta alternativa para tráfico privado",
       "routes": "Rutas"
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "negociación {{age}}"
     },
     "kind": {
       "direct": "directa",

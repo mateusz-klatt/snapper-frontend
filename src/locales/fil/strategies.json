@@ -43,7 +43,7 @@
     "restartFailed": "Hindi na-restart ang strategy: {{message}}"
   },
   "card": {
-    "ariaLabel": "Strategy: {{name}}",
+    "ariaLabel": "Estratehiya: {{name}}",
     "modeLabel": "Paraan: {{mode}}",
     "autostartEnabled": "Autostart: naka-enable",
     "autostartDisabled": "Autostart: naka-disable",
@@ -56,7 +56,7 @@
       "status": "Katayuan",
       "dataLag": "Pagkaantala ng Data",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Tibok ng proseso",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,8 +90,8 @@
       "warning": "BABALA",
       "error": "MAY ERROR"
     },
-    "backtest": "Backtest",
-    "backtestAriaLabel": "I-backtest ang strategy na {{name}}",
+    "backtest": "Pagsubok sa nakaraang datos",
+    "backtestAriaLabel": "Subukan ang estratehiyang {{name}} gamit ang nakaraang datos",
     "managedRemotely": "Pinamamahalaan ng {{coordinator}}",
     "remoteCoordinatorUnknown": "ibang container",
     "restart": "I-restart",
@@ -128,9 +128,9 @@
     "submit": "I-register ang strategy",
     "submitting": "Nire-register…",
     "scopeSectionLabel": "Saklaw",
-    "operatorLabel": "Operator",
+    "operatorLabel": "Tagapagpatakbo",
     "operatorPlaceholder": "Pumili ng operator",
-    "walletLabel": "Wallet",
+    "walletLabel": "Pitaka",
     "walletPlaceholder": "Pumili ng wallet",
     "paperAnnotation": " (papel)",
     "refUserLabel": "May-ari ng strategy (user)",

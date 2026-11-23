@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kryptowaluta",
     "commodity": "Towar",
-    "forex": "Forex",
+    "forex": "Rynek walutowy",
     "index": "Indeks",
     "yield": "Rentowność",
     "unknown": "Inne"
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Przewijaj czas rynkowy",
     "presets": {
       "live": "Na żywo",
-      "h1": "-1g",
-      "d1": "-1d",
-      "w1": "-1t",
-      "mo1": "-1mc"
+      "h1": "-1 godz.",
+      "d1": "-1 dzień",
+      "w1": "-1 tydz.",
+      "mo1": "-1 mies."
     }
   }
 }

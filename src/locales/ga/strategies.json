@@ -90,8 +90,8 @@
       "warning": "RABHADH",
       "error": "EARRÁID"
     },
-    "backtest": "Backtest",
-    "backtestAriaLabel": "Backtestáil straitéis {{name}}",
+    "backtest": "Tástáil stairiúil",
+    "backtestAriaLabel": "Déan tástáil stairiúil ar straitéis {{name}}",
     "managedRemotely": "Á bhainistiú ag {{coordinator}}",
     "remoteCoordinatorUnknown": "coimeádán eile",
     "restart": "Atosaigh",

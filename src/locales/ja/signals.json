@@ -19,7 +19,7 @@
     "price": "価格",
     "exchange": "取引所",
     "reason": "理由:",
-    "noPrice": "N/A"
+    "noPrice": "データなし"
   },
   "strength": {
     "strong": "強い",

@@ -81,15 +81,15 @@
     "chipAriaLabel": "إحصاءات الزوج مع {{symbol}} على {{exchange}}: بيرسون {{pearson}}، قيمة p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "الوقت:",
+    "live": "مباشر",
     "sliderAriaLabel": "تنقّل عبر السجل الزمني للسوق",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "مباشر",
+      "h1": "-1 س",
+      "d1": "-1 ي",
+      "w1": "-1 أسب",
+      "mo1": "-1 شهر"
     }
   }
 }

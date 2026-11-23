@@ -6,23 +6,23 @@
   "rolePermissions": {
     "title": "Permissions ng Role",
     "viewer": {
-      "label": "Viewer",
+      "label": "Tagatingin",
       "description": "Kumpletong read-only na visibility ng operator sa mga account, wallet at portfolio, signal, desisyon ng AI, P&L, backtest, strategy, process, at kalagayan ng system. Hindi makakagawa ng mga operasyonal na aksyon."
     },
     "operator": {
-      "label": "Operator",
+      "label": "Tagapagpatakbo",
       "description": "Lahat ng visibility ng Viewer, kasama ang mga kontrol sa trading, position, strategy, process, backtest, at AI integration."
     },
     "admin": {
-      "label": "Admin",
+      "label": "Tagapangasiwa",
       "description": "Full system access, kasama ang user management, system settings, API key configuration, at lahat ng Operator permissions."
     },
     "table": {
-      "resource": "Resource",
-      "viewer": "Viewer",
-      "operator": "Operator",
-      "admin": "Admin",
-      "auditor": "Auditor"
+      "resource": "Mapagkukunan",
+      "viewer": "Tagatingin",
+      "operator": "Tagapagpatakbo",
+      "admin": "Tagapangasiwa",
+      "auditor": "Tagasuri"
     },
     "resources": {
       "overview": "Pangkalahatang-tingin",
@@ -37,7 +37,7 @@
       "settings": "Mga Setting"
     },
     "auditor": {
-      "label": "Auditor",
+      "label": "Tagasuri",
       "description": "Read-only na access ng administrator sa lahat ng wallet, user at setting. Hindi maaaring magbago ng data o mag-trade."
     }
   },
@@ -50,7 +50,7 @@
     "subtitle": "Magdagdag ng mga aktibong viewer sa desk o alisin ang kasalukuyan nilang access dito.",
     "memberCount": "Mga miyembro: {{count}}",
     "desk": {
-      "label": "Desk",
+      "label": "Pangkat sa pangangalakal",
       "placeholder": "Pumili ng desk..."
     },
     "add": {
@@ -63,8 +63,8 @@
       }
     },
     "columns": {
-      "username": "Username",
-      "role": "Role",
+      "username": "Pangalan ng gumagamit",
+      "role": "Tungkulin",
       "membership": "Pagiging miyembro",
       "actions": "Mga aksyon"
     },
@@ -103,7 +103,7 @@
     "selectAWallet": "Pumili ng wallet",
     "chooseWalletPlaceholder": "Pumili ng wallet...",
     "selectWalletPlaceholder": "Pumili ng wallet...",
-    "walletLabel": "Wallet",
+    "walletLabel": "Pitaka",
     "paperAnnotation": " (demo)",
     "unknownError": "Hindi kilalang error",
     "dash": "-",
@@ -122,8 +122,8 @@
       "addUser": "Mag-add ng User",
       "searchPlaceholder": "Maghanap ayon sa username, email, o role...",
       "columns": {
-        "user": "User",
-        "role": "Role",
+        "user": "Gumagamit",
+        "role": "Tungkulin",
         "status": "Katayuan",
         "createdAt": "Ginawa noong",
         "actions": "Mga aksyon"
@@ -154,7 +154,7 @@
       "titleEdit": "I-edit ang User",
       "titleAdd": "Mag-add ng User",
       "fields": {
-        "username": "Username",
+        "username": "Pangalan ng gumagamit",
         "usernamePlaceholder": "Ilagay ang username",
         "password": "Password",
         "passwordPlaceholder": "Ilagay ang password",
@@ -162,16 +162,16 @@
         "newPasswordPlaceholder": "Ilagay ang bagong password",
         "email": "Email",
         "emailPlaceholder": "Ilagay ang email",
-        "role": "Role",
+        "role": "Tungkulin",
         "accountActive": "Aktibo ang account",
         "resetUserPassword": "I-reset ang password ng user"
       },
       "roles": {
-        "viewer": "Viewer",
-        "operator": "Operator",
-        "admin": "Admin",
-        "ai_delegate": "AI Delegate",
-        "auditor": "Auditor"
+        "viewer": "Tagatingin",
+        "operator": "Tagapagpatakbo",
+        "admin": "Tagapangasiwa",
+        "ai_delegate": "Delegado ng AI",
+        "auditor": "Tagasuri"
       },
       "validation": {
         "usernameRequired": "Kailangan ang username",
@@ -207,9 +207,9 @@
       "createGrant": "Gumawa ng Grant",
       "selectWalletPrompt": "Pumili ng wallet sa itaas para makita ang scope grants nito.",
       "columns": {
-        "operator": "Operator",
+        "operator": "Tagapagpatakbo",
         "scope": "Saklaw",
-        "target": "Target",
+        "target": "Tinutukoy",
         "grantedAt": "Na-grant noong",
         "actions": "Mga aksyon"
       },
@@ -224,9 +224,9 @@
     "form": {
       "title": "Gumawa ng Scope Grant",
       "fields": {
-        "operator": "Operator",
+        "operator": "Tagapagpatakbo",
         "operatorPlaceholder": "Pumili ng operator...",
-        "wallet": "Wallet",
+        "wallet": "Pitaka",
         "scopeKind": "Uri ng saklaw",
         "underlyingPublicId": "Public ID ng pinagbabatayang asset",
         "instrumentPublicId": "Public ID ng instrumento",
@@ -262,7 +262,7 @@
       "fields": {
         "currentHolder": "Kasalukuyang holder",
         "scope": "Saklaw",
-        "wallet": "Wallet",
+        "wallet": "Pitaka",
         "scopeValue": "{{kind}}: {{target}}",
         "transferTo": "I-transfer sa operator",
         "transferToPlaceholder": "Pumili ng destination operator...",
@@ -331,7 +331,7 @@
     "form": {
       "title": "Mag-add ng Credential",
       "fields": {
-        "wallet": "Wallet",
+        "wallet": "Pitaka",
         "exchange": "Palitan",
         "exchangePlaceholder": "hal. kraken",
         "credentialType": "Uri ng kredensyal",
@@ -343,9 +343,9 @@
         "api_key": "API key",
         "api_secret": "API secret",
         "private_key_pem": "Private key (PEM)",
-        "client_id": "Client ID",
+        "client_id": "ID ng kliyente",
         "client_secret": "Client secret",
-        "refresh_token": "Refresh Token",
+        "refresh_token": "Token sa pag-renew",
         "initial_balance": "Paunang balanse"
       },
       "credentialTypes": {

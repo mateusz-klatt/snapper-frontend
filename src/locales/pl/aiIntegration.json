@@ -97,7 +97,7 @@
     "revoked": "Odwołane",
     "createdAt": "Utworzone",
     "createdBy": "Utworzone przez (public_id użytkownika)",
-    "publicId": "Public ID",
+    "publicId": "Publiczny identyfikator",
     "maxOpenOrders": "Maks. otwartych zleceń",
     "maxDailyNotionalUsd": "Maks. dzienna wartość nominalna w USD",
     "maxCancelsPerMinute": "Maks. anulowań na minutę",

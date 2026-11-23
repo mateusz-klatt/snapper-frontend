@@ -90,8 +90,8 @@
       "warning": "CẢNH BÁO",
       "error": "LỖI"
     },
-    "backtest": "Backtest",
-    "backtestAriaLabel": "Backtest chiến lược {{name}}",
+    "backtest": "Kiểm thử trên dữ liệu quá khứ",
+    "backtestAriaLabel": "Kiểm thử chiến lược {{name}} trên dữ liệu quá khứ",
     "managedRemotely": "Được quản lý bởi {{coordinator}}",
     "remoteCoordinatorUnknown": "một vùng chứa khác",
     "restart": "Khởi động lại",

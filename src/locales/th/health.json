@@ -29,13 +29,13 @@
     "inactive": "ไม่ใช้งาน"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeNotAvailable": "ไม่มีข้อมูล",
+    "uptimeMinutes": "{{minutes}} นาที",
+    "uptimeHours": "{{hours}} ชั่วโมง {{minutes}} นาที",
+    "uptimeDays": "{{days}} วัน {{hours}} ชั่วโมง",
     "backtestName": "แบ็คเทสต์ {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "ไม่มีข้อมูล",
     "uptimeLabel": "เวลาทำงาน",
     "exitCode": "รหัสออก: {{code}}",
     "service": "บริการ",
@@ -92,8 +92,8 @@
       "files": "ไฟล์",
       "status": "สถานะ"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} วัน",
+    "ok": "ปกติ",
     "error": "ข้อผิดพลาด"
   },
   "systemMetrics": {
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "การเจรจาเชื่อมต่อ {{age}}"
     },
     "kind": {
       "direct": "โดยตรง",
@@ -208,10 +208,10 @@
     "days": "{{days}}d ที่แล้ว"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} วินาที",
+    "minutes": "{{minutes}} นาที",
+    "hours": "{{hours}} ชั่วโมง",
+    "days": "{{days}} วัน"
   },
   "memory": {
     "mb": "{{value}} MB",

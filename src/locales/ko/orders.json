@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "알 수 없음",
     "priceMarket": "시장가",
     "quantity": "수량",
     "price": "가격",
     "created": "생성일",
-    "createdUnknown": "N/A",
+    "createdUnknown": "알 수 없음",
     "orderId": "주문 ID",
     "leverage": "레버리지",
     "leverageValue": "{{leverage}}x",

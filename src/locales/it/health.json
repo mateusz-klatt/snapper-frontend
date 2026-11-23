@@ -30,16 +30,16 @@
   },
   "process": {
     "uptimeNotAvailable": "N/D",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeMinutes": "{{minutes}}min",
+    "uptimeHours": "{{hours}}h {{minutes}}min",
     "uptimeDays": "{{days}}g {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Test storico {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
     "uptimeLabel": "Tempo di attività",
     "exitCode": "Codice di uscita: {{code}}",
     "service": "servizio",
-    "backtest": "backtest"
+    "backtest": "test storico"
   },
   "dbStats": {
     "title": "Statistiche del database",
@@ -93,7 +93,7 @@
       "status": "Stato"
     },
     "retainDays": "{{days}}g",
-    "ok": "OK",
+    "ok": "Regolare",
     "error": "errore"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "In attesa: {{count}}",
     "dbPool": "Pool DB",
     "liveConns": "Connessioni attive: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Generazioni GC 0/1/2",
     "gcObjects": "Oggetti: {{value}}",
     "threadsPercent": "Thread %",
     "networkConns": "Connessioni di rete",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Gruppo di connessioni",
       "policy": "Criterio di quarantena",
       "fallbackRoute": "Fallback privato",
       "routes": "Rotte"
@@ -169,7 +169,7 @@
       "kind": "Tipo",
       "region": "Regione",
       "exitIp": "IP di uscita",
-      "provider": "Provider",
+      "provider": "Fornitore",
       "priority": "Priorità",
       "allowedExchanges": "Exchange consentiti",
       "status": "Stato",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "negoziazione {{age}}"
     },
     "kind": {
       "direct": "diretto",

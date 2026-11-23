@@ -81,15 +81,15 @@
     "chipAriaLabel": "{{exchange}}-এ {{symbol}}-এর সঙ্গে জোড়ার পরিসংখ্যান: Pearson {{pearson}}, p-মান {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "সময়:",
+    "live": "সরাসরি",
     "sliderAriaLabel": "বাজারের সময়-ইতিহাসে স্লাইডার দিয়ে ঘুরে দেখুন",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "সরাসরি",
+      "h1": "-1 ঘণ্টা",
+      "d1": "-1 দিন",
+      "w1": "-1 সপ্তাহ",
+      "mo1": "-1 মাস"
     }
   }
 }

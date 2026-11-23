@@ -11,7 +11,7 @@
     "cancelled": "Dibatalkan"
   },
   "list": {
-    "title": "Backtest",
+    "title": "Uji historis",
     "actions": {
       "cancel": "Batal",
       "rerun": "Jalankan ulang",
@@ -61,7 +61,7 @@
     "title": "Bandingkan",
     "headingFull": "Perbandingan backtest",
     "loading": "Memuat perbandingan…",
-    "vs": "vs",
+    "vs": "dibandingkan dengan",
     "runLabel": "Sesi {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrik",

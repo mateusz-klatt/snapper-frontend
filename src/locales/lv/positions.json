@@ -14,10 +14,10 @@
       "granularity": "Intervāls",
       "granularityAriaLabel": "Izvēlieties laika skalas intervālu",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 st.",
+        "oneDay": "1 d."
       },
       "valuationCurrency": "Novērtējuma valūta",
       "valuationCurrencyAriaLabel": "Izvēlieties novērtējuma valūtu",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Anulēta darījuma izpilde",
       "correctionId": "Korekcijas ieraksts",
       "reasons": {
-        "unwitnessed_phantom": "Nav biržas tirdzniecības aizpildījuma, kas kalpo kā pierādījums šai rezervācijai.",
-        "unwitnessed_legacy_lineage": "Mantojums iegūts ieraksts, kuram par pierādījumu netiek izmantots biržas tirdzniecības aizpildījums."
+        "unwitnessed_phantom": "Nav rīkojuma izpildes biržā, kas apstiprinātu šo ierakstu.",
+        "unwitnessed_legacy_lineage": "No agrākiem datiem iegūts ieraksts, ko neapstiprina rīkojuma izpilde."
       }
     },
     "timeTravelNotice": "Vēsturiskais skats: redzams P&L pēc datiem, kas bija zināmi {{asOf}} brīdī.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Putekļi ({{count}})",
-    "show": "Rādīt putekļu pozīcijas",
-    "hide": "Paslēpt putekļu pozīcijas"
+    "title": "Sīki atlikumi ({{count}})",
+    "show": "Rādīt pozīcijas ar sīkiem atlikumiem",
+    "hide": "Paslēpt pozīcijas ar sīkiem atlikumiem"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: gaida",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Slīdošā apturēšana: {{stop}}",
+    "trailingStopPending": "Slīdošā apturēšana: gaida",
+    "slTpButton": "Zaudējumu ierobežošana / Peļņas fiksēšana",
     "trailButton": "Slīdošais stops",
     "quantity": "Daudzums",
     "averageEntry": "Vid. ieeja",
@@ -228,7 +228,7 @@
     "realizedPnl": "Realizētais P&L",
     "updated": "Atjaunināts {{timestamp}}",
     "mark": "Atsauces cena",
-    "noValue": "N/A"
+    "noValue": "Nav datu"
   },
   "empty": {
     "title": "Atvērtu pozīciju nav",
@@ -239,10 +239,10 @@
     "confirmTitle": "Apstiprināt Bracket",
     "position": "Pozīcija",
     "entryPrice": "Ieejas cena",
-    "stopLossLabel": "Stop-Loss cena",
-    "takeProfitLabel": "Take-Profit cena",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Zaudējumu ierobežošanas cena",
+    "takeProfitLabel": "Peļņas fiksēšanas cena",
+    "stopLoss": "Zaudējumu ierobežošana",
+    "takeProfit": "Peļņas fiksēšana",
     "placeholders": {
       "slLong": "Zem {{price}}",
       "slShort": "Virs {{price}}",

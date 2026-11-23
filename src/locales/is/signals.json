@@ -19,7 +19,7 @@
     "price": "Verð",
     "exchange": "Kauphöll",
     "reason": "Ástæða:",
-    "noPrice": "N/A"
+    "noPrice": "Ekki tiltækt"
   },
   "strength": {
     "strong": "Sterkt",

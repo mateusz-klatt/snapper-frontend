@@ -29,17 +29,17 @@
     "inactive": "Neaktīvs"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
+    "uptimeNotAvailable": "Nav datu",
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} st. {{minutes}} min",
     "uptimeDays": "{{days}} d. {{hours}} st.",
     "backtestName": "Backtests {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Nav datu",
     "uptimeLabel": "Darbības laiks",
     "exitCode": "Izejas kods: {{code}}",
     "service": "serviss",
-    "backtest": "Backtest"
+    "backtest": "backtests"
   },
   "dbStats": {
     "title": "Datubāzes statistika",
@@ -93,7 +93,7 @@
       "status": "Statuss"
     },
     "retainDays": "{{days}} d.",
-    "ok": "OK",
+    "ok": "Kārtībā",
     "error": "kļūda"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Gaidošo skaits: {{count}}",
     "dbPool": "DB pūls",
     "liveConns": "Aktīvi savienojumi: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC paaudzes 0/1/2",
     "gcObjects": "Objekti: {{value}}",
     "threadsPercent": "Pavedieni %",
     "networkConns": "Tīkla savienojumi",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Sasveicināšanās {{age}}"
     },
     "kind": {
       "direct": "tiešs",

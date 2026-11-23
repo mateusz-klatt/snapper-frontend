@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kriptovaliuta",
     "commodity": "Žaliava",
-    "forex": "Forex",
+    "forex": "Užsienio valiutos",
     "index": "Indeksas",
     "yield": "Pajamingumas",
     "unknown": "Kita"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Poros statistika su {{symbol}} biržoje {{exchange}}: Pearson {{pearson}}, p reikšmė {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Laikas:",
+    "live": "Tiesiogiai",
     "sliderAriaLabel": "Slinkti per rinkos istorijos laiką",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Tiesiogiai",
+      "h1": "-1 val.",
+      "d1": "-1 d.",
+      "w1": "-1 sav.",
+      "mo1": "-1 mėn."
     }
   }
 }

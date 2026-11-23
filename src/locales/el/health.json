@@ -29,17 +29,17 @@
     "inactive": "Ανενεργό"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
+    "uptimeNotAvailable": "Μη διαθέσιμο",
     "uptimeMinutes": "{{minutes}} λεπ.",
     "uptimeHours": "{{hours}} ώ. {{minutes}} λεπ.",
     "uptimeDays": "{{days}} ημ. {{hours}} ώ.",
     "backtestName": "Ιστορικός έλεγχος {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Μη διαθέσιμο",
     "uptimeLabel": "Χρόνος λειτουργίας",
     "exitCode": "Κωδικός εξόδου: {{code}}",
     "service": "υπηρεσία",
-    "backtest": "Backtest"
+    "backtest": "ιστορικός έλεγχος"
   },
   "dbStats": {
     "title": "Στατιστικά βάσης δεδομένων",
@@ -93,7 +93,7 @@
       "status": "Κατάσταση"
     },
     "retainDays": "{{days}} ημ.",
-    "ok": "OK",
+    "ok": "Εντάξει",
     "error": "σφάλμα"
   },
   "systemMetrics": {
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Χειραψία {{age}}"
     },
     "kind": {
       "direct": "απευθείας",

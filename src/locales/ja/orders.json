@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "不明",
     "priceMarket": "成行",
     "quantity": "数量",
     "price": "価格",
     "created": "作成日時",
-    "createdUnknown": "N/A",
+    "createdUnknown": "不明",
     "orderId": "注文ID",
     "leverage": "レバレッジ",
     "leverageValue": "{{leverage}}x",

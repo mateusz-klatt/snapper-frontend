@@ -20,7 +20,7 @@
   },
   "processStatus": {
     "title": "Processtatus",
-    "feeds": "Feeds",
+    "feeds": "Datafeeds",
     "strategies": "Strategier",
     "executors": "Eksekveringsprocesser",
     "brokers": "Brokere"
@@ -32,7 +32,7 @@
     "shortExposure": "Short-eksponering",
     "netDelta": "Netto delta",
     "unrealizedPnl": "Urealiseret P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Gevinst/tab %",
     "positions": "Positioner",
     "instrumentsCount": "Instrumenter: {{count}}",
     "empty": "Ingen positionsdata tilgængelige",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Seneste signaler",
     "empty": "Ingen seneste signaler",
-    "noTime": "N/A"
+    "noTime": "Ikke tilgængelig"
   },
   "executions": {
     "title": "Seneste udførsler",
     "empty": "Ingen seneste udførsler",
-    "noTime": "N/A"
+    "noTime": "Ikke tilgængelig"
   },
   "processResources": {
     "title": "Procesressourcer",
@@ -55,7 +55,7 @@
     "colName": "Navn",
     "colStatus": "Status",
     "colRole": "Rolle",
-    "colMemory": "MEM",
+    "colMemory": "Hukommelse",
     "colCpu": "CPU",
     "statusRunning": "Kører",
     "statusStopped": "Stoppet",

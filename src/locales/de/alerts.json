@@ -42,7 +42,7 @@
   "detail": {
     "navTitle": "Alarmdetails",
     "sourceTopic": "Quellthema",
-    "thread": "Thread",
+    "thread": "Meldungsgruppe",
     "timestamp": "Zeitstempel"
   },
   "empty": {

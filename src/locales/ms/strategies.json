@@ -90,8 +90,8 @@
       "warning": "AMARAN",
       "error": "RALAT"
     },
-    "backtest": "Backtest",
-    "backtestAriaLabel": "Backtest strategi {{name}}",
+    "backtest": "Ujian semula",
+    "backtestAriaLabel": "Uji semula strategi {{name}}",
     "managedRemotely": "Diurus oleh {{coordinator}}",
     "remoteCoordinatorUnknown": "kontena lain",
     "restart": "Mula semula",

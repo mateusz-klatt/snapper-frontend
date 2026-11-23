@@ -81,15 +81,15 @@
     "chipAriaLabel": "与 {{exchange}} 上 {{symbol}} 的配对统计: Pearson {{pearson}}, p 值 {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "时间：",
+    "live": "实时",
     "sliderAriaLabel": "沿市场历史拖动时间滑块",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "实时",
+      "h1": "-1 小时",
+      "d1": "-1 天",
+      "w1": "-1 周",
+      "mo1": "-1 个月"
     }
   }
 }

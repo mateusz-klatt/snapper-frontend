@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kriptovalūta",
     "commodity": "Prece",
-    "forex": "Forex",
+    "forex": "Ārvalstu valūtas",
     "index": "Indekss",
     "yield": "Ienesīgums",
     "unknown": "Cits"
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Pāra statistika ar {{symbol}} biržā {{exchange}}: Pearson {{pearson}}, p vērtība {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Laiks:",
+    "live": "Reāllaikā",
     "sliderAriaLabel": "Pārvietot laika slīdni pa tirgus vēsturi",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Reāllaikā",
+      "h1": "-1 st.",
+      "d1": "-1 d.",
+      "w1": "-1 ned.",
+      "mo1": "-1 mēn."
     }
   }
 }

@@ -17,7 +17,7 @@
   "card": {
     "strength": "Fuerza",
     "price": "Precio",
-    "exchange": "Exchange",
+    "exchange": "Plataforma de intercambio",
     "reason": "Motivo:",
     "noPrice": "N/D"
   },

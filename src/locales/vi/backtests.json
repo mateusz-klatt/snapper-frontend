@@ -11,7 +11,7 @@
     "cancelled": "Đã hủy"
   },
   "list": {
-    "title": "Backtest",
+    "title": "Kiểm thử trên dữ liệu quá khứ",
     "actions": {
       "cancel": "Hủy",
       "rerun": "Chạy lại",

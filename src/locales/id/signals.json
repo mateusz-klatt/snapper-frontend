@@ -19,7 +19,7 @@
     "price": "Harga",
     "exchange": "Bursa",
     "reason": "Alasan:",
-    "noPrice": "N/A"
+    "noPrice": "Tidak tersedia"
   },
   "strength": {
     "strong": "Kuat",

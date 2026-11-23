@@ -56,7 +56,7 @@
       "status": "Állapot",
       "dataLag": "Adatkésés",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Életjel",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
