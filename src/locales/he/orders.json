@@ -24,7 +24,8 @@
       "pending": "ממתין",
       "pending_new": "ממתין לאישור קבלה",
       "closed": "סגור",
-      "expired": "פג תוקף"
+      "expired": "פג תוקף",
+      "error": "שגיאה"
     }
   },
   "orderCard": {

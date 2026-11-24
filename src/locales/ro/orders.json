@@ -24,7 +24,8 @@
       "pending": "În așteptare",
       "pending_new": "În așteptarea acceptării",
       "closed": "Închis",
-      "expired": "Expirat"
+      "expired": "Expirat",
+      "error": "Eroare"
     }
   },
   "orderCard": {

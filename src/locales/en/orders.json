@@ -22,9 +22,10 @@
       "canceled": "Cancelled",
       "submitted": "Submitted",
       "pending": "Pending",
-      "pending_new": "Pending New",
+      "pending_new": "Pending new",
       "closed": "Closed",
-      "expired": "Expired"
+      "expired": "Expired",
+      "error": "Error"
     }
   },
   "orderCard": {

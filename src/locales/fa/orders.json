@@ -24,7 +24,8 @@
       "pending": "در انتظار",
       "pending_new": "در انتظار پذیرش",
       "closed": "بسته شده",
-      "expired": "منقضی شده"
+      "expired": "منقضی شده",
+      "error": "خطا"
     }
   },
   "orderCard": {

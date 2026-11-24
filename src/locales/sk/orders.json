@@ -24,7 +24,8 @@
       "pending": "Čakajúci",
       "pending_new": "Čakajúci na prijatie",
       "closed": "Uzavretý",
-      "expired": "Expirovaný"
+      "expired": "Expirovaný",
+      "error": "Chyba"
     }
   },
   "orderCard": {

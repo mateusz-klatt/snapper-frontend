@@ -24,7 +24,8 @@
       "pending": "Na čekanju",
       "pending_new": "Čekaju prihvatanje",
       "closed": "Zatvoreni",
-      "expired": "Istekli"
+      "expired": "Istekli",
+      "error": "Greška"
     }
   },
   "orderCard": {

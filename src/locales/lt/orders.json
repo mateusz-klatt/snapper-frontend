@@ -24,7 +24,8 @@
       "pending": "Laukiantis",
       "pending_new": "Laukiantis priėmimo",
       "closed": "Uždarytas",
-      "expired": "Pasibaigusio galiojimo"
+      "expired": "Pasibaigusio galiojimo",
+      "error": "Klaida"
     }
   },
   "orderCard": {

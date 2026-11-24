@@ -24,7 +24,8 @@
       "pending": "รอดำเนินการ",
       "pending_new": "รอการตอบรับ",
       "closed": "ปิดแล้ว",
-      "expired": "หมดอายุ"
+      "expired": "หมดอายุ",
+      "error": "ข้อผิดพลาด"
     }
   },
   "orderCard": {

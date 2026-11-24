@@ -24,7 +24,8 @@
       "pending": "Afventer",
       "pending_new": "Afventer accept",
       "closed": "Lukket",
-      "expired": "Udløbet"
+      "expired": "Udløbet",
+      "error": "Fejl"
     }
   },
   "orderCard": {

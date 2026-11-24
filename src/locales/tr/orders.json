@@ -24,7 +24,8 @@
       "pending": "Beklemede",
       "pending_new": "Kabul Bekliyor",
       "closed": "Kapandı",
-      "expired": "Süresi Doldu"
+      "expired": "Süresi Doldu",
+      "error": "Hata"
     }
   },
   "orderCard": {

@@ -24,7 +24,8 @@
       "pending": "قيد الانتظار",
       "pending_new": "بانتظار القبول",
       "closed": "مغلق",
-      "expired": "منتهي الصلاحية"
+      "expired": "منتهي الصلاحية",
+      "error": "خطأ"
     }
   },
   "orderCard": {

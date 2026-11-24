@@ -24,7 +24,8 @@
       "pending": "Väntande",
       "pending_new": "Väntar på godkännande",
       "closed": "Stängd",
-      "expired": "Utgången"
+      "expired": "Utgången",
+      "error": "Fel"
     }
   },
   "orderCard": {

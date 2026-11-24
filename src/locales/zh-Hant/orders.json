@@ -24,7 +24,8 @@
       "pending": "待處理",
       "pending_new": "待受理",
       "closed": "已關閉",
-      "expired": "已過期"
+      "expired": "已過期",
+      "error": "錯誤"
     }
   },
   "orderCard": {

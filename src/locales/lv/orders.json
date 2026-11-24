@@ -24,7 +24,8 @@
       "pending": "Gaida",
       "pending_new": "Gaida pieņemšanu",
       "closed": "Slēgts",
-      "expired": "Beidzies derīguma termiņš"
+      "expired": "Beidzies derīguma termiņš",
+      "error": "Kļūda"
     }
   },
   "orderCard": {

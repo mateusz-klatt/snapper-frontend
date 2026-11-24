@@ -24,7 +24,8 @@
       "pending": "Σε αναμονή",
       "pending_new": "Σε αναμονή αποδοχής",
       "closed": "Κλειστή",
-      "expired": "Ληγμένη"
+      "expired": "Ληγμένη",
+      "error": "Σφάλμα"
     }
   },
   "orderCard": {

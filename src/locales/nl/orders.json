@@ -24,7 +24,8 @@
       "pending": "In afwachting",
       "pending_new": "Wacht op acceptatie",
       "closed": "Gesloten",
-      "expired": "Verlopen"
+      "expired": "Verlopen",
+      "error": "Fout"
     }
   },
   "orderCard": {
