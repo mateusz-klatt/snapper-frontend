@@ -24,7 +24,8 @@
       "pending": "Đang chờ",
       "pending_new": "Chờ tiếp nhận",
       "closed": "Đã đóng",
-      "expired": "Đã hết hạn"
+      "expired": "Đã hết hạn",
+      "error": "Lỗi"
     }
   },
   "orderCard": {

@@ -24,7 +24,8 @@
       "pending": "Սպասման մեջ",
       "pending_new": "Ընդունման սպասող",
       "closed": "Փակված",
-      "expired": "Ժամկետանց"
+      "expired": "Ժամկետանց",
+      "error": "Սխալ"
     }
   },
   "orderCard": {

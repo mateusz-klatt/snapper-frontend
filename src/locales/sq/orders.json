@@ -24,7 +24,8 @@
       "pending": "Në pritje",
       "pending_new": "Në pritje të pranimit",
       "closed": "I mbyllur",
-      "expired": "I skaduar"
+      "expired": "I skaduar",
+      "error": "Gabim"
     }
   },
   "orderCard": {

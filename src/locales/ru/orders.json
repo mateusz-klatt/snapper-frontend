@@ -24,7 +24,8 @@
       "pending": "В ожидании",
       "pending_new": "Ожидает принятия",
       "closed": "Закрыта",
-      "expired": "Истекла"
+      "expired": "Истекла",
+      "error": "Ошибка"
     }
   },
   "orderCard": {

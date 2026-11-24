@@ -24,7 +24,8 @@
       "pending": "Odottaa",
       "pending_new": "Odottaa hyväksyntää",
       "closed": "Suljettu",
-      "expired": "Vanhentunut"
+      "expired": "Vanhentunut",
+      "error": "Virhe"
     }
   },
   "orderCard": {

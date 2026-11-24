@@ -24,7 +24,8 @@
       "pending": "Ar Feitheamh",
       "pending_new": "Ag Feitheamh le Glacadh",
       "closed": "Dúnta",
-      "expired": "Éagtha"
+      "expired": "Éagtha",
+      "error": "Earráid"
     }
   },
   "orderCard": {

@@ -24,7 +24,8 @@
       "pending": "Pendientes",
       "pending_new": "Pendientes de aceptación",
       "closed": "Cerradas",
-      "expired": "Vencidas"
+      "expired": "Vencidas",
+      "error": "Error"
     }
   },
   "orderCard": {

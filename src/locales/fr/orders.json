@@ -24,7 +24,8 @@
       "pending": "En attente",
       "pending_new": "En attente d’acceptation",
       "closed": "Fermés",
-      "expired": "Expirés"
+      "expired": "Expirés",
+      "error": "Erreur"
     }
   },
   "orderCard": {

@@ -24,7 +24,8 @@
       "pending": "Venter",
       "pending_new": "Venter på aksept",
       "closed": "Lukket",
-      "expired": "Utløpt"
+      "expired": "Utløpt",
+      "error": "Feil"
     }
   },
   "orderCard": {

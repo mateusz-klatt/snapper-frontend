@@ -24,7 +24,8 @@
       "pending": "대기 중",
       "pending_new": "접수 대기 중",
       "closed": "종료됨",
-      "expired": "만료됨"
+      "expired": "만료됨",
+      "error": "오류"
     }
   },
   "orderCard": {

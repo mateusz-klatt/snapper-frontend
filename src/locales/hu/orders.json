@@ -24,7 +24,8 @@
       "pending": "Függőben",
       "pending_new": "Befogadásra vár",
       "closed": "Lezárt",
-      "expired": "Lejárt"
+      "expired": "Lejárt",
+      "error": "Hiba"
     }
   },
   "orderCard": {

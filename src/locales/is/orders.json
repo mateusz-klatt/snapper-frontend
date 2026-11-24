@@ -24,7 +24,8 @@
       "pending": "Í bið",
       "pending_new": "Bíða samþykkis",
       "closed": "Lokuð",
-      "expired": "Útrunnin"
+      "expired": "Útrunnin",
+      "error": "Villa"
     }
   },
   "orderCard": {

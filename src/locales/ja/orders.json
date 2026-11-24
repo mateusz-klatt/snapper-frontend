@@ -24,7 +24,8 @@
       "pending": "保留中",
       "pending_new": "受付待ち",
       "closed": "終了",
-      "expired": "期限切れ"
+      "expired": "期限切れ",
+      "error": "エラー"
     }
   },
   "orderCard": {

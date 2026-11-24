@@ -489,7 +489,7 @@ describe('Orders', () => {
     })
   })
   it.each([
-    { language: 'en', labels: ['Submitted', 'Pending', 'Pending New', 'Closed', 'Expired'] },
+    { language: 'en', labels: ['Submitted', 'Pending', 'Pending new', 'Closed', 'Expired'] },
     {
       language: 'pl',
       labels: ['Wysłane', 'Oczekujące', 'Oczekujące na przyjęcie', 'Zamknięte', 'Wygasłe'],
@@ -538,6 +538,43 @@ describe('Orders', () => {
         expect(screen.getByText(`cid-${status}`)).toBeInTheDocument()
         expect(screen.getAllByText(/^cid-/)).toHaveLength(1)
       }
+    } finally {
+      await i18n.changeLanguage('en')
+    }
+  })
+
+  it.each([
+    { language: 'en', label: 'Error' },
+    { language: 'pl', label: 'Błąd' },
+  ])('renders a localized error order status in $language', async ({ language, label }) => {
+    const mockOrders: Order[] = [
+      {
+        sequenceId: 0,
+        publicId: 'error-order',
+        timestamp: new Date('2024-01-01T00:00:00Z'),
+        sessionId: 'test-sid',
+        clientOrderId: 'cid-error',
+        instrument: 'BTC/USD',
+        exchange: 'kraken',
+        side: 'buy',
+        orderType: 'limit',
+        size: 1,
+        filledSize: 0,
+        price: 50000,
+        status: 'error',
+        createdAt: new Date('2024-01-01T00:00:00Z'),
+        updatedAt: null,
+      },
+    ]
+    const { useOrders } = await import('../../hooks/queries/orders')
+
+    vi.mocked(useOrders).mockReturnValue({ data: mockOrders, isLoading: false } as never)
+    await i18n.changeLanguage(language)
+
+    try {
+      renderWithProviders(<Orders />)
+      expect(screen.getByText(label, { selector: 'span' })).toBeInTheDocument()
+      expect(screen.queryByTestId('cancel-order-cid-error')).not.toBeInTheDocument()
     } finally {
       await i18n.changeLanguage('en')
     }
