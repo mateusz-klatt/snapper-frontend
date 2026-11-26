@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — เฉพาะข้อมูลตลาด",
     "walletPaperSuffix": "{{label}} (จำลอง)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "เลือกกระเป๋าเงิน"
     },
     "buttons": {
       "cancel": "ยกเลิก",

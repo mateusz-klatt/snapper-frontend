@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — data ya soko pekee",
     "walletPaperSuffix": "{{label}} (majaribio)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "Chagua pochi"
     },
     "buttons": {
       "cancel": "Ghairi",

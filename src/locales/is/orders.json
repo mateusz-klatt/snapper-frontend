@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — aðeins markaðsgögn",
     "walletPaperSuffix": "{{label}} (sýndarviðskipti)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "Veldu veski"
     },
     "buttons": {
       "cancel": "Hætta við",

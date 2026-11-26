@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — endast marknadsdata",
     "walletPaperSuffix": "{{label}} (simulerat)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "Välj en plånbok"
     },
     "buttons": {
       "cancel": "Avbryt",

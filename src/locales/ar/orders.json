@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — بيانات السوق فقط",
     "walletPaperSuffix": "{{label}} (تجريبية)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "اختر محفظة"
     },
     "buttons": {
       "cancel": "إلغاء",
