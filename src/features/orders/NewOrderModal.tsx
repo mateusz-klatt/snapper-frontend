@@ -22,32 +22,22 @@ interface NewOrderModalProps {
   onClose: () => void
 }
 
-function resolveOrderDefaults(
+function resolveDefaultWalletId(
   wallets: readonly WalletInfo[],
   currentWalletPublicId: string | null
-): { walletPublicId: string; mode: 'live' | 'paper' } {
+): string {
   const activeWallet =
     currentWalletPublicId === null
       ? undefined
       : wallets.find(w => w.public_id === currentWalletPublicId)
 
   if (activeWallet !== undefined) {
-    return {
-      walletPublicId: activeWallet.public_id,
-      mode: activeWallet.is_paper ? 'paper' : 'live',
-    }
+    return activeWallet.public_id
   }
 
   const paperWallet = wallets.find(w => w.is_paper)
 
-  if (paperWallet !== undefined) {
-    return {
-      walletPublicId: paperWallet.public_id,
-      mode: 'paper',
-    }
-  }
-
-  return { walletPublicId: '', mode: 'paper' }
+  return paperWallet?.public_id ?? ''
 }
 
 export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) => {
@@ -63,7 +53,6 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const quantityInputId = 'new-order-quantity'
   const priceInputId = 'new-order-price'
   const stopPriceInputId = 'new-order-stop-price'
-  const modeSelectId = 'new-order-mode'
   const walletSelectId = 'new-order-wallet'
   const { data: exchanges } = useExchanges()
   const { data: walletsResponse } = useWallets()
@@ -87,14 +76,6 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     [t]
   )
 
-  const MODE_OPTIONS = useMemo(
-    () => [
-      { value: 'live', label: t('newOrderModal.modeOptions.live') },
-      { value: 'paper', label: t('newOrderModal.modeOptions.paper') },
-    ],
-    [t]
-  )
-
   const [exchange, setExchange] = useState('')
   const [instrument, setInstrument] = useState('')
   const [instrumentPublicId, setInstrumentPublicId] = useState('')
@@ -103,7 +84,6 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const [quantity, setQuantity] = useState('')
   const [price, setPrice] = useState('')
   const [stopPrice, setStopPrice] = useState('')
-  const [mode, setMode] = useState('paper')
   const [postOnly, setPostOnly] = useState(false)
   const [reduceOnly, setReduceOnly] = useState(false)
   const [walletPublicId, setWalletPublicId] = useState('')
@@ -141,11 +121,8 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   useEffect(() => {
     if (!open || defaultsApplied.current || wallets.length === 0) return
 
-    const defaults = resolveOrderDefaults(wallets, currentWalletPublicId)
-
     defaultsApplied.current = true
-    setWalletPublicId(defaults.walletPublicId)
-    setMode(defaults.mode)
+    setWalletPublicId(resolveDefaultWalletId(wallets, currentWalletPublicId))
   }, [open, wallets, currentWalletPublicId])
 
   useEffect(() => {
@@ -177,12 +154,13 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     })),
   ]
   const selectedWallet = wallets.find(w => w.public_id === walletPublicId)
+  const mode: 'live' | 'paper' = selectedWallet?.is_paper === false ? 'live' : 'paper'
   const confirmedWalletLabel =
     selectedWallet === undefined
       ? walletPublicId
       : t('newOrderModal.walletWithMode', {
           label: selectedWallet.label,
-          mode: t(`newOrderModal.modeOptions.${selectedWallet.is_paper ? 'paper' : 'live'}`),
+          mode: t(`newOrderModal.modeOptions.${mode}`),
         })
 
   const needsPrice = orderType === 'limit' || orderType === 'stop_limit'
@@ -234,13 +212,6 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const handleInstrumentChange = (val: string) => {
     setInstrument(val)
     setInstrumentPublicId(val)
-  }
-
-  const handleWalletChange = (nextWalletId: string) => {
-    setWalletPublicId(nextWalletId)
-    const selected = wallets.find(w => w.public_id === nextWalletId)
-
-    setMode(selected?.is_paper === false ? 'live' : 'paper')
   }
 
   const translateErrorCode = (details: unknown): string | null => {
@@ -352,7 +323,6 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     setQuantity('')
     setPrice('')
     setStopPrice('')
-    setMode('paper')
     setPostOnly(false)
     setReduceOnly(false)
     setWalletPublicId('')
@@ -436,8 +406,10 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               </div>
               <div className='flex justify-between'>
                 <span className='text-muted-500'>{t('newOrderModal.fields.mode')}</span>
-                <span className='text-alpine-900'>
-                  {t(`newOrderModal.modeOptions.${mode}`, { defaultValue: mode })}
+                <span
+                  className={mode === 'live' ? 'font-medium text-warning-600' : 'text-alpine-900'}
+                >
+                  {t(`newOrderModal.modeOptions.${mode}`)}
                 </span>
               </div>
             </div>
@@ -572,26 +544,30 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             )}
             <div className='grid grid-cols-2 gap-4'>
               <div>
-                <label htmlFor={modeSelectId} className='block text-xs text-muted-500 mb-1'>
-                  {t('newOrderModal.fields.mode')}
-                </label>
-                <NativeSelect
-                  id={modeSelectId}
-                  value={mode}
-                  onChange={setMode}
-                  options={MODE_OPTIONS}
-                />
-              </div>
-              <div>
                 <label htmlFor={walletSelectId} className='block text-xs text-muted-500 mb-1'>
                   {t('newOrderModal.fields.wallet')}
                 </label>
                 <NativeSelect
                   id={walletSelectId}
                   value={walletPublicId}
-                  onChange={handleWalletChange}
+                  onChange={setWalletPublicId}
                   options={walletOptions}
                 />
+              </div>
+              <div>
+                <div className='block text-xs text-muted-500 mb-1'>
+                  {t('newOrderModal.fields.mode')}
+                </div>
+                <output
+                  data-testid='new-order-mode-display'
+                  className={
+                    mode === 'live'
+                      ? 'flex w-full items-center rounded-xl border border-warning-500/40 bg-warning-500/10 px-3 py-2 text-sm font-medium text-warning-600'
+                      : 'flex w-full items-center rounded-xl border border-dark-600 bg-dark-700 px-3 py-2 text-sm text-alpine-900'
+                  }
+                >
+                  {t(`newOrderModal.modeOptions.${mode}`)}
+                </output>
               </div>
             </div>
             {supportsPostOnly && (

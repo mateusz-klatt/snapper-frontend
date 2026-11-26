@@ -639,7 +639,6 @@ describe('NewOrderModal', () => {
     ['Exchange', 'walutomat'],
     ['Instrument', 'ETH-USD'],
     ['Wallet', 'wallet-1'],
-    ['Mode', 'live'],
     ['Order Type', 'market'],
   ])('rotates the submission key after changing %s', async (label: string, value: string) => {
     mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
@@ -800,7 +799,9 @@ describe('NewOrderModal', () => {
       try {
         render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
         fireEvent.change(screen.getByLabelText('Order Type'), { target: { value: orderType } })
-        fireEvent.change(screen.getByLabelText('Mode'), { target: { value: mode } })
+        fireEvent.change(screen.getByLabelText('Wallet'), {
+          target: { value: mode === 'live' ? 'wallet-1' : 'wallet-2' },
+        })
         expect(screen.queryByRole('checkbox', { name: 'Maker only' }) !== null).toBe(maker)
         expect(screen.queryByRole('checkbox', { name: 'Reduce Only' }) !== null).toBe(reduce)
         expect(screen.queryByLabelText('Leverage')).not.toBeInTheDocument()
@@ -817,7 +818,7 @@ describe('NewOrderModal', () => {
 
     try {
       render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
-      fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'live' } })
+      fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-1' } })
       fillLimitOrder()
       await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
       await userEvent.click(screen.getByRole('checkbox', { name: 'Reduce Only' }))
@@ -839,25 +840,25 @@ describe('NewOrderModal', () => {
 
   it('resets maker-only when a changed order type cannot carry it', async () => {
     render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
-    fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'live' } })
+    fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-1' } })
     await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
     fireEvent.change(screen.getByLabelText('Order Type'), { target: { value: 'market' } })
     fireEvent.change(screen.getByLabelText('Order Type'), { target: { value: 'limit' } })
     expect(screen.getByRole('checkbox', { name: 'Maker only' })).not.toBeChecked()
   })
 
-  it('resets futures modifiers when switching away from live mode', async () => {
+  it('resets futures modifiers when switching away from live wallet mode', async () => {
     const previous = mockHookState.exchanges
 
     mockHookState.exchanges = { payload: ['kraken_futures'] }
 
     try {
       render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
-      fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'live' } })
+      fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-1' } })
       await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
       await userEvent.click(screen.getByRole('checkbox', { name: 'Reduce Only' }))
-      fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'paper' } })
-      fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'live' } })
+      fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-2' } })
+      fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-1' } })
       expect(screen.getByRole('checkbox', { name: 'Maker only' })).not.toBeChecked()
       expect(screen.getByRole('checkbox', { name: 'Reduce Only' })).not.toBeChecked()
     } finally {
@@ -868,7 +869,7 @@ describe('NewOrderModal', () => {
   it('rotates the submission key when changing a requested execution modifier', async () => {
     mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
     render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
-    fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'live' } })
+    fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-1' } })
     fillLimitOrder()
     await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
     await confirmOrder()
@@ -992,14 +993,16 @@ describe('NewOrderModal', () => {
     }
   })
 
-  it('defaults to the active live wallet and live mode on open', async () => {
+  it('defaults to the active live wallet and live mode on open without an editable mode select', async () => {
     mockMutateAsync.mockResolvedValueOnce({})
     useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
 
     render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
 
     expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-1')
-    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('live')
+    expect(screen.queryByRole('combobox', { name: 'Mode' })).not.toBeInTheDocument()
+    expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Live')
+    expect(screen.getByTestId('new-order-mode-display')).toHaveClass('text-warning-600')
 
     fillLimitOrder()
     await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
@@ -1023,7 +1026,7 @@ describe('NewOrderModal', () => {
     render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
 
     expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-2')
-    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+    expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Paper')
 
     fillLimitOrder()
     await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
@@ -1047,7 +1050,7 @@ describe('NewOrderModal', () => {
     render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
 
     expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-2')
-    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+    expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Paper')
 
     fillLimitOrder()
     await confirmOrder()
@@ -1055,6 +1058,32 @@ describe('NewOrderModal', () => {
       expect.objectContaining({
         wallet_public_id: 'wallet-2',
         mode: 'paper',
+      })
+    )
+  })
+
+  it('flips displayed and submitted mode when switching between paper and live wallets', async () => {
+    mockMutateAsync.mockResolvedValue({})
+    useAppStore.setState({ currentWalletPublicId: 'wallet-2' })
+
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+
+    expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Paper')
+
+    fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-1' } })
+    expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Live')
+    expect(screen.getByTestId('new-order-mode-display')).toHaveClass('text-warning-600')
+
+    fillLimitOrder()
+    await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+    expect(screen.getByText('default (Live)')).toBeInTheDocument()
+    expect(screen.getByText('Live')).toBeInTheDocument()
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm Order' }))
+
+    expect(mockMutateAsync).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        wallet_public_id: 'wallet-1',
+        mode: 'live',
       })
     )
   })
@@ -1068,17 +1097,18 @@ describe('NewOrderModal', () => {
       render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
 
       expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('')
-      expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+      expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Paper')
 
       fillLimitOrder()
       await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
       expect(screen.getByText('All required fields must be filled')).toBeInTheDocument()
+      expect(mockMutateAsync).not.toHaveBeenCalled()
 
       fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-1' } })
-      expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('live')
+      expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Live')
 
       fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: '' } })
-      expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+      expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Paper')
     } finally {
       mockHookState.wallets = previous
     }
@@ -1090,7 +1120,7 @@ describe('NewOrderModal', () => {
     render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
 
     expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-2')
-    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+    expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Paper')
   })
 
   it('keeps wallet unselected and mode paper when wallets list is empty', () => {
@@ -1102,7 +1132,7 @@ describe('NewOrderModal', () => {
       render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
 
       expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('')
-      expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+      expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Paper')
     } finally {
       mockHookState.wallets = previous
     }
@@ -1118,10 +1148,10 @@ describe('NewOrderModal', () => {
     rerender(<NewOrderModal open={true} onClose={onClose} />)
 
     expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-1')
-    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('live')
+    expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Live')
 
     fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-2' } })
-    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+    expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Paper')
 
     await userEvent.click(screen.getByRole('button', { name: 'Cancel' }))
     rerender(<NewOrderModal open={false} onClose={onClose} />)
@@ -1129,7 +1159,7 @@ describe('NewOrderModal', () => {
     rerender(<NewOrderModal open={true} onClose={onClose} />)
 
     expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-2')
-    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+    expect(screen.getByTestId('new-order-mode-display')).toHaveTextContent('Paper')
   })
 
   it('falls back to wallet public id in confirmation if wallet metadata is absent', async () => {
