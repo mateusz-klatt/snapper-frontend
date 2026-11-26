@@ -37,7 +37,8 @@ import {
   flushThrottledMessages,
   buildWebSocketUrl,
 } from './reconnect'
-import { getWsToken, isAuthControlMessage } from './auth'
+import { getWsToken, isAuthControlMessage, WsTicketNetworkError } from './auth'
+import { APIError } from '../api/error'
 import { getTracker } from '../sequenceTracker'
 
 const TELEMETRY_TYPES = new Set(['ping'])
@@ -58,8 +59,8 @@ class WebSocketClient {
   private readonly throttleInterval: number
   private readonly secure: boolean
   private reconnectAttempts = 0
-  private isReconnecting = false
-  private intentionalDisconnect = false
+  private reconnectTimer: ReturnType<typeof setTimeout> | null = null
+  private hasEstablishedConnection = false
   private heartbeatTimer: ReturnType<typeof setInterval> | null = null
   private throttleTimer: ReturnType<typeof setInterval> | null = null
   private isAuthenticated = false
@@ -68,7 +69,7 @@ class WebSocketClient {
   private reauthTimer: ReturnType<typeof setTimeout> | null = null
   private reauthScheduledAt: number | null = null
   private lastReauthDeadlineMs: number | null = null
-  private reauthInProgress = false
+  private authenticatingSocket: WebSocket | null = null
   private readonly reauthLeadTimeMs = 45000
   private readonly messageHandlers = new Map<string, MessageHandler[]>()
   private readonly connectionHandlers: ConnectionHandler[] = []
@@ -83,7 +84,7 @@ class WebSocketClient {
     this.secure = options.secure || false
     this.url = options.url || buildWebSocketUrl()
     this.reconnectInterval = options.reconnectInterval || 3000
-    this.maxReconnectAttempts = options.maxReconnectAttempts || 10
+    this.maxReconnectAttempts = options.maxReconnectAttempts ?? 10
     this.heartbeatInterval = options.heartbeatInterval || 5000
     this.throttleInterval = options.throttleInterval || 200
     this.setupThrottling()
@@ -113,27 +114,39 @@ class WebSocketClient {
       this.setupThrottling()
     }
 
-    this.intentionalDisconnect = false
+    this.clearReconnectTimer()
     this.sessionExpiresAt = null
     this.pendingWsTokenExp = null
     this.clearReauthTimer()
     this.lastReauthDeadlineMs = null
 
     try {
-      this.ws = new WebSocket(this.url)
-      this.ws.onopen = this.handleOpen.bind(this)
-      this.ws.onmessage = this.handleMessage.bind(this)
-      this.ws.onclose = this.handleClose.bind(this)
-      this.ws.onerror = this.handleError.bind(this)
+      const socket = new WebSocket(this.url)
+
+      this.ws = socket
+
+      socket.onopen = () => {
+        if (this.ws === socket) this.handleOpen()
+      }
+
+      socket.onmessage = event => {
+        if (this.ws === socket) this.handleMessage(event)
+      }
+
+      socket.onclose = () => {
+        if (this.ws === socket) this.handleClose()
+      }
+
+      socket.onerror = this.handleError.bind(this)
     } catch (error) {
       console.error('WebSocket connection error:', error)
       this.scheduleReconnect()
     }
   }
   disconnect(): void {
-    this.intentionalDisconnect = true
-    this.isReconnecting = false
+    this.clearReconnectTimer()
     this.reconnectAttempts = 0
+    this.hasEstablishedConnection = false
     this.isAuthenticated = false
     this.sessionExpiresAt = null
     this.pendingWsTokenExp = null
@@ -153,13 +166,14 @@ class WebSocketClient {
     }
 
     if (this.ws) {
-      this.ws.close()
+      const socket = this.ws
+
       this.ws = null
+      socket.close()
+      this.notifyConnectionHandlers(false)
     }
   }
   private handleOpen(): void {
-    this.reconnectAttempts = 0
-    this.isReconnecting = false
     this.isAuthenticated = false
 
     if (!this.secure) {
@@ -167,6 +181,8 @@ class WebSocketClient {
     }
   }
   private onConnectionReady(): void {
+    this.reconnectAttempts = 0
+    this.hasEstablishedConnection = true
     this.isAuthenticated = true
     this.resubscribeTopics()
     this.notifyConnectionHandlers(true)
@@ -261,6 +277,7 @@ class WebSocketClient {
     }
   }
   private handleClose(): void {
+    this.ws = null
     this.pendingMessages.clear()
     this.lastMessageTime.clear()
     this.isAuthenticated = false
@@ -268,20 +285,14 @@ class WebSocketClient {
     this.pendingWsTokenExp = null
     this.clearReauthTimer()
     this.lastReauthDeadlineMs = null
-    this.notifyConnectionHandlers(false)
 
     if (this.heartbeatTimer) {
       clearInterval(this.heartbeatTimer)
       this.heartbeatTimer = null
     }
 
-    const wasIntentional = this.intentionalDisconnect
-
-    this.intentionalDisconnect = false
-
-    if (!wasIntentional) {
-      this.scheduleReconnect()
-    }
+    this.scheduleReconnect()
+    this.notifyConnectionHandlers(false)
   }
   private handleError(error: Event): void {
     console.error('WebSocket error:', error)
@@ -343,11 +354,12 @@ class WebSocketClient {
   }
   private handleAuthComplete(message: WSAuthCompleteResponse): void {
     this.sessionExpiresAt = message.session_expires_at ?? null
-    this.isAuthenticated = true
     this.onConnectionReady()
     this.notifyHandlers({ ...message, type: 'auth_complete' })
   }
   private handleAuthFailure(message: WSAuthFailedResponse): void {
+    const socket = this.ws
+
     console.error('WebSocket authentication failed:', message)
     this.sessionExpiresAt = null
     this.isAuthenticated = false
@@ -361,7 +373,7 @@ class WebSocketClient {
       authCallback()
     }
 
-    this.closeForAuthFailure()
+    if (this.ws === socket) this.closeForAuthFailure()
   }
   private async handleReauthRequired(message: WSReauthRequiredResponse): Promise<void> {
     if (!this.secure) {
@@ -422,36 +434,47 @@ class WebSocketClient {
       return
     }
 
-    if (this.ws?.readyState !== WebSocket.OPEN) {
+    const socket = this.ws
+
+    if (socket?.readyState !== WebSocket.OPEN || this.authenticatingSocket === socket) {
       return
     }
 
-    if (this.reauthInProgress) {
-      return
-    }
-
-    this.reauthInProgress = true
+    this.authenticatingSocket = socket
 
     try {
-      const { token: wsToken, exp: wsTokenExp } = await getWsToken()
+      const ticket = await getWsToken(socket, () => this.isCurrentOpenSocket(socket))
 
-      this.pendingWsTokenExp = wsTokenExp
+      if (!ticket || !this.isCurrentOpenSocket(socket)) return
+
+      this.pendingWsTokenExp = ticket.exp
       const payload =
         mode === 'authenticate'
-          ? { type: 'authenticate', ws_token: wsToken }
-          : { type: 'reauth', ws_token: wsToken }
+          ? { type: 'authenticate', ws_token: ticket.token }
+          : { type: 'reauth', ws_token: ticket.token }
 
       this.send(payload)
     } catch (error) {
+      if (!this.isCurrentOpenSocket(socket)) return
+
       console.error('Failed to perform WebSocket authentication:', error)
 
-      if (mode === 'authenticate') {
+      if (
+        this.hasEstablishedConnection &&
+        (error instanceof WsTicketNetworkError ||
+          (error instanceof APIError && error.status >= 500 && error.status < 600))
+      ) {
+        socket.close()
+      } else if (mode === 'authenticate') {
         this.reconnectAttempts = this.maxReconnectAttempts
         this.closeForAuthFailure()
       }
     } finally {
-      this.reauthInProgress = false
+      if (this.authenticatingSocket === socket) this.authenticatingSocket = null
     }
+  }
+  private isCurrentOpenSocket(socket: WebSocket): boolean {
+    return this.ws === socket && socket.readyState === WebSocket.OPEN
   }
   private scheduleReauthFromMs(expirationMs: number): void {
     if (!this.secure) {
@@ -486,23 +509,31 @@ class WebSocketClient {
   private closeForAuthFailure(): void {
     if (this.ws?.readyState === WebSocket.OPEN) {
       this.ws.close(4401, 'Authentication failure')
-    } else {
-      this.scheduleReconnect()
+    }
+  }
+  private clearReconnectTimer(): void {
+    if (this.reconnectTimer !== null) {
+      clearTimeout(this.reconnectTimer)
+      this.reconnectTimer = null
     }
   }
   private scheduleReconnect(): void {
-    if (!shouldReconnect(this.isReconnecting, this.reconnectAttempts, this.maxReconnectAttempts)) {
+    if (
+      !shouldReconnect(
+        this.reconnectTimer !== null,
+        this.reconnectAttempts,
+        this.maxReconnectAttempts
+      )
+    ) {
       return
     }
 
-    this.isReconnecting = true
     this.reconnectAttempts++
     const delay = calculateReconnectDelay(this.reconnectAttempts, this.reconnectInterval)
 
-    setTimeout(() => {
-      if (this.isReconnecting) {
-        this.connect()
-      }
+    this.reconnectTimer = setTimeout(() => {
+      this.reconnectTimer = null
+      this.connect()
     }, delay)
   }
   private startHeartbeat(): void {
@@ -755,7 +786,7 @@ class WebSocketClient {
       connected: this.isConnected(),
       reconnectAttempts: this.reconnectAttempts,
       subscriptions: Array.from(this.subscribedTopics),
-      isReconnecting: this.isReconnecting,
+      isReconnecting: this.reconnectTimer !== null,
       sessionExpiresAt: this.sessionExpiresAt,
     }
   }
