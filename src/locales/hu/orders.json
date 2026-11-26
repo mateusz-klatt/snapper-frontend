@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — csak piaci adatos",
     "walletPaperSuffix": "{{label}} (demó)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "Válasszon tárcát"
     },
     "buttons": {
       "cancel": "Mégse",

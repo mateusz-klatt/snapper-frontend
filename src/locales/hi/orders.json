@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — केवल बाजार डेटा",
     "walletPaperSuffix": "{{label}} (पेपर)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "वॉलेट चुनें"
     },
     "buttons": {
       "cancel": "रद्द करें",

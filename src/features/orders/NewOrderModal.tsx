@@ -10,8 +10,10 @@ import { useCreateOrder } from '../../hooks/queries/orders'
 import { useWallets } from '../../hooks/queries/wallets'
 import { APIError } from '../../lib/apiClient'
 import { lookupOrderErrorMessageKey } from './errorMessages'
+import { useAppStore } from '../../stores/app'
 import { useAuth } from '../../stores/auth'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import type { WalletInfo } from '../../types/api'
 import { Permission } from '../../types/permissions.generated'
 import { formatQuoted } from '../positions/instrumentQuote'
 
@@ -20,11 +22,40 @@ interface NewOrderModalProps {
   onClose: () => void
 }
 
+function resolveOrderDefaults(
+  wallets: readonly WalletInfo[],
+  currentWalletPublicId: string | null
+): { walletPublicId: string; mode: 'live' | 'paper' } {
+  const activeWallet =
+    currentWalletPublicId === null
+      ? undefined
+      : wallets.find(w => w.public_id === currentWalletPublicId)
+
+  if (activeWallet !== undefined) {
+    return {
+      walletPublicId: activeWallet.public_id,
+      mode: activeWallet.is_paper ? 'paper' : 'live',
+    }
+  }
+
+  const paperWallet = wallets.find(w => w.is_paper)
+
+  if (paperWallet !== undefined) {
+    return {
+      walletPublicId: paperWallet.public_id,
+      mode: 'paper',
+    }
+  }
+
+  return { walletPublicId: '', mode: 'paper' }
+}
+
 export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) => {
   const { t } = useTranslation('orders')
   const { hasPermission } = useAuth()
   const readOnly = useIsReadOnly()
   const canCreateOrders = hasPermission(Permission.CREATE_ORDERS) && !readOnly
+  const currentWalletPublicId = useAppStore(s => s.currentWalletPublicId)
   const exchangeSelectId = 'new-order-exchange'
   const instrumentSelectId = 'new-order-instrument'
   const sideSelectId = 'new-order-side'
@@ -72,7 +103,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const [quantity, setQuantity] = useState('')
   const [price, setPrice] = useState('')
   const [stopPrice, setStopPrice] = useState('')
-  const [mode, setMode] = useState('live')
+  const [mode, setMode] = useState('paper')
   const [postOnly, setPostOnly] = useState(false)
   const [reduceOnly, setReduceOnly] = useState(false)
   const [walletPublicId, setWalletPublicId] = useState('')
@@ -82,6 +113,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const submissionAttempt = useRef<{ fingerprint: string; key: string } | null>(null)
   const submissionInFlight = useRef(false)
   const ticketGeneration = useRef(0)
+  const defaultsApplied = useRef(false)
 
   const { data: instruments } = useExchangeInstrumentsDetail(exchange || null)
   const capabilityMap = useMemo(() => {
@@ -103,15 +135,18 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     }
   }, [exchanges, exchange])
 
-  const wallets = walletsResponse?.payload
+  const walletsPayload = walletsResponse?.payload
+  const wallets = useMemo(() => walletsPayload ?? [], [walletsPayload])
 
   useEffect(() => {
-    const head = wallets?.[0]
+    if (!open || defaultsApplied.current || wallets.length === 0) return
 
-    if (head !== undefined && !walletPublicId) {
-      setWalletPublicId(head.public_id)
-    }
-  }, [wallets, walletPublicId])
+    const defaults = resolveOrderDefaults(wallets, currentWalletPublicId)
+
+    defaultsApplied.current = true
+    setWalletPublicId(defaults.walletPublicId)
+    setMode(defaults.mode)
+  }, [open, wallets, currentWalletPublicId])
 
   useEffect(() => {
     setInstrument('')
@@ -134,10 +169,21 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
       ? row.symbol
       : t('newOrderModal.instrumentMarketDataOnlySuffix', { symbol: row.symbol }),
   }))
-  const walletOptions = (wallets ?? []).map(w => ({
-    value: w.public_id,
-    label: w.is_paper ? t('newOrderModal.walletPaperSuffix', { label: w.label }) : w.label,
-  }))
+  const walletOptions = [
+    { value: '', label: t('newOrderModal.placeholders.wallet') },
+    ...wallets.map(w => ({
+      value: w.public_id,
+      label: w.is_paper ? t('newOrderModal.walletPaperSuffix', { label: w.label }) : w.label,
+    })),
+  ]
+  const selectedWallet = wallets.find(w => w.public_id === walletPublicId)
+  const confirmedWalletLabel =
+    selectedWallet === undefined
+      ? walletPublicId
+      : t('newOrderModal.walletWithMode', {
+          label: selectedWallet.label,
+          mode: t(`newOrderModal.modeOptions.${selectedWallet.is_paper ? 'paper' : 'live'}`),
+        })
 
   const needsPrice = orderType === 'limit' || orderType === 'stop_limit'
   const needsStopPrice = orderType === 'stop' || orderType === 'stop_limit'
@@ -188,6 +234,13 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const handleInstrumentChange = (val: string) => {
     setInstrument(val)
     setInstrumentPublicId(val)
+  }
+
+  const handleWalletChange = (nextWalletId: string) => {
+    setWalletPublicId(nextWalletId)
+    const selected = wallets.find(w => w.public_id === nextWalletId)
+
+    setMode(selected?.is_paper === false ? 'live' : 'paper')
   }
 
   const translateErrorCode = (details: unknown): string | null => {
@@ -289,6 +342,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const handleClose = () => {
     ticketGeneration.current += 1
     submissionInFlight.current = false
+    defaultsApplied.current = false
     setIsSubmitting(false)
     setExchange('')
     setInstrument('')
@@ -298,7 +352,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     setQuantity('')
     setPrice('')
     setStopPrice('')
-    setMode('live')
+    setMode('paper')
     setPostOnly(false)
     setReduceOnly(false)
     setWalletPublicId('')
@@ -376,6 +430,10 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               {effectiveReduceOnly && (
                 <div className='text-alpine-900'>{t('csv.orders.reduceOnly')}</div>
               )}
+              <div className='flex justify-between'>
+                <span className='text-muted-500'>{t('newOrderModal.fields.wallet')}</span>
+                <span className='text-alpine-900 font-medium'>{confirmedWalletLabel}</span>
+              </div>
               <div className='flex justify-between'>
                 <span className='text-muted-500'>{t('newOrderModal.fields.mode')}</span>
                 <span className='text-alpine-900'>
@@ -531,7 +589,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 <NativeSelect
                   id={walletSelectId}
                   value={walletPublicId}
-                  onChange={setWalletPublicId}
+                  onChange={handleWalletChange}
                   options={walletOptions}
                 />
               </div>

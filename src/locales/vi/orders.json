@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — chỉ dữ liệu thị trường",
     "walletPaperSuffix": "{{label}} (mô phỏng)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "Chọn ví"
     },
     "buttons": {
       "cancel": "Hủy",

@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { NewOrderModal } from './NewOrderModal'
+import { useAppStore } from '../../stores/app'
 
 const mockHasPermission = vi.fn(() => true)
 
@@ -122,6 +123,7 @@ describe('NewOrderModal', () => {
     vi.clearAllMocks()
     mockHasPermission.mockReturnValue(true)
     mockCreateOrderState.isPending = false
+    useAppStore.setState({ currentWalletPublicId: null })
   })
 
   it('does not render when closed', () => {
@@ -636,8 +638,8 @@ describe('NewOrderModal', () => {
     ['Side', 'sell'],
     ['Exchange', 'walutomat'],
     ['Instrument', 'ETH-USD'],
-    ['Wallet', 'wallet-2'],
-    ['Mode', 'paper'],
+    ['Wallet', 'wallet-1'],
+    ['Mode', 'live'],
     ['Order Type', 'market'],
   ])('rotates the submission key after changing %s', async (label: string, value: string) => {
     mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
@@ -815,6 +817,7 @@ describe('NewOrderModal', () => {
 
     try {
       render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+      fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'live' } })
       fillLimitOrder()
       await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
       await userEvent.click(screen.getByRole('checkbox', { name: 'Reduce Only' }))
@@ -836,6 +839,7 @@ describe('NewOrderModal', () => {
 
   it('resets maker-only when a changed order type cannot carry it', async () => {
     render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+    fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'live' } })
     await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
     fireEvent.change(screen.getByLabelText('Order Type'), { target: { value: 'market' } })
     fireEvent.change(screen.getByLabelText('Order Type'), { target: { value: 'limit' } })
@@ -849,6 +853,7 @@ describe('NewOrderModal', () => {
 
     try {
       render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+      fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'live' } })
       await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
       await userEvent.click(screen.getByRole('checkbox', { name: 'Reduce Only' }))
       fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'paper' } })
@@ -863,6 +868,7 @@ describe('NewOrderModal', () => {
   it('rotates the submission key when changing a requested execution modifier', async () => {
     mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
     render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+    fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'live' } })
     fillLimitOrder()
     await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
     await confirmOrder()
@@ -983,6 +989,164 @@ describe('NewOrderModal', () => {
       expect(body).not.toHaveProperty('reduce_only')
     } finally {
       mockHookState.instruments = previous
+    }
+  })
+
+  it('defaults to the active live wallet and live mode on open', async () => {
+    mockMutateAsync.mockResolvedValueOnce({})
+    useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
+
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+
+    expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-1')
+    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('live')
+
+    fillLimitOrder()
+    await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+    expect(screen.getByText('Wallet')).toBeInTheDocument()
+    expect(screen.getByText('default (Live)')).toBeInTheDocument()
+    expect(screen.getByText('Live')).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm Order' }))
+    expect(mockMutateAsync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        wallet_public_id: 'wallet-1',
+        mode: 'live',
+      })
+    )
+  })
+
+  it('defaults to the active paper wallet and paper mode on open', async () => {
+    mockMutateAsync.mockResolvedValueOnce({})
+    useAppStore.setState({ currentWalletPublicId: 'wallet-2' })
+
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+
+    expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-2')
+    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+
+    fillLimitOrder()
+    await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+    expect(screen.getByText('Wallet')).toBeInTheDocument()
+    expect(screen.getByText('paper (Paper)')).toBeInTheDocument()
+    expect(screen.getByText('Paper')).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm Order' }))
+    expect(mockMutateAsync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        wallet_public_id: 'wallet-2',
+        mode: 'paper',
+      })
+    )
+  })
+
+  it('falls back to the first paper wallet and paper mode when no wallet is active', async () => {
+    mockMutateAsync.mockResolvedValueOnce({})
+    useAppStore.setState({ currentWalletPublicId: null })
+
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+
+    expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-2')
+    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+
+    fillLimitOrder()
+    await confirmOrder()
+    expect(mockMutateAsync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        wallet_public_id: 'wallet-2',
+        mode: 'paper',
+      })
+    )
+  })
+
+  it('never silently selects a live wallet when no active wallet or paper wallet exists', async () => {
+    const previous = mockHookState.wallets
+
+    mockHookState.wallets = [{ public_id: 'wallet-1', label: 'default', is_paper: false }]
+
+    try {
+      render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+
+      expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('')
+      expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+
+      fillLimitOrder()
+      await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+      expect(screen.getByText('All required fields must be filled')).toBeInTheDocument()
+
+      fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-1' } })
+      expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('live')
+
+      fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: '' } })
+      expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+    } finally {
+      mockHookState.wallets = previous
+    }
+  })
+
+  it('falls back to paper when active wallet id is missing from wallet list', () => {
+    useAppStore.setState({ currentWalletPublicId: 'missing-wallet' })
+
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+
+    expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-2')
+    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+  })
+
+  it('keeps wallet unselected and mode paper when wallets list is empty', () => {
+    const previous = mockHookState.wallets
+
+    mockHookState.wallets = []
+
+    try {
+      render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+
+      expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('')
+      expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+    } finally {
+      mockHookState.wallets = previous
+    }
+  })
+
+  it('applies active wallet defaults on open and refreshes after cancel when active wallet changes', async () => {
+    const onClose = vi.fn()
+    const { rerender } = render(<NewOrderModal open={false} onClose={onClose} />, {
+      wrapper: createWrapper(),
+    })
+
+    useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
+    rerender(<NewOrderModal open={true} onClose={onClose} />)
+
+    expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-1')
+    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('live')
+
+    fireEvent.change(screen.getByLabelText('Wallet'), { target: { value: 'wallet-2' } })
+    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+
+    await userEvent.click(screen.getByRole('button', { name: 'Cancel' }))
+    rerender(<NewOrderModal open={false} onClose={onClose} />)
+    useAppStore.setState({ currentWalletPublicId: 'wallet-2' })
+    rerender(<NewOrderModal open={true} onClose={onClose} />)
+
+    expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wallet-2')
+    expect((screen.getByLabelText('Mode') as HTMLSelectElement).value).toBe('paper')
+  })
+
+  it('falls back to wallet public id in confirmation if wallet metadata is absent', async () => {
+    const previous = mockHookState.wallets
+    const { rerender } = render(<NewOrderModal open={true} onClose={vi.fn()} />, {
+      wrapper: createWrapper(),
+    })
+
+    fillLimitOrder()
+    await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+    mockHookState.wallets = []
+
+    try {
+      rerender(<NewOrderModal open={true} onClose={vi.fn()} />)
+      expect(screen.getByText('wallet-2')).toBeInTheDocument()
+    } finally {
+      mockHookState.wallets = previous
     }
   })
 })

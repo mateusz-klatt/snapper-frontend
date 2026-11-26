@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — শুধু মার্কেট ডেটা",
     "walletPaperSuffix": "{{label}} (পেপার)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "একটি ওয়ালেট নির্বাচন করুন"
     },
     "buttons": {
       "cancel": "বাতিল",

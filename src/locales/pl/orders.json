@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — tylko dane rynkowe",
     "walletPaperSuffix": "{{label}} (demo)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "Wybierz portfel"
     },
     "buttons": {
       "cancel": "Anuluj",

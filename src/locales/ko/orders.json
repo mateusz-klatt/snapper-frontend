@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — 시장 데이터 전용",
     "walletPaperSuffix": "{{label}} (모의)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "지갑을 선택하세요"
     },
     "buttons": {
       "cancel": "취소",

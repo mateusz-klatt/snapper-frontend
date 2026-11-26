@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — tik rinkos duomenys",
     "walletPaperSuffix": "{{label}} (demonstracinė)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "Pasirinkite piniginę"
     },
     "buttons": {
       "cancel": "Atšaukti",

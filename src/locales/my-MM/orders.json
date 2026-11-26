@@ -117,10 +117,12 @@
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — စျေးကွက်ဒေတာသာ",
     "walletPaperSuffix": "{{label}} (စမ်းသပ်)",
+    "walletWithMode": "{{label}} ({{mode}})",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
-      "stopPrice": "0.00"
+      "stopPrice": "0.00",
+      "wallet": "ဝေါလက် တစ်ခုကို ရွေးပါ"
     },
     "buttons": {
       "cancel": "ပယ်ဖျက်",
