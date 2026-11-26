@@ -632,6 +632,43 @@ describe('NewOrderModal', () => {
     expect(retry).toEqual(first)
   })
 
+  it('retries the same live order with its original key after the wallet list recovers', async () => {
+    const previous = mockHookState.wallets
+    const onClose = vi.fn()
+
+    mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
+    useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
+
+    try {
+      const { rerender } = render(<NewOrderModal open={true} onClose={onClose} />, {
+        wrapper: createWrapper(),
+      })
+
+      fillLimitOrder()
+      await confirmOrder()
+      await screen.findByText('Response lost')
+
+      mockHookState.wallets = previous?.filter(wallet => wallet.public_id !== 'wallet-1')
+      rerender(<NewOrderModal open={true} onClose={onClose} />)
+      mockHookState.wallets = previous
+      rerender(<NewOrderModal open={true} onClose={onClose} />)
+      await confirmOrder()
+
+      expect(mockMutateAsync).toHaveBeenCalledTimes(2)
+      const first = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
+      const retry = mockMutateAsync.mock.calls[1]?.[0] as Record<string, unknown>
+
+      expect(first).toMatchObject({
+        wallet_public_id: 'wallet-1',
+        mode: 'live',
+        idempotency_key: expect.any(String),
+      })
+      expect(retry).toEqual(first)
+    } finally {
+      mockHookState.wallets = previous
+    }
+  })
+
   it.each([
     ['Quantity', '1'],
     ['Price', '49000'],
@@ -655,21 +692,59 @@ describe('NewOrderModal', () => {
     expect(changed.idempotency_key).not.toBe(first.idempotency_key)
   })
 
-  it('rotates the key when a material edit is reverted before retry', async () => {
-    mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
-    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
-    fillLimitOrder()
-    await confirmOrder()
-    await screen.findByText('Response lost')
-    fireEvent.change(screen.getByLabelText('Quantity'), { target: { value: '1' } })
-    fireEvent.change(screen.getByLabelText('Quantity'), { target: { value: '0.5' } })
-    await confirmOrder()
+  it.each([
+    { scenario: 'with the paper wallet available', omitLiveWallet: false },
+    { scenario: 'while the selected live wallet is missing', omitLiveWallet: true },
+  ])(
+    'rotates the key when a material edit is reverted before retry $scenario',
+    async ({ omitLiveWallet }) => {
+      const previous = mockHookState.wallets
+      const onClose = vi.fn()
 
-    const first = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
-    const changed = mockMutateAsync.mock.calls[1]?.[0] as Record<string, unknown>
+      mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
+      if (omitLiveWallet) useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
 
-    expect(changed.idempotency_key).not.toBe(first.idempotency_key)
-  })
+      try {
+        const { rerender } = render(<NewOrderModal open={true} onClose={onClose} />, {
+          wrapper: createWrapper(),
+        })
+
+        fillLimitOrder()
+        await confirmOrder()
+        await screen.findByText('Response lost')
+
+        if (omitLiveWallet) {
+          mockHookState.wallets = previous?.filter(wallet => wallet.public_id !== 'wallet-1')
+          rerender(<NewOrderModal open={true} onClose={onClose} />)
+        }
+
+        fireEvent.change(screen.getByLabelText('Quantity'), { target: { value: '1' } })
+        fireEvent.change(screen.getByLabelText('Quantity'), { target: { value: '0.5' } })
+
+        if (omitLiveWallet) {
+          mockHookState.wallets = previous
+          rerender(<NewOrderModal open={true} onClose={onClose} />)
+        }
+
+        await confirmOrder()
+
+        expect(mockMutateAsync).toHaveBeenCalledTimes(2)
+        const first = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
+        const retry = mockMutateAsync.mock.calls[1]?.[0] as Record<string, unknown>
+
+        expect(first).toMatchObject({
+          wallet_public_id: omitLiveWallet ? 'wallet-1' : 'wallet-2',
+          mode: omitLiveWallet ? 'live' : 'paper',
+          quantity: 0.5,
+          idempotency_key: expect.any(String),
+        })
+        expect(retry.idempotency_key).not.toBe(first.idempotency_key)
+        expect(retry).toEqual({ ...first, idempotency_key: expect.any(String) })
+      } finally {
+        mockHookState.wallets = previous
+      }
+    }
+  )
 
   it('starts another submission when an unchanged ticket is closed and reopened by its parent', async () => {
     mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
@@ -835,6 +910,98 @@ describe('NewOrderModal', () => {
       )
     } finally {
       mockHookState.exchanges = previous
+    }
+  })
+
+  it('blocks confirmation while the live wallet is missing and preserves reviewed modifiers', async () => {
+    const previousExchanges = mockHookState.exchanges
+    const previousWallets = mockHookState.wallets
+    const onClose = vi.fn()
+
+    mockHookState.exchanges = { payload: ['kraken_futures'] }
+    mockMutateAsync.mockResolvedValueOnce({})
+    useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
+
+    try {
+      const { rerender } = render(<NewOrderModal open={true} onClose={onClose} />, {
+        wrapper: createWrapper(),
+      })
+
+      fillLimitOrder()
+      await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
+      await userEvent.click(screen.getByRole('checkbox', { name: 'Reduce Only' }))
+      await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+      expect(screen.getByText('default (Live)')).toBeInTheDocument()
+      expect(screen.getByText('Maker only')).toBeInTheDocument()
+      expect(screen.getByText('Reduce Only')).toBeInTheDocument()
+
+      mockHookState.wallets = previousWallets?.filter(wallet => wallet.public_id !== 'wallet-1')
+      rerender(<NewOrderModal open={true} onClose={onClose} />)
+      const disabledConfirm = screen.getByRole('button', { name: 'Confirm Order' })
+
+      await userEvent.click(disabledConfirm)
+      expect(mockMutateAsync).not.toHaveBeenCalled()
+
+      mockHookState.wallets = previousWallets
+      rerender(<NewOrderModal open={true} onClose={onClose} />)
+      expect(screen.getByText('Maker only')).toBeInTheDocument()
+      expect(screen.getByText('Reduce Only')).toBeInTheDocument()
+      await userEvent.click(screen.getByRole('button', { name: 'Confirm Order' }))
+
+      expect(mockMutateAsync).toHaveBeenCalledTimes(1)
+      expect(mockMutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          wallet_public_id: 'wallet-1',
+          mode: 'live',
+          exchange: 'kraken_futures',
+          post_only: true,
+          reduce_only: true,
+        })
+      )
+    } finally {
+      mockHookState.exchanges = previousExchanges
+      mockHookState.wallets = previousWallets
+    }
+  })
+
+  it('requires a new review when the selected wallet changes from live to paper', async () => {
+    const previous = mockHookState.wallets
+    const onClose = vi.fn()
+
+    useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
+
+    try {
+      const { rerender } = render(<NewOrderModal open={true} onClose={onClose} />, {
+        wrapper: createWrapper(),
+      })
+
+      fillLimitOrder()
+      await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+      expect(screen.getByText('default (Live)')).toBeInTheDocument()
+
+      mockHookState.wallets = previous?.map(wallet =>
+        wallet.public_id === 'wallet-1' ? { ...wallet, is_paper: true } : wallet
+      )
+      rerender(<NewOrderModal open={true} onClose={onClose} />)
+      const confirm = screen.getByRole('button', { name: 'Confirm Order' })
+
+      expect(confirm).toBeDisabled()
+      await userEvent.click(confirm)
+      expect(mockMutateAsync).not.toHaveBeenCalled()
+
+      await userEvent.click(screen.getByRole('button', { name: 'Back' }))
+      await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+      expect(screen.getByText('default (Paper)')).toBeInTheDocument()
+
+      mockMutateAsync.mockResolvedValueOnce({})
+      await userEvent.click(screen.getByRole('button', { name: 'Confirm Order' }))
+
+      expect(mockMutateAsync).toHaveBeenCalledTimes(1)
+      expect(mockMutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({ wallet_public_id: 'wallet-1', mode: 'paper' })
+      )
+    } finally {
+      mockHookState.wallets = previous
     }
   })
 

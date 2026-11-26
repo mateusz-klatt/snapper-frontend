@@ -87,8 +87,13 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const [postOnly, setPostOnly] = useState(false)
   const [reduceOnly, setReduceOnly] = useState(false)
   const [walletPublicId, setWalletPublicId] = useState('')
+  const [lastResolvedWallet, setLastResolvedWallet] = useState<{
+    publicId: string
+    isPaper: boolean
+  } | null>(null)
   const [error, setError] = useState('')
-  const [confirming, setConfirming] = useState(false)
+  const [reviewedFingerprint, setReviewedFingerprint] = useState<string | null>(null)
+  const confirming = reviewedFingerprint !== null
   const [isSubmitting, setIsSubmitting] = useState(false)
   const submissionAttempt = useRef<{ fingerprint: string; key: string } | null>(null)
   const submissionInFlight = useRef(false)
@@ -154,7 +159,11 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     })),
   ]
   const selectedWallet = wallets.find(w => w.public_id === walletPublicId)
-  const mode: 'live' | 'paper' = selectedWallet?.is_paper === false ? 'live' : 'paper'
+  const selectedWalletIsPaper = selectedWallet?.is_paper
+  const isPaper =
+    selectedWalletIsPaper ??
+    (lastResolvedWallet?.publicId === walletPublicId ? lastResolvedWallet.isPaper : true)
+  const mode = isPaper ? 'paper' : 'live'
   const confirmedWalletLabel =
     selectedWallet === undefined
       ? walletPublicId
@@ -188,6 +197,14 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     ...(effectiveReduceOnly ? { reduce_only: true } : {}),
   }
   const submissionFingerprint = JSON.stringify(orderBody)
+  const reviewMatchesCurrentOrder =
+    selectedWallet !== undefined && reviewedFingerprint === submissionFingerprint
+
+  useEffect(() => {
+    if (selectedWalletIsPaper !== undefined) {
+      setLastResolvedWallet({ publicId: walletPublicId, isPaper: selectedWalletIsPaper })
+    }
+  }, [selectedWalletIsPaper, walletPublicId])
 
   useEffect(() => {
     submissionAttempt.current = null
@@ -229,7 +246,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
 
     setError('')
 
-    if (!exchange || !instrument || !quantity || !walletPublicId) {
+    if (!exchange || !instrument || !quantity || selectedWallet === undefined) {
       setError(t('newOrderModal.errors.missingRequired'))
 
       return
@@ -270,12 +287,12 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
       return
     }
 
-    setConfirming(true)
+    setReviewedFingerprint(submissionFingerprint)
   }
 
   const handleConfirm = async () => {
     if (!hasPermission(Permission.CREATE_ORDERS) || readOnly || selectedIsMarketDataOnly) return
-    if (submissionInFlight.current) return
+    if (!reviewMatchesCurrentOrder || submissionInFlight.current) return
 
     const attempt = submissionAttempt.current
     const idempotencyKey = attempt?.fingerprint === submissionFingerprint ? attempt.key : uuid7()
@@ -291,7 +308,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
       handleClose()
     } catch (err) {
       if (generation !== ticketGeneration.current) return
-      setConfirming(false)
+      setReviewedFingerprint(null)
 
       if (err instanceof APIError) {
         const mapped = translateErrorCode(err.details)
@@ -327,7 +344,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     setReduceOnly(false)
     setWalletPublicId('')
     setError('')
-    setConfirming(false)
+    setReviewedFingerprint(null)
     submissionAttempt.current = null
     onClose()
   }
@@ -416,7 +433,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             <div className='flex justify-end gap-3 pt-2'>
               <button
                 type='button'
-                onClick={() => setConfirming(false)}
+                onClick={() => setReviewedFingerprint(null)}
                 disabled={isSubmitting}
                 className='px-4 py-2 text-sm text-muted-600 hover:text-alpine-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
               >
@@ -425,7 +442,12 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               <button
                 type='button'
                 onClick={handleConfirm}
-                disabled={!canCreateOrders || isSubmitting || selectedIsMarketDataOnly}
+                disabled={
+                  !canCreateOrders ||
+                  isSubmitting ||
+                  selectedIsMarketDataOnly ||
+                  !reviewMatchesCurrentOrder
+                }
                 className='px-4 py-2 text-sm font-medium rounded-lg bg-brand-600 text-white hover:bg-brand-500 disabled:opacity-50 transition-colors'
               >
                 {isSubmitting
