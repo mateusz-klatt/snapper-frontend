@@ -29,11 +29,11 @@ export class RefreshBodyReadError extends Error {
 export type RefreshFailureKind =
   'terminal_auth' | 'transient_transport' | 'transient_http' | 'other'
 
-export function isTransientRefreshHttpStatus(status: number): boolean {
+function isTransientRefreshHttpStatus(status: number): boolean {
   return status === 408 || status === 429 || (status >= 500 && status < 600)
 }
 
-export function isTerminalRefreshHttpStatus(status: number): boolean {
+function isTerminalRefreshHttpStatus(status: number): boolean {
   return status === 401 || status === 403
 }
 
