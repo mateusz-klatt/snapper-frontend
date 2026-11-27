@@ -235,6 +235,35 @@ describe('auth', () => {
         epoch.mockReturnValue(0)
       }
     })
+    it('releases a closed socket ticket flight before sleeping on a malformed response', async () => {
+      vi.useFakeTimers()
+      let resolveOld!: (response: Response) => void
+      const pendingResponse = new Promise<Response>(resolve => {
+        resolveOld = resolve
+      })
+
+      vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
+      vi.mocked(apiClient.refreshSession)
+        .mockReturnValueOnce(pendingResponse)
+        .mockResolvedValueOnce(
+          refreshResponse({
+            payload: { ws_token: 'replacement', ws_token_exp: '2030-01-01T00:00:00.000Z' },
+          })
+        )
+
+      let isOpen = true
+      const oldTicket = requestWsToken(socket, () => isOpen)
+
+      isOpen = false
+      const replacement = requestWsToken({} as WebSocket, () => true)
+
+      resolveOld(refreshResponse({ payload: {} }))
+      await vi.advanceTimersByTimeAsync(0)
+
+      expect(apiClient.refreshSession).toHaveBeenCalledTimes(2)
+      await expect(oldTicket).resolves.toBeNull()
+      await expect(replacement).resolves.toMatchObject({ token: 'replacement' })
+    })
     it.each(['socket replacement', 'session change'])(
       'abandons a malformed-ticket retry after %s during backoff',
       async invalidation => {

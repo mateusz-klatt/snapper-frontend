@@ -43,6 +43,12 @@ async function refreshWsToken(): Promise<WsTicket> {
   try {
     envelope = (await response.json()) as RefreshWsTokenResponse
   } catch (error) {
+    if (error instanceof SyntaxError) {
+      throw new MalformedWsTicketError('Invalid ws_token response from refresh endpoint', {
+        cause: error,
+      })
+    }
+
     if (
       error instanceof DOMException &&
       (error.name === 'AbortError' || error.name === 'TimeoutError')
@@ -77,6 +83,8 @@ async function refreshWsTokenWithRetry(
       if (epoch !== apiClient.getSessionEpoch()) return null
       if (!(error instanceof MalformedWsTicketError) || attempt >= MAX_TICKET_ATTEMPTS) throw error
     }
+
+    if (!isCurrent()) return null
 
     const delay = calculateReconnectDelay(attempt++, TICKET_RETRY_INTERVAL_MS)
 

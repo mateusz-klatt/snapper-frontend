@@ -20,12 +20,20 @@ interface WebSocketState {
 type WindowWithWsCallback = typeof globalThis & { wsDisconnectCallback?: () => void }
 
 const noop = (): void => undefined
+const isClientReady = (client: WebSocketClient): boolean =>
+  client.isReady?.() ?? client.isConnected()
 
 export const useWebSocketStore = create<WebSocketState>((set, get) => {
   const win = globalThis as WindowWithWsCallback
   let connectGeneration = 0
   let cancelPendingConnect: (() => void) | null = null
+  let unsubscribeClientEvents = noop
   let unsubscribeTerminal = noop
+
+  const unbindClientEvents = () => {
+    unsubscribeClientEvents()
+    unsubscribeClientEvents = noop
+  }
 
   win.wsDisconnectCallback = () => {
     get().disconnect()
@@ -47,13 +55,15 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => {
 
       const attemptId = ++connectGeneration
 
+      unbindClientEvents()
       unsubscribeTerminal()
+      unsubscribeTerminal = noop
       set({ isConnecting: true, error: null, terminalFailure: null })
 
       try {
         let client = wsClient
 
-        if (!client?.isConnected()) {
+        if (!client || !isClientReady(client)) {
           client?.disconnect()
           const authState = useAuthStore.getState()
           const hasAuthCookies = apiClient.hasAuthCookies()
@@ -63,38 +73,22 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => {
               ? new WebSocketClient({ url: wsUrl, secure: true })
               : new WebSocketClient({ url: wsUrl })
           set({ wsClient: client })
-
-          const authErrorHandler = (message: WebSocketMessages) => {
-            if (attemptId !== connectGeneration) return
-
-            const reason = 'reason' in message ? (message.reason as string | undefined) : undefined
-            const suffix = reason ? `: ${reason}` : ''
-
-            set({ error: `WebSocket authentication failed${suffix}` })
-          }
-
-          client.onMessage('auth_complete', () => {
-            if (attemptId === connectGeneration) set({ error: null })
-          })
-          client.onMessage('auth_failed', authErrorHandler)
-          client.onMessage('auth_expired', () => {
-            if (attemptId === connectGeneration) {
-              set({ error: 'WebSocket session expired, attempting to reconnect…' })
-            }
-          })
         }
 
         const activeClient = client
 
-        activeClient.onConnection((connected: boolean) => {
-          if (attemptId === connectGeneration) {
-            set({ isConnected: connected })
-          }
-        })
+        const authErrorHandler = (message: WebSocketMessages) => {
+          if (attemptId !== connectGeneration) return
+
+          const reason = 'reason' in message ? (message.reason as string | undefined) : undefined
+          const suffix = reason ? `: ${reason}` : ''
+
+          set({ error: `WebSocket authentication failed${suffix}` })
+        }
+
         await new Promise<void>((resolve, reject) => {
           let settled = false
           let timeoutId: ReturnType<typeof setTimeout> | null = null
-          let unsubscribeConnection: () => void = noop
 
           const cleanup = () => {
             if (timeoutId !== null) {
@@ -102,7 +96,6 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => {
               timeoutId = null
             }
 
-            unsubscribeConnection()
             cancelPendingConnect = null
           }
 
@@ -123,13 +116,34 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => {
             finish(new Error('Connection cancelled'))
           }
 
+          const markReady = () => {
+            finish()
+            set({ isConnected: true })
+          }
+
           cancelPendingConnect = cancel
-          unsubscribeConnection =
-            activeClient.onConnection(() => {
-              if (activeClient.isConnected()) {
-                finish()
+          const subscriptions = [
+            activeClient.onMessage('auth_complete', () => {
+              if (attemptId === connectGeneration) set({ error: null })
+            }),
+            activeClient.onMessage('auth_failed', authErrorHandler),
+            activeClient.onMessage('auth_expired', () => {
+              if (attemptId === connectGeneration) {
+                set({ error: 'WebSocket session expired, attempting to reconnect…' })
               }
-            }) ?? noop
+            }),
+            activeClient.onConnection(connected => {
+              if (attemptId !== connectGeneration) return
+
+              if (connected && isClientReady(activeClient)) markReady()
+              else set({ isConnected: false })
+            }),
+          ]
+
+          unsubscribeClientEvents = () => {
+            for (const unsubscribe of subscriptions) unsubscribe?.()
+          }
+
           unsubscribeTerminal =
             activeClient.onTerminalFailure?.(terminalError => {
               finish(terminalError)
@@ -139,11 +153,9 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => {
           try {
             activeClient.connect()
 
-            if (!settled) {
-              timeoutId = setTimeout(() => {
-                finish(new Error('Connection timeout'))
-              }, 10000)
-            }
+            if (settled) return
+            if (isClientReady(activeClient)) markReady()
+            else timeoutId = setTimeout(() => finish(new Error('Connection timeout')), 10000)
           } catch (error) {
             finish(error)
           }
@@ -154,6 +166,7 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => {
         }
       } catch (error) {
         if (attemptId === connectGeneration) {
+          unbindClientEvents()
           set(state => ({
             isConnecting: false,
             error:
@@ -168,6 +181,7 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => {
     disconnect: () => {
       connectGeneration += 1
       cancelPendingConnect?.()
+      unbindClientEvents()
       unsubscribeTerminal()
       unsubscribeTerminal = noop
       const { wsClient } = get()

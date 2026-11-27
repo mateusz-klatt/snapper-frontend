@@ -7,7 +7,11 @@ import { consumeWsTicket, storeWsTicket } from './wsTicketCache'
 import { useAuthStore } from '../stores/auth'
 import { useWebSocketConnection, useWebSocketStore } from '../stores/websocket'
 import { makeUserProfile } from '../test/factories'
-import { createAuthComplete, createAuthRequired } from '../test/wsMessageFactories'
+import {
+  createAuthComplete,
+  createAuthExpired,
+  createAuthRequired,
+} from '../test/wsMessageFactories'
 
 const EXP = '2030-01-01T00:00:00.000Z'
 
@@ -522,19 +526,77 @@ describe('single-consumer ws_token ownership and real-store failure isolation', 
     expect(fetchMock).toHaveBeenCalledTimes(1)
   })
 
-  it.each([1, 3])(
-    'recovers with a valid ticket or stops after three malformed refreshes (%i malformed)',
-    async malformedCount => {
+  it.each([false, true])(
+    'retries a timed-out OPEN socket according to authenticated readiness (late auth_complete: %s)',
+    async completesLate => {
+      vi.useFakeTimers()
+      vi.stubGlobal('WebSocket', BrowserLikeWebSocket)
+      const fetchMock = vi.fn(async () => Response.json(makeTicketPayload('test-ticket')))
+
+      vi.stubGlobal('fetch', fetchMock)
+      const { result, unmount } = renderHook(() =>
+        useWebSocketConnection('ws://test/api/ws', { autoDisconnect: true })
+      )
+      const [firstSocket] = BrowserLikeWebSocket.instances
+      const firstClient = useWebSocketStore.getState().wsClient
+
+      if (!firstSocket || !firstClient) throw new Error('Expected an initial WebSocket')
+
+      await act(async () => vi.advanceTimersByTimeAsync(10_000))
+      expect(firstClient.isConnected()).toBe(true)
+      expect(firstClient.isReady()).toBe(false)
+      expect(result.current).toMatchObject({ isConnected: false, error: 'Connection timeout' })
+
+      if (completesLate) act(() => firstSocket.receive(createAuthComplete()))
+
+      await act(async () => vi.advanceTimersByTimeAsync(5010))
+      const activeSocket = BrowserLikeWebSocket.instances.at(-1)
+      const activeClient = useWebSocketStore.getState().wsClient
+
+      if (!activeSocket || !activeClient) throw new Error('Expected a WebSocket after retry')
+
+      if (completesLate) {
+        expect(activeClient).toBe(firstClient)
+        expect(firstSocket.close).not.toHaveBeenCalled()
+        expect(result.current).toMatchObject({ isConnected: true, isConnecting: false })
+      } else {
+        expect(activeClient).not.toBe(firstClient)
+        expect(firstSocket.close).toHaveBeenCalledOnce()
+        expect(activeSocket.send).toHaveBeenCalledWith(expect.stringContaining('test-ticket'))
+        expect(result.current).toMatchObject({ isConnected: false, isConnecting: true })
+      }
+
+      act(() => activeSocket.receive(createAuthExpired()))
+      expect(result.current.error).toBe('WebSocket session expired, attempting to reconnect…')
+      await act(async () => activeSocket.receive(createAuthComplete()))
+      expect(result.current).toEqual({ isConnected: true, isConnecting: false, error: null })
+
+      await act(async () => vi.advanceTimersByTimeAsync(30_000))
+      expect(fetchMock).toHaveBeenCalledTimes(completesLate ? 1 : 2)
+      expect(BrowserLikeWebSocket.instances).toHaveLength(completesLate ? 1 : 2)
+      unmount()
+    }
+  )
+
+  it.each([
+    ['missing ticket', 1],
+    ['missing ticket', 3],
+    ['non-JSON HTTP 200', 1],
+    ['non-JSON HTTP 200', 3],
+  ] as const)(
+    'recovers with a valid ticket or stops at the retry budget (%s, %i failures)',
+    async (failure, malformedCount) => {
       vi.useFakeTimers()
       vi.stubGlobal('WebSocket', BrowserLikeWebSocket)
       vi.spyOn(Math, 'random').mockReturnValue(0.5)
-      const fetchMock = vi.fn().mockImplementation(() => {
-        const body =
-          fetchMock.mock.calls.length <= malformedCount
-            ? { payload: {} }
-            : makeTicketPayload('recovered-ticket')
+      const fetchMock = vi.fn(async (): Promise<Response> => {
+        if (fetchMock.mock.calls.length > malformedCount) {
+          return Response.json(makeTicketPayload('recovered-ticket'))
+        }
 
-        return Promise.resolve(Response.json(body))
+        return failure === 'missing ticket'
+          ? Response.json({ payload: {} })
+          : new Response('<html>Proxy error</html>')
       })
 
       vi.stubGlobal('fetch', fetchMock)

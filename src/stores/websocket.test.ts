@@ -55,7 +55,11 @@ const createMockClient = () => {
 
       if (handlerList) handlerList.push(handler)
 
-      return () => {}
+      return () => {
+        const idx = handlerList?.indexOf(handler) ?? -1
+
+        if (idx >= 0) handlerList?.splice(idx, 1)
+      }
     }),
     onTerminalFailure: vi.fn((handler: (error: WebSocketTerminalError) => void) => {
       handlers.terminal.push(handler)
@@ -350,24 +354,20 @@ describe('websocket store', () => {
     }
   })
   it('uses fallback unsubscribe when onConnection returns undefined', async () => {
-    const originalOnConnection = mockClient.onConnection
+    const customClient = {
+      ...mockClient,
+      isConnected: vi.fn(() => true),
+      onConnection: vi.fn(),
+      onMessage: vi.fn(),
+    }
 
-    mockClient.onConnection = vi
-      .fn()
-      .mockImplementationOnce(originalOnConnection)
-      .mockImplementationOnce(() => undefined as unknown as () => void)
-      .mockImplementation(originalOnConnection)
+    useWebSocketStore.setState({ wsClient: customClient as unknown as WebSocketClient })
     const connectPromise = useWebSocketStore.getState().connect('ws://test')
 
-    await act(async () => {
-      await vi.advanceTimersByTimeAsync(5)
-    })
-    mockClient.isConnected.mockReturnValue(true)
-    mockClient.triggerConnection(true)
-    await act(async () => {
-      await vi.advanceTimersByTimeAsync(50)
-    })
     await expect(connectPromise).resolves.toBeUndefined()
+    useWebSocketStore.getState().disconnect()
+    expect(customClient.onConnection).toHaveBeenCalledOnce()
+    expect(customClient.disconnect).toHaveBeenCalledOnce()
   })
   it('handles connection timeout', async () => {
     mockClient.isConnected.mockReturnValue(false)
@@ -564,9 +564,14 @@ describe('websocket store', () => {
     const attemptA = useWebSocketStore.getState().connect('ws://first')
     const clientA = mockClient
     const caughtA = attemptA.catch((error: Error) => error)
+    const staleMessageHandlers = [...clientA.handlers.message.values()].flat()
+    const staleConnectionHandlers = [...clientA.handlers.connection]
 
     useWebSocketStore.getState().disconnect()
     expect(await caughtA).toMatchObject({ message: 'Connection cancelled' })
+    expect([...clientA.handlers.message.values()].flat()).toHaveLength(0)
+    expect(clientA.handlers.connection).toHaveLength(0)
+    expect(clientA.handlers.terminal).toHaveLength(0)
 
     const attemptB = useWebSocketStore.getState().connect('ws://second')
     const caughtB = attemptB.catch((error: Error) => error)
@@ -577,10 +582,8 @@ describe('websocket store', () => {
       error: null,
     })
 
-    clientA.triggerMessage('auth_failed', { reason: 'stale' })
-    clientA.triggerMessage('auth_expired', {})
-    clientA.triggerMessage('auth_complete', {})
-    clientA.triggerConnection(true)
+    staleMessageHandlers.forEach(handler => handler({ reason: 'stale' }))
+    staleConnectionHandlers.forEach(handler => handler(true))
     expect(useWebSocketStore.getState()).toMatchObject({
       isConnecting: true,
       isConnected: false,
@@ -597,6 +600,9 @@ describe('websocket store', () => {
     })
     expect(await caughtB).toMatchObject({ message: 'Connection timeout' })
     expect(clientB).not.toBe(clientA)
+    expect([...clientB.handlers.message.values()].flat()).toHaveLength(0)
+    expect(clientB.handlers.connection).toHaveLength(0)
+    expect(clientB.handlers.terminal).toHaveLength(1)
   })
   it('ignores stale post-resolve state updates if disconnect runs immediately after connect resolves', async () => {
     const connectPromise = useWebSocketStore.getState().connect('ws://test')
