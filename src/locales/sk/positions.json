@@ -217,6 +217,10 @@
     "show": "Zobraziť pozície s drobnými zostatkami",
     "hide": "Skryť pozície s drobnými zostatkami"
   },
+  "markStatus": {
+    "stale": "Neaktuálna",
+    "asOf": "Referenčná cena k {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Posuvný stop: {{stop}}",
     "trailingStopPending": "Posuvný stop: čaká",

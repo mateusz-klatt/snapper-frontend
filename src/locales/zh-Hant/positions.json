@@ -217,6 +217,10 @@
     "show": "顯示零星倉位",
     "hide": "隱藏零星倉位"
   },
+  "markStatus": {
+    "stale": "未更新",
+    "asOf": "截至 {{time}} 的標記價格"
+  },
   "row": {
     "trailingStopBadge": "追蹤止損: {{stop}}",
     "trailingStopPending": "追蹤止損: 待生效",

@@ -217,6 +217,10 @@
     "show": "Hiện vị thế dư giá trị nhỏ",
     "hide": "Ẩn vị thế dư giá trị nhỏ"
   },
+  "markStatus": {
+    "stale": "Chưa cập nhật",
+    "asOf": "Giá đánh dấu tại thời điểm {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Dừng lỗ bám giá: {{stop}}",
     "trailingStopPending": "Dừng lỗ bám giá: đang chờ",

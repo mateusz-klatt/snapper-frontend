@@ -217,6 +217,10 @@
     "show": "Mostrar posiciones residuales",
     "hide": "Ocultar posiciones residuales"
   },
+  "markStatus": {
+    "stale": "Desactualizado",
+    "asOf": "Precio de marca a fecha de {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Stop dinámico: {{stop}}",
     "trailingStopPending": "Stop dinámico: pendiente",

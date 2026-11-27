@@ -217,6 +217,10 @@
     "show": "Pokaż pozycje pyłu",
     "hide": "Ukryj pozycje pyłu"
   },
+  "markStatus": {
+    "stale": "Nieaktualne",
+    "asOf": "Wycena z {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Stop kroczący: {{stop}}",
     "trailingStopPending": "Stop kroczący: oczekujący",

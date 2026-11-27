@@ -217,6 +217,10 @@
     "show": "Sýna stöður með smáafgöngum",
     "hide": "Fela stöður með smáafgöngum"
   },
+  "markStatus": {
+    "stale": "Úrelt",
+    "asOf": "Viðmiðunarverð miðað við {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Hreyfanleg stöðvun: {{stop}}",
     "trailingStopPending": "Hreyfanleg stöðvun: í bið",

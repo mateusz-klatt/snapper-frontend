@@ -217,6 +217,10 @@
     "show": "Tunjukkan posisi baki bernilai kecil",
     "hide": "Sembunyikan posisi baki bernilai kecil"
   },
+  "markStatus": {
+    "stale": "Tidak dikemas kini",
+    "asOf": "Harga rujukan setakat {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Henti mengekor: {{stop}}",
     "trailingStopPending": "Henti mengekor: tertunda",

@@ -217,6 +217,10 @@
     "show": "Näytä pienet jäännökset",
     "hide": "Piilota pienet jäännökset"
   },
+  "markStatus": {
+    "stale": "Vanhentunut",
+    "asOf": "Mark-hinta hetkellä {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Liukuva stop: {{stop}}",
     "trailingStopPending": "Liukuva stop: odottaa",

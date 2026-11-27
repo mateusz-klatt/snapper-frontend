@@ -217,6 +217,10 @@
     "show": "Kleinstpositionen anzeigen",
     "hide": "Kleinstpositionen ausblenden"
   },
+  "markStatus": {
+    "stale": "Veraltet",
+    "asOf": "Markpreis vom {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Nachziehender Stopp: {{stop}}",
     "trailingStopPending": "Nachziehender Stopp: ausstehend",

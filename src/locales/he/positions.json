@@ -217,6 +217,10 @@
     "show": "הצג פוזיציות עם יתרות זעירות",
     "hide": "הסתר פוזיציות עם יתרות זעירות"
   },
+  "markStatus": {
+    "stale": "לא מעודכן",
+    "asOf": "מחיר ייחוס נכון ל־{{time}}"
+  },
   "row": {
     "trailingStopBadge": "סטופ נגרר: {{stop}}",
     "trailingStopPending": "סטופ נגרר: ממתין",

@@ -217,6 +217,10 @@
     "show": "Ipakita ang maliliit na natitirang posisyon",
     "hide": "Itago ang maliliit na natitirang posisyon"
   },
+  "markStatus": {
+    "stale": "Hindi napapanahon",
+    "asOf": "Presyong batayan noong {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Stop na sumusunod sa presyo: {{stop}}",
     "trailingStopPending": "Stop na sumusunod sa presyo: naka-pending",

@@ -217,6 +217,10 @@
     "show": "Rādīt pozīcijas ar sīkiem atlikumiem",
     "hide": "Paslēpt pozīcijas ar sīkiem atlikumiem"
   },
+  "markStatus": {
+    "stale": "Novecojusi",
+    "asOf": "Atsauces cena fiksēta: {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Slīdošā apturēšana: {{stop}}",
     "trailingStopPending": "Slīdošā apturēšana: gaida",

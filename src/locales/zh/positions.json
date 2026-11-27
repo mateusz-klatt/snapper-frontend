@@ -217,6 +217,10 @@
     "show": "显示零星持仓",
     "hide": "隐藏零星持仓"
   },
+  "markStatus": {
+    "stale": "未更新",
+    "asOf": "截至 {{time}} 的标记价格"
+  },
   "row": {
     "trailingStopBadge": "追踪止损: {{stop}}",
     "trailingStopPending": "追踪止损: 待生效",

@@ -1,9 +1,10 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, within } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Positions } from './Positions'
 import type { Position } from '../../types/entities'
+import { formatDateTime } from '../../lib/dateFormat'
 import { formatQuoted } from './instrumentQuote'
 import i18n from '../../i18n/config'
 
@@ -112,6 +113,60 @@ describe('Positions', () => {
     )
     expect(screen.getByTestId('position-marked-at-ETH-USD-kraken-live')).toHaveTextContent(/2026/)
   })
+
+  it.each([
+    ['en', 'Stale', 'Mark as of'],
+    ['pl', 'Nieaktualne', 'Wycena z'],
+  ])('shows the stale mark and mutes its unrealized P&L in %s', async (locale, label, asOf) => {
+    const { usePositions } = await import('../../hooks/queries/positions')
+    const markAsOf = new Date('2026-04-05T11:50:00Z')
+
+    await i18n.changeLanguage(locale)
+    vi.mocked(usePositions).mockReturnValue({
+      data: [
+        makePosition({ markPrice: 51000, markStale: true, markAsOf }),
+        makePosition({ instrument: 'ETH-USD', markPrice: 2050, markStale: false, markAsOf }),
+      ],
+      isLoading: false,
+    } as never)
+    renderWithProviders(<Positions />)
+
+    const staleMark = screen.getByTestId('position-mark-BTC-USD-kraken-live')
+    const freshMark = screen.getByTestId('position-mark-ETH-USD-kraken-live')
+    const stalePnl = screen.getByTestId('position-unrealized-BTC-USD-kraken-live')
+    const freshPnl = screen.getByTestId('position-unrealized-ETH-USD-kraken-live')
+    const markTime = `${asOf} ${formatDateTime(markAsOf, locale)}`
+    const badge = within(staleMark).getByTitle(markTime)
+
+    expect(within(badge).getByText(label)).toBeVisible()
+    expect(within(badge).getByText(markTime)).toHaveClass('sr-only')
+    expect(staleMark).toHaveTextContent(/51[\s,]000[.,]00 USD/)
+    expect(stalePnl).toHaveTextContent(/^\+1[\s,]000[.,]00 USD$/)
+    expect(stalePnl.textContent).toBe(freshPnl.textContent)
+    expect(stalePnl).toHaveClass('text-muted-500')
+    expect(stalePnl).not.toHaveClass('text-rising-400')
+    expect(within(freshMark).queryByText(label)).not.toBeInTheDocument()
+    expect(freshPnl).toHaveClass('text-rising-400')
+  })
+
+  it.each([null, new Date(Number.NaN)])(
+    'keeps the stale badge when mark time is %s',
+    async markAsOf => {
+      const { usePositions } = await import('../../hooks/queries/positions')
+
+      vi.mocked(usePositions).mockReturnValue({
+        data: [makePosition({ markPrice: 51000, markStale: true, markAsOf })],
+        isLoading: false,
+      } as never)
+      renderWithProviders(<Positions />)
+
+      const badge = within(screen.getByTestId('position-mark-BTC-USD-kraken-live')).getByTitle(
+        'Stale'
+      )
+
+      expect(badge).toHaveTextContent(/^Stale$/)
+    }
+  )
 
   it('never opens the bracket modal for a position without an entry price', async () => {
     const { usePositions } = await import('../../hooks/queries/positions')

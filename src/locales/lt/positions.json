@@ -217,6 +217,10 @@
     "show": "Rodyti pozicijas su smulkiais likučiais",
     "hide": "Slėpti pozicijas su smulkiais likučiais"
   },
+  "markStatus": {
+    "stale": "Pasenusi",
+    "asOf": "Orientacinės kainos laikas: {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Slenkantis stabdymas: {{stop}}",
     "trailingStopPending": "Slenkantis stabdymas: laukiama",

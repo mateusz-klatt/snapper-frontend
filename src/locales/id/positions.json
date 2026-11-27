@@ -217,6 +217,10 @@
     "show": "Tampilkan posisi sisa bernilai kecil",
     "hide": "Sembunyikan posisi sisa bernilai kecil"
   },
+  "markStatus": {
+    "stale": "Kedaluwarsa",
+    "asOf": "Harga mark per {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Stop mengikuti harga: {{stop}}",
     "trailingStopPending": "Stop mengikuti harga: tertunda",

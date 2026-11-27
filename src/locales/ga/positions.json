@@ -217,6 +217,10 @@
     "show": "Taispeáin suímh le hiarmhéideanna beaga",
     "hide": "Folaigh suímh le hiarmhéideanna beaga"
   },
+  "markStatus": {
+    "stale": "As dáta",
+    "asOf": "Praghas marcála amhail {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Stad rianaithe: {{stop}}",
     "trailingStopPending": "Stad rianaithe: ar feitheamh",
