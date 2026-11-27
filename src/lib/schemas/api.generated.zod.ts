@@ -2291,6 +2291,7 @@ const _ProcessConfigScopeBodyRawSchema = z
   .object({
     operator_public_id: z.string().max(256).nullable().optional(),
     wallet_public_id: z.string().max(256).nullable().optional(),
+    max_order_base_qty: z.union([z.number().int(), z.number()]).nullable().optional(),
     reference_identity_params: z.record(z.string(), z.string()).nullable().optional(),
   })
   .strict()
