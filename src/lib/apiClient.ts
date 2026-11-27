@@ -242,7 +242,7 @@ class APIClient {
    * that flight is marked `wsClaimed` synchronously so any REST caller sharing the
    * flight skips caching `ws_token` regardless of microtask resolution order.
    */
-  public refreshSession(
+  public async refreshSession(
     body?: RefreshSessionBody,
     options?: RefreshSessionOptions
   ): Promise<Response> {
@@ -277,13 +277,19 @@ class APIClient {
       flight = current
     }
 
-    return flight.promise.then(response => {
-      const cloned = typeof response.clone === 'function' ? response.clone() : response
+    let response: Response
 
-      this.responseFlights.set(cloned, flight)
+    try {
+      response = await flight.promise
+    } finally {
+      this.assertSessionEpoch(flight.sessionEpoch)
+    }
 
-      return cloned
-    })
+    const cloned = typeof response.clone === 'function' ? response.clone() : response
+
+    this.responseFlights.set(cloned, flight)
+
+    return cloned
   }
   public claimWsTicketCache(response: Response): boolean {
     const flight = this.responseFlights.get(response)
@@ -314,6 +320,7 @@ class APIClient {
     body: RefreshSessionBody | undefined,
     flight: RefreshFlight
   ): Promise<Response> {
+    this.assertSessionEpoch(flight.sessionEpoch)
     const controller = new AbortController()
     const timer = setTimeout(() => {
       controller.abort(new DOMException('Refresh request timed out', 'TimeoutError'))
@@ -345,12 +352,13 @@ class APIClient {
             detail?: unknown
           }
         } catch (error) {
-          if (controller.signal.aborted) {
+          if (controller.signal.aborted || isTransientRefreshTransportError(error)) {
             throw error
           }
         }
 
         if (typeof errorData?.detail === 'string' && errorData.detail.includes('CSRF')) {
+          this.assertSessionEpoch(flight.sessionEpoch)
           finalResponse = await raceWithSignal(
             fetch('/api/auth/refresh', {
               ...encoded,
@@ -400,6 +408,8 @@ class APIClient {
     try {
       refreshResponse = await this.refreshSession()
     } catch (error) {
+      this.assertSessionEpoch(epoch)
+
       if (isTransientRefreshError(error)) {
         throw error
       }
@@ -408,9 +418,7 @@ class APIClient {
       throw new Error('Authentication required', { cause: error })
     }
 
-    if (epoch !== this.sessionEpoch) {
-      throw new Error('Authentication required')
-    }
+    this.assertSessionEpoch(epoch)
 
     if (!refreshResponse.ok) {
       const error = new APIError(
@@ -428,7 +436,10 @@ class APIClient {
     }
 
     if (this.claimWsTicketCache(refreshResponse)) {
-      await cacheWsTicketFromResponse(refreshResponse)
+      const ticket = await readWsTicketFromResponse(refreshResponse)
+
+      this.assertSessionEpoch(epoch)
+      storeWsTicket(ticket)
     }
 
     return this.request(url, { ...options, skipRetry: true })
@@ -450,6 +461,7 @@ class APIClient {
     return this.raiseHttpError(response)
   }
   public async request(url: string, options: RequestOptions = {}): Promise<Response> {
+    const epoch = this.sessionEpoch
     const method = (options.method ?? 'GET').toUpperCase()
 
     if (
@@ -477,6 +489,8 @@ class APIClient {
     })
 
     if (response.status === 401 && !skipRetry) {
+      this.assertSessionEpoch(epoch)
+
       return this.refreshAndRetry(url, options)
     }
 
@@ -618,9 +632,24 @@ class APIClient {
 
     return response.json()
   }
-  public clearCSRFToken(): void {
+  private assertSessionEpoch(epoch: number): void {
+    if (epoch !== this.sessionEpoch) {
+      throw new DOMException(
+        'Authentication required: session refresh was superseded',
+        'AbortError'
+      )
+    }
+  }
+  public getSessionEpoch(): number {
+    return this.sessionEpoch
+  }
+  public advanceSessionEpoch(): void {
     this.sessionEpoch += 1
+    this.activeRefresh = null
     this.independentRestTicketToken = null
+  }
+  public clearCSRFToken(): void {
+    this.advanceSessionEpoch()
     this.setCsrfToken(null)
   }
   public setCsrfToken(token: string | null): void {
@@ -672,7 +701,9 @@ function stampProvenance(body: unknown): unknown {
   }
 }
 
-async function cacheWsTicketFromResponse(response: Response): Promise<void> {
+async function readWsTicketFromResponse(
+  response: Response
+): Promise<{ token: string; exp: number } | null> {
   try {
     const envelope = (await response.clone().json()) as {
       payload?: {
@@ -685,11 +716,11 @@ async function cacheWsTicketFromResponse(response: Response): Promise<void> {
     if (typeof data?.ws_token === 'string' && typeof data?.ws_token_exp === 'string') {
       const expSeconds = Math.floor(new Date(data.ws_token_exp).getTime() / 1000)
 
-      storeWsTicket({ token: data.ws_token, exp: expSeconds })
-    } else {
-      storeWsTicket(null)
+      return { token: data.ws_token, exp: expSeconds }
     }
   } catch {
-    storeWsTicket(null)
+    return null
   }
+
+  return null
 }

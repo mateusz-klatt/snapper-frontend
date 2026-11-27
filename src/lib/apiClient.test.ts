@@ -611,19 +611,7 @@ describe('APIClient', () => {
       expect(apiClient.consumeIndependentRestTicket('rest-only-token')).toBe(false)
     })
     it('rejects claimWsTicketCache for a flight from a prior session epoch', async () => {
-      let releaseRefresh!: (response: Response) => void
-
-      mockFetch.mockImplementationOnce(
-        () =>
-          new Promise<Response>(resolve => {
-            releaseRefresh = resolve
-          })
-      )
-
-      const pending = apiClient.refreshSession()
-
-      apiClient.clearCSRFToken()
-      releaseRefresh(
+      mockFetch.mockResolvedValueOnce(
         new Response(
           JSON.stringify({
             payload: { ws_token: 'stale', ws_token_exp: '2030-01-01T00:00:00.000Z' },
@@ -632,9 +620,39 @@ describe('APIClient', () => {
         )
       )
 
-      const response = await pending
+      const response = await apiClient.refreshSession()
+
+      apiClient.clearCSRFToken()
 
       expect(apiClient.claimWsTicketCache(response)).toBe(false)
+    })
+    it('cancels a queued refresh and a stale-CSRF retry after the session advances', async () => {
+      let resolveBody!: (body: unknown) => void
+      const body = new Promise(resolve => {
+        resolveBody = resolve
+      })
+      const response = new Response(null, { status: 403 })
+      const cloned = response.clone()
+
+      vi.spyOn(cloned, 'json').mockReturnValueOnce(body)
+      const clone = vi.spyOn(response, 'clone').mockReturnValueOnce(cloned)
+
+      mockFetch.mockResolvedValueOnce(response).mockResolvedValueOnce(Response.json({}))
+
+      const initial = expect(apiClient.refreshSession()).rejects.toMatchObject({
+        name: 'AbortError',
+      })
+      const queued = expect(
+        apiClient.refreshSession({ active_wallet_public_id: 'old-wallet' })
+      ).rejects.toMatchObject({ name: 'AbortError' })
+
+      await vi.waitFor(() => expect(clone).toHaveBeenCalled())
+      apiClient.advanceSessionEpoch()
+      await expect(apiClient.refreshSession()).resolves.toMatchObject({ status: 200 })
+      resolveBody({ detail: 'Stale CSRF token' })
+      await Promise.all([initial, queued])
+
+      expect(mockFetch).toHaveBeenCalledTimes(2)
     })
     it('triggers auth logout callback with cooldown', async () => {
       vi.useFakeTimers()

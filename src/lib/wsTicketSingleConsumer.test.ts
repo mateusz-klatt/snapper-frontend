@@ -7,7 +7,7 @@ import { consumeWsTicket, storeWsTicket } from './wsTicketCache'
 import { useAuthStore } from '../stores/auth'
 import { useWebSocketConnection, useWebSocketStore } from '../stores/websocket'
 import { makeUserProfile } from '../test/factories'
-import { createAuthRequired } from '../test/wsMessageFactories'
+import { createAuthComplete, createAuthRequired } from '../test/wsMessageFactories'
 
 const EXP = '2030-01-01T00:00:00.000Z'
 
@@ -22,11 +22,40 @@ function makeTicketPayload(token: string) {
   }
 }
 
+class BrowserLikeWebSocket {
+  static readonly CONNECTING = 0
+  static readonly OPEN = 1
+  static readonly CLOSING = 2
+  static readonly CLOSED = 3
+  static readonly instances: BrowserLikeWebSocket[] = []
+  readyState = BrowserLikeWebSocket.CONNECTING
+  onopen: (() => void) | null = null
+  onmessage: ((event: MessageEvent) => void) | null = null
+  onclose: (() => void) | null = null
+  onerror: ((event: Event) => void) | null = null
+  send = vi.fn()
+  close = vi.fn((_code?: number) => {
+    this.readyState = BrowserLikeWebSocket.CLOSING
+  })
+  constructor(_url: string) {
+    BrowserLikeWebSocket.instances.push(this)
+    setTimeout(() => {
+      this.readyState = BrowserLikeWebSocket.OPEN
+      this.onopen?.()
+      this.receive(createAuthRequired())
+    }, 10)
+  }
+  receive(message: object): void {
+    this.onmessage?.(new MessageEvent('message', { data: JSON.stringify(message) }))
+  }
+}
+
 describe('single-consumer ws_token ownership and real-store failure isolation', () => {
   const socketA = {} as WebSocket
   const socketB = {} as WebSocket
 
   beforeEach(() => {
+    BrowserLikeWebSocket.instances.length = 0
     storeWsTicket(null)
     apiClient.clearCSRFToken()
     useWebSocketStore.setState({
@@ -34,6 +63,7 @@ describe('single-consumer ws_token ownership and real-store failure isolation', 
       isConnected: false,
       isConnecting: false,
       error: null,
+      terminalFailure: null,
     })
     useAuthStore.setState({
       user: makeUserProfile({ username: 'trader' }),
@@ -72,7 +102,7 @@ describe('single-consumer ws_token ownership and real-store failure isolation', 
       vi.stubGlobal('fetch', fetchMock)
 
       let wsPromise: ReturnType<typeof getWsToken>
-      let restPromise: Promise<void>
+      let restPromise: ReturnType<ReturnType<typeof useAuthStore.getState>['refreshToken']>
 
       if (order === 'ws-starts') {
         wsPromise = getWsToken(socketA, () => true)
@@ -241,6 +271,75 @@ describe('single-consumer ws_token ownership and real-store failure isolation', 
     expect(useAuthStore.getState().isAuthenticated).toBe(true)
   })
 
+  it('preserves the session when a stale-CSRF 403 body is interrupted', async () => {
+    apiClient.setCsrfToken('stale-csrf')
+    const transportError = new TypeError('Response stream interrupted')
+    const response = Response.json({ detail: 'Stale CSRF token' }, { status: 403 })
+    const interrupted = response.clone()
+
+    vi.spyOn(interrupted, 'json').mockRejectedValueOnce(transportError)
+    vi.spyOn(response, 'clone').mockReturnValueOnce(interrupted)
+    const fetchMock = vi.fn().mockResolvedValueOnce(response)
+
+    vi.stubGlobal('fetch', fetchMock)
+
+    await expect(useAuthStore.getState().refreshToken()).rejects.toBe(transportError)
+    expect(useAuthStore.getState().isAuthenticated).toBe(true)
+    expect(document.cookie).toContain('csrf_token=stale-csrf')
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+  })
+
+  it.each(['REST', 'WebSocket', 'post-logout REST'])(
+    'authenticates a new socket after logout and login while the old %s refresh returns 401',
+    async owner => {
+      vi.useFakeTimers()
+      vi.stubGlobal('WebSocket', BrowserLikeWebSocket)
+      let releaseOld!: (response: Response) => void
+      const oldResponse = new Promise<Response>(resolve => {
+        releaseOld = resolve
+      })
+      const loginUser = makeUserProfile({ username: 'new-trader' })
+      const oldRefreshStartsAfterLogout = owner === 'post-logout REST'
+      const fetchMock = vi.fn(async (url: string) => {
+        if (url === '/api/auth/logout') return new Response(null, { status: 204 })
+        if (url === '/api/auth/login') return Response.json({ payload: { user: loginUser } })
+
+        if (fetchMock.mock.calls.filter(([path]) => path === '/api/auth/refresh').length === 1) {
+          return oldResponse
+        }
+
+        return Response.json(makeTicketPayload('new-session-ticket'))
+      })
+
+      vi.stubGlobal('fetch', fetchMock)
+
+      if (oldRefreshStartsAfterLogout) await useAuthStore.getState().logout()
+      const oldRefresh =
+        owner === 'WebSocket'
+          ? getWsToken(socketA, () => true)
+          : useAuthStore.getState().refreshToken()
+
+      if (!oldRefreshStartsAfterLogout) await useAuthStore.getState().logout()
+      await useAuthStore.getState().login({ username: 'new-trader', password: 'pw' })
+      const connection = useWebSocketStore.getState().connect('ws://test/api/ws')
+      const [socket] = BrowserLikeWebSocket.instances
+
+      if (!socket) throw new Error('Expected a new WebSocket')
+
+      await vi.advanceTimersByTimeAsync(10)
+      expect(fetchMock.mock.calls.filter(([url]) => url === '/api/auth/refresh')).toHaveLength(2)
+      expect(socket.send).toHaveBeenCalledWith(expect.stringContaining('new-session-ticket'))
+      socket.receive(createAuthComplete())
+      await connection
+
+      releaseOld(new Response(null, { status: 401 }))
+      await expect(oldRefresh).resolves.toBe(owner === 'WebSocket' ? null : false)
+      expect(useAuthStore.getState()).toMatchObject({ isAuthenticated: true, user: loginUser })
+      expect(useWebSocketStore.getState().isConnected).toBe(true)
+      expect(socket.close).not.toHaveBeenCalled()
+    }
+  )
+
   it('unblocks wsTokenFlight after a 200 refresh body stalls past 10 seconds', async () => {
     vi.useFakeTimers()
 
@@ -368,34 +467,6 @@ describe('single-consumer ws_token ownership and real-store failure isolation', 
   it('closes with 4401 before real silentLogout disconnects and stops useWebSocketConnection loop', async () => {
     vi.useFakeTimers()
 
-    const closeCalls: Array<number | undefined> = []
-
-    class BrowserLikeWebSocket {
-      static readonly CONNECTING = 0
-      static readonly OPEN = 1
-      static readonly CLOSING = 2
-      static readonly CLOSED = 3
-      readyState = BrowserLikeWebSocket.CONNECTING
-      onopen: (() => void) | null = null
-      onmessage: ((event: MessageEvent) => void) | null = null
-      onclose: (() => void) | null = null
-      onerror: ((event: Event) => void) | null = null
-      send = vi.fn()
-      close = vi.fn((code?: number) => {
-        closeCalls.push(code)
-        this.readyState = BrowserLikeWebSocket.CLOSING
-      })
-      constructor(_url: string) {
-        setTimeout(() => {
-          this.readyState = BrowserLikeWebSocket.OPEN
-          this.onopen?.()
-          this.onmessage?.(
-            new MessageEvent('message', { data: JSON.stringify(createAuthRequired()) })
-          )
-        }, 10)
-      }
-    }
-
     vi.stubGlobal('WebSocket', BrowserLikeWebSocket)
     const fetchMock = vi.fn(
       async () => new Response(null, { status: 401, statusText: 'Unauthorized' })
@@ -411,7 +482,10 @@ describe('single-consumer ws_token ownership and real-store failure isolation', 
       await vi.advanceTimersByTimeAsync(20)
     })
 
-    expect(closeCalls).toEqual([4401])
+    expect(BrowserLikeWebSocket.instances[0]?.close).toHaveBeenCalledExactlyOnceWith(
+      4401,
+      'Authentication failure'
+    )
     expect(useAuthStore.getState().isAuthenticated).toBe(false)
     expect(fetchMock).toHaveBeenCalledTimes(1)
 
@@ -422,6 +496,75 @@ describe('single-consumer ws_token ownership and real-store failure isolation', 
     expect(fetchMock).toHaveBeenCalledTimes(1)
     unmount()
   })
+
+  it('cancels the scheduled retry when terminal HTTP 400 arrives just after the store timeout', async () => {
+    vi.useFakeTimers()
+    vi.stubGlobal('WebSocket', BrowserLikeWebSocket)
+    let releaseRefresh!: (response: Response) => void
+    const fetchMock = vi.fn(
+      () =>
+        new Promise<Response>(resolve => {
+          releaseRefresh = resolve
+        })
+    )
+
+    vi.stubGlobal('fetch', fetchMock)
+    const { result } = renderHook(() => useWebSocketConnection('ws://test/api/ws'))
+
+    await act(async () => vi.advanceTimersByTimeAsync(10_001))
+    expect(result.current.error).toBe('Connection timeout')
+    await act(async () => releaseRefresh(new Response(null, { status: 400 })))
+    expect(result.current.error).toBe('Refresh failed with status 400')
+    expect(useAuthStore.getState().isAuthenticated).toBe(true)
+
+    await act(async () => vi.advanceTimersByTimeAsync(30_000))
+    expect(BrowserLikeWebSocket.instances).toHaveLength(1)
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+  })
+
+  it.each([1, 3])(
+    'recovers with a valid ticket or stops after three malformed refreshes (%i malformed)',
+    async malformedCount => {
+      vi.useFakeTimers()
+      vi.stubGlobal('WebSocket', BrowserLikeWebSocket)
+      vi.spyOn(Math, 'random').mockReturnValue(0.5)
+      const fetchMock = vi.fn().mockImplementation(() => {
+        const body =
+          fetchMock.mock.calls.length <= malformedCount
+            ? { payload: {} }
+            : makeTicketPayload('recovered-ticket')
+
+        return Promise.resolve(Response.json(body))
+      })
+
+      vi.stubGlobal('fetch', fetchMock)
+      const { result } = renderHook(() => useWebSocketConnection('ws://test/api/ws'))
+      const [socket] = BrowserLikeWebSocket.instances
+
+      if (!socket) throw new Error('Expected a new WebSocket')
+
+      await act(async () => vi.advanceTimersByTimeAsync(3009))
+      expect(fetchMock).toHaveBeenCalledTimes(1)
+      expect(socket.send).not.toHaveBeenCalled()
+      await act(async () => vi.advanceTimersByTimeAsync(1))
+
+      if (malformedCount === 1) {
+        expect(socket.send).toHaveBeenCalledWith(expect.stringContaining('recovered-ticket'))
+        act(() => socket.receive(createAuthComplete()))
+        expect(result.current.isConnected).toBe(true)
+      } else {
+        await act(async () => vi.advanceTimersByTimeAsync(4500))
+        expect(socket.send).not.toHaveBeenCalled()
+        expect(socket.close).toHaveBeenCalledExactlyOnceWith(4401, 'Authentication failure')
+        expect(result.current.error).toBe('Invalid ws_token response from refresh endpoint')
+      }
+
+      await act(async () => vi.advanceTimersByTimeAsync(30_000))
+      expect(BrowserLikeWebSocket.instances).toHaveLength(1)
+      expect(fetchMock).toHaveBeenCalledTimes(malformedCount === 1 ? 2 : 3)
+      expect(useAuthStore.getState().isAuthenticated).toBe(true)
+    }
+  )
 
   it('lets a replacement socket use a cached ticket from an independent REST-only flight', async () => {
     const fetchMock = vi

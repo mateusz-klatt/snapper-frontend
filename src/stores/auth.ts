@@ -67,14 +67,12 @@ interface AuthState {
   login: (credentials: LoginBody) => Promise<void>
   logout: () => Promise<void>
   silentLogout: () => void
-  refreshToken: (nextWallet?: RefreshWalletHint) => Promise<void>
+  refreshToken: (nextWallet?: RefreshWalletHint) => Promise<void | false>
   clearError: () => void
   setLoading: (loading: boolean) => void
   hasPermission: (permission: Permission) => boolean
   canAccess: (resource: string) => boolean
 }
-
-let authGeneration = 0
 
 function buildRefreshBody(nextWallet?: RefreshWalletHint): RefreshRequestBody | undefined {
   if (nextWallet === undefined) return undefined
@@ -124,7 +122,8 @@ export const useAuthStore = create<AuthState>()(
               void i18n.changeLanguage(data.user.default_language)
             }
 
-            authGeneration += 1
+            apiClient.advanceSessionEpoch()
+            storeWsTicket(null)
             set({
               user: data.user,
               isAuthenticated: true,
@@ -144,7 +143,8 @@ export const useAuthStore = create<AuthState>()(
           }
         },
         logout: async () => {
-          authGeneration += 1
+          apiClient.clearCSRFToken()
+          storeWsTicket(null)
 
           try {
             set({ isLoading: true })
@@ -162,8 +162,6 @@ export const useAuthStore = create<AuthState>()(
           } catch (error) {
             console.error('Logout request failed:', error)
           } finally {
-            apiClient.clearCSRFToken()
-            storeWsTicket(null)
             queryClient.clear()
             set({
               user: null,
@@ -175,7 +173,8 @@ export const useAuthStore = create<AuthState>()(
           }
         },
         silentLogout: () => {
-          authGeneration += 1
+          apiClient.clearCSRFToken()
+          storeWsTicket(null)
           set({ isAuthenticated: false })
           const win = globalThis as WindowWithCallbacks
 
@@ -183,8 +182,6 @@ export const useAuthStore = create<AuthState>()(
             win.wsDisconnectCallback()
           }
 
-          apiClient.clearCSRFToken()
-          storeWsTicket(null)
           queryClient.clear()
           set({
             user: null,
@@ -195,14 +192,14 @@ export const useAuthStore = create<AuthState>()(
           })
         },
         refreshToken: async (nextWallet?: RefreshWalletHint) => {
-          const generation = authGeneration
+          const generation = apiClient.getSessionEpoch()
 
           try {
             const body = buildRefreshBody(nextWallet)
             const response = await apiClient.refreshSession(body)
 
-            if (generation !== authGeneration) {
-              return
+            if (generation !== apiClient.getSessionEpoch()) {
+              return false
             }
 
             if (!response.ok) {
@@ -223,8 +220,8 @@ export const useAuthStore = create<AuthState>()(
               })
             }
 
-            if (generation !== authGeneration) {
-              return
+            if (generation !== apiClient.getSessionEpoch()) {
+              return false
             }
 
             const data = envelope.payload
@@ -254,8 +251,8 @@ export const useAuthStore = create<AuthState>()(
               userData = meEnvelope.payload
             }
 
-            if (generation !== authGeneration) {
-              return
+            if (generation !== apiClient.getSessionEpoch()) {
+              return false
             }
 
             if (
@@ -273,7 +270,9 @@ export const useAuthStore = create<AuthState>()(
               csrfToken,
             })
           } catch (error) {
-            if (generation !== authGeneration || isTransientRefreshError(error)) {
+            if (generation !== apiClient.getSessionEpoch()) return false
+
+            if (isTransientRefreshError(error)) {
               throw error
             }
 

@@ -37,7 +37,12 @@ import {
   flushThrottledMessages,
   buildWebSocketUrl,
 } from './reconnect'
-import { getWsToken, isAuthControlMessage, WsTicketNetworkError } from './auth'
+import {
+  getWsToken,
+  isAuthControlMessage,
+  MalformedWsTicketError,
+  WsTicketNetworkError,
+} from './auth'
 import { classifyRefreshFailure } from '../api/error'
 import { getTracker } from '../sequenceTracker'
 
@@ -495,7 +500,7 @@ class WebSocketClient {
         this.completeAuthFailure(socket, new WebSocketTerminalError((error as Error).message))
       } else if (this.hasEstablishedConnection && isReconnectableTransient) {
         socket.close()
-      } else if (mode === 'authenticate') {
+      } else if (mode === 'authenticate' || error instanceof MalformedWsTicketError) {
         this.reconnectAttempts = this.maxReconnectAttempts
 
         if (!isReconnectableTransient) {

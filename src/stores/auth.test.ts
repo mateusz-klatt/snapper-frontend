@@ -6,17 +6,23 @@ import { queryClient } from '../lib/queryClient'
 import { makeUserProfile } from '../test/factories'
 import { Permission, ROLE_PERMISSIONS } from '../types/permissions.generated'
 
-vi.mock('../lib/apiClient', () => ({
-  apiClient: {
-    post: vi.fn(),
-    postJSON: vi.fn(),
-    get: vi.fn(),
-    refreshSession: vi.fn(),
-    claimWsTicketCache: vi.fn(() => true),
-    setCsrfToken: vi.fn(),
-    clearCSRFToken: vi.fn(),
-  },
-}))
+vi.mock('../lib/apiClient', async importOriginal => {
+  const { apiClient } = await importOriginal<typeof import('../lib/apiClient')>()
+
+  return {
+    apiClient: {
+      post: vi.fn(),
+      postJSON: vi.fn(),
+      get: vi.fn(),
+      refreshSession: vi.fn(),
+      claimWsTicketCache: vi.fn(() => true),
+      setCsrfToken: vi.fn(),
+      getSessionEpoch: apiClient.getSessionEpoch.bind(apiClient),
+      advanceSessionEpoch: apiClient.advanceSessionEpoch.bind(apiClient),
+      clearCSRFToken: vi.fn(apiClient.clearCSRFToken.bind(apiClient)),
+    },
+  }
+})
 
 const refreshResponse = (payload: unknown): Response =>
   ({ ok: true, status: 200, json: () => Promise.resolve(payload) }) as unknown as Response
@@ -855,7 +861,7 @@ describe('auth store', () => {
       expect(useAuthStore.getState().isAuthenticated).toBe(true)
       expect(apiClient.clearCSRFToken).not.toHaveBeenCalled()
     })
-    it('ignores stale refresh results when silentLogout bumps authGeneration before refresh settles', async () => {
+    it('returns unconfirmed when silentLogout supersedes a pending refresh result', async () => {
       const { storeWsTicket } = await import('../lib/wsTicketCache')
       let resolveRefresh!: (response: Response) => void
 
@@ -881,7 +887,7 @@ describe('auth store', () => {
         })
       )
 
-      await pending
+      await expect(pending).resolves.toBe(false)
       expect(storeWsTicket).not.toHaveBeenCalled()
       expect(apiClient.setCsrfToken).not.toHaveBeenCalled()
       expect(useAuthStore.getState().isAuthenticated).toBe(false)
@@ -915,7 +921,7 @@ describe('auth store', () => {
         },
       })
 
-      await pending
+      await expect(pending).resolves.toBe(false)
       expect(storeWsTicket).not.toHaveBeenCalled()
       expect(apiClient.setCsrfToken).not.toHaveBeenCalled()
       expect(useAuthStore.getState().isAuthenticated).toBe(false)
@@ -945,7 +951,7 @@ describe('auth store', () => {
         })
       )
 
-      await pending
+      await expect(pending).resolves.toBe(false)
       expect(useAuthStore.getState().isAuthenticated).toBe(false)
       expect(useAuthStore.getState().user).toBeNull()
     })
@@ -965,7 +971,7 @@ describe('auth store', () => {
       vi.mocked(apiClient.clearCSRFToken).mockClear()
       rejectRefresh(new Error('Superseded failure'))
 
-      await expect(pending).rejects.toThrow('Superseded failure')
+      await expect(pending).resolves.toBe(false)
       expect(apiClient.clearCSRFToken).not.toHaveBeenCalled()
     })
     it('stores null ws ticket when ws_token is missing', async () => {
