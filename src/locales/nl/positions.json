@@ -217,6 +217,10 @@
     "show": "Kleine restposities tonen",
     "hide": "Kleine restposities verbergen"
   },
+  "markStatus": {
+    "stale": "Verouderd",
+    "asOf": "Markprijs per {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Volgstop: {{stop}}",
     "trailingStopPending": "Volgstop: in afwachting",

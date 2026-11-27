@@ -13,6 +13,7 @@ import { AttachBracketModal } from './AttachBracketModal'
 import { AttachTrailingStopModal } from './AttachTrailingStopModal'
 import { PortfolioTimeline } from './PortfolioTimeline'
 import { NumericValue } from '../../components/NumericValue'
+import { StaleMarkBadge } from '../../components/StaleMarkBadge'
 import { readDisplayFields } from '../../lib/displayFields'
 import {
   formatMoney,
@@ -278,6 +279,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
                 {quote === '' ? null : ` ${quote}`}
               </>
             )}
+            {position.markStale && <StaleMarkBadge markAsOf={position.markAsOf} />}
           </div>
           {position.markedAt && (
             <div className='text-xs text-muted-500' data-testid={`position-marked-at-${suffix}`}>
@@ -288,7 +290,10 @@ const PositionRow: React.FC<PositionRowProps> = ({
         <div>
           <div className='text-muted-500'>{t('row.unrealizedPnl')}</div>
           <div
-            className={clsx('font-mono', toneClass(unrealized))}
+            className={clsx(
+              'font-mono',
+              position.markStale ? 'text-muted-500' : toneClass(unrealized)
+            )}
             data-testid={`position-unrealized-${suffix}`}
           >
             {unrealized === null ? (

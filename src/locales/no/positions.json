@@ -217,6 +217,10 @@
     "show": "Vis små restposisjoner",
     "hide": "Skjul små restposisjoner"
   },
+  "markStatus": {
+    "stale": "Foreldet",
+    "asOf": "Markpris per {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Glidende stopp: {{stop}}",
     "trailingStopPending": "Glidende stopp: venter",

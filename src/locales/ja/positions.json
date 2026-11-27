@@ -217,6 +217,10 @@
     "show": "ダストポジションを表示",
     "hide": "ダストポジションを隠す"
   },
+  "markStatus": {
+    "stale": "更新遅延",
+    "asOf": "{{time}}時点のマーク価格"
+  },
   "row": {
     "trailingStopBadge": "トレーリングストップ: {{stop}}",
     "trailingStopPending": "トレーリングストップ: 保留中",

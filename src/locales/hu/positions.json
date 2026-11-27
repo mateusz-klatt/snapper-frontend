@@ -217,6 +217,10 @@
     "show": "Apró maradványok megjelenítése",
     "hide": "Apró maradványok elrejtése"
   },
+  "markStatus": {
+    "stale": "Elavult",
+    "asOf": "Referenciaár ekkor: {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Követő stop: {{stop}}",
     "trailingStopPending": "Követő stop: függőben",

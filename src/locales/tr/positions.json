@@ -217,6 +217,10 @@
     "show": "Küçük bakiyeli pozisyonları göster",
     "hide": "Küçük bakiyeli pozisyonları gizle"
   },
+  "markStatus": {
+    "stale": "Güncel değil",
+    "asOf": "{{time}} itibarıyla mark fiyatı"
+  },
   "row": {
     "trailingStopBadge": "İz süren durdurma: {{stop}}",
     "trailingStopPending": "İz süren durdurma: bekliyor",

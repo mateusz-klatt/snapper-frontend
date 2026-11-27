@@ -217,6 +217,10 @@
     "show": "Prikaži pozicije sa sitnim ostacima",
     "hide": "Sakrij pozicije sa sitnim ostacima"
   },
+  "markStatus": {
+    "stale": "Zastarjela",
+    "asOf": "Referentna cijena na dan i u vrijeme {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Prateći stop: {{stop}}",
     "trailingStopPending": "Prateći stop: na čekanju",

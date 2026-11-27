@@ -217,6 +217,10 @@
     "show": "Afficher les positions résiduelles",
     "hide": "Masquer les positions résiduelles"
   },
+  "markStatus": {
+    "stale": "Non actualisé",
+    "asOf": "Prix de référence au {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Stop suiveur : {{stop}}",
     "trailingStopPending": "Stop suiveur : en attente",

@@ -217,6 +217,10 @@
     "show": "더스트 포지션 표시",
     "hide": "더스트 포지션 숨기기"
   },
+  "markStatus": {
+    "stale": "갱신 지연",
+    "asOf": "{{time}} 기준 마크 가격"
+  },
   "row": {
     "trailingStopBadge": "트레일링 스탑: {{stop}}",
     "trailingStopPending": "트레일링 스탑: 대기 중",

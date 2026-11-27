@@ -217,6 +217,10 @@
     "show": "Show dust positions",
     "hide": "Hide dust positions"
   },
+  "markStatus": {
+    "stale": "Stale",
+    "asOf": "Mark as of {{time}}"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: pending",

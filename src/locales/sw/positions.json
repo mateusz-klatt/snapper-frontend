@@ -217,6 +217,10 @@
     "show": "Onyesha nafasi zenye salio dogo sana",
     "hide": "Ficha nafasi zenye salio dogo sana"
   },
+  "markStatus": {
+    "stale": "Imepitwa na wakati",
+    "asOf": "Bei ya marejeleo kufikia {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Kikomo kinachofuata bei: {{stop}}",
     "trailingStopPending": "Kikomo kinachofuata bei: inasubiri",

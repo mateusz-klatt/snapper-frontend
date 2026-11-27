@@ -217,6 +217,10 @@
     "show": "Shfaq pozicionet me mbetje të vogla",
     "hide": "Fshih pozicionet me mbetje të vogla"
   },
+  "markStatus": {
+    "stale": "I papërditësuar",
+    "asOf": "Çmimi i referencës më {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Ndalim ndjekës: {{stop}}",
     "trailingStopPending": "Ndalim ndjekës: në pritje",

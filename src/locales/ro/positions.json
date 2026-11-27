@@ -217,6 +217,10 @@
     "show": "Afișează pozițiile cu solduri reziduale",
     "hide": "Ascunde pozițiile cu solduri reziduale"
   },
+  "markStatus": {
+    "stale": "Neactualizat",
+    "asOf": "Preț de referință la {{time}}"
+  },
   "row": {
     "trailingStopBadge": "Stop dinamic: {{stop}}",
     "trailingStopPending": "Stop dinamic: în așteptare",
