@@ -1,9 +1,14 @@
+const RECONNECT_JITTER_RATIO = 0.2
+
 export function calculateReconnectDelay(
   attempt: number,
   baseInterval: number,
   maxDelay: number = 30000
 ): number {
-  return Math.min(baseInterval * Math.pow(1.5, attempt - 1), maxDelay)
+  const baseDelay = Math.min(baseInterval * Math.pow(1.5, attempt - 1), maxDelay)
+  const jitterMultiplier = 1 + (Math.random() * 2 - 1) * RECONNECT_JITTER_RATIO
+
+  return Math.min(Math.round(baseDelay * jitterMultiplier), maxDelay)
 }
 
 export function shouldReconnect(

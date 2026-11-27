@@ -12,6 +12,7 @@ vi.mock('../lib/apiClient', () => ({
     postJSON: vi.fn(),
     get: vi.fn(),
     refreshSession: vi.fn(),
+    claimWsTicketCache: vi.fn(() => true),
     setCsrfToken: vi.fn(),
     clearCSRFToken: vi.fn(),
   },
@@ -758,7 +759,10 @@ describe('auth store', () => {
       expect(useAuthStore.getState().isAuthenticated).toBe(true)
       expect(apiClient.clearCSRFToken).not.toHaveBeenCalled()
     })
-    it('does NOT silently log out on an AbortError rejection', async () => {
+    it.each([
+      ['AbortError', new DOMException('The user aborted a request.', 'AbortError')],
+      ['TimeoutError', new DOMException('Refresh request timed out', 'TimeoutError')],
+    ])('does NOT silently log out on a %s rejection', async (_name, error) => {
       useAuthStore.setState({
         user: {
           type: 'user_profile' as const,
@@ -775,14 +779,39 @@ describe('auth store', () => {
         },
         isAuthenticated: true,
       })
-      vi.mocked(apiClient.refreshSession).mockRejectedValueOnce(
-        new DOMException('The user aborted a request.', 'AbortError')
-      )
+      vi.mocked(apiClient.refreshSession).mockRejectedValueOnce(error)
       const state = useAuthStore.getState()
 
-      await expect(state.refreshToken()).rejects.toThrow('aborted')
+      await expect(state.refreshToken()).rejects.toBe(error)
       expect(useAuthStore.getState().user).not.toBeNull()
       expect(apiClient.clearCSRFToken).not.toHaveBeenCalled()
+    })
+    it('silently logs out on non-abort/timeout DOMException rejections', async () => {
+      vi.spyOn(console, 'error').mockImplementation(() => {})
+      vi.mocked(apiClient.refreshSession).mockRejectedValueOnce(
+        new DOMException('Invalid state', 'InvalidStateError')
+      )
+
+      await expect(useAuthStore.getState().refreshToken()).rejects.toThrow('Invalid state')
+      expect(useAuthStore.getState().isAuthenticated).toBe(false)
+    })
+    it('skips caching ws_token when claimWsTicketCache returns false', async () => {
+      const { storeWsTicket } = await import('../lib/wsTicketCache')
+
+      vi.mocked(apiClient.claimWsTicketCache).mockReturnValueOnce(false)
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            ws_token: 'ws-owned-token',
+            ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
+            csrf_token: 'new-csrf',
+          },
+        })
+      )
+
+      await useAuthStore.getState().refreshToken()
+      expect(storeWsTicket).not.toHaveBeenCalled()
+      expect(apiClient.setCsrfToken).toHaveBeenCalledWith('new-csrf')
     })
     it('throws and silently logs out when the refresh response is not ok', async () => {
       vi.mocked(apiClient.refreshSession).mockResolvedValueOnce({

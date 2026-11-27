@@ -80,6 +80,7 @@ describe('auth', () => {
 
       expect(result).toEqual({ token: 'fetched-token', exp: Math.floor(expDate.getTime() / 1000) })
       expect(apiClient.refreshSession).toHaveBeenCalledTimes(1)
+      expect(apiClient.refreshSession).toHaveBeenCalledWith(undefined, { claimWsTicket: true })
     })
     it.each([
       [401, 'Unauthorized'],
@@ -117,6 +118,25 @@ describe('auth', () => {
         token: 'recovered',
         exp: Date.parse(expiration) / 1000,
       })
+    })
+    it.each([
+      ['AbortError', new DOMException('The operation was aborted.', 'AbortError')],
+      ['TimeoutError', new DOMException('Refresh request timed out', 'TimeoutError')],
+    ])('marks DOMException %s as WsTicketNetworkError', async (_name, cause) => {
+      vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
+      vi.mocked(apiClient.refreshSession).mockRejectedValueOnce(cause)
+      const failed = getWsToken()
+
+      await expect(failed).rejects.toBeInstanceOf(WsTicketNetworkError)
+      await expect(failed).rejects.toMatchObject({ message: cause.message, cause })
+    })
+    it('preserves non-abort/timeout DOMException failures', async () => {
+      vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
+      const failure = new DOMException('Invalid state', 'InvalidStateError')
+
+      vi.mocked(apiClient.refreshSession).mockRejectedValueOnce(failure)
+
+      await expect(getWsToken()).rejects.toBe(failure)
     })
     it('preserves non-network refresh failures', async () => {
       vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)

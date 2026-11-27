@@ -594,6 +594,42 @@ describe('useWebSocketConnection', () => {
     expect(connectMock).toHaveBeenCalledTimes(1)
     useWebSocketStore.setState({ connect: originalConnect })
   })
+  it('does not enter a 15s reconnect loop when terminal auth failure logs out during connect', async () => {
+    let authenticated = true
+    const logoutSpy = vi.fn(() => {
+      authenticated = false
+      vi.mocked(useAuthStore.getState).mockReturnValue({
+        isAuthenticated: false,
+      } as ReturnType<typeof useAuthStore.getState>)
+    })
+
+    vi.stubGlobal('authLogoutCallback', logoutSpy)
+    vi.mocked(useAuthStore.getState).mockImplementation(
+      () => ({ isAuthenticated: authenticated }) as ReturnType<typeof useAuthStore.getState>
+    )
+
+    try {
+      const originalConnect = useWebSocketStore.getState().connect
+      const connectSpy = vi.fn(async () => {
+        logoutSpy()
+        throw new Error('Connection timeout')
+      })
+
+      useWebSocketStore.setState({ connect: connectSpy })
+      renderHook(() => useWebSocketConnection(undefined, { retryDelayMs: 5000 }))
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(30000)
+      })
+      expect(logoutSpy).toHaveBeenCalledTimes(1)
+      expect(connectSpy).toHaveBeenCalledTimes(1)
+      useWebSocketStore.setState({ connect: originalConnect })
+    } finally {
+      delete (globalThis as { authLogoutCallback?: () => void }).authLogoutCallback
+      vi.mocked(useAuthStore.getState).mockReturnValue({ isAuthenticated: false } as ReturnType<
+        typeof useAuthStore.getState
+      >)
+    }
+  })
   it('returns connection state', async () => {
     const { result } = renderHook(() => useWebSocketConnection())
 

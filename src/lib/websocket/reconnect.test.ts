@@ -9,17 +9,42 @@ import {
 
 describe('reconnect utilities', () => {
   describe('calculateReconnectDelay', () => {
-    it('returns base interval for first attempt', () => {
+    afterEach(() => {
+      vi.restoreAllMocks()
+    })
+    it('returns base interval at midpoint jitter for first attempt', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5)
       expect(calculateReconnectDelay(1, 1000)).toBe(1000)
     })
-    it('applies exponential backoff', () => {
+    it('applies exponential backoff at midpoint jitter', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5)
       expect(calculateReconnectDelay(2, 1000)).toBe(1500)
       expect(calculateReconnectDelay(3, 1000)).toBe(2250)
     })
-    it('caps delay at maxDelay', () => {
+    it('applies bounded symmetric jitter around the exponential delay', () => {
+      const randomSpy = vi.spyOn(Math, 'random')
+
+      randomSpy.mockReturnValueOnce(0)
+      expect(calculateReconnectDelay(2, 1000)).toBe(1200)
+      randomSpy.mockReturnValueOnce(0.9999999999)
+      expect(calculateReconnectDelay(2, 1000)).toBe(1800)
+    })
+    it('caps jittered delay at maxDelay', () => {
+      const randomSpy = vi.spyOn(Math, 'random')
+
+      randomSpy.mockReturnValueOnce(0)
+      expect(calculateReconnectDelay(10, 1000, 5000)).toBe(4000)
+      randomSpy.mockReturnValueOnce(0.9999999999)
       expect(calculateReconnectDelay(10, 1000, 5000)).toBe(5000)
     })
-    it('uses default maxDelay of 30000', () => {
+    it('uses default maxDelay of 30000 and keeps jitter within bounds', () => {
+      const randomSpy = vi.spyOn(Math, 'random')
+
+      randomSpy.mockReturnValueOnce(0.5)
+      expect(calculateReconnectDelay(20, 1000)).toBe(30000)
+      randomSpy.mockReturnValueOnce(0)
+      expect(calculateReconnectDelay(20, 1000)).toBe(24000)
+      randomSpy.mockReturnValueOnce(0.9999999999)
       expect(calculateReconnectDelay(20, 1000)).toBe(30000)
     })
   })

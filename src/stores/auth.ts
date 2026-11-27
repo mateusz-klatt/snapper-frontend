@@ -74,7 +74,8 @@ interface AuthState {
 }
 
 const isTransportError = (error: unknown): boolean =>
-  error instanceof TypeError || (error instanceof DOMException && error.name === 'AbortError')
+  error instanceof TypeError ||
+  (error instanceof DOMException && (error.name === 'AbortError' || error.name === 'TimeoutError'))
 
 function buildRefreshBody(nextWallet?: RefreshWalletHint): RefreshRequestBody | undefined {
   if (nextWallet === undefined) return undefined
@@ -199,15 +200,18 @@ export const useAuthStore = create<AuthState>()(
               throw new Error(`Refresh failed with status ${response.status}`)
             }
 
+            const canCacheWsTicket = apiClient.claimWsTicketCache(response)
             const envelope = (await response.json()) as RefreshEnvelope
             const data = envelope.payload
 
-            if (typeof data.ws_token === 'string' && typeof data.ws_token_exp === 'string') {
-              const expSeconds = Math.floor(new Date(data.ws_token_exp).getTime() / 1000)
+            if (canCacheWsTicket) {
+              if (typeof data.ws_token === 'string' && typeof data.ws_token_exp === 'string') {
+                const expSeconds = Math.floor(new Date(data.ws_token_exp).getTime() / 1000)
 
-              storeWsTicket({ token: data.ws_token, exp: expSeconds })
-            } else {
-              storeWsTicket(null)
+                storeWsTicket({ token: data.ws_token, exp: expSeconds })
+              } else {
+                storeWsTicket(null)
+              }
             }
 
             const csrfToken = adoptCsrfToken(data.csrf_token)

@@ -13,13 +13,21 @@ let wsTokenFlight: { socket: WebSocket; ticket: Promise<WsTicket> } | null = nul
 
 export class WsTicketNetworkError extends TypeError {}
 
+function isNetworkRefreshError(error: unknown): error is TypeError | DOMException {
+  return (
+    error instanceof TypeError ||
+    (error instanceof DOMException &&
+      (error.name === 'AbortError' || error.name === 'TimeoutError'))
+  )
+}
+
 async function refreshWsToken(): Promise<WsTicket> {
   let response: Response
 
   try {
-    response = await apiClient.refreshSession()
+    response = await apiClient.refreshSession(undefined, { claimWsTicket: true })
   } catch (error) {
-    if (error instanceof TypeError) {
+    if (isNetworkRefreshError(error)) {
       throw new WsTicketNetworkError(error.message, { cause: error })
     }
 

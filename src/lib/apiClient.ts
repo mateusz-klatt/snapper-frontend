@@ -19,6 +19,13 @@ interface GetRequestOptions extends RequestOptions {
 }
 
 type RefreshSessionBody = { active_wallet_public_id?: string; clear_active_wallet?: true }
+type RefreshSessionOptions = { claimWsTicket?: boolean }
+
+interface RefreshFlight {
+  promise: Promise<Response>
+  wsClaimed: boolean
+  cacheClaimed: boolean
+}
 
 interface ErrorPayload {
   message: string
@@ -128,9 +135,11 @@ function extractErrorPayload(data: unknown, fallbackMessage: string): ErrorPaylo
 }
 
 class APIClient {
+  private static readonly REFRESH_TIMEOUT_MS = 10_000
   private static instance: APIClient
   private isLoggingOut = false
-  private refreshPromise: Promise<Response> | null = null
+  private activeRefresh: RefreshFlight | null = null
+  private readonly responseFlights = new WeakMap<Response, RefreshFlight>()
   private timeTravelAsOf: string | null = null
   private operatorPublicId: string | null = null
   private walletPublicId: string | null = null
@@ -178,32 +187,95 @@ class APIClient {
       headers.set('X-CSRF-Token', csrfToken)
     }
   }
-  public refreshSession(body?: RefreshSessionBody): Promise<Response> {
-    if (body !== undefined || this.refreshPromise === null) {
-      const previous = this.refreshPromise
+  /**
+   * Deduplicate concurrent session refreshes while ensuring a flight's single-use
+   * WebSocket ticket is delivered to at most one consumer.
+   *
+   * When a WebSocket caller joins or starts a zero-body flight with `claimWsTicket`,
+   * that flight is marked `wsClaimed` synchronously so any REST caller sharing the
+   * flight skips caching `ws_token` regardless of microtask resolution order.
+   */
+  public refreshSession(
+    body?: RefreshSessionBody,
+    options?: RefreshSessionOptions
+  ): Promise<Response> {
+    const claimWsTicket = options?.claimWsTicket ?? false
+    const current = this.activeRefresh
+    let flight: RefreshFlight
+
+    if (body !== undefined || current === null || (claimWsTicket && current.wsClaimed)) {
+      const previous = current?.promise ?? null
       const operation =
         previous === null
           ? this.runRefreshFlight(body)
           : previous.catch(() => undefined).then(() => this.runRefreshFlight(body))
-      const pending = operation.finally(() => {
-        if (this.refreshPromise === pending) this.refreshPromise = null
-      })
+      const newFlight: RefreshFlight = {
+        wsClaimed: claimWsTicket,
+        cacheClaimed: false,
+        promise: operation.finally(() => {
+          if (this.activeRefresh === newFlight) this.activeRefresh = null
+        }),
+      }
 
-      this.refreshPromise = pending
+      this.activeRefresh = newFlight
+      flight = newFlight
+    } else {
+      if (claimWsTicket) {
+        current.wsClaimed = true
+      }
+
+      flight = current
     }
 
-    return this.refreshPromise.then(response => response.clone())
+    return flight.promise.then(response => {
+      const cloned = response.clone()
+
+      this.responseFlights.set(cloned, flight)
+
+      return cloned
+    })
+  }
+  public claimWsTicketCache(response: Response): boolean {
+    const flight = this.responseFlights.get(response)
+
+    if (!flight) {
+      return true
+    }
+
+    if (flight.wsClaimed || flight.cacheClaimed) {
+      return false
+    }
+
+    flight.cacheClaimed = true
+
+    return true
+  }
+  private async fetchRefresh(
+    encoded: { body?: string },
+    headers: Record<string, string>
+  ): Promise<Response> {
+    const controller = new AbortController()
+    const timer = setTimeout(() => {
+      controller.abort(new DOMException('Refresh request timed out', 'TimeoutError'))
+    }, APIClient.REFRESH_TIMEOUT_MS)
+
+    try {
+      return await fetch('/api/auth/refresh', {
+        ...encoded,
+        method: 'POST',
+        credentials: 'include',
+        headers,
+        signal: controller.signal,
+      })
+    } finally {
+      clearTimeout(timer)
+    }
   }
   private async runRefreshFlight(body?: RefreshSessionBody): Promise<Response> {
     const encoded = body === undefined ? {} : { body: JSON.stringify(stampProvenance(body)) }
-    const attempt = await fetch('/api/auth/refresh', {
-      ...encoded,
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'X-CSRF-Token': this.getCSRFToken(),
-        'Content-Type': 'application/json',
-      },
+    const attempt = await this.fetchRefresh(encoded, {
+      'X-CSRF-Token': this.getCSRFToken(),
+      'Content-Type': 'application/json',
     })
 
     if (attempt.status !== 403) {
@@ -216,12 +288,7 @@ class APIClient {
       .catch(() => ({}))
 
     if (typeof errorData?.detail === 'string' && errorData.detail.includes('CSRF')) {
-      return fetch('/api/auth/refresh', {
-        ...encoded,
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
-      })
+      return this.fetchRefresh(encoded, { 'Content-Type': 'application/json' })
     }
 
     return attempt
@@ -231,7 +298,9 @@ class APIClient {
       const refreshResponse = await this.refreshSession()
 
       if (refreshResponse.ok) {
-        await cacheWsTicketFromResponse(refreshResponse)
+        if (this.claimWsTicketCache(refreshResponse)) {
+          await cacheWsTicketFromResponse(refreshResponse)
+        }
 
         return this.request(url, { ...options, skipRetry: true })
       }
@@ -253,7 +322,7 @@ class APIClient {
       .json()
       .catch(() => ({}))
 
-    if (typeof errorData.detail === 'string' && errorData.detail.includes('CSRF')) {
+    if (typeof errorData?.detail === 'string' && errorData.detail.includes('CSRF')) {
       return this.request(url, { ...options, skipRetry: true, skipCSRF: true })
     }
 

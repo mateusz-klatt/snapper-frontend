@@ -304,6 +304,121 @@ describe('APIClient', () => {
       expect(response.status).toBe(403)
       expect(mockFetch).toHaveBeenCalledTimes(1)
     })
+    it('aborts runRefreshFlight with TimeoutError after 10 seconds', async () => {
+      vi.useFakeTimers()
+
+      try {
+        mockFetch.mockImplementationOnce(
+          (_url: string, init?: RequestInit) =>
+            new Promise((_resolve, reject) => {
+              init?.signal?.addEventListener('abort', () => {
+                reject(init.signal?.reason)
+              })
+            })
+        )
+        const pending = apiClient.refreshSession()
+        const caught = pending.catch((error: unknown) => error)
+
+        await vi.advanceTimersByTimeAsync(10_000)
+        const error = await caught
+
+        expect(error).toBeInstanceOf(DOMException)
+        expect((error as DOMException).name).toBe('TimeoutError')
+      } finally {
+        vi.useRealTimers()
+      }
+    })
+    it('clears the refresh timeout timer once the fetch settles', async () => {
+      vi.useFakeTimers()
+
+      try {
+        const clearTimeoutSpy = vi.spyOn(globalThis, 'clearTimeout')
+
+        mockFetch.mockResolvedValueOnce(selfCloningResponse(async () => ({ payload: {} })))
+        await apiClient.refreshSession()
+        expect(clearTimeoutSpy).toHaveBeenCalled()
+      } finally {
+        vi.useRealTimers()
+      }
+    })
+    it('does not cache ws_token in refreshAndRetry when a WS consumer claimed the flight', async () => {
+      const wsTicketCacheMod = await import('./wsTicketCache')
+      const storeWsTicketSpy = vi.mocked(wsTicketCacheMod.storeWsTicket)
+      let resolveRefresh!: (response: Response) => void
+
+      mockFetch
+        .mockResolvedValueOnce({ ok: false, status: 401 })
+        .mockImplementationOnce(
+          () =>
+            new Promise<Response>(resolve => {
+              resolveRefresh = resolve
+            })
+        )
+        .mockResolvedValueOnce({ ok: true, status: 200 })
+
+      const restRequest = apiClient.request('/test', { method: 'GET' })
+
+      await Promise.resolve()
+      const wsRefresh = apiClient.refreshSession(undefined, { claimWsTicket: true })
+
+      resolveRefresh(
+        new Response(
+          JSON.stringify({
+            payload: {
+              ws_token: 'ws-only-token',
+              ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
+            },
+          }),
+          { status: 200 }
+        )
+      )
+
+      const [restResponse, wsResponse] = await Promise.all([restRequest, wsRefresh])
+
+      expect(restResponse.ok).toBe(true)
+      expect((await wsResponse.json()).payload.ws_token).toBe('ws-only-token')
+      expect(storeWsTicketSpy).not.toHaveBeenCalled()
+    })
+    it('does not share a refresh flight between two concurrent WS ticket claimers', async () => {
+      let resolveFirst!: (response: Response) => void
+
+      mockFetch
+        .mockImplementationOnce(
+          () =>
+            new Promise<Response>(resolve => {
+              resolveFirst = resolve
+            })
+        )
+        .mockResolvedValueOnce(
+          new Response(JSON.stringify({ payload: { ws_token: 'second' } }), { status: 200 })
+        )
+
+      const first = apiClient.refreshSession(undefined, { claimWsTicket: true })
+      const second = apiClient.refreshSession(undefined, { claimWsTicket: true })
+
+      expect(mockFetch).toHaveBeenCalledTimes(1)
+      resolveFirst(
+        new Response(JSON.stringify({ payload: { ws_token: 'first' } }), { status: 200 })
+      )
+      const [firstResp, secondResp] = await Promise.all([first, second])
+
+      expect(mockFetch).toHaveBeenCalledTimes(2)
+      expect((await firstResp.json()).payload.ws_token).toBe('first')
+      expect((await secondResp.json()).payload.ws_token).toBe('second')
+    })
+    it('allows claimWsTicketCache at most once per flight and true for untracked responses', async () => {
+      mockFetch.mockResolvedValueOnce(
+        new Response(JSON.stringify({ payload: {} }), { status: 200 })
+      )
+      const [first, second] = await Promise.all([
+        apiClient.refreshSession(),
+        apiClient.refreshSession(),
+      ])
+
+      expect(apiClient.claimWsTicketCache(first)).toBe(true)
+      expect(apiClient.claimWsTicketCache(second)).toBe(false)
+      expect(apiClient.claimWsTicketCache(new Response())).toBe(true)
+    })
     it('handles 401 when refresh fails', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: false,
@@ -701,6 +816,14 @@ describe('cacheWsTicketFromResponse', () => {
       }),
     })
     await expect(apiClient.request('/test', { method: 'POST' })).rejects.toThrow()
+  })
+  it('raises APIError instead of TypeError when a 403 response body is JSON null', async () => {
+    mockFetch.mockResolvedValueOnce(new Response('null', { status: 403, statusText: 'Forbidden' }))
+    await expect(apiClient.request('/test', { method: 'POST' })).rejects.toMatchObject({
+      name: 'APIError',
+      status: 403,
+      message: 'HTTP 403: Forbidden',
+    })
   })
   describe('provenance stamping', () => {
     beforeEach(() => {

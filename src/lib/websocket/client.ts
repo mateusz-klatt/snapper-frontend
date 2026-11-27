@@ -50,6 +50,22 @@ const CONTROL_TYPES = new Set([
   'get_subscriptions',
 ])
 
+function isTerminalAuthError(error: unknown): boolean {
+  return error instanceof APIError && (error.status === 401 || error.status === 403)
+}
+
+function isTransientTicketError(error: unknown): boolean {
+  if (error instanceof WsTicketNetworkError) {
+    return true
+  }
+
+  if (!(error instanceof APIError)) {
+    return false
+  }
+
+  return error.status === 408 || error.status === 429 || (error.status >= 500 && error.status < 600)
+}
+
 class WebSocketClient {
   private ws: WebSocket | null = null
   private readonly url: string
@@ -357,16 +373,13 @@ class WebSocketClient {
     this.onConnectionReady()
     this.notifyHandlers({ ...message, type: 'auth_complete' })
   }
-  private handleAuthFailure(message: WSAuthFailedResponse): void {
-    const socket = this.ws
-
-    console.error('WebSocket authentication failed:', message)
+  private resetAuthFailureState(): void {
     this.sessionExpiresAt = null
     this.isAuthenticated = false
     this.clearReauthTimer()
     this.reconnectAttempts = this.maxReconnectAttempts
-    this.notifyHandlers({ ...message, type: 'auth_failed' })
-
+  }
+  private completeAuthFailure(socket: WebSocket | null): void {
     const authCallback = (globalThis as { authLogoutCallback?: () => void }).authLogoutCallback
 
     if (authCallback) {
@@ -374,6 +387,14 @@ class WebSocketClient {
     }
 
     if (this.ws === socket) this.closeForAuthFailure()
+  }
+  private handleAuthFailure(message: WSAuthFailedResponse): void {
+    const socket = this.ws
+
+    console.error('WebSocket authentication failed:', message)
+    this.resetAuthFailureState()
+    this.notifyHandlers({ ...message, type: 'auth_failed' })
+    this.completeAuthFailure(socket)
   }
   private async handleReauthRequired(message: WSReauthRequiredResponse): Promise<void> {
     if (!this.secure) {
@@ -459,11 +480,10 @@ class WebSocketClient {
 
       console.error('Failed to perform WebSocket authentication:', error)
 
-      if (
-        this.hasEstablishedConnection &&
-        (error instanceof WsTicketNetworkError ||
-          (error instanceof APIError && error.status >= 500 && error.status < 600))
-      ) {
+      if (isTerminalAuthError(error)) {
+        this.resetAuthFailureState()
+        this.completeAuthFailure(socket)
+      } else if (this.hasEstablishedConnection && isTransientTicketError(error)) {
         socket.close()
       } else if (mode === 'authenticate') {
         this.reconnectAttempts = this.maxReconnectAttempts
