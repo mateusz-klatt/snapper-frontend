@@ -299,6 +299,8 @@ export function positionFromAPI(api: PositionData): Position {
       realizedPnl: api.realized_pnl,
       markPrice: api.mark_price ?? null,
       markedAt: api.marked_at ? new Date(api.marked_at) : null,
+      markAsOf: api.mark_as_of ? new Date(api.mark_as_of) : null,
+      markStale: api.mark_stale ?? false,
       sourceVenueEventId: api.source_venue_event_id ?? null,
       positionCyclePublicId: api.position_cycle_public_id ?? null,
     },

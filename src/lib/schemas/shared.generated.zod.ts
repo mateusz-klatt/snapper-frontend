@@ -444,6 +444,8 @@ export const PositionDataSchema = z
     realized_pnl: z.number(),
     mark_price: z.number().nullable().optional(),
     marked_at: z.iso.datetime().nullable().optional(),
+    mark_as_of: z.iso.datetime().nullable().optional(),
+    mark_stale: z.boolean().optional(),
     source_venue_event_id: z.number().int().nullable().optional(),
     position_cycle_public_id: z.string().nullable().optional(),
     wallet_public_id: z.string(),

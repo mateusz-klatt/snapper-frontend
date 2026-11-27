@@ -493,14 +493,18 @@ describe('Position Transformers', () => {
       unrealized_pnl: 3000,
       realized_pnl: 500,
       mark_price: 50100,
-      marked_at: '2026-01-15T10:29:00Z',
+      marked_at: '2026-01-15T10:24:00Z',
+      mark_as_of: '2026-01-15T10:24:00Z',
+      mark_stale: true,
       source_venue_event_id: 42,
       wallet_public_id: 'wal-uuid-1',
     }
     const withMark = positionFromAPI(marked)
 
     expect(withMark.markPrice).toBe(50100)
-    expect(withMark.markedAt).toEqual(new Date('2026-01-15T10:29:00Z'))
+    expect(withMark.markedAt).toEqual(new Date('2026-01-15T10:24:00Z'))
+    expect(withMark.markAsOf).toEqual(new Date('2026-01-15T10:24:00Z'))
+    expect(withMark.markStale).toBe(true)
     expect(withMark.sourceVenueEventId).toBe(42)
     const bare: PositionData = {
       type: 'position',
@@ -524,6 +528,8 @@ describe('Position Transformers', () => {
     expect(honest.unrealizedPnl).toBeNull()
     expect(honest.markPrice).toBeNull()
     expect(honest.markedAt).toBeNull()
+    expect(honest.markAsOf).toBeNull()
+    expect(honest.markStale).toBe(false)
     expect(honest.sourceVenueEventId).toBeNull()
   })
   it('transforms REST API position to canonical entity', () => {

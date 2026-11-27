@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { PositionListResponseSchema } from './api.generated.zod'
 import { validateResponse } from './api'
+import { PositionDataSchema } from './ws.generated.zod'
 
 const schemaSources = import.meta.glob(['./*.ts', '!./*.test.ts'], {
   eager: true,
@@ -62,6 +63,20 @@ describe('schema path stability', () => {
       .map(([path]) => path)
 
     expect(offenders).toEqual([])
+  })
+
+  it('keeps stale mark evidence on a WebSocket position payload', () => {
+    const markAsOf = '2025-12-31T23:54:00.000Z'
+    const parsed = PositionDataSchema.parse({
+      ...position('btc', 'BTC-USD'),
+      mark_price: 42000,
+      mark_as_of: markAsOf,
+      mark_stale: true,
+    })
+
+    expect(parsed.mark_price).toBe(42000)
+    expect(parsed.mark_as_of).toBe(markAsOf)
+    expect(parsed.mark_stale).toBe(true)
   })
 
   it('keeps object keys and array order when a position list is parsed', () => {
