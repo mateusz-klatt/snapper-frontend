@@ -1,7 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { isAuthControlMessage, getWsToken } from './auth'
+import { isAuthControlMessage, getWsToken as requestWsToken, WsTicketNetworkError } from './auth'
 import * as wsTicketCache from '../wsTicketCache'
 import { apiClient } from '../apiClient'
+import { APIError } from '../api/error'
 
 vi.mock('../wsTicketCache', () => ({
   consumeWsTicket: vi.fn(),
@@ -14,6 +15,8 @@ vi.mock('../apiClient', () => ({
 
 const refreshResponse = (payload: unknown): Response =>
   ({ ok: true, status: 200, json: () => Promise.resolve(payload) }) as unknown as Response
+const socket = {} as WebSocket
+const getWsToken = () => requestWsToken(socket, () => true)
 
 describe('auth', () => {
   beforeEach(() => {
@@ -78,14 +81,60 @@ describe('auth', () => {
       expect(result).toEqual({ token: 'fetched-token', exp: Math.floor(expDate.getTime() / 1000) })
       expect(apiClient.refreshSession).toHaveBeenCalledTimes(1)
     })
-    it('throws error when the refresh response is not ok', async () => {
+    it.each([
+      [401, 'Unauthorized'],
+      [403, 'Forbidden'],
+      [502, 'Bad Gateway'],
+    ])('retains HTTP %s on a failed refresh', async (status, statusText) => {
       vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
-      vi.mocked(apiClient.refreshSession).mockResolvedValue({
-        ok: false,
-        status: 401,
-        json: () => Promise.resolve({}),
-      } as unknown as Response)
-      await expect(getWsToken()).rejects.toThrow('Refresh failed with status 401')
+      vi.mocked(apiClient.refreshSession).mockResolvedValue(
+        new Response(null, { status, statusText })
+      )
+      const pending = getWsToken()
+
+      await expect(pending).rejects.toBeInstanceOf(APIError)
+      await expect(pending).rejects.toMatchObject({
+        status,
+        statusText,
+        message: `Refresh failed with status ${status}`,
+      })
+    })
+    it('marks fetch TypeError as a network failure and allows a new token request', async () => {
+      vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
+      const cause = new TypeError('Failed to fetch')
+      const expiration = '2026-01-07T12:00:00Z'
+
+      vi.mocked(apiClient.refreshSession)
+        .mockRejectedValueOnce(cause)
+        .mockResolvedValueOnce(
+          refreshResponse({ payload: { ws_token: 'recovered', ws_token_exp: expiration } })
+        )
+      const failed = getWsToken()
+
+      await expect(failed).rejects.toBeInstanceOf(WsTicketNetworkError)
+      await expect(failed).rejects.toMatchObject({ message: 'Failed to fetch', cause })
+      await expect(getWsToken()).resolves.toEqual({
+        token: 'recovered',
+        exp: Date.parse(expiration) / 1000,
+      })
+    })
+    it('preserves non-network refresh failures', async () => {
+      vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
+      const failure = new Error('Unexpected refresh error')
+
+      vi.mocked(apiClient.refreshSession).mockRejectedValueOnce(failure)
+
+      await expect(getWsToken()).rejects.toBe(failure)
+    })
+    it('does not classify a response body TypeError as a fetch failure', async () => {
+      vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
+      const failure = new TypeError('Invalid response body')
+      const response = new Response('')
+
+      vi.spyOn(response, 'json').mockRejectedValueOnce(failure)
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(response)
+
+      await expect(getWsToken()).rejects.toBe(failure)
     })
     it('throws error for invalid API response', async () => {
       vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)

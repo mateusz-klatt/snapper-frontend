@@ -215,7 +215,7 @@ class APIClient {
       .json()
       .catch(() => ({}))
 
-    if (typeof errorData.detail === 'string' && errorData.detail.includes('CSRF')) {
+    if (typeof errorData?.detail === 'string' && errorData.detail.includes('CSRF')) {
       return fetch('/api/auth/refresh', {
         ...encoded,
         method: 'POST',
