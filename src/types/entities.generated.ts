@@ -709,6 +709,8 @@ export interface Position {
   realizedPnl: number
   markPrice?: number | null
   markedAt?: Date | null
+  markAsOf?: Date | null
+  markStale?: boolean
   sourceVenueEventId?: number | null
   positionCyclePublicId?: string | null
   walletPublicId?: string

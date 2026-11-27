@@ -263,6 +263,8 @@ const _AiReviewAftermathPositionRawSchema = z
     realized_pnl: z.number().nullable(),
     mark_price: z.number().nullable(),
     marked_at: z.iso.datetime().nullable(),
+    mark_as_of: z.iso.datetime().nullable().optional(),
+    mark_stale: z.boolean().optional(),
     source_venue_event_id: z.number().int().nullable(),
     position_cycle_public_id: z.string().nullable(),
     wallet_public_id: z.string(),

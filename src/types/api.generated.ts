@@ -707,6 +707,8 @@ export type Components = {
             realized_pnl: number | null;
             mark_price: number | null;
             marked_at: string | null;
+            mark_as_of?: string | null | undefined;
+            mark_stale?: boolean;
             source_venue_event_id: number | null;
             position_cycle_public_id: string | null;
             wallet_public_id: string;
@@ -2733,6 +2735,8 @@ export type Components = {
             realized_pnl: number;
             mark_price?: number | null | undefined;
             marked_at?: string | null | undefined;
+            mark_as_of?: string | null | undefined;
+            mark_stale?: boolean;
             source_venue_event_id?: number | null | undefined;
             position_cycle_public_id?: string | null | undefined;
             wallet_public_id: string;

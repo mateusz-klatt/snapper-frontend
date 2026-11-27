@@ -303,6 +303,8 @@ export type PositionData = PositionDisplayFields & {
   realized_pnl: number;
   mark_price?: MarkPrice;
   marked_at?: MarkedAt;
+  mark_as_of?: MarkAsOf;
+  mark_stale?: boolean;
   source_venue_event_id?: SourceVenueEventId;
   position_cycle_public_id?: PositionCyclePublicId1;
   wallet_public_id?: string;
@@ -317,6 +319,7 @@ export type AveragePrice1 = number | null;
 export type UnrealizedPnl = number | null;
 export type MarkPrice = number | null;
 export type MarkedAt = string | null;
+export type MarkAsOf = string | null;
 export type SourceVenueEventId = number | null;
 export type PositionCyclePublicId1 = string | null;
 export type Type31 = "process_command_ack";
