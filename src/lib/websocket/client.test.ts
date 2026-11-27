@@ -1,6 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import WebSocketClient from './client'
-import { getWsToken, isAuthControlMessage, WsTicketNetworkError } from './auth'
+import WebSocketClient, { WebSocketTerminalError } from './client'
+import {
+  getWsToken,
+  isAuthControlMessage,
+  MalformedWsTicketError,
+  WsTicketNetworkError,
+} from './auth'
 import { calculateReconnectDelay, shouldReconnect } from './reconnect'
 import { APIError } from '../api/error'
 import { storeWsTicket } from '../wsTicketCache'
@@ -281,6 +286,15 @@ describe('WebSocketClient', () => {
       expect(client.getConnectionStats()).toMatchObject({ isReconnecting: false })
       await vi.advanceTimersByTimeAsync(5000)
       expect((client as any).ws).toBeNull()
+    })
+    it('tolerates an already-closing socket without calling close again', async () => {
+      client.connect()
+      await vi.advanceTimersByTimeAsync(50)
+      const mockWs = (client as any).ws
+
+      mockWs.readyState = MockWebSocket.CLOSING
+      client.disconnect()
+      expect(mockWs.close).not.toHaveBeenCalled()
     })
   })
   describe('errors', () => {
@@ -1209,14 +1223,18 @@ describe('WebSocketClient', () => {
       return socket
     }
 
+    let randomSpy: ReturnType<typeof vi.spyOn>
+
     beforeEach(async () => {
       const reconnect = await vi.importActual<typeof import('./reconnect')>('./reconnect')
 
+      randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0.5)
       vi.mocked(calculateReconnectDelay).mockImplementation(reconnect.calculateReconnectDelay)
       secureClient(3)
     })
     afterEach(() => {
       vi.mocked(calculateReconnectDelay).mockReset()
+      randomSpy.mockRestore()
     })
 
     it('recovers from HTTP 502 and network failures and resets the budget after auth_complete', async () => {
@@ -1348,6 +1366,49 @@ describe('WebSocketClient', () => {
       expect(client.getConnectionStats()).toMatchObject({ connected: true, reconnectAttempts: 0 })
     })
 
+    it('notifies terminal failure listeners on persistent non-logout errors and supports unsubscribe', async () => {
+      const terminalListener = vi.fn()
+      const ignoredListener = vi.fn()
+      const unsubscribe = client.onTerminalFailure(ignoredListener)
+
+      unsubscribe()
+      unsubscribe()
+      client.onTerminalFailure(terminalListener)
+      vi.mocked(getWsToken).mockRejectedValueOnce(new APIError('Bad Request', 400, 'Bad Request'))
+
+      client.connect()
+      await vi.advanceTimersByTimeAsync(10)
+      await authenticate(currentSocket())
+
+      expect(ignoredListener).not.toHaveBeenCalled()
+      expect(terminalListener).toHaveBeenCalledExactlyOnceWith(expect.any(WebSocketTerminalError))
+    })
+    it('closes socket with 4401 before invoking authLogoutCallback', async () => {
+      const events: string[] = []
+      const initial = await establishSession()
+
+      initial.close = vi.fn((code?: number) => {
+        events.push(`close:${code}`)
+        initial.readyState = MockWebSocket.CLOSING
+      })
+      vi.stubGlobal('authLogoutCallback', () => {
+        events.push('logout')
+        client.disconnect()
+      })
+
+      try {
+        vi.mocked(getWsToken).mockRejectedValueOnce(
+          new APIError('Unauthorized', 401, 'Unauthorized')
+        )
+        initial.receive(createReauthRequired())
+        await vi.advanceTimersByTimeAsync(0)
+
+        expect(events).toEqual(['close:4401', 'logout'])
+        expect(initial.close).toHaveBeenCalledExactlyOnceWith(4401, 'Authentication failure')
+      } finally {
+        vi.unstubAllGlobals()
+      }
+    })
     it('leaves an initial transient ticket failure to the caller', async () => {
       vi.mocked(getWsToken).mockRejectedValueOnce(new APIError('Bad Gateway', 502, 'Bad Gateway'))
       const connect = vi.spyOn(client, 'connect')
@@ -1367,6 +1428,8 @@ describe('WebSocketClient', () => {
     it.each([
       new APIError('Unauthorized', 401, 'Unauthorized'),
       new APIError('Forbidden', 403, 'Forbidden'),
+      new APIError('Bad Request', 400, 'Bad Request'),
+      new APIError('Unknown', 600, 'Unknown'),
       new Error('Invalid ws_token response from refresh endpoint'),
       new TypeError('Invalid refresh response body'),
     ])('stops reconnecting after %s', async error => {
@@ -1385,6 +1448,205 @@ describe('WebSocketClient', () => {
       expect(connect).toHaveBeenCalledTimes(1)
       expect(client.getConnectionStats()).toMatchObject({ connected: false, isReconnecting: false })
     })
+
+    it.each([
+      [401, 'Unauthorized'],
+      [403, 'Forbidden'],
+    ])(
+      'exhausts budget, invokes authLogoutCallback, and closes with 4401 on initial %s in authenticate mode',
+      async (status, statusText) => {
+        const logout = vi.fn()
+        const connect = vi.spyOn(client, 'connect')
+
+        vi.stubGlobal('authLogoutCallback', logout)
+
+        try {
+          vi.mocked(getWsToken).mockRejectedValueOnce(
+            new APIError(`Refresh failed with status ${status}`, status, statusText)
+          )
+          client.connect()
+          await vi.advanceTimersByTimeAsync(10)
+          const initial = currentSocket()
+
+          await authenticate(initial)
+          await vi.advanceTimersByTimeAsync(1000)
+
+          expect(logout).toHaveBeenCalledOnce()
+          expect(initial.close).toHaveBeenCalledWith(4401, 'Authentication failure')
+          expect(connect).toHaveBeenCalledTimes(1)
+          expect(client.getConnectionStats()).toMatchObject({
+            connected: false,
+            reconnectAttempts: 3,
+            isReconnecting: false,
+          })
+        } finally {
+          vi.unstubAllGlobals()
+        }
+      }
+    )
+
+    it.each([
+      [401, 'Unauthorized'],
+      [403, 'Forbidden'],
+    ])(
+      'exhausts budget, invokes authLogoutCallback, clears auth state, and closes with 4401 on %s in reauth mode',
+      async (status, statusText) => {
+        const logout = vi.fn()
+
+        vi.stubGlobal('authLogoutCallback', logout)
+
+        try {
+          const initial = await establishSession()
+
+          initial.receive(createAuthOk({ exp: new Date(Date.now() + 120_000).toISOString() }))
+          vi.mocked(getWsToken).mockRejectedValueOnce(
+            new APIError(`Refresh failed with status ${status}`, status, statusText)
+          )
+          initial.receive(createReauthRequired())
+          await vi.advanceTimersByTimeAsync(0)
+          await vi.advanceTimersByTimeAsync(1000)
+
+          expect(logout).toHaveBeenCalledOnce()
+          expect(initial.close).toHaveBeenCalledWith(4401, 'Authentication failure')
+          expect(client.getConnectionStats()).toMatchObject({
+            connected: false,
+            reconnectAttempts: 3,
+            isReconnecting: false,
+          })
+          expect(Reflect.get(client, 'isAuthenticated')).toBe(false)
+          expect(Reflect.get(client, 'reauthTimer')).toBeNull()
+        } finally {
+          vi.unstubAllGlobals()
+        }
+      }
+    )
+
+    it('invokes authLogoutCallback when scheduled reauth timer hits terminal 401', async () => {
+      const logout = vi.fn()
+
+      vi.stubGlobal('authLogoutCallback', logout)
+
+      try {
+        vi.mocked(getWsToken)
+          .mockResolvedValueOnce({ token: 'initial-token', exp: Date.now() / 1000 + 60 })
+          .mockRejectedValueOnce(new APIError('Unauthorized', 401, 'Unauthorized'))
+
+        const initial = await establishSession()
+
+        initial.receive(createAuthOk({ exp: new Date(Date.now() + 60_000).toISOString() }))
+        await vi.advanceTimersByTimeAsync(15_000)
+
+        expect(logout).toHaveBeenCalledOnce()
+        expect(initial.close).toHaveBeenCalledWith(4401, 'Authentication failure')
+        expect(client.getConnectionStats()).toMatchObject({
+          connected: false,
+          reconnectAttempts: 3,
+          isReconnecting: false,
+        })
+      } finally {
+        vi.unstubAllGlobals()
+      }
+    })
+
+    it.each([
+      new APIError('Bad Request', 400, 'Bad Request'),
+      new APIError('Not Found', 404, 'Not Found'),
+      new MalformedWsTicketError('Invalid ws_token response from refresh endpoint'),
+    ])('resets readiness and closes with 4401 on non-logout reauth failure %s', async error => {
+      const terminal = vi.fn()
+      const logout = vi.fn()
+      const socket = await establishSession()
+
+      expect(client.isReady()).toBe(true)
+      socket.receive(createAuthOk({ exp: new Date(Date.now() + 120_000).toISOString() }))
+      socket.close = vi.fn(() => {
+        expect(client.isReady()).toBe(false)
+        expect(Reflect.get(client, 'sessionExpiresAt')).toBeNull()
+        socket.readyState = MockWebSocket.CLOSING
+      })
+      client.onTerminalFailure(terminal)
+      vi.mocked(getWsToken).mockRejectedValueOnce(error)
+      vi.stubGlobal('authLogoutCallback', logout)
+
+      try {
+        socket.receive(createReauthRequired())
+        await vi.advanceTimersByTimeAsync(0)
+
+        expect(terminal).toHaveBeenCalledExactlyOnceWith(new WebSocketTerminalError(error.message))
+        expect(socket.close).toHaveBeenCalledExactlyOnceWith(4401, 'Authentication failure')
+        expect(client.getConnectionStats()).toMatchObject({
+          reconnectAttempts: 3,
+          isReconnecting: false,
+        })
+        expect(Reflect.get(client, 'reauthTimer')).toBeNull()
+        expect(logout).not.toHaveBeenCalled()
+      } finally {
+        vi.unstubAllGlobals()
+      }
+    })
+
+    it('honors terminal 401 in reauth mode when authLogoutCallback disconnects the client', async () => {
+      const initial = await establishSession()
+      const connect = vi.spyOn(client, 'connect')
+      const logout = vi.fn(() => client.disconnect())
+
+      vi.stubGlobal('authLogoutCallback', logout)
+
+      try {
+        vi.mocked(getWsToken).mockRejectedValueOnce(
+          new APIError('Unauthorized', 401, 'Unauthorized')
+        )
+        initial.receive(createReauthRequired())
+        await vi.advanceTimersByTimeAsync(0)
+        await vi.advanceTimersByTimeAsync(1000)
+
+        expect(logout).toHaveBeenCalledOnce()
+        expect(connect).not.toHaveBeenCalled()
+        expect(client.getConnectionStats()).toMatchObject({
+          connected: false,
+          isReconnecting: false,
+        })
+      } finally {
+        vi.unstubAllGlobals()
+      }
+    })
+
+    it.each([
+      ['HTTP 408', new APIError('Request Timeout', 408, 'Request Timeout')],
+      ['HTTP 429', new APIError('Too Many Requests', 429, 'Too Many Requests')],
+      [
+        'AbortError',
+        new WsTicketNetworkError('aborted', { cause: new DOMException('aborted', 'AbortError') }),
+      ],
+      [
+        'TimeoutError',
+        new WsTicketNetworkError('timed out', {
+          cause: new DOMException('timed out', 'TimeoutError'),
+        }),
+      ],
+    ])(
+      'treats %s as transient during established reauthentication',
+      async (_label, transientError) => {
+        const logout = vi.fn()
+
+        vi.stubGlobal('authLogoutCallback', logout)
+
+        try {
+          const initial = await establishSession()
+
+          vi.mocked(getWsToken).mockRejectedValueOnce(transientError)
+          initial.receive(createReauthRequired())
+          await vi.advanceTimersByTimeAsync(0)
+
+          expect(logout).not.toHaveBeenCalled()
+          expect(initial.close).toHaveBeenCalledWith()
+          await vi.advanceTimersByTimeAsync(110)
+          expect(currentSocket()).not.toBe(initial)
+        } finally {
+          vi.unstubAllGlobals()
+        }
+      }
+    )
 
     it('reconnects after a transient ticket failure during established reauthentication', async () => {
       const initial = await establishSession()
@@ -2243,6 +2505,22 @@ describe('WebSocketClient secure mode', () => {
     expect(authLogoutCallback).toHaveBeenCalled()
     delete (window as any).authLogoutCallback
   })
+  it('skips closeForAuthFailure when an auth_failed handler already disconnected', async () => {
+    const closeSpy = vi.spyOn(client as any, 'closeForAuthFailure')
+
+    client.onMessage('auth_failed', () => {
+      client.disconnect()
+    })
+    client.connect()
+    await vi.advanceTimersByTimeAsync(50)
+    const mockWs = (client as any).ws
+
+    mockWs.onmessage?.({
+      data: JSON.stringify(createAuthFailed({ reason: 'Invalid' })),
+    })
+    expect(closeSpy).not.toHaveBeenCalled()
+    closeSpy.mockRestore()
+  })
   it('handles getWsToken failure during initial authentication', async () => {
     const { getWsToken } = await import('./auth')
     const secureClient = new WebSocketClient({ secure: true })
@@ -2266,13 +2544,13 @@ describe('WebSocketClient secure mode', () => {
     consoleSpy.mockRestore()
     secureClient.disconnect()
   })
-  it('handles getWsToken failure during reauth', async () => {
+  it('leaves a transient reauth failure before auth_complete to the caller', async () => {
     const { getWsToken } = await import('./auth')
     const secureClient = new WebSocketClient({ secure: true })
 
     vi.mocked(getWsToken)
       .mockResolvedValueOnce({ token: 'test-token', exp: Date.now() / 1000 + 3600 })
-      .mockRejectedValueOnce(new Error('Reauth token fetch failed'))
+      .mockRejectedValueOnce(new APIError('Reauth token fetch failed', 502, 'Bad Gateway'))
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
 
     secureClient.connect()
@@ -2289,9 +2567,10 @@ describe('WebSocketClient secure mode', () => {
     await vi.advanceTimersByTimeAsync(100)
     expect(consoleSpy).toHaveBeenCalledWith(
       'Failed to perform WebSocket authentication:',
-      expect.any(Error)
+      expect.any(APIError)
     )
     expect((secureClient as any).reconnectAttempts).toBeLessThan(10)
+    expect(mockWs.close).not.toHaveBeenCalled()
     consoleSpy.mockRestore()
     secureClient.disconnect()
   })

@@ -100,7 +100,9 @@ const refreshWalletSelection = (
     void queryClient.cancelQueries({ predicate: query => isScopeAwareRead(query.queryKey) })
 
     try {
-      await useAuthStore.getState().refreshToken(hint)
+      const confirmed = await useAuthStore.getState().refreshToken(hint)
+
+      if (confirmed === false) return false
     } catch (error: unknown) {
       const state = useAppStore.getState()
 

@@ -2,7 +2,12 @@ import { v7 as uuid7 } from 'uuid'
 import { getCookie } from './utils'
 import { storeWsTicket } from './wsTicketCache'
 import { getTracker } from './sequenceTracker'
-import { APIError } from './api/error'
+import {
+  APIError,
+  isTerminalRefreshAuthError,
+  isTransientRefreshError,
+  isTransientRefreshTransportError,
+} from './api/error'
 
 export { APIError } from './api/error'
 
@@ -19,6 +24,53 @@ interface GetRequestOptions extends RequestOptions {
 }
 
 type RefreshSessionBody = { active_wallet_public_id?: string; clear_active_wallet?: true }
+type RefreshSessionOptions = { claimWsTicket?: boolean }
+
+interface RefreshFlight {
+  promise: Promise<Response>
+  wsClaimed: boolean
+  cacheClaimed: boolean
+  sessionEpoch: number
+  wsToken: string | null
+}
+
+function raceWithSignal<T>(promise: Promise<T>, signal: AbortSignal): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const onAbort = () => {
+      reject(signal.reason)
+    }
+
+    signal.addEventListener('abort', onAbort, { once: true })
+    promise.then(
+      value => {
+        signal.removeEventListener('abort', onAbort)
+        resolve(value)
+      },
+      error => {
+        signal.removeEventListener('abort', onAbort)
+        reject(error)
+      }
+    )
+  })
+}
+
+function makeBufferedRefreshResponse(
+  source: Response,
+  body: { ok: true; data: unknown } | { ok: false; error: unknown }
+): Response {
+  const json = () => (body.ok ? Promise.resolve(body.data) : Promise.reject(body.error))
+  const makeCopy = (): Response =>
+    ({
+      ok: source.ok,
+      status: source.status,
+      statusText: source.statusText,
+      headers: source.headers,
+      json,
+      clone: makeCopy,
+    }) as unknown as Response
+
+  return makeCopy()
+}
 
 interface ErrorPayload {
   message: string
@@ -128,9 +180,13 @@ function extractErrorPayload(data: unknown, fallbackMessage: string): ErrorPaylo
 }
 
 class APIClient {
+  private static readonly REFRESH_TIMEOUT_MS = 10_000
   private static instance: APIClient
   private isLoggingOut = false
-  private refreshPromise: Promise<Response> | null = null
+  private sessionEpoch = 0
+  private independentRestTicketToken: string | null = null
+  private activeRefresh: RefreshFlight | null = null
+  private readonly responseFlights = new WeakMap<Response, RefreshFlight>()
   private timeTravelAsOf: string | null = null
   private operatorPublicId: string | null = null
   private walletPublicId: string | null = null
@@ -178,70 +234,215 @@ class APIClient {
       headers.set('X-CSRF-Token', csrfToken)
     }
   }
-  public refreshSession(body?: RefreshSessionBody): Promise<Response> {
-    if (body !== undefined || this.refreshPromise === null) {
-      const previous = this.refreshPromise
+  /**
+   * Deduplicate concurrent session refreshes while ensuring a flight's single-use
+   * WebSocket ticket is delivered to at most one consumer.
+   *
+   * When a WebSocket caller joins or starts a zero-body flight with `claimWsTicket`,
+   * that flight is marked `wsClaimed` synchronously so any REST caller sharing the
+   * flight skips caching `ws_token` regardless of microtask resolution order.
+   */
+  public async refreshSession(
+    body?: RefreshSessionBody,
+    options?: RefreshSessionOptions
+  ): Promise<Response> {
+    const claimWsTicket = options?.claimWsTicket ?? false
+    const current = this.activeRefresh
+    let flight: RefreshFlight
+
+    if (body !== undefined || current === null || (claimWsTicket && current.wsClaimed)) {
+      const previous = current?.promise ?? null
+      const newFlight: RefreshFlight = {
+        wsClaimed: claimWsTicket,
+        cacheClaimed: false,
+        sessionEpoch: this.sessionEpoch,
+        wsToken: null,
+        promise: Promise.resolve() as unknown as Promise<Response>,
+      }
       const operation =
         previous === null
-          ? this.runRefreshFlight(body)
-          : previous.catch(() => undefined).then(() => this.runRefreshFlight(body))
-      const pending = operation.finally(() => {
-        if (this.refreshPromise === pending) this.refreshPromise = null
-      })
+          ? this.runRefreshFlight(body, newFlight)
+          : previous.catch(() => undefined).then(() => this.runRefreshFlight(body, newFlight))
 
-      this.refreshPromise = pending
+      newFlight.promise = operation.finally(() => {
+        if (this.activeRefresh === newFlight) this.activeRefresh = null
+      })
+      this.activeRefresh = newFlight
+      flight = newFlight
+    } else {
+      if (claimWsTicket) {
+        current.wsClaimed = true
+      }
+
+      flight = current
     }
 
-    return this.refreshPromise.then(response => response.clone())
+    let response: Response
+
+    try {
+      response = await flight.promise
+    } finally {
+      this.assertSessionEpoch(flight.sessionEpoch)
+    }
+
+    const cloned = typeof response.clone === 'function' ? response.clone() : response
+
+    this.responseFlights.set(cloned, flight)
+
+    return cloned
   }
-  private async runRefreshFlight(body?: RefreshSessionBody): Promise<Response> {
-    const encoded = body === undefined ? {} : { body: JSON.stringify(stampProvenance(body)) }
-    const attempt = await fetch('/api/auth/refresh', {
-      ...encoded,
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'X-CSRF-Token': this.getCSRFToken(),
-        'Content-Type': 'application/json',
-      },
-    })
+  public claimWsTicketCache(response: Response): boolean {
+    const flight = this.responseFlights.get(response)
 
-    if (attempt.status !== 403) {
-      return attempt
+    if (!flight) {
+      return true
     }
 
-    const errorData = await attempt
-      .clone()
-      .json()
-      .catch(() => ({}))
-
-    if (typeof errorData?.detail === 'string' && errorData.detail.includes('CSRF')) {
-      return fetch('/api/auth/refresh', {
-        ...encoded,
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
-      })
+    if (flight.wsClaimed || flight.cacheClaimed || flight.sessionEpoch !== this.sessionEpoch) {
+      return false
     }
 
-    return attempt
+    flight.cacheClaimed = true
+    this.independentRestTicketToken = flight.wsToken
+
+    return true
+  }
+  public consumeIndependentRestTicket(token: string): boolean {
+    if (this.independentRestTicketToken === null || this.independentRestTicketToken !== token) {
+      return false
+    }
+
+    this.independentRestTicketToken = null
+
+    return true
+  }
+  private async runRefreshFlight(
+    body: RefreshSessionBody | undefined,
+    flight: RefreshFlight
+  ): Promise<Response> {
+    this.assertSessionEpoch(flight.sessionEpoch)
+    const controller = new AbortController()
+    const timer = setTimeout(() => {
+      controller.abort(new DOMException('Refresh request timed out', 'TimeoutError'))
+    }, APIClient.REFRESH_TIMEOUT_MS)
+
+    try {
+      const encoded = body === undefined ? {} : { body: JSON.stringify(stampProvenance(body)) }
+      const attempt = await raceWithSignal(
+        fetch('/api/auth/refresh', {
+          ...encoded,
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'X-CSRF-Token': this.getCSRFToken(),
+            'Content-Type': 'application/json',
+          },
+          signal: controller.signal,
+        }),
+        controller.signal
+      )
+
+      let finalResponse = attempt
+
+      if (attempt.status === 403) {
+        let errorData: { detail?: unknown } = {}
+
+        try {
+          errorData = (await raceWithSignal(attempt.clone().json(), controller.signal)) as {
+            detail?: unknown
+          }
+        } catch (error) {
+          if (controller.signal.aborted || isTransientRefreshTransportError(error)) {
+            throw error
+          }
+        }
+
+        if (typeof errorData?.detail === 'string' && errorData.detail.includes('CSRF')) {
+          this.assertSessionEpoch(flight.sessionEpoch)
+          finalResponse = await raceWithSignal(
+            fetch('/api/auth/refresh', {
+              ...encoded,
+              method: 'POST',
+              credentials: 'include',
+              headers: { 'Content-Type': 'application/json' },
+              signal: controller.signal,
+            }),
+            controller.signal
+          )
+        }
+      }
+
+      if (!finalResponse.ok) {
+        return finalResponse
+      }
+
+      let parsedBody: { ok: true; data: unknown } | { ok: false; error: unknown }
+
+      try {
+        const data = await raceWithSignal(finalResponse.json(), controller.signal)
+        const payload = (data as { payload?: { ws_token?: unknown; ws_token_exp?: unknown } })
+          ?.payload
+
+        if (typeof payload?.ws_token === 'string' && typeof payload?.ws_token_exp === 'string') {
+          flight.wsToken = payload.ws_token
+        }
+
+        parsedBody = { ok: true, data }
+      } catch (error) {
+        if (controller.signal.aborted || isTransientRefreshTransportError(error)) {
+          throw error
+        }
+
+        parsedBody = { ok: false, error }
+      }
+
+      return makeBufferedRefreshResponse(finalResponse, parsedBody)
+    } finally {
+      clearTimeout(timer)
+    }
   }
   private async refreshAndRetry(url: string, options: RequestOptions): Promise<Response> {
+    const epoch = this.sessionEpoch
+    let refreshResponse: Response
+
     try {
-      const refreshResponse = await this.refreshSession()
+      refreshResponse = await this.refreshSession()
+    } catch (error) {
+      this.assertSessionEpoch(epoch)
 
-      if (refreshResponse.ok) {
-        await cacheWsTicketFromResponse(refreshResponse)
-
-        return this.request(url, { ...options, skipRetry: true })
+      if (isTransientRefreshError(error)) {
+        throw error
       }
 
       this.handleAuthenticationFailure()
-      throw new Error('Authentication required')
-    } catch {
-      this.handleAuthenticationFailure()
-      throw new Error('Authentication required')
+      throw new Error('Authentication required', { cause: error })
     }
+
+    this.assertSessionEpoch(epoch)
+
+    if (!refreshResponse.ok) {
+      const error = new APIError(
+        `Refresh failed with status ${refreshResponse.status}`,
+        refreshResponse.status,
+        refreshResponse.statusText ?? ''
+      )
+
+      if (isTerminalRefreshAuthError(error)) {
+        this.handleAuthenticationFailure()
+        throw new Error('Authentication required')
+      }
+
+      throw error
+    }
+
+    if (this.claimWsTicketCache(refreshResponse)) {
+      const ticket = await readWsTicketFromResponse(refreshResponse)
+
+      this.assertSessionEpoch(epoch)
+      storeWsTicket(ticket)
+    }
+
+    return this.request(url, { ...options, skipRetry: true })
   }
   private async handleCSRFError(
     url: string,
@@ -253,13 +454,14 @@ class APIClient {
       .json()
       .catch(() => ({}))
 
-    if (typeof errorData.detail === 'string' && errorData.detail.includes('CSRF')) {
+    if (typeof errorData?.detail === 'string' && errorData.detail.includes('CSRF')) {
       return this.request(url, { ...options, skipRetry: true, skipCSRF: true })
     }
 
     return this.raiseHttpError(response)
   }
   public async request(url: string, options: RequestOptions = {}): Promise<Response> {
+    const epoch = this.sessionEpoch
     const method = (options.method ?? 'GET').toUpperCase()
 
     if (
@@ -287,6 +489,8 @@ class APIClient {
     })
 
     if (response.status === 401 && !skipRetry) {
+      this.assertSessionEpoch(epoch)
+
       return this.refreshAndRetry(url, options)
     }
 
@@ -428,7 +632,24 @@ class APIClient {
 
     return response.json()
   }
+  private assertSessionEpoch(epoch: number): void {
+    if (epoch !== this.sessionEpoch) {
+      throw new DOMException(
+        'Authentication required: session refresh was superseded',
+        'AbortError'
+      )
+    }
+  }
+  public getSessionEpoch(): number {
+    return this.sessionEpoch
+  }
+  public advanceSessionEpoch(): void {
+    this.sessionEpoch += 1
+    this.activeRefresh = null
+    this.independentRestTicketToken = null
+  }
   public clearCSRFToken(): void {
+    this.advanceSessionEpoch()
     this.setCsrfToken(null)
   }
   public setCsrfToken(token: string | null): void {
@@ -480,7 +701,9 @@ function stampProvenance(body: unknown): unknown {
   }
 }
 
-async function cacheWsTicketFromResponse(response: Response): Promise<void> {
+async function readWsTicketFromResponse(
+  response: Response
+): Promise<{ token: string; exp: number } | null> {
   try {
     const envelope = (await response.clone().json()) as {
       payload?: {
@@ -493,11 +716,11 @@ async function cacheWsTicketFromResponse(response: Response): Promise<void> {
     if (typeof data?.ws_token === 'string' && typeof data?.ws_token_exp === 'string') {
       const expSeconds = Math.floor(new Date(data.ws_token_exp).getTime() / 1000)
 
-      storeWsTicket({ token: data.ws_token, exp: expSeconds })
-    } else {
-      storeWsTicket(null)
+      return { token: data.ws_token, exp: expSeconds }
     }
   } catch {
-    storeWsTicket(null)
+    return null
   }
+
+  return null
 }

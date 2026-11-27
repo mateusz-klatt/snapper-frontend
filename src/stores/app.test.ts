@@ -411,6 +411,52 @@ describe('useAppStore', () => {
     })
   })
   describe('atomic URL scope selection', () => {
+    it.each(['wallet picker', 'URL scope'])(
+      'keeps the selected wallet scope unchanged when logout supersedes the %s refresh',
+      async entry => {
+        const app = useAppStore.getState()
+        const auth = useAuthStore.getState()
+        const user = makeUserProfile({ username: 'viewer', active_wallet_public_id: 'w-old' })
+        const next = { wallet: 'w-new', operator: 'o-new', asOf: '2026-10-27T17:00:00.000Z' }
+        let releaseRefresh!: (response: Response) => void
+        const fetchMock = vi.fn(
+          () =>
+            new Promise<Response>(resolve => {
+              releaseRefresh = resolve
+            })
+        )
+
+        app.setCurrentOperatorPublicId(null)
+        app.setCurrentWalletPublicId('w-old')
+        useAuthStore.setState({ isAuthenticated: true, user })
+        vi.stubGlobal('fetch', fetchMock)
+
+        try {
+          const selection =
+            entry === 'wallet picker'
+              ? app.selectWalletAndRefresh(next.wallet)
+              : app.selectScopeAndRefresh(next)
+
+          await vi.waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1))
+          auth.silentLogout()
+          releaseRefresh(
+            Response.json({ payload: { user: { ...user, active_wallet_public_id: next.wallet } } })
+          )
+
+          await expect(selection).resolves.toBe(entry === 'wallet picker' ? undefined : false)
+          expect(useAppStore.getState()).toMatchObject({
+            currentWalletPublicId: 'w-old',
+            currentOperatorPublicId: null,
+            asOf: null,
+          })
+          expect(apiClient.getWalletScope()).toBe('w-old')
+          expect(apiClient.getOperatorScope()).toBeNull()
+        } finally {
+          vi.unstubAllGlobals()
+          app.setCurrentWalletPublicId(null)
+        }
+      }
+    )
     it.each([false, true])(
       'retires old scoped reads across a wallet rotation and resumes them on failure: %s',
       async fail => {
