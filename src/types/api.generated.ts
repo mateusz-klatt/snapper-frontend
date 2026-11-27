@@ -4334,6 +4334,7 @@ export type Components = {
         ProcessConfigScopeBody: {
             operator_public_id?: string | null;
             wallet_public_id?: string | null;
+            max_order_base_qty?: number | null;
             reference_identity_params?: {
                 [key: string]: string;
             } | null;
@@ -4940,6 +4941,12 @@ export interface Operations {
                 };
                 content?: never;
             };
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -5016,6 +5023,12 @@ export interface Operations {
                 };
             };
             404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            409: {
                 headers: {
                     [name: string]: unknown;
                 };
