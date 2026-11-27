@@ -5,6 +5,7 @@ import type { LoginBody } from '../types/api'
 import { Permission, RESOURCE_PERMISSIONS } from '../types/permissions.generated'
 import i18n from '../i18n/config'
 import { apiClient } from '../lib/apiClient'
+import { APIError, RefreshBodyReadError, isTransientRefreshError } from '../lib/api/error'
 import { getCookie } from '../lib/utils'
 import { queryClient } from '../lib/queryClient'
 import { storeWsTicket } from '../lib/wsTicketCache'
@@ -73,9 +74,7 @@ interface AuthState {
   canAccess: (resource: string) => boolean
 }
 
-const isTransportError = (error: unknown): boolean =>
-  error instanceof TypeError ||
-  (error instanceof DOMException && (error.name === 'AbortError' || error.name === 'TimeoutError'))
+let authGeneration = 0
 
 function buildRefreshBody(nextWallet?: RefreshWalletHint): RefreshRequestBody | undefined {
   if (nextWallet === undefined) return undefined
@@ -125,6 +124,7 @@ export const useAuthStore = create<AuthState>()(
               void i18n.changeLanguage(data.user.default_language)
             }
 
+            authGeneration += 1
             set({
               user: data.user,
               isAuthenticated: true,
@@ -144,6 +144,8 @@ export const useAuthStore = create<AuthState>()(
           }
         },
         logout: async () => {
+          authGeneration += 1
+
           try {
             set({ isLoading: true })
             set({ isAuthenticated: false })
@@ -173,6 +175,7 @@ export const useAuthStore = create<AuthState>()(
           }
         },
         silentLogout: () => {
+          authGeneration += 1
           set({ isAuthenticated: false })
           const win = globalThis as WindowWithCallbacks
 
@@ -192,19 +195,41 @@ export const useAuthStore = create<AuthState>()(
           })
         },
         refreshToken: async (nextWallet?: RefreshWalletHint) => {
+          const generation = authGeneration
+
           try {
             const body = buildRefreshBody(nextWallet)
             const response = await apiClient.refreshSession(body)
 
-            if (!response.ok) {
-              throw new Error(`Refresh failed with status ${response.status}`)
+            if (generation !== authGeneration) {
+              return
             }
 
-            const canCacheWsTicket = apiClient.claimWsTicketCache(response)
-            const envelope = (await response.json()) as RefreshEnvelope
+            if (!response.ok) {
+              throw new APIError(
+                `Refresh failed with status ${response.status}`,
+                response.status,
+                response.statusText ?? ''
+              )
+            }
+
+            let envelope: RefreshEnvelope
+
+            try {
+              envelope = (await response.json()) as RefreshEnvelope
+            } catch (bodyError) {
+              throw new RefreshBodyReadError('Failed to read refresh response body', {
+                cause: bodyError,
+              })
+            }
+
+            if (generation !== authGeneration) {
+              return
+            }
+
             const data = envelope.payload
 
-            if (canCacheWsTicket) {
+            if (apiClient.claimWsTicketCache(response)) {
               if (typeof data.ws_token === 'string' && typeof data.ws_token_exp === 'string') {
                 const expSeconds = Math.floor(new Date(data.ws_token_exp).getTime() / 1000)
 
@@ -229,6 +254,10 @@ export const useAuthStore = create<AuthState>()(
               userData = meEnvelope.payload
             }
 
+            if (generation !== authGeneration) {
+              return
+            }
+
             if (
               nextWallet !== undefined &&
               (data.user === undefined ||
@@ -244,7 +273,7 @@ export const useAuthStore = create<AuthState>()(
               csrfToken,
             })
           } catch (error) {
-            if (isTransportError(error)) {
+            if (generation !== authGeneration || isTransientRefreshError(error)) {
               throw error
             }
 

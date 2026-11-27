@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { useEffect } from 'react'
-import WebSocketClient from '../lib/websocket/client'
+import WebSocketClient, { WebSocketTerminalError } from '../lib/websocket/client'
 import type { WebSocketMessages } from '../types/ws'
 import { useAuthStore } from './auth'
 import { apiClient } from '../lib/apiClient'
@@ -20,6 +20,8 @@ type WindowWithWsCallback = typeof globalThis & { wsDisconnectCallback?: () => v
 
 export const useWebSocketStore = create<WebSocketState>((set, get) => {
   const win = globalThis as WindowWithWsCallback
+  let connectGeneration = 0
+  let cancelPendingConnect: (() => void) | null = null
 
   win.wsDisconnectCallback = () => {
     get().disconnect()
@@ -38,6 +40,8 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => {
         return
       }
 
+      const attemptId = ++connectGeneration
+
       set({ isConnecting: true, error: null })
 
       try {
@@ -54,6 +58,8 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => {
           set({ wsClient: client })
 
           const authErrorHandler = (message: WebSocketMessages) => {
+            if (attemptId !== connectGeneration) return
+
             const reason = 'reason' in message ? (message.reason as string | undefined) : undefined
             const suffix = reason ? `: ${reason}` : ''
 
@@ -61,51 +67,100 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => {
           }
 
           client.onMessage('auth_complete', () => {
-            set({ error: null })
+            if (attemptId === connectGeneration) set({ error: null })
           })
           client.onMessage('auth_failed', authErrorHandler)
           client.onMessage('auth_expired', () => {
-            set({ error: 'WebSocket session expired, attempting to reconnect…' })
+            if (attemptId === connectGeneration) {
+              set({ error: 'WebSocket session expired, attempting to reconnect…' })
+            }
           })
         }
 
         const activeClient = client
 
         activeClient.onConnection((connected: boolean) => {
-          set({ isConnected: connected })
+          if (attemptId === connectGeneration) {
+            set({ isConnected: connected })
+          }
         })
         await new Promise<void>((resolve, reject) => {
-          const handleConnect = () => {
-            if (activeClient.isConnected()) {
+          const noop = (): void => undefined
+          let settled = false
+          let timeoutId: ReturnType<typeof setTimeout> | null = null
+          let unsubscribeConnection: () => void = noop
+          let unsubscribeTerminal: () => void = noop
+
+          const cleanup = () => {
+            if (timeoutId !== null) {
+              clearTimeout(timeoutId)
+              timeoutId = null
+            }
+
+            unsubscribeConnection()
+            unsubscribeTerminal()
+            cancelPendingConnect = null
+          }
+
+          const finish = (outcome?: unknown) => {
+            if (settled) return
+
+            settled = true
+            cleanup()
+
+            if (outcome === undefined) {
               resolve()
+            } else {
+              reject(outcome)
             }
           }
 
-          const unsubscribe = activeClient.onConnection(handleConnect)
+          const cancel = () => {
+            finish(new Error('Connection cancelled'))
+          }
+
+          cancelPendingConnect = cancel
+          unsubscribeConnection =
+            activeClient.onConnection(() => {
+              if (activeClient.isConnected()) {
+                finish()
+              }
+            }) ?? noop
+          unsubscribeTerminal =
+            activeClient.onTerminalFailure?.(terminalError => {
+              finish(terminalError)
+            }) ?? noop
 
           try {
             activeClient.connect()
-            setTimeout(() => {
-              if (!activeClient.isConnected()) {
-                unsubscribe()
-                reject(new Error('Connection timeout'))
-              }
-            }, 10000)
+
+            if (!settled) {
+              timeoutId = setTimeout(() => {
+                finish(new Error('Connection timeout'))
+              }, 10000)
+            }
           } catch (error) {
-            unsubscribe()
-            reject(error)
+            finish(error)
           }
         })
-        set({ isConnecting: false })
+
+        if (attemptId === connectGeneration) {
+          set({ isConnecting: false })
+        }
       } catch (error) {
-        set({
-          isConnecting: false,
-          error: error instanceof Error ? error.message : 'Connection failed',
-        })
+        if (attemptId === connectGeneration) {
+          set({
+            isConnecting: false,
+            error: error instanceof Error ? error.message : 'Connection failed',
+          })
+        }
+
         throw error
       }
     },
     disconnect: () => {
+      connectGeneration += 1
+      cancelPendingConnect?.()
       const { wsClient } = get()
 
       if (wsClient) {
@@ -184,7 +239,11 @@ export function useWebSocketConnection(url?: string, options?: WebSocketConnecti
       } catch (connectError) {
         console.error('Failed to connect to WebSocket:', connectError)
 
-        if (isMounted && useAuthStore.getState().isAuthenticated) {
+        if (
+          isMounted &&
+          !(connectError instanceof WebSocketTerminalError) &&
+          useAuthStore.getState().isAuthenticated
+        ) {
           retryTimeout = setTimeout(() => {
             void attemptConnection()
           }, retryDelay)

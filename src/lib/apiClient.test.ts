@@ -304,6 +304,76 @@ describe('APIClient', () => {
       expect(response.status).toBe(403)
       expect(mockFetch).toHaveBeenCalledTimes(1)
     })
+    it('aborts a 403 refresh with a stalled body at 10 seconds and unblocks queued refreshes', async () => {
+      vi.useFakeTimers()
+
+      try {
+        mockFetch
+          .mockResolvedValueOnce({
+            ok: false,
+            status: 403,
+            clone: () => ({
+              json: () => new Promise(() => undefined),
+            }),
+          } as unknown as Response)
+          .mockResolvedValueOnce(selfCloningResponse(async () => ({ payload: {} })))
+
+        const first = apiClient.refreshSession()
+        const queued = apiClient.refreshSession({ active_wallet_public_id: 'w-main' })
+        const caughtFirst = first.catch((error: unknown) => error)
+
+        await vi.advanceTimersByTimeAsync(10_000)
+        const error = await caughtFirst
+
+        expect(error).toBeInstanceOf(DOMException)
+        expect((error as DOMException).name).toBe('TimeoutError')
+        expect((await queued).ok).toBe(true)
+      } finally {
+        vi.useRealTimers()
+      }
+    })
+    it('aborts a 200 refresh with a stalled body at 10 seconds', async () => {
+      vi.useFakeTimers()
+
+      try {
+        mockFetch.mockResolvedValueOnce({
+          ok: true,
+          status: 200,
+          json: () => new Promise(() => undefined),
+        } as unknown as Response)
+
+        const pending = apiClient.refreshSession()
+        const caught = pending.catch((error: unknown) => error)
+
+        await vi.advanceTimersByTimeAsync(10_000)
+        const error = await caught
+
+        expect(error).toBeInstanceOf(DOMException)
+        expect((error as DOMException).name).toBe('TimeoutError')
+      } finally {
+        vi.useRealTimers()
+      }
+    })
+    it('surfaces body TypeError from a 200 refresh response as a transient transport error', async () => {
+      const bodyFailure = new TypeError('Stream aborted')
+
+      mockFetch.mockResolvedValueOnce({ ok: false, status: 401 }).mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: () => Promise.reject(bodyFailure),
+      } as unknown as Response)
+
+      const authLogout = vi.fn()
+
+      ;(window as { authLogoutCallback?: () => void }).authLogoutCallback = authLogout
+
+      try {
+        await expect(apiClient.request('/test', { method: 'GET' })).rejects.toBe(bodyFailure)
+        expect(authLogout).not.toHaveBeenCalled()
+      } finally {
+        delete (window as { authLogoutCallback?: () => void }).authLogoutCallback
+      }
+    })
     it('aborts runRefreshFlight with TimeoutError after 10 seconds', async () => {
       vi.useFakeTimers()
 
@@ -432,6 +502,139 @@ describe('APIClient', () => {
         'Authentication required'
       )
       expect(mockFetch).toHaveBeenCalledTimes(2)
+    })
+    it.each([408, 429, 503])(
+      'preserves session and surfaces APIError on HTTP %s during refreshAndRetry',
+      async status => {
+        const authLogout = vi.fn()
+
+        ;(window as { authLogoutCallback?: () => void }).authLogoutCallback = authLogout
+
+        try {
+          mockFetch
+            .mockResolvedValueOnce({ ok: false, status: 401 })
+            .mockResolvedValueOnce(new Response(null, { status, statusText: 'Transient' }))
+
+          await expect(apiClient.request('/test', { method: 'GET' })).rejects.toMatchObject({
+            name: 'APIError',
+            status,
+          })
+          expect(authLogout).not.toHaveBeenCalled()
+        } finally {
+          delete (window as { authLogoutCallback?: () => void }).authLogoutCallback
+        }
+      }
+    )
+    it('preserves session on transport TypeError during refreshAndRetry', async () => {
+      const authLogout = vi.fn()
+      const networkError = new TypeError('Failed to fetch')
+
+      ;(window as { authLogoutCallback?: () => void }).authLogoutCallback = authLogout
+
+      try {
+        mockFetch
+          .mockResolvedValueOnce({ ok: false, status: 401 })
+          .mockRejectedValueOnce(networkError)
+
+        await expect(apiClient.request('/test', { method: 'GET' })).rejects.toBe(networkError)
+        expect(authLogout).not.toHaveBeenCalled()
+      } finally {
+        delete (window as { authLogoutCallback?: () => void }).authLogoutCallback
+      }
+    })
+    it('logs out when refreshSession rejects with a non-transient error during refreshAndRetry', async () => {
+      ;(apiClient as any).isLoggingOut = false
+      const authLogout = vi.fn()
+
+      ;(window as { authLogoutCallback?: () => void }).authLogoutCallback = authLogout
+
+      try {
+        mockFetch
+          .mockResolvedValueOnce({ ok: false, status: 401 })
+          .mockRejectedValueOnce(new Error('Unexpected refresh failure'))
+
+        await expect(apiClient.request('/test', { method: 'GET' })).rejects.toThrow(
+          'Authentication required'
+        )
+        expect(authLogout).toHaveBeenCalledTimes(1)
+      } finally {
+        delete (window as { authLogoutCallback?: () => void }).authLogoutCallback
+      }
+    })
+    it('aborts refreshAndRetry without caching or retrying if session clears mid-flight', async () => {
+      const wsTicketCacheMod = await import('./wsTicketCache')
+      const storeWsTicketSpy = vi.mocked(wsTicketCacheMod.storeWsTicket)
+      let releaseRefresh!: (response: Response) => void
+
+      mockFetch.mockResolvedValueOnce({ ok: false, status: 401 }).mockImplementationOnce(
+        () =>
+          new Promise<Response>(resolve => {
+            releaseRefresh = resolve
+          })
+      )
+
+      const pending = apiClient.request('/test', { method: 'GET' })
+
+      await Promise.resolve()
+      apiClient.clearCSRFToken()
+      releaseRefresh(
+        new Response(
+          JSON.stringify({
+            payload: { ws_token: 'stale', ws_token_exp: '2030-01-01T00:00:00.000Z' },
+          }),
+          { status: 200 }
+        )
+      )
+
+      await expect(pending).rejects.toThrow('Authentication required')
+      expect(storeWsTicketSpy).not.toHaveBeenCalled()
+      expect(mockFetch).toHaveBeenCalledTimes(2)
+    })
+    it('tracks and consumes an independent REST ticket at most once', async () => {
+      mockFetch.mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            payload: {
+              ws_token: 'rest-only-token',
+              ws_token_exp: '2030-01-01T00:00:00.000Z',
+            },
+          }),
+          { status: 200 }
+        )
+      )
+
+      const response = await apiClient.refreshSession()
+
+      expect(apiClient.claimWsTicketCache(response)).toBe(true)
+      expect(apiClient.consumeIndependentRestTicket('other-token')).toBe(false)
+      expect(apiClient.consumeIndependentRestTicket('rest-only-token')).toBe(true)
+      expect(apiClient.consumeIndependentRestTicket('rest-only-token')).toBe(false)
+    })
+    it('rejects claimWsTicketCache for a flight from a prior session epoch', async () => {
+      let releaseRefresh!: (response: Response) => void
+
+      mockFetch.mockImplementationOnce(
+        () =>
+          new Promise<Response>(resolve => {
+            releaseRefresh = resolve
+          })
+      )
+
+      const pending = apiClient.refreshSession()
+
+      apiClient.clearCSRFToken()
+      releaseRefresh(
+        new Response(
+          JSON.stringify({
+            payload: { ws_token: 'stale', ws_token_exp: '2030-01-01T00:00:00.000Z' },
+          }),
+          { status: 200 }
+        )
+      )
+
+      const response = await pending
+
+      expect(apiClient.claimWsTicketCache(response)).toBe(false)
     })
     it('triggers auth logout callback with cooldown', async () => {
       vi.useFakeTimers()

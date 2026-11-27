@@ -1,5 +1,5 @@
 import { apiClient } from '../apiClient'
-import { APIError } from '../api/error'
+import { APIError, isTransientRefreshTransportError } from '../api/error'
 import { consumeWsTicket } from '../wsTicketCache'
 import { AuthControlMessageType, RefreshWsTokenResponse, AUTH_CONTROL_MESSAGES } from './types'
 
@@ -13,21 +13,13 @@ let wsTokenFlight: { socket: WebSocket; ticket: Promise<WsTicket> } | null = nul
 
 export class WsTicketNetworkError extends TypeError {}
 
-function isNetworkRefreshError(error: unknown): error is TypeError | DOMException {
-  return (
-    error instanceof TypeError ||
-    (error instanceof DOMException &&
-      (error.name === 'AbortError' || error.name === 'TimeoutError'))
-  )
-}
-
 async function refreshWsToken(): Promise<WsTicket> {
   let response: Response
 
   try {
     response = await apiClient.refreshSession(undefined, { claimWsTicket: true })
   } catch (error) {
-    if (isNetworkRefreshError(error)) {
+    if (isTransientRefreshTransportError(error)) {
       throw new WsTicketNetworkError(error.message, { cause: error })
     }
 
@@ -42,7 +34,21 @@ async function refreshWsToken(): Promise<WsTicket> {
     )
   }
 
-  const envelope = (await response.json()) as RefreshWsTokenResponse
+  let envelope: RefreshWsTokenResponse
+
+  try {
+    envelope = (await response.json()) as RefreshWsTokenResponse
+  } catch (error) {
+    if (
+      error instanceof DOMException &&
+      (error.name === 'AbortError' || error.name === 'TimeoutError')
+    ) {
+      throw new WsTicketNetworkError(error.message, { cause: error })
+    }
+
+    throw error
+  }
+
   const data = envelope?.payload
 
   if (!data || typeof data.ws_token !== 'string' || typeof data.ws_token_exp !== 'string') {
@@ -54,7 +60,8 @@ async function refreshWsToken(): Promise<WsTicket> {
 
 /**
  * Keep refresh tickets with the socket that requested them. A replacement waits for the API
- * refresh to settle and discards any cached ticket that could have come from that flight.
+ * refresh to settle and discards any cached ticket unless ownership shows it came from an
+ * independent REST-only flight.
  */
 export async function getWsToken(
   socket: WebSocket,
@@ -71,7 +78,12 @@ export async function getWsToken(
 
   const cachedTicket = consumeWsTicket()
 
-  if (cachedTicket && !startedDuringRefresh) return cachedTicket
+  if (
+    cachedTicket &&
+    (!startedDuringRefresh || apiClient.consumeIndependentRestTicket?.(cachedTicket.token))
+  ) {
+    return cachedTicket
+  }
 
   const ticket = refreshWsToken().finally(() => {
     wsTokenFlight = null

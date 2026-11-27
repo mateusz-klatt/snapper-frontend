@@ -826,6 +826,148 @@ describe('auth store', () => {
       expect(useAuthStore.getState().isAuthenticated).toBe(false)
       expect(apiClient.post).not.toHaveBeenCalled()
     })
+    it.each([408, 429, 503])(
+      'preserves session without silentLogout on transient HTTP %s refresh response',
+      async status => {
+        vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+          new Response(null, { status, statusText: 'Transient' })
+        )
+        const state = useAuthStore.getState()
+
+        await expect(state.refreshToken()).rejects.toMatchObject({
+          name: 'APIError',
+          status,
+        })
+        expect(useAuthStore.getState().isAuthenticated).toBe(true)
+        expect(apiClient.clearCSRFToken).not.toHaveBeenCalled()
+      }
+    )
+    it('preserves session without silentLogout when refresh body JSON parsing fails', async () => {
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: () => Promise.reject(new SyntaxError('Unexpected end of JSON input')),
+      } as unknown as Response)
+
+      await expect(useAuthStore.getState().refreshToken()).rejects.toMatchObject({
+        name: 'RefreshBodyReadError',
+      })
+      expect(useAuthStore.getState().isAuthenticated).toBe(true)
+      expect(apiClient.clearCSRFToken).not.toHaveBeenCalled()
+    })
+    it('ignores stale refresh results when silentLogout bumps authGeneration before refresh settles', async () => {
+      const { storeWsTicket } = await import('../lib/wsTicketCache')
+      let resolveRefresh!: (response: Response) => void
+
+      vi.mocked(apiClient.refreshSession).mockImplementationOnce(
+        () =>
+          new Promise<Response>(resolve => {
+            resolveRefresh = resolve
+          })
+      )
+
+      const pending = useAuthStore.getState().refreshToken()
+
+      useAuthStore.getState().silentLogout()
+      vi.mocked(storeWsTicket).mockClear()
+      vi.mocked(apiClient.setCsrfToken).mockClear()
+      resolveRefresh(
+        refreshResponse({
+          payload: {
+            ws_token: 'stale-token',
+            ws_token_exp: '2030-01-01T00:00:00.000Z',
+            csrf_token: 'stale-csrf',
+          },
+        })
+      )
+
+      await pending
+      expect(storeWsTicket).not.toHaveBeenCalled()
+      expect(apiClient.setCsrfToken).not.toHaveBeenCalled()
+      expect(useAuthStore.getState().isAuthenticated).toBe(false)
+      expect(useAuthStore.getState().user).toBeNull()
+    })
+    it('ignores stale refresh body when silentLogout runs while awaiting response.json()', async () => {
+      const { storeWsTicket } = await import('../lib/wsTicketCache')
+      let resolveJson!: (payload: unknown) => void
+
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: () =>
+          new Promise(resolve => {
+            resolveJson = resolve
+          }),
+      } as unknown as Response)
+
+      const pending = useAuthStore.getState().refreshToken()
+
+      await Promise.resolve()
+      useAuthStore.getState().silentLogout()
+      vi.mocked(storeWsTicket).mockClear()
+      vi.mocked(apiClient.setCsrfToken).mockClear()
+
+      resolveJson({
+        payload: {
+          ws_token: 'stale-token',
+          ws_token_exp: '2030-01-01T00:00:00.000Z',
+          csrf_token: 'stale-csrf',
+        },
+      })
+
+      await pending
+      expect(storeWsTicket).not.toHaveBeenCalled()
+      expect(apiClient.setCsrfToken).not.toHaveBeenCalled()
+      expect(useAuthStore.getState().isAuthenticated).toBe(false)
+      expect(useAuthStore.getState().user).toBeNull()
+    })
+    it('ignores stale /api/auth/me completion when silentLogout runs mid-request', async () => {
+      useAuthStore.setState({ user: null, isAuthenticated: true })
+      let resolveMe!: (response: Response) => void
+
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({ payload: { csrf_token: 'next-csrf' } })
+      )
+      vi.mocked(apiClient.get).mockImplementationOnce(
+        () =>
+          new Promise<Response>(resolve => {
+            resolveMe = resolve
+          })
+      )
+
+      const pending = useAuthStore.getState().refreshToken()
+
+      await vi.waitFor(() => expect(resolveMe).toBeDefined())
+      useAuthStore.getState().silentLogout()
+      resolveMe(
+        refreshResponse({
+          payload: makeUserProfile({ username: 'stale-user' }),
+        })
+      )
+
+      await pending
+      expect(useAuthStore.getState().isAuthenticated).toBe(false)
+      expect(useAuthStore.getState().user).toBeNull()
+    })
+    it('does not re-trigger silentLogout when a superseded refresh fails after logout', async () => {
+      let rejectRefresh!: (error: Error) => void
+
+      vi.mocked(apiClient.refreshSession).mockImplementationOnce(
+        () =>
+          new Promise<Response>((_resolve, reject) => {
+            rejectRefresh = reject
+          })
+      )
+
+      const pending = useAuthStore.getState().refreshToken()
+
+      useAuthStore.getState().silentLogout()
+      vi.mocked(apiClient.clearCSRFToken).mockClear()
+      rejectRefresh(new Error('Superseded failure'))
+
+      await expect(pending).rejects.toThrow('Superseded failure')
+      expect(apiClient.clearCSRFToken).not.toHaveBeenCalled()
+    })
     it('stores null ws ticket when ws_token is missing', async () => {
       const { storeWsTicket } = await import('../lib/wsTicketCache')
 

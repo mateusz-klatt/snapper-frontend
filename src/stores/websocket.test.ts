@@ -4,6 +4,7 @@ import { renderHook, act } from '@testing-library/react'
 import { apiClient } from '../lib/apiClient'
 import { useAuthStore } from './auth'
 import type WebSocketClient from '../lib/websocket/client'
+import { WebSocketTerminalError } from '../lib/websocket/client'
 
 vi.mock('../lib/apiClient', () => ({
   apiClient: {
@@ -22,9 +23,11 @@ const createMockClient = () => {
   const handlers: {
     connection: Array<(c: boolean) => void>
     message: Map<string, Array<(m: unknown) => void>>
+    terminal: Array<(e: WebSocketTerminalError) => void>
   } = {
     connection: [],
     message: new Map(),
+    terminal: [],
   }
 
   return {
@@ -54,11 +57,23 @@ const createMockClient = () => {
 
       return () => {}
     }),
+    onTerminalFailure: vi.fn((handler: (error: WebSocketTerminalError) => void) => {
+      handlers.terminal.push(handler)
+
+      return () => {
+        const idx = handlers.terminal.indexOf(handler)
+
+        if (idx >= 0) handlers.terminal.splice(idx, 1)
+      }
+    }),
     triggerMessage: (type: string, message: unknown) => {
       handlers.message.get(type)?.forEach(h => h(message))
     },
     triggerConnection: (connected: boolean) => {
       handlers.connection.forEach(h => h(connected))
+    },
+    triggerTerminalFailure: (error: WebSocketTerminalError) => {
+      handlers.terminal.forEach(h => h(error))
     },
     handlers,
   }
@@ -68,6 +83,13 @@ let mockClient: ReturnType<typeof createMockClient>
 let shouldThrowOnConnect = false
 
 vi.mock('../lib/websocket/client', () => {
+  class MockWebSocketTerminalError extends Error {
+    constructor(message: string) {
+      super(message)
+      this.name = 'WebSocketTerminalError'
+    }
+  }
+
   function MockWebSocketClient() {
     mockClient = createMockClient()
 
@@ -80,7 +102,7 @@ vi.mock('../lib/websocket/client', () => {
     return mockClient
   }
 
-  return { default: MockWebSocketClient }
+  return { default: MockWebSocketClient, WebSocketTerminalError: MockWebSocketTerminalError }
 })
 describe('websocket store', () => {
   beforeEach(() => {
@@ -538,6 +560,86 @@ describe('websocket store', () => {
     expect(state.isConnecting).toBe(false)
     expect(state.error).toBe('Connection failed')
   })
+  it('cancels pending attempt A on disconnect so it cannot overwrite attempt B state', async () => {
+    const attemptA = useWebSocketStore.getState().connect('ws://first')
+    const clientA = mockClient
+    const caughtA = attemptA.catch((error: Error) => error)
+
+    useWebSocketStore.getState().disconnect()
+    expect(await caughtA).toMatchObject({ message: 'Connection cancelled' })
+
+    const attemptB = useWebSocketStore.getState().connect('ws://second')
+    const caughtB = attemptB.catch((error: Error) => error)
+    const clientB = mockClient
+
+    expect(useWebSocketStore.getState()).toMatchObject({
+      isConnecting: true,
+      error: null,
+    })
+
+    clientA.triggerMessage('auth_failed', { reason: 'stale' })
+    clientA.triggerMessage('auth_expired', {})
+    clientA.triggerMessage('auth_complete', {})
+    clientA.triggerConnection(true)
+    expect(useWebSocketStore.getState()).toMatchObject({
+      isConnecting: true,
+      isConnected: false,
+      error: null,
+    })
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(10000)
+    })
+
+    expect(useWebSocketStore.getState()).toMatchObject({
+      isConnecting: false,
+      error: 'Connection timeout',
+    })
+    expect(await caughtB).toMatchObject({ message: 'Connection timeout' })
+    expect(clientB).not.toBe(clientA)
+  })
+  it('ignores stale post-resolve state updates if disconnect runs immediately after connect resolves', async () => {
+    const connectPromise = useWebSocketStore.getState().connect('ws://test')
+
+    mockClient.isConnected.mockReturnValue(true)
+    mockClient.triggerConnection(true)
+    useWebSocketStore.getState().disconnect()
+    await connectPromise
+    expect(useWebSocketStore.getState()).toMatchObject({
+      wsClient: null,
+      isConnected: false,
+      isConnecting: false,
+    })
+  })
+  it('ignores duplicate settlement when a connection listener notifies twice synchronously', async () => {
+    const customClient = {
+      connect: vi.fn(),
+      disconnect: vi.fn(),
+      subscribe: vi.fn(),
+      unsubscribe: vi.fn(),
+      isConnected: vi.fn(() => true),
+      onConnection: vi.fn((handler: (connected: boolean) => void) => {
+        handler(true)
+        handler(true)
+
+        return () => {}
+      }),
+      onMessage: vi.fn(),
+    }
+
+    useWebSocketStore.setState({ wsClient: customClient as unknown as WebSocketClient })
+    await expect(useWebSocketStore.getState().connect('ws://test')).resolves.toBeUndefined()
+  })
+  it('rejects connect immediately when a terminal failure occurs', async () => {
+    const connectPromise = useWebSocketStore.getState().connect('ws://test')
+
+    mockClient.triggerTerminalFailure(new WebSocketTerminalError('HTTP 400'))
+    await expect(connectPromise).rejects.toThrow('HTTP 400')
+    expect(useWebSocketStore.getState()).toMatchObject({
+      isConnecting: false,
+      error: 'HTTP 400',
+    })
+  })
 })
 describe('useWebSocketConnection', () => {
   beforeEach(() => {
@@ -629,6 +731,21 @@ describe('useWebSocketConnection', () => {
         typeof useAuthStore.getState
       >)
     }
+  })
+  it('stops retry loop on WebSocketTerminalError even while isAuthenticated stays true', async () => {
+    vi.mocked(useAuthStore.getState).mockReturnValue({ isAuthenticated: true } as ReturnType<
+      typeof useAuthStore.getState
+    >)
+    const originalConnect = useWebSocketStore.getState().connect
+    const connectSpy = vi.fn().mockRejectedValue(new WebSocketTerminalError('Invalid ws_token'))
+
+    useWebSocketStore.setState({ connect: connectSpy })
+    renderHook(() => useWebSocketConnection(undefined, { retryDelayMs: 5000 }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(30000)
+    })
+    expect(connectSpy).toHaveBeenCalledTimes(1)
+    useWebSocketStore.setState({ connect: originalConnect })
   })
   it('returns connection state', async () => {
     const { result } = renderHook(() => useWebSocketConnection())

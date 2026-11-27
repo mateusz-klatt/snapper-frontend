@@ -10,6 +10,7 @@ vi.mock('../wsTicketCache', () => ({
 vi.mock('../apiClient', () => ({
   apiClient: {
     refreshSession: vi.fn(),
+    consumeIndependentRestTicket: vi.fn(() => false),
   },
 }))
 
@@ -155,6 +156,56 @@ describe('auth', () => {
       vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(response)
 
       await expect(getWsToken()).rejects.toBe(failure)
+    })
+    it.each([
+      ['AbortError', new DOMException('Body read aborted', 'AbortError')],
+      ['TimeoutError', new DOMException('Body read timed out', 'TimeoutError')],
+    ])('maps response body %s to WsTicketNetworkError', async (_name, failure) => {
+      vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
+      const response = new Response('')
+
+      vi.spyOn(response, 'json').mockRejectedValueOnce(failure)
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(response)
+
+      const pending = getWsToken()
+
+      await expect(pending).rejects.toBeInstanceOf(WsTicketNetworkError)
+      await expect(pending).rejects.toMatchObject({ message: failure.message, cause: failure })
+    })
+    it('allows a replacement socket to consume an independent REST-only cached ticket', async () => {
+      let resolveOld!: (response: Response) => void
+
+      vi.mocked(wsTicketCache.consumeWsTicket)
+        .mockReturnValueOnce(null)
+        .mockReturnValueOnce({ token: 'rest-only-ticket', exp: 9999999999 })
+      vi.mocked(apiClient.refreshSession).mockImplementationOnce(
+        () =>
+          new Promise<Response>(resolve => {
+            resolveOld = resolve
+          })
+      )
+      vi.mocked(apiClient.consumeIndependentRestTicket).mockReturnValueOnce(true)
+
+      const oldSocket = {} as WebSocket
+      const newSocket = {} as WebSocket
+      const oldPromise = requestWsToken(oldSocket, () => true)
+      const replacementPromise = requestWsToken(newSocket, () => true)
+
+      resolveOld(
+        refreshResponse({
+          payload: {
+            ws_token: 'old-ticket',
+            ws_token_exp: '2030-01-01T00:00:00.000Z',
+          },
+        })
+      )
+
+      await expect(oldPromise).resolves.toMatchObject({ token: 'old-ticket' })
+      await expect(replacementPromise).resolves.toEqual({
+        token: 'rest-only-ticket',
+        exp: 9999999999,
+      })
+      expect(apiClient.refreshSession).toHaveBeenCalledTimes(1)
     })
     it('throws error for invalid API response', async () => {
       vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)

@@ -38,7 +38,7 @@ import {
   buildWebSocketUrl,
 } from './reconnect'
 import { getWsToken, isAuthControlMessage, WsTicketNetworkError } from './auth'
-import { APIError } from '../api/error'
+import { classifyRefreshFailure } from '../api/error'
 import { getTracker } from '../sequenceTracker'
 
 const TELEMETRY_TYPES = new Set(['ping'])
@@ -50,20 +50,11 @@ const CONTROL_TYPES = new Set([
   'get_subscriptions',
 ])
 
-function isTerminalAuthError(error: unknown): boolean {
-  return error instanceof APIError && (error.status === 401 || error.status === 403)
-}
-
-function isTransientTicketError(error: unknown): boolean {
-  if (error instanceof WsTicketNetworkError) {
-    return true
+export class WebSocketTerminalError extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = 'WebSocketTerminalError'
   }
-
-  if (!(error instanceof APIError)) {
-    return false
-  }
-
-  return error.status === 408 || error.status === 429 || (error.status >= 500 && error.status < 600)
 }
 
 class WebSocketClient {
@@ -89,6 +80,7 @@ class WebSocketClient {
   private readonly reauthLeadTimeMs = 45000
   private readonly messageHandlers = new Map<string, MessageHandler[]>()
   private readonly connectionHandlers: ConnectionHandler[] = []
+  private readonly terminalFailureHandlers: Array<(error: WebSocketTerminalError) => void> = []
   private readonly subscribedTopics = new Set<string>()
   private readonly pendingMessages = new Map<string, WebSocketMessages | CandleData[]>()
   private readonly lastMessageTime = new Map<string, number>()
@@ -185,7 +177,11 @@ class WebSocketClient {
       const socket = this.ws
 
       this.ws = null
-      socket.close()
+
+      if (socket.readyState === WebSocket.CONNECTING || socket.readyState === WebSocket.OPEN) {
+        socket.close()
+      }
+
       this.notifyConnectionHandlers(false)
     }
   }
@@ -379,14 +375,19 @@ class WebSocketClient {
     this.clearReauthTimer()
     this.reconnectAttempts = this.maxReconnectAttempts
   }
-  private completeAuthFailure(socket: WebSocket | null): void {
+  private completeAuthFailure(
+    socket: WebSocket | null,
+    terminalError: WebSocketTerminalError
+  ): void {
+    if (this.ws === socket) this.closeForAuthFailure()
+
+    this.notifyTerminalFailure(terminalError)
+
     const authCallback = (globalThis as { authLogoutCallback?: () => void }).authLogoutCallback
 
     if (authCallback) {
       authCallback()
     }
-
-    if (this.ws === socket) this.closeForAuthFailure()
   }
   private handleAuthFailure(message: WSAuthFailedResponse): void {
     const socket = this.ws
@@ -394,7 +395,10 @@ class WebSocketClient {
     console.error('WebSocket authentication failed:', message)
     this.resetAuthFailureState()
     this.notifyHandlers({ ...message, type: 'auth_failed' })
-    this.completeAuthFailure(socket)
+    this.completeAuthFailure(
+      socket,
+      new WebSocketTerminalError(message.reason || 'WebSocket authentication failed')
+    )
   }
   private async handleReauthRequired(message: WSReauthRequiredResponse): Promise<void> {
     if (!this.secure) {
@@ -480,13 +484,28 @@ class WebSocketClient {
 
       console.error('Failed to perform WebSocket authentication:', error)
 
-      if (isTerminalAuthError(error)) {
+      const failureKind = classifyRefreshFailure(error)
+      const isReconnectableTransient =
+        failureKind === 'transient_http' ||
+        (failureKind === 'transient_transport' &&
+          (!(error instanceof TypeError) || error instanceof WsTicketNetworkError))
+
+      if (failureKind === 'terminal_auth') {
         this.resetAuthFailureState()
-        this.completeAuthFailure(socket)
-      } else if (this.hasEstablishedConnection && isTransientTicketError(error)) {
+        this.completeAuthFailure(socket, new WebSocketTerminalError((error as Error).message))
+      } else if (this.hasEstablishedConnection && isReconnectableTransient) {
         socket.close()
       } else if (mode === 'authenticate') {
         this.reconnectAttempts = this.maxReconnectAttempts
+
+        if (!isReconnectableTransient) {
+          this.notifyTerminalFailure(
+            new WebSocketTerminalError(
+              error instanceof Error ? error.message : 'WebSocket authentication failure'
+            )
+          )
+        }
+
         this.closeForAuthFailure()
       }
     } finally {
@@ -594,6 +613,22 @@ class WebSocketClient {
         console.error('Error in connection handler:', error)
       }
     })
+  }
+  private notifyTerminalFailure(error: WebSocketTerminalError): void {
+    this.terminalFailureHandlers.forEach(handler => {
+      handler(error)
+    })
+  }
+  onTerminalFailure(handler: (error: WebSocketTerminalError) => void): () => void {
+    this.terminalFailureHandlers.push(handler)
+
+    return () => {
+      const index = this.terminalFailureHandlers.indexOf(handler)
+
+      if (index >= 0) {
+        this.terminalFailureHandlers.splice(index, 1)
+      }
+    }
   }
   isConnected(): boolean {
     return this.ws?.readyState === WebSocket.OPEN
